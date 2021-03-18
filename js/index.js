@@ -90,6 +90,44 @@ function main(){
 		$(".main_detail").hide();
 	});
 	
+	//功能頁面切換
+	  $(".function_bt_a").on("click",function(){
+		  $("#main_page").empty().load("./views/cs_manage.html");
+		  setTimeout(function(){
+			map();
+	   },100);
+		 
+	  });
+	  $(".function_bt_b").on("click",function(){
+		  $("#main_page").empty().load("./views/fc_manage.html");
+		  setTimeout(function(){
+			
+	   },100);
+	  });
+	  $(".function_bt_c").on("click",function(){
+		  $("#main_page").empty().load("./views/fi_manage.html");
+		  setTimeout(function(){
+			
+	   },100);
+	  }); 
+	  $(".function_bt_d").on("click",function(){
+		  $("#main_page").empty().load("./views/te_manage.html");
+		  setTimeout(function(){
+			
+	   },100);
+	  });
+	  $(".function_bt_e").on("click",function(){
+		  $("#main_page").empty().load("./views/api_manage.html");
+		  setTimeout(function(){
+			
+	   },100);
+	  });
+	  $(".function_bt_f").on("click",function(){
+		  $("#main_page").empty().load("./views/sys_manage.html");
+		  setTimeout(function(){
+			
+	   },100);
+	  }); 
 	
 }
      
