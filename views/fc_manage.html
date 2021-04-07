@@ -100,7 +100,7 @@
 	<tr class="align-middle">
 		<td>2</td>
 		<td>110</td>
-		<td>2</td>
+		<td>3</td>
 		<td>2021/02/01</td>
 		<td>16</td>
 		<td>26,746,665</td>
@@ -109,7 +109,7 @@
 		<td>0</td>
 		<td>2021/01/20 18:30</td>
 		<td>ADMIN</td>
-		<td><button type="button" class="btn btn-danger">刪除</button></td>
+		<td></td>
 	</tr>
 	</tbody>
 	</table>
@@ -131,50 +131,44 @@
    </div>
 	<div class="row_flex row_justify">
 		<div class="content_row_47">
-		<div class="row_text">選擇匯入版次</div>
+		<div class="row_text">匯入版次</div>
 		<div class="row_flex">
 		<div class="new_ver">
 		   <label for="ver_year" class="form-label">年度</label>
 		   <select id="ver_year1" class="form-select" style="width: 160px;">
-			  <option value="0" selected>請選擇</option>
-			  <option value="110">110</option>
+			  <option value="110" selected>110</option>
 			</select>
 		</div>
 		
 		<div class="new_ver">
 		   <label for="ver_month1" class="form-label">月份</label>
-		   <select id="ver_month1" class="form-select" style="width: 160px;">
-			  <option value="0" selected>請選擇</option>
-			  <option value="3">3</option>
-			  <option value="8">8</option>
+		   <select id="ver_month1" class="form-select" style="width: 160px;">		 
+			  <option value="8" selected>8</option>
 			</select>
 		</div>
 		
-		<div class="new_ver">
-		<button type="button" class="btn btn-success custom_bt0" onclick="city_result()">確認結果</button>
-		</div>
+		<!-- <div class="new_ver"> -->
+		<!-- <button type="button" class="btn btn-success custom_bt0" onclick="city_result()">確認結果</button> -->
+		<!-- </div> -->
 
 		</div>
 			
 		</div>
 		
 		<div class="content_row_47">
-		<div class="row_text">選擇比較版次</div>
+		<div class="row_text">比較版次</div>
 		<div class="row_flex">
 		<div class="new_ver">
 		   <label for="ver_year" class="form-label">年度</label>
 		   <select id="ver_year2" class="form-select" style="width: 160px;">
-			  <option value="0" selected>請選擇</option>
-			  <option value="110">110</option>
+			  <option value="110" selected>110</option>
 			</select>
 		</div>
 		
 		<div class="new_ver">
 		   <label for="ver_month2" class="form-label">月份</label>
 		   <select id="ver_month2" class="form-select" style="width: 160px;">
-			  <option value="0" selected>請選擇</option>
-			  <option value="3">3</option>
-			  <option value="8">8</option>
+			  <option value="3" selected>3</option>			  
 			</select>
 		</div>
 
@@ -253,7 +247,7 @@
 		<td><button type="button" class="btn btn-success" onclick="new_city_result()">執行</button></td>
 	</tr>
 	<tr class="align-middle">
-		<td>3</td>
+		<td>4</td>
 		<td>台北市.shp</td>
 		<td>355MB</td>
 		<td>可執行</td>
@@ -261,7 +255,7 @@
 		<td><button type="button" class="btn btn-success" onclick="new_city_result()">執行</button></td>
 	</tr>
 	<tr class="align-middle">
-		<td>3</td>
+		<td>5</td>
 		<td>新北市.shp</td>
 		<td>536MB</td>
 		<td>可執行</td>
@@ -294,22 +288,19 @@
    
 	<div class="row_flex row_justify">
 		<div class="content_row_47">
-		<div class="row_text">選擇匯入版次</div>
+		<div class="row_text">匯入版次</div>
 		<div class="row_flex">
 		<div class="new_ver">
 		   <label for="ver_year" class="form-label">年度</label>
 		   <select id="ver_year3" class="form-select" style="width: 160px;">
-			  <option selected>請選擇</option>
-			  <option value="110">110</option>
+			  <option value="110" selected>110</option>
 			</select>
 		</div>
 		
 		<div class="new_ver">
 		   <label for="ver_month3" class="form-label">月份</label>
 		   <select id="ver_month3" class="form-select" style="width: 160px;">
-			  <option selected>請選擇</option>
-			  <option value="3">3</option>
-			  <option value="8">8</option>
+			  <option value="8" selected>8</option>
 			</select>
 		</div>
 
@@ -318,12 +309,11 @@
 		</div>
 		
 		<div class="content_row_47">
-		<div class="row_text">選擇比較版次</div>
+		<div class="row_text">比較版次</div>
 		<div class="row_flex">
 		<div class="new_ver">
 		   <label for="ver_year" class="form-label">年度</label>
 		   <select id="ver_year" class="form-select" style="width: 160px;">
-			  <option selected>請選擇</option>
 			  <option value="110">110</option>
 			</select>
 		</div>
@@ -331,9 +321,7 @@
 		<div class="new_ver">
 		   <label for="ver_month4" class="form-label">月份</label>
 		   <select id="ver_month4" class="form-select" style="width: 160px;">
-			  <option selected>請選擇</option>
-			  <option value="3">3</option>
-			  <option value="8">8</option>
+			  <option value="3" selected>3</option>
 			</select>
 		</div>
 
@@ -453,5 +441,6 @@
 	<script>
 	   tab();
        upload_result_owner();
+	   city_result();
     </script>
 	

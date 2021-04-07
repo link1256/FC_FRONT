@@ -13,6 +13,10 @@ overflow-y: hidden;
 	
 }
 
+.align-middle{
+height:55px;
+}
+
 .main_scroll{
 	overflow-y: auto;
 }
