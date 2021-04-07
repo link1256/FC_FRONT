@@ -320,13 +320,13 @@ thead{
 
 .nav_indicate{
 	display: flex;
-    margin: 5px 10px;
+    margin: 10px;
     font-size: 0.8rem;
 }
 
 .main_map{
 	width:100%;
-	height:calc(100vh - 132px);
+	height:calc(100vh - 140px);
 	transition: all 0.2s ease-out;  
 }
 
@@ -451,7 +451,7 @@ thead{
 	background-color:white;
 	padding: 20px;
 	border-radius: 10px;
-	width:47%;
+	width: 50%;
 }
 
 .row_text{
@@ -514,4 +514,8 @@ thead{
 
 .nav-item3.active{
 	
+}
+
+#city_list{
+	display:none;
 }
