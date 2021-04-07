@@ -1,29 +1,20 @@
-
-<div class="side_area">
-	<div class="sidebar">
-	<!-- 搜尋區塊 -->
-	<div class="search">
-    <div class="search_type">	
+<!-- 功能頁面區 -->
+	<div>
+    <div class="search_type fc_manage">	
 	<ul class="nav nav-tabs">
-			  <li class="nav-item">
-				<span class="nav-link search_a active">林地查詢</span>
+			  <li class="nav-item2 tab1">
+				<span class="nav-link active">林地查詢</span>
 			  </li>
-			  <li class="nav-item">
-				<span class="nav-link search_b">地籍查詢</span>
-			  </li>		  
+			  <li class="nav-item2 tab2">
+				<span class="nav-link">地籍查詢</span>
+			  </li>	
+              <li class="nav-item2 tab3">
+				<span class="nav-link">地圖檢視</span>
+			  </li>				  
 		</ul>
 	</div>
-	<div class="main_tab search_a active">	
-		<div class="search_sub1">
-		<ul class="nav nav-tabs">
-			  <li class="nav-item">			    
-				<span class="nav-link search_a_a active">快速查詢</span>
-			  </li>
-			  <li class="nav-item">
-				<span class="nav-link search_a_b">組合查詢</span>
-			  </li>			 
-		</ul>
-		</div>	
+	<div class="tab_body">
+	<div class="tab_body_content tab1 active">	
 		<form id="search_sub1_form" style="text-align: center;">		
 		<div class="search_sub1_content">		
 		<div class="tab-pane search_a_a active">	
@@ -115,21 +106,8 @@
 		<!-- </form> -->
 	</div>
 	
-	<div class="main_tab search_b">
-	<div class="search_sub2">
-		<ul class="nav nav-tabs">
-			  <li class="nav-item">
-			    <input type="checkbox" class="search_join" checked>
-				<span class="nav-link search_b_a active">地籍</span>
-			  </li>
-			  <li class="nav-item">
-				<span class="nav-link search_b_b">事業區</span>
-			  </li>
-			  <li class="nav-item">
-				<span class="nav-link search_b_c">保安林</span>
-			  </li>		  
-		</ul>
-		</div>
+	<div class="tab_body_content tab2">
+
 		<form id="search_sub2_form" style="text-align: center;">
 		<div class="search_sub2_content">		
 		<div class="tab-pane search_b_a active">
@@ -287,51 +265,19 @@
 		<button type="reset" class="btn btn-success search_submit search_b_reset_bt">重置</button>
 		</div>
 		<!-- </form> -->
-	</div>
-	</div>
-	<!-- 搜尋區塊 -->
 	
-	<div class="result_list">
-		<div class="result_title">
-		<span>查詢結果</span>
-		<div class="list_up"><i class="fas fa-angle-up"></i><i class="fas fa-angle-down icon_hide"></i></div>
-		</div>
-		<div class="result_list_content">
-		<div class="demo">		
-			<div class="result_item">台北市 內湖區 洲子段 0022-0001</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0002</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0003</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0004</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0005</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0006</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0007</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0008</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0009</div>
-			<div class="result_item">台北市 內湖區 洲子段 0022-0010</div>
-		</div>
-		</div>
-		<div class="result_list_sum">
-			共<span id="result_list_sum">0</span>筆
-		</div>
 	</div>
 	
 	</div>
-	<div class="navigator"></div>
-	<div class="map_area"></div>
-	<div class="detail_area"></div>
-	</div>
 	
-	<!-- 標題列 -->
-	<div class="main_content">
-
-	<!-- 右側主視窗 -->
+	<div class="tab_body_content tab3">
+		<!-- 右側主視窗 -->
 	<div class="main_result">	
 	<!-- 地圖 -->
 	<div class="main_map">
 	  <div id="mmap"></div>
 	  	  
 	</div>
-	<!-- 地圖 -->
 	<!-- 詳細資料 -->
 	<div class="main_detail">
 	<div>地籍詳細內容</div>
@@ -341,3 +287,13 @@
 	</div>
 	<!-- 右側主視窗 -->	
 	</div>
+	</div>	
+	</div>
+	<!-- 功能頁面區 -->
+	</div>
+	
+	<script>
+	   tab();
+	        
+    </script>
+

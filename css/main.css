@@ -6,6 +6,15 @@ overflow-y: hidden;
 
 #main_page{
 	position: relative;
+	box-shadow: 0px 0px 10px grey;
+	height:calc(100vh - 95px);
+	padding: 0px 8px;
+	background-color:#f9f9f9;
+}
+
+thead{
+	background-color: rgba(116,100,42,1);
+    color: white;
 }
 
 .main_content{
@@ -153,7 +162,7 @@ overflow-y: hidden;
 }
 
 .search,.result_list{
-	box-shadow: 0px 0px 10px grey;
+	box-shadow: 0px 0px 5px grey;
 	border-radius: 5px 5px 5px 5px;
 	background-color:white;
 	
@@ -175,6 +184,10 @@ overflow-y: hidden;
 
 .search_type > .nav-tabs > .nav-item{
 	width:50%;
+}
+
+.search_type > .nav-tabs > .nav-item2{
+	width:15%;
 }
 
 .search_sub1{
@@ -379,7 +392,9 @@ overflow-y: hidden;
 
 #mmap{
 	width:100%;
-	height:100%;
+	height:94%;
+	position: relative;
+    top: 8px;
 	
 }
 
@@ -467,4 +482,50 @@ overflow-y: hidden;
 .breadcrumb{
 	background-color:#e9febc80;
 	margin: 0;
+}
+
+.tab_body_content{
+	display:none;
+	width:100%;
+}
+
+.tab_body_content.active{
+	display:block;
+}
+
+.content_row{
+	margin: 20px;
+	background-color:white;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.row_text{
+	margin: 10px 10px 20px 10px;
+	font-size: 22px;
+	position:relative;
+}
+
+.row_text::after{
+	content: "";
+    height: 20px;
+    background-color: #5C776F;
+    width: 6px;
+    position: absolute;
+    top: 7px;
+    left: -12px;
+}
+
+.row_flex{
+	display:flex;
+}
+
+.new_ver{
+	margin: 15px;
+	align-self: flex-end;
+}
+
+.custom_bt0{
+	width: 150px;
+    margin-left: 40px;
 }

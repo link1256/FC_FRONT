@@ -1,0 +1,124 @@
+
+<!-- 功能頁面區 -->
+	<div>
+    <div class="search_type fc_manage">	
+	<ul class="nav nav-tabs">
+			  <li class="nav-item2 tab1">
+				<span class="nav-link active">資料總覽</span>
+			  </li>
+			  <li class="nav-item2 tab2">
+				<span class="nav-link">版次管理</span>
+			  </li>		  
+			  <li class="nav-item2 tab3">
+				<span class="nav-link">批次匯入</span>
+			  </li>		  
+		</ul>
+	</div>
+	<div class="tab_body">
+	<div class="tab_body_content tab1 active">
+	我是資料總覽
+	</div>
+	<div class="tab_body_content tab2">
+	<div class="content_row">
+	<div class="row_text">新增版次</div>
+	<div class="row_flex">
+	<div class="new_ver">
+	   <label for="ver_year" class="form-label">年度</label>
+	   <select id="ver_year" class="form-select" style="width: 160px;">
+		  <option selected>請選擇</option>
+		  <option value="108">108</option>
+		  <option value="109">109</option>
+		  <option value="110">110</option>
+		  <option value="111">111</option>
+		  <option value="112">112</option>
+		</select>
+	</div>
+	
+	<div class="new_ver">
+	   <label for="ver_year" class="form-label">月份</label>
+	   <select id="ver_year" class="form-select" style="width: 160px;">
+		  <option selected>請選擇</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
+		  <option value="10">10</option>
+		  <option value="11">11</option>
+		  <option value="12">12</option>
+		</select>
+	</div>
+	
+	<div class="new_ver">
+	<button type="button" class="btn btn-success custom_bt0">新增版次</button>
+	</div>
+	</div>
+	
+	
+	</div>
+	
+	<div class="content_row">
+	<div class="row_text">版次列表</div>
+	<table  class="table table-striped table-hover">
+	<thead>
+	<tr>
+	<th style="border-radius:10px 0 0 0;">序號</th>
+	<th>年度</th>
+	<th>月份</th>
+	<th>建立時間</th>
+	<th>已檢核縣市數量</th>
+	<th>已比對資料筆數</th>
+	<th>異動資料筆數</th>
+	<th>最後更新時間</th>
+	<th>最後更新人員</th>
+	<th style="border-radius: 0 10px 0 0 ;">管理</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="align-middle">
+		<td>1</td>
+		<td>110</td>
+		<td>8</td>
+		<td>2021/02/01</td>
+		<td>1</td>
+		<td>24,988</td>		
+		<td>0</td>		
+		<td>2021/03/20 16:50</td>
+		<td>ADMIN</td>
+		<td><button type="button" class="btn btn-danger">刪除</button></td>
+	</tr>
+	<tr class="align-middle">
+		<td>2</td>
+		<td>110</td>
+		<td>2</td>
+		<td>2021/02/01</td>
+		<td>16</td>
+		<td>26,746,665</td>
+		<td>10</td>	
+		<td>2021/01/20 18:30</td>
+		<td>ADMIN</td>
+		<td><button type="button" class="btn btn-danger">刪除</button></td>
+	</tr>
+	</tbody>
+	</table>
+	</div>
+	
+	</div>
+	<div class="tab_body_content tab3">
+	我是批次匯入
+	</div>
+	</div>
+	
+	
+		
+	</div>
+	<!-- 功能頁面區 -->
+	<script>
+	   tab();
+
+    </script>
+	

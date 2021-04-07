@@ -66,7 +66,8 @@ var group_vectorCollection;
     );
 	
 function map(){
-	
+  
+  $("#mmap").empty();
   //底圖圖層
    base_emap = new ol.layer.Tile({
 			  opacity: 1,
@@ -216,6 +217,7 @@ function map(){
 								
 	});
 	
+	mmap.updateSize();
 		  	  
 }
 
