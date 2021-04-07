@@ -67,7 +67,7 @@ function tab(){
 	  $(".search_type.fc_manage .nav-item2").on("click",function(){
 		  $(this).parent().children().children().removeClass("active");
 		  $(this).children().addClass("active");
-		  for(i = 1; i < 4; i++){
+		  for(i = 1; i < 5; i++){
 			  if($(this).hasClass("tab"+i)){
 				  $(".tab_body_content").removeClass("active");
 				  $(".tab_body_content.tab"+i).addClass("active");
@@ -83,5 +83,15 @@ function resize(){
 	setTimeout( function(){ 
 	   map();
 	   }, 100);
+}
+
+function upload_result_owner(){
+	$(".upload_result_owner").on("click",function(){
+		$(".upload_result_owner_table").show();
+	});
+	
+	$(".reset_result_owner").on("click",function(){
+		$(".upload_result_owner_table").hide();
+	});
 }
      

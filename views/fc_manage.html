@@ -1,4 +1,3 @@
-
 <!-- 功能頁面區 -->
 	<div>
     <div class="search_type fc_manage">	
@@ -10,11 +9,14 @@
 				<span class="nav-link">版次管理</span>
 			  </li>		  
 			  <li class="nav-item2 tab3">
-				<span class="nav-link">批次匯入</span>
-			  </li>		  
+				<span class="nav-link">批次匯入（空間標示部）</span>
+			  </li>		
+			  <li class="nav-item2 tab4">
+				<span class="nav-link">批次匯入（所有權部）</span>
+			  </li>					  
 		</ul>
 	</div>
-	<div class="tab_body">
+	<div class="tab_body main_scroll">
 	<div class="tab_body_content tab1 active">
 	我是資料總覽
 	</div>
@@ -24,7 +26,7 @@
 	<div class="row_flex">
 	<div class="new_ver">
 	   <label for="ver_year" class="form-label">年度</label>
-	   <select id="ver_year" class="form-select" style="width: 160px;">
+	   <select id="ver_year0" class="form-select" style="width: 160px;">
 		  <option selected>請選擇</option>
 		  <option value="108">108</option>
 		  <option value="109">109</option>
@@ -35,8 +37,8 @@
 	</div>
 	
 	<div class="new_ver">
-	   <label for="ver_year" class="form-label">月份</label>
-	   <select id="ver_year" class="form-select" style="width: 160px;">
+	   <label for="ver_month0" class="form-label">月份</label>
+	   <select id="ver_month0" class="form-select" style="width: 160px;">
 		  <option selected>請選擇</option>
 		  <option value="1">1</option>
 		  <option value="2">2</option>
@@ -66,16 +68,18 @@
 	<table  class="table table-striped table-hover">
 	<thead>
 	<tr>
-	<th style="border-radius:10px 0 0 0;">序號</th>
-	<th>年度</th>
-	<th>月份</th>
-	<th>建立時間</th>
-	<th>已檢核縣市數量</th>
-	<th>已比對資料筆數</th>
-	<th>異動資料筆數</th>
-	<th>最後更新時間</th>
-	<th>最後更新人員</th>
-	<th style="border-radius: 0 10px 0 0 ;">管理</th>
+		<th style="border-radius:10px 0 0 0;">序號</th>
+		<th>年度</th>
+		<th>月份</th>
+		<th>建立時間</th>
+		<th>空間縣市</th>
+		<th>空間比對</th>
+		<th>空間異動</th>
+		<th>權屬比對</th>
+		<th>權屬異動</th>
+		<th>最後更新時間</th>
+		<th>最後更新人員</th>
+		<th style="border-radius: 0 10px 0 0 ;">管理</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -86,6 +90,8 @@
 		<td>2021/02/01</td>
 		<td>1</td>
 		<td>24,988</td>		
+		<td>0</td>
+		<td>120</td>		
 		<td>0</td>		
 		<td>2021/03/20 16:50</td>
 		<td>ADMIN</td>
@@ -99,6 +105,8 @@
 		<td>16</td>
 		<td>26,746,665</td>
 		<td>10</td>	
+		<td>21,077</td>		
+		<td>0</td>
 		<td>2021/01/20 18:30</td>
 		<td>ADMIN</td>
 		<td><button type="button" class="btn btn-danger">刪除</button></td>
@@ -108,9 +116,249 @@
 	</div>
 	
 	</div>
+	
 	<div class="tab_body_content tab3">
-	我是批次匯入
+	<div class="row_flex row_justify">
+		<div class="content_row_47">
+		<div class="row_text">選擇匯入版次</div>
+		<div class="row_flex">
+		<div class="new_ver">
+		   <label for="ver_year" class="form-label">年度</label>
+		   <select id="ver_year1" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="110">110</option>
+			</select>
+		</div>
+		
+		<div class="new_ver">
+		   <label for="ver_month1" class="form-label">月份</label>
+		   <select id="ver_month1" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="3">3</option>
+			  <option value="8">8</option>
+			</select>
+		</div>
+
+		</div>
+			
+		</div>
+		
+		<div class="content_row_47">
+		<div class="row_text">選擇比較版次</div>
+		<div class="row_flex">
+		<div class="new_ver">
+		   <label for="ver_year" class="form-label">年度</label>
+		   <select id="ver_year2" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="110">110</option>
+			</select>
+		</div>
+		
+		<div class="new_ver">
+		   <label for="ver_month2" class="form-label">月份</label>
+		   <select id="ver_month2" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="3">3</option>
+			  <option value="8">8</option>
+			</select>
+		</div>
+
+		</div>
+			
+		</div>
+		
 	</div>
+	<div class="content_row">
+		<div class="row_text">選擇匯入檔案</div>
+		<div class="row_flex">
+		<div class="new_ver">
+		   <label for="ver_year" class="form-label">年度</label>
+		   <select id="ver_year" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="110">110</option>
+			</select>
+		</div>
+		
+		<div class="new_ver">
+		   <label for="ver_year" class="form-label">月份</label>
+		   <select id="ver_year" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="3">3</option>
+			  <option value="8">8</option>
+			</select>
+		</div>
+
+		</div>
+			
+		</div>
+	
+	</div>
+	
+   <div class="tab_body_content tab4">
+   <div class="sub_tab">
+			  <div class="nav-item3 tab1 active">
+				<span>基本設定</span>
+			  </div>
+			  <div class="nav-item3 tab2">
+				<span>上傳預覽</span>
+			  </div>		  
+			  <div class="nav-item3 tab3">
+				<span>檢核結果</span>
+			  </div>						  
+   </div>
+   
+	<div class="row_flex row_justify">
+		<div class="content_row_47">
+		<div class="row_text">選擇匯入版次</div>
+		<div class="row_flex">
+		<div class="new_ver">
+		   <label for="ver_year" class="form-label">年度</label>
+		   <select id="ver_year3" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="110">110</option>
+			</select>
+		</div>
+		
+		<div class="new_ver">
+		   <label for="ver_month3" class="form-label">月份</label>
+		   <select id="ver_month3" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="3">3</option>
+			  <option value="8">8</option>
+			</select>
+		</div>
+
+		</div>
+			
+		</div>
+		
+		<div class="content_row_47">
+		<div class="row_text">選擇比較版次</div>
+		<div class="row_flex">
+		<div class="new_ver">
+		   <label for="ver_year" class="form-label">年度</label>
+		   <select id="ver_year" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="110">110</option>
+			</select>
+		</div>
+		
+		<div class="new_ver">
+		   <label for="ver_month4" class="form-label">月份</label>
+		   <select id="ver_month4" class="form-select" style="width: 160px;">
+			  <option selected>請選擇</option>
+			  <option value="3">3</option>
+			  <option value="8">8</option>
+			</select>
+		</div>
+
+		</div>
+			
+		</div>
+		
+	</div>
+	<div class="content_row">
+		<div class="row_text">選擇匯入檔案</div>
+		<div class="row_flex">
+		<div class="new_ver">
+		   <label for="ver_owner" class="form-label">所有權部清冊資料</label>
+		   <input type="file" accept=".csv,.xls,.xlsx" class="form-control" style="width: 800px;"/>
+		</div>		
+		<div class="new_ver">
+		<button type="button" class="btn btn-success custom_bt1 upload_result_owner">上傳</button>
+		<button type="button" class="btn btn-danger custom_bt1 reset_result_owner">清除結果</button>
+		</div>
+		
+		</div>
+	    </div>
+		
+	<div class="content_row upload_result_owner_table">
+		<div class="row_text">上傳結果</div>
+		<table  class="table table-striped table-hover">
+	<thead>
+	<tr>
+		<th style="border-radius:10px 0 0 0;">序號</th>
+		<th>縣市</th>
+		<th>鄉鎮市區</th>
+		<th>段小段</th>
+		<th>地號</th>
+		<th>登記面積</th>
+		<th>使分</th>
+		<th>使分類</th>
+		<th>登記序</th>
+		<th>所有權人</th>
+		<th>類別</th>
+		<th>權利範圍</th>
+		<th>分母</th>
+		<th>分子</th>
+		<th>管理者</th>
+		<th style="border-radius: 0 10px 0 0 ;">管理</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="align-middle">
+		<td>1</td>
+		<td>台北市</td>
+		<td>內湖區</td>
+		<td>洲子段</td>
+		<td>02020001</td>
+		<td>24.0</td>		
+		<td>商業區</td>
+		<td></td>		
+		<td>0001</td>		
+		<td>中華民國</td>
+		<td>國有</td>
+		<td>全部</td>
+		<td>1</td>
+		<td>1</td>
+		<td>林務局</td>
+		<td><button type="button" class="btn btn-danger">刪除</button></td>
+	</tr>
+	<tr class="align-middle">
+		<td>2</td>
+		<td>台北市</td>
+		<td>內湖區</td>
+		<td>洲子段</td>
+		<td>02020002</td>
+		<td>25.0</td>		
+		<td>商業區</td>
+		<td></td>		
+		<td>0001</td>		
+		<td>中華民國</td>
+		<td>國有</td>
+		<td>全部</td>
+		<td>1</td>
+		<td>1</td>
+		<td>林務局</td>
+		<td><button type="button" class="btn btn-danger">刪除</button></td>
+	</tr>
+	<tr class="align-middle">
+		<td>3</td>
+		<td>台北市</td>
+		<td>內湖區</td>
+		<td>洲子段</td>
+		<td>02020003</td>
+		<td>12.0</td>		
+		<td>商業區</td>
+		<td></td>		
+		<td>0001</td>		
+		<td>中華民國</td>
+		<td>國有</td>
+		<td>全部</td>
+		<td>1</td>
+		<td>1</td>
+		<td>林務局</td>
+		<td><button type="button" class="btn btn-danger">刪除</button></td>
+	</tr>
+	</tbody>
+	</table>
+		</div>		
+		
+		</div>
+	    </div>
+	</div>
+	
+	
 	</div>
 	
 	
@@ -119,6 +367,6 @@
 	<!-- 功能頁面區 -->
 	<script>
 	   tab();
-
+       upload_result_owner();
     </script>
 	
