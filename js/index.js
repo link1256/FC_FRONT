@@ -79,6 +79,12 @@ function tab(){
 	
 }
 
+function upload_tab(){
+	//上傳進度頁籤
+	 
+	
+}
+
 function resize(){
 	setTimeout( function(){ 
 	   map();

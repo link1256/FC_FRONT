@@ -508,18 +508,48 @@ thead{
 .nav-item3{
 	margin: 5px;
     cursor: pointer;
-    background-color: green;
+    background-color: #abc8ab;
     padding: 10px;
+	font-size: 18px;
     color: white;
     border-radius: 10px;
     width: 200px;
     text-align: center;
+	display: flex;
 }
 
 .nav-item3.active{
-	
+	margin: 5px;
+    cursor: pointer;
+    background-color: #008000;
+    padding: 10px;
+	font-size: 18px;
+    color: white;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+	display: flex;
 }
 
 #city_list{
 	display:none;
 }
+
+.sub_tab{
+	align-items: center;
+}
+
+.sub_tab i{
+	font-size: 26px;
+    color: #deb887;
+}
+
+.num_icon{
+	width: 25px;
+	height: 25px;
+    border-radius: 15px;
+    background-color: #57a682;
+	margin-right: 24px;
+    margin-left: 18px;
+}
+
