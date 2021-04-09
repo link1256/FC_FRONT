@@ -1,0 +1,1 @@
+﻿var ApiRequestURL = "https://test.supergeo.com.tw/Cadastral/api/";
