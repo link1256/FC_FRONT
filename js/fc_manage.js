@@ -3,6 +3,28 @@ $("search_type.fc_manage").children().on("click",function(){
 	$(this).parent().children().removeClass("active");
 	$(this).addClass("active");
 });
+
+function  upload_step(i)
+{
+
+	$(".upload_step").empty();
+	$(".upload_step.tab"+i).load("./views/fc_manage_tab"+i+"_step1.html"); 
+		  	
+}
+
+function  fc_ini_page(i)
+{
+	$(".tab_body_content").empty();
+	$(".tab_body_content.tab"+i).load("./views/fc_manage_tab"+i+".html"); 
+	
+	 setTimeout(function(){
+	if(i> 2){
+		upload_step(i);
+	}
+	   },100);
+	
+}
+
   
 function GetFileList()
 {
@@ -23,12 +45,6 @@ function GetFileList()
 	});
 }
 
-function  ini_step(i)
-{
-	$(".upload_step").empty();
-	$(".upload_step.tab"+i).load("./views/fc_manage_tab"+i+"_step1.html"); 
-		  	
-}
 
 function city_result(){
 	let y = document.getElementById("ver_year1").value;
@@ -63,3 +79,4 @@ function new_city_result(){
 	}
 	
 }
+
