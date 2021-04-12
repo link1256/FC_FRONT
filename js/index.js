@@ -62,9 +62,9 @@ function main(){
 	  
 }	  
 
-function tab(){
+function tab(p){
 	//功能頁籤
-	  $(".search_type.fc_manage .nav-item2").on("click",function(){
+	  $(".search_type."+p+" .nav-item2").on("click",function(){
 		  $(this).parent().children().children().removeClass("active");
 		  $(this).children().addClass("active");
 		  for(i = 1; i < 5; i++){
@@ -72,7 +72,12 @@ function tab(){
 				  $(".tab_body_content").removeClass("active");
 				  $(".tab_body_content.tab"+i).addClass("active");
 				  resize();
+				  if(p === "fc_manage")
+			     {
+				  ini_step(i);
+			     }		 
 			  }
+			  
 		  }
 
 	  });
@@ -101,36 +106,3 @@ function upload_result_owner(){
 	});
 }
 
-function city_result(){
-	let y = document.getElementById("ver_year1").value;
-	let m = document.getElementById("ver_month1").value;
-	
-	if(y == 0 || m == 0){
-		alert("請選擇版次!");
-		return;
-	}
-	$("#city_list").show();
-	let t = document.getElementById("city_result");
-	let c = ["台北市","新北市","桃園市","台中市","台南市","高雄市","基隆市","新竹市","嘉義市","新竹縣","苗栗縣","彰化縣","雲林縣","嘉義縣","屏東縣","南投縣","宜蘭縣","花蓮縣","台東縣","澎湖縣","金門縣","連江縣"];
-    $(t).empty();
-	for( i=0 ; i < 22; i++ ){
-		let p = "<tr class='align-middle'>" +
-		"<td>"+ (i + 1) + "</td>" +
-		"<td>"+ c[i] +"</td>" +
-		"<td>0</td>" +
-		"<td>尚未執行</td>" +
-		"<td></td></tr>"
-		$(t).append(p);
-	}
-}
-
-function new_city_result(){
-	let y = document.getElementById("ver_year2").value;
-	let m = document.getElementById("ver_month2").value;
-	
-	if(y == 0 || m == 0){
-		alert("請選擇版次!");
-		return;
-	}
-	
-}
