@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>林務局-林地地籍資料庫</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d47cec7725.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	
+	<script src="js/auth.js"></script>
+	<script src="js/captcha-mini.js"></script>
+	
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/main_mobile.css">
+    <style type="text/css">
+
+
+
+    </style>
+
+</head>
+
+<body style="background-color: #f9f9f9;" class="main_scroll">
+<div class="front">
+<div class="front_title">
+<img src="./image/logo.png" width="60px" style="margin: 20px;">
+<div>林務局-林地地籍資料庫</div>
+</div>
+   <div class="front_img">
+   </div>
+   
+   <div class="login_area">
+   <form id="login">
+   <div class="input_row">
+   <div><label class="head">登入方式</label></div>
+   <div style="display:flex;margin-top:10px;">
+     <div>
+      <input class="form-check-input" type="radio" value="1" name="type" id="login_type1" checked>
+      <label class="form-check-label">一般登入</label>
+	 </div>
+    <div style="margin-left:20px;">
+      <input class="form-check-input" type="radio" value="2" name="type" id="login_type2">
+      <label class="form-check-label">單一簽入</label>
+	</div>
+    </div>
+   </div>  
+	<div class="input_row">
+   <label class="head form-label">帳號</label>
+     <input class="form-control" type="text" required>
+    </div>
+	<div class="input_row">
+   <label class="head form-label">密碼</label>
+     <input class="form-control" type="password" required>
+    </div>
+	<div class="input_row">
+      <div>
+		<label class="head form-label">驗證碼</label>
+		<input class="form-control captcha" name="captcha" required>
+		<input class="captcha_a" value="" hidden>
+			<div class="captcha1"></div>
+			<canvas id="captcha1"></canvas>		
+      </div>
+     </div>
+	 <div class="input_row">
+	 <button type="submit" class="btn btn-success login_submit">登入</button>
+	  </div>
+   <form>
+   </div>
+</div>	
+	
+<footer>
+        
+</footer>
+
+</body>
+<script>
+$(document).ready(function(){
+  captcha1();
+});
+
+	
+</script>
+
+</html>
