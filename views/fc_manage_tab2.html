@@ -32,16 +32,35 @@
 	</div>
 	
 	<div class="new_ver">
-	<button type="button" class="btn btn-success custom_bt0">新增版次</button>
+	<button type="button" class="btn btn-success custom_bt0" data-bs-toggle="modal" data-bs-target="#AddNewVersion">新增版次</button>
 	</div>
 	</div>
 	
 	
+	</div>
+	
+	<!-- 新增版次Dialog -->
+	<div class="modal fade" id="AddNewVersion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">新增版次</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			是否新增一個新的版次?
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+			<button type="button" class="btn btn-primary" onclick="AddNewVersion()">新增</button>
+		  </div>
+		</div>
+	  </div>
 	</div>
 	
 	<div class="content_row">
 	<div class="row_text">版次列表</div>
-	<table  class="table table-striped table-hover">
+	<table id="version_list" class="table table-striped table-hover">
 	<thead>
 	<tr>
 		<th style="border-radius:10px 0 0 0;">序號</th>
@@ -59,39 +78,29 @@
 	</tr>
 	</thead>
 	<tbody>
-	<tr class="align-middle">
-		<td>1</td>
-		<td>110</td>
-		<td>8</td>
-		<td>2021/02/01</td>
-		<td>1</td>
-		<td>24,988</td>		
-		<td>0</td>
-		<td>120</td>		
-		<td>0</td>		
-		<td>2021/03/20 16:50</td>
-		<td>ADMIN</td>
-		<td><button type="button" class="btn btn-danger">刪除</button></td>
-	</tr>
-	<tr class="align-middle">
-		<td>2</td>
-		<td>110</td>
-		<td>3</td>
-		<td>2021/02/01</td>
-		<td>16</td>
-		<td>26,746,665</td>
-		<td>10</td>	
-		<td>21,077</td>		
-		<td>0</td>
-		<td>2021/01/20 18:30</td>
-		<td>ADMIN</td>
-		<td></td>
-	</tr>
 	</tbody>
 	</table>
 	</div>
+	<!-- 刪除版次Dialog -->
+	<div class="modal fade" id="DeleteVersion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">刪除版次</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			是否刪除該版次?
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+			<button type="button" class="btn btn-primary" onclick="DeleteVersion()">刪除</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 	<!-- 頁面區 -->
 	<script>
-
+		GetVersionList();
     </script>
 	
