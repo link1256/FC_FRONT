@@ -19,21 +19,24 @@ function captcha1()
         });
 }
 
-    $(".captcha1_icon").click(function () {
+function ini_login(){
+	 $(".captcha1_icon").click(function () {
         captcha1();
     });
 
-    $("#loginbt_3").click(function () {
+    $(".login_submit").click(function () {
         if ($(".captcha").val() === $(".captcha_a").val()) {
             captcha1();
-            loginWithEmail().then(() => {
-                $('#login_email').trigger("reset");
-            })
+            window.location.href="index.html";
         }
         else {
             alert("驗證失敗");
         }
     });
+	
+}
+
+   
 
 		  	  
 
