@@ -4,6 +4,10 @@ margin:0 auto;
 overflow-y: hidden;
 }
 
+.ol-layer,.ol-viewport{
+	overflow-y:hidden;
+}
+
 #main_page{
 	position: relative;
 	box-shadow: 0px 0px 10px grey;
