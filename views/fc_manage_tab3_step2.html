@@ -1,57 +1,62 @@
 <!-- 上傳預覽子功能頁面區 -->
-	<div class="row_flex row_justify">
-		<div class="content_row_47">
-		<div class="row_text">匯入版次</div>
+	
+	<!-- to do 匯入檔案解析結果,先不寫入資料庫 -->
+		<div>
+	
+		<div class="content_row">
+		<div class="row_text">解析結果</div>
 		<div class="row_flex">
-		<div class="new_ver">
-		   <label for="ver_year" class="form-label">年度</label>
-		   <select id="ver_year1" class="form-select" style="width: 160px;">
-			  <option value="110" selected>110</option>
-			</select>
-		</div>
-		
-		<div class="new_ver">
-		   <label for="ver_month1" class="form-label">月份</label>
-		   <select id="ver_month1" class="form-select" style="width: 160px;">		 
-			  <option value="8" selected>8</option>
-			</select>
-		</div>
-		
-		<!-- <div class="new_ver"> -->
-		<!-- <button type="button" class="btn btn-success custom_bt0" onclick="city_result()">確認結果</button> -->
-		<!-- </div> -->
 
-		</div>
-			
-		</div>
-		
-		<div class="content_row_47">
-		<div class="row_text">比較版次</div>
-		<div class="row_flex">
-		<div class="new_ver">
-		   <label for="ver_year" class="form-label">年度</label>
-		   <select id="ver_year2" class="form-select" style="width: 160px;">
-			  <option value="110" selected>110</option>
-			</select>
-		</div>
-		
-		<div class="new_ver">
-		   <label for="ver_month2" class="form-label">月份</label>
-		   <select id="ver_month2" class="form-select" style="width: 160px;">
-			  <option value="3" selected>3</option>			  
-			</select>
-		</div>
-
-		</div>
-			
-		</div>
-		
+		<div class="new_ver" style="width: 100%;">
+		  
+		   <table  class="table table-striped table-hover" id="upload_city_list">
+	<thead>
+	<tr>
+		<th style="border-radius:10px 0 0 0;width:25%;">縣市</th>
+		<th style="width:25%;">新版資料筆數</th>
+		<th style="width:25%;">舊版資料筆數</th>			
+		<th style="border-radius: 0 10px 0 0 ;width:25%;">解析花費時間</th>
+	</tr>
+	</thead>
+	<tbody id="upload_city_result">
+	
+	</tbody>
+	</table>
+	</div>				
 	</div>
+	</div>	
+	<div style="height:5px;"></div>
+	<div class="content_row">
+		<div class="row_text">差異比對結果</div>
+		<div class="row_flex">
+		<div class="new_ver" style="width: 100%;">
+		  
+		   <table  class="table table-striped table-hover" id="file_list">
+	<thead>
+	<tr>
+		<th style="border-radius:10px 0 0 0;width:10%;">序號</th>
+		<th style="width:20%;">地籍編碼</th>
+		<th style="width:15%;">鄉鎮</th>
+		<th style="width:20%;">地段</th>
+		<th style="width:15%;">面積</th>
+        <th style="width:15%;">比對情形</th>		
+		<th style="border-radius: 0 10px 0 0 ;width:5%;">管理</th>
+	</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+		</div>
+				
+		</div>
+		</div>	
+				
+		</div>
 
 	
 	
 		
-	</div>
+
 	<!-- 上傳預覽子功能頁面區 -->
 	<script>
 	

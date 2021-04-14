@@ -4,11 +4,28 @@ $("search_type.fc_manage").children().on("click",function(){
 	$(this).addClass("active");
 });
 
-function upload_step(i)
+//子功能頁籤
+function step_tab()
+{
+	$(".fc_manage_tab3 .nav-item3").on("click",function(){
+		  $(this).parent().children().removeClass("active");
+		  $(this).addClass("active");
+		  
+		  for(j = 1; j < 4; j++){
+			  if($(this).hasClass("tab"+j)){
+				  upload_step(3,j);
+			  }
+		  }		  
+	  });		
+}
+
+
+
+function upload_step(i,j)
 {
 
 	$(".upload_step").empty();
-	$(".upload_step.tab"+i).load("./views/fc_manage_tab"+i+"_step1.html"); 
+	$(".upload_step.tab"+i).load("./views/fc_manage_tab"+i+"_step"+j+".html"); 
 		  	
 }
 
@@ -19,7 +36,7 @@ function fc_ini_page(i)
 	
 	 setTimeout(function(){
 	if(i> 2){
-		upload_step(i);
+		upload_step(i,1);
 	}
 	   },100);
 	
@@ -122,6 +139,7 @@ function ShowDeleteVersion(sid) {
 	DeleteVersionSID = sid;
 	$('#DeleteVersion').modal('show');
 }
+
 function DeleteVersion() {
 	var sid = DeleteVersionSID;
 	$.post(ApiRequestURL + "VersionManagement/DeleteVersion", { sid: sid })
