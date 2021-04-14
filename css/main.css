@@ -57,7 +57,7 @@ overflow-y: hidden;
       background-repeat: no-repeat;
       background-size: cover;
 	 width: calc(85vw - 320px);
-    height: 534px;
+    height: 540px;
     border-radius: 15px;
     position: absolute;
     top: 70%;
@@ -71,16 +71,22 @@ overflow-y: hidden;
     padding: 20px 30px;
 	position:absolute;
 	top:70%;
+	height:540px;
 	transform: translate(-5%, -70%);
     right: 5%;
 
 }
 
+.captcha{
+	width:120px;
+	height:31.6px;
+}
+
 #captcha1{
-	width: 200px;
-    height: 70px;
+	width: 120px;
+    height: 50px;
 	cursor:pointer;
-	margin-top:10px;
+	margin-left: 10px;
 }
 
 .input_row{
