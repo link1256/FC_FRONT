@@ -41,7 +41,8 @@ function fc_ini_page(i)
 	   },100);
 	
 }
-  
+ 
+//批次匯入 START
 function GetFileList() {
 	$.get(ApiRequestURL + "ImportFile/GetUploadShpFileList", function(data) {
 		var rdata = data.data;
@@ -60,7 +61,7 @@ function GetFileList() {
 	});
 }
 
-function city_result(){
+function city_result(list) {
 	let y = document.getElementById("ver_year1").value;
 	let m = document.getElementById("ver_month1").value;
 	
@@ -70,19 +71,32 @@ function city_result(){
 	}
 	$("#city_list").show();
 	let t = document.getElementById("city_result");
-	let c = ["台北市","新北市","桃園市","台中市","台南市","高雄市","基隆市","新竹市","嘉義市","新竹縣","苗栗縣","彰化縣","雲林縣","嘉義縣","屏東縣","南投縣","宜蘭縣","花蓮縣","台東縣","澎湖縣","金門縣","連江縣"];
+	let c = ["臺北市","新北市","桃園市","臺中市","臺南市","高雄市","基隆市","新竹市","嘉義市","新竹縣","苗栗縣","彰化縣","雲林縣","嘉義縣","屏東縣","南投縣","宜蘭縣","花蓮縣","臺東縣","澎湖縣","金門縣","連江縣"];
     $(t).empty();
-	for( i=0 ; i < 22; i++ ){
+	for (i = 0; i < 22; i++) {
+		var tar = list.filter(x => x.cityName === c[i]);
 		let p = "<tr class='align-middle'>" +
 		"<td>"+ (i + 1) + "</td>" +
 		"<td>"+ c[i] +"</td>" +
-		"<td>0</td>" +
-		"<td>尚未執行</td>" +
-		"<td></td></tr>"
+		"<td>" + (tar.length > 0 ? tar[0].amount : 0) + "</td>" +
+		"<td>" + (tar.length > 0 ? "已執行" : "尚未執行") + "</td>" +
+		"<td>" + (tar.length > 0 ? tar[0].userName : "") + "</td></tr>"
 		$(t).append(p);
 	}
 }
+function GetNewestVersionList() {
+	$.get(ApiRequestURL + "ImportFile/GetNewestVersionList", function(data) {
+		if (data.isSuccess == true) {
+			var rdata = data.data;
+			$("#ver_year1").append("<option value='" + rdata.year +  "'>" + rdata.year + "</option>");
+			$("#ver_month1").append("<option value='" + rdata.month +  "'>" + rdata.month + "</option>");
+			city_result(rdata.versionlist);
+		}
+	});
+}
+//批次匯入 END
 
+// 版次管理 START
 function new_city_result() {
 	let y = document.getElementById("ver_year2").value;
 	let m = document.getElementById("ver_month2").value;
@@ -92,6 +106,7 @@ function new_city_result() {
 		return;
 	}
 }
+
 
 function GetVersionList() {
 	$.get(ApiRequestURL + "VersionManagement/GetVersionList", function(data) {
@@ -150,3 +165,4 @@ function DeleteVersion() {
 			GetVersionList();
 		});
 }
+//版次管理 END

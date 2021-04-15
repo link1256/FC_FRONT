@@ -27,7 +27,7 @@ function ini_login(){
     $(".login_submit").click(function () {
         if ($(".captcha").val() === $(".captcha_a").val()) {
             captcha1();
-            window.location.href="index.html";
+			LoginCheck();
         }
         else {
             alert("驗證失敗");
@@ -36,7 +36,22 @@ function ini_login(){
 	
 }
 
-   
+function LoginCheck()
+{
+	$.post(ApiRequestURL + "UserAccount/LoginCheck", { account: $("#account").val(), password: $("#password").val() })
+		.done(function(data) {
+			const d = data.data;
+			if (d.loginState == "OK") {
+				window.location.href="index.html";
+			}
+			else if (d.loginState == "Not Found") {
+				alert("找不到帳號或密碼錯誤.");
+			}
+			else {
+				alert("發生意外的錯誤.");
+			}
+		});
+}
 
 		  	  
 
