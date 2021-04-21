@@ -23,10 +23,8 @@ function step_tab()
 
 function upload_step(i,j)
 {
-
 	$(".upload_step").empty();
 	$(".upload_step.tab"+i).load("./views/fc_manage_tab"+i+"_step"+j+".html"); 
-		  	
 }
 
 function fc_ini_page(i)
@@ -54,11 +52,61 @@ function GetFileList() {
 			appendtr += "<td>" + parseInt(rdata[i].megaByte) + "MB</td>";
 			appendtr += "<td>" + (rdata[i].completeness == true ? "可執行" : "不可執行") + "</td>";
 			appendtr += "<td>" + formatDateTime_Date(rdata[i].lastWriteTime) + "</td>";
-			appendtr += "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"new_city_result()\">執行</button></td>";
+			appendtr += "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"StartParsingShpFile('" + rdata[i].name + "')\">執行</button></td>";
 			appendtr += "</tr>";
 			$("#file_list>tbody").append(appendtr);
 		}
 	});
+}
+
+function StartParsingShpFile(filename) {
+	$( ".nav-item3.tab2" ).click();
+	$("#upload_city_result").remove();
+	$("#compare_city_result").remove();
+	$.post(ApiRequestURL + "ImportFile/StartCityShpFile", { Filename: filename })
+		.done(function(data) {
+			if (data.isSuccess === true) {
+				var rdata = data.data;
+				
+				//解析結果
+				var appendtr = "";
+				appendtr += "<tr class=\"align-middle\">";
+				appendtr += "<td>" + rdata.city + "</td>";
+				appendtr += "<td>" + rdata.newVersionNum + "</td>";
+				appendtr += "<td>" + rdata.oldVersionNum + "</td>";
+				appendtr += "<td>" + rdata.spentTime + "秒" + "</td>";
+				appendtr += "</tr>";
+				
+				$("#upload_city_result").append(appendtr);
+				
+				//差異比對結果
+				var cmdata = rdata.compareLists;
+				if (cmdata.length > 0) {
+					var appendtr2 = "";
+					for (var i = 0; i < cmdata.length; i++) {
+						appendtr2 += "<tr class=\"align-middle\">";
+						appendtr2 += "<td>" + cmdata[i].no + "</td>";
+						appendtr2 += "<td>" + cmdata[i].landCode + "</td>";
+						appendtr2 += "<td>" + cmdata[i].townName + "</td>";
+						appendtr2 += "<td>" + cmdata[i].landName + "</td>";
+						appendtr2 += "<td>" + cmdata[i].regArea + "</td>";
+						appendtr2 += "<td>" + cmdata[i].state + "</td>";
+						appendtr2 += "<td><button type=\"button\" class=\"btn btn-success\">更新</button></td>";
+						appendtr2 += "</tr>";
+					}
+					$("#compare_city_result").append(appendtr2);
+				}
+				else {
+					var appendtr2 = "";
+					appendtr2 += "<tr class=\"align-middle\">";
+					appendtr2 += "<td colspan=\"7\">比對後無差異資料</td>";
+					appendtr2 += "</tr>";
+					$("#compare_city_result").append(appendtr2);
+				}
+				
+				$(".spinner_mask").hide();
+			}
+		});
 }
 
 function city_result(list) {
@@ -107,7 +155,6 @@ function new_city_result() {
 	}
 }
 
-
 function GetVersionList() {
 	$.get(ApiRequestURL + "VersionManagement/GetVersionList", function(data) {
 		$("#version_list>tbody>tr").remove();
@@ -149,6 +196,7 @@ function AddNewVersion() {
 			GetVersionList();
 		});
 }
+
 var DeleteVersionSID;
 function ShowDeleteVersion(sid) {
 	DeleteVersionSID = sid;

@@ -647,3 +647,11 @@ thead{
     margin-left: 18px;
 }
 
+.spinner_mask {
+	background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+}
