@@ -11,12 +11,7 @@ overflow-y: hidden;
     font-size: 35px;
     font-weight: 600;
     align-items: center;
-    position: absolute;
-    left: 5%;
-    top: calc(70% - 500px);    
-    background-color: #ecd493;
-    width: calc(90% - 17px);
-    border-radius: 15px;
+    position: absolute;  
     z-index: 100;
 }
 
@@ -52,46 +47,54 @@ overflow-y: hidden;
 }
 
 .front_img{
-	background-image:url("../image/DSC05687.jpg");
-	 background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-	 width: calc(85vw - 320px);
-    height: 540px;
-    border-radius: 15px;
+	    background-image: url(../image/background1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 520px;
+    height: 100%;
     position: absolute;
-    top: 70%;
-	left: 5%;
-    transform: translate(0, -70%);
+	min-height: 700px;
+}
+
+.front_title_text{
+	    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 44px;
+    width: 344px;
+    font-weight: 600;
+    color: #4c2707;
+    letter-spacing: 5px;
 }
 
 .login_area{
-	background-color: #d5cbb0;
-    border-radius: 15px;
-    padding: 20px 30px;
-	position:absolute;
-	top:70%;
-	height:540px;
-	transform: translate(-5%, -70%);
-    right: 5%;
+	background-color: #ebe9e3;
+    padding: 100px calc((100vw - 520px)/4);
+    position: absolute;
+    height: 100%;
+    left: 520px;
+    width: calc(100vw - 520px);
+    min-height: 700px;
 
 }
 
 .captcha{
-	width:120px;
+	width:210px;
 	height:31.6px;
 }
 
 #captcha1{
-	width: 120px;
-    height: 50px;
+	width: 160px;
+    height: 60px;
 	cursor:pointer;
 	margin-left: 10px;
 }
 
 .input_row{
-	margin:15px;
-    width: 250px;
+	margin:25px;
+    width: 380px;
 }
 
 .ol-layer,.ol-viewport{
