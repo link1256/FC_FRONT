@@ -8,14 +8,46 @@ $("search_type.fc_manage").children().on("click",function(){
 function step_tab()
 {
 	$(".fc_manage_tab3 .nav-item3").on("click",function(){
-		  $(this).parent().children().removeClass("active");
-		  $(this).addClass("active");
-		  
+		 		  
 		  for(j = 1; j < 4; j++){
 			  if($(this).hasClass("tab"+j)){
-				  upload_step(3,j);
+				  if(j==1){
+					 if($(this).parent().find(".active").hasClass("tab2")){
+						  let c = confirm("確定回到上一步? 將會喪失已比對完成的結果");
+                          if(c){
+							  upload_step(3,j);
+						  }							
+						  else{
+							  return;
+						  }	 					  
+					  } 
+				  }
+				  if(j==2){
+					  if($(this).parent().find(".active").hasClass("tab2")){
+						  return;
+					  }
+					  let t = $('#file_list input[name=file_selected]:checked').val();
+					  if(!t){
+						  alert("請選取上傳檔案!");
+						  return;
+					  }
+					  StartParsingShpFile(t);
+					  upload_step(3,j);
+				  }
+				  if(j==3){
+					  if($(this).parent().find(".active").hasClass("tab1")){
+						  return;
+					  }
+					  
+					  //to do要將執行結果的方法寫在這裡
+					  if($(this).parent().find(".active").hasClass("tab2")){
+						  return;
+					  }
+				  }				 
 			  }
 		  }		  
+		  $(this).parent().children().removeClass("active");
+		  $(this).addClass("active");
 	  });		
 }
 
@@ -52,7 +84,9 @@ function GetFileList() {
 			appendtr += "<td>" + parseInt(rdata[i].megaByte) + "MB</td>";
 			appendtr += "<td>" + (rdata[i].completeness == true ? "可執行" : "不可執行") + "</td>";
 			appendtr += "<td>" + formatDateTime_Date(rdata[i].lastWriteTime) + "</td>";
-			appendtr += "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"StartParsingShpFile('" + rdata[i].name + "')\">執行</button></td>";
+			//選取後再執行
+			appendtr += "<td><input type=\"radio\" class=\"form-check-input file_selected\" name=\"file_selected\" value=\"" + rdata[i].name + "\"></td>";
+			// appendtr += "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"StartParsingShpFile('" + rdata[i].name + "')\">執行</button></td>";
 			appendtr += "</tr>";
 			$("#file_list>tbody").append(appendtr);
 		}
@@ -60,7 +94,7 @@ function GetFileList() {
 }
 
 function StartParsingShpFile(filename) {
-	$( ".nav-item3.tab2" ).click();
+	// $( ".nav-item3.tab2" ).click();
 	$("#upload_city_result").remove();
 	$("#compare_city_result").remove();
 	$.post(ApiRequestURL + "ImportFile/StartCityShpFile", { Filename: filename })
