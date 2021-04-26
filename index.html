@@ -54,9 +54,9 @@
 		</div>
 		<div class="user_name">
 		<img src="./image/login_person.png" width="30" height="30" style="margin: 10px;">
-		<div id="account_name">系統管理者</div>		
+		<div id="account_name"></div>		
 		</div>
-		<button id="login_bt" type="button" class="btn btn-success">登出</button>
+		<button id="login_bt" type="button" class="btn btn-success" onclick="LogOut();">登出</button>
 	</div>
 	
 	<!-- 麵包屑 -->
@@ -81,6 +81,7 @@
 <script>
 $(document).ready(function(){
    main();
+   LoginCheck();
    $(".function_bt_a").click();
 });
 

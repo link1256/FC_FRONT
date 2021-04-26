@@ -15,3 +15,14 @@ function formatDateTime_Time(date) {
 	else
 		return date;
 }
+//Format日期+時間 格式錯誤吐回原本的
+function formatDateTime_Time_NonSecond(date) {
+	var d = date.split("T");
+	if (d.length > 1) {
+		var t = d[1].split(".");
+		var dt = t[0].split(":");
+		return d[0].replace(/\-/g, "/") + " " + dt[0] + ":" + dt[1];
+	}
+	else
+		return date;
+}

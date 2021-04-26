@@ -38,18 +38,15 @@ function ini_login(){
 
 function LoginCheck()
 {
-	$.post(ApiRequestURL + "UserAccount/LoginCheck", { account: $("#account").val(), password: $("#password").val() })
+	$.post(ApiRequestURL + "UserAccount/SignIn", { account: $("#account").val(), password: $("#password").val() })
 		.done(function(data) {
-			const d = data.data;
-			if (d.loginState == "OK") {
-				window.location.href="index.html";
+			if (data)
+			{
+				localStorage.setItem("bearer", data);
+				window.location.href = "index.html";
 			}
-			else if (d.loginState == "Not Found") {
-				alert("找不到帳號或密碼錯誤.");
-			}
-			else {
-				alert("發生意外的錯誤.");
-			}
+		}).fail(function() {
+			alert("找不到帳號或密碼錯誤.");
 		});
 }
 

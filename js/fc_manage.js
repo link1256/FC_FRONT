@@ -106,8 +106,8 @@ function StartParsingShpFile(filename) {
 				var appendtr = "";
 				appendtr += "<tr class=\"align-middle\">";
 				appendtr += "<td>" + rdata.city + "</td>";
-				appendtr += "<td>" + rdata.newVersionNum + "</td>";
-				appendtr += "<td>" + rdata.oldVersionNum + "</td>";
+				appendtr += "<td>" + thousandComma(rdata.newVersionNum) + "</td>";
+				appendtr += "<td>" + thousandComma(rdata.oldVersionNum) + "</td>";
 				appendtr += "<td>" + rdata.spentTime + "秒" + "</td>";
 				appendtr += "</tr>";
 				
@@ -160,8 +160,8 @@ function city_result(list) {
 		let p = "<tr class='align-middle'>" +
 		"<td>"+ (i + 1) + "</td>" +
 		"<td>"+ c[i] +"</td>" +
-		"<td>" + (tar.length > 0 ? tar[0].amount : 0) + "</td>" +
-		"<td>" + (tar.length > 0 ? "已執行" : "尚未執行") + "</td>" +
+		"<td>" + (tar.length > 0 ? thousandComma(tar[0].amount) : 0) + "</td>" +
+		"<td>" + (tar.length > 0 ? formatDateTime_Time_NonSecond(tar[0].executionTime) : "尚未執行") + "</td>" +
 		"<td>" + (tar.length > 0 ? tar[0].userName : "") + "</td></tr>"
 		$(t).append(p);
 	}

@@ -107,3 +107,46 @@ function upload_result_owner(){
 	});
 }
 
+// 千分位
+function thousandComma(number) {
+	var num = number.toString();
+	var pattern = /(-?\d+)(\d{3})/;
+
+	while (pattern.test(num)) {
+		num = num.replace(pattern, "$1,$2");
+
+	}
+	return num;
+}
+
+function LoginCheck() {
+	$.ajax({
+	  url: ApiRequestURL + "UserAccount/GetLoginUser",
+	  type: "GET",
+	  headers: { "Authorization": 'Bearer '+ localStorage.bearer },
+	  error : function(err) {
+		alert("請先登入系統!");
+		window.location.href = "auth_page.html";
+	  },
+	  success: function(data) {
+		if (data && data.data) {
+			$("#account_name").html(data.data.name);
+		} else {
+			debugger;
+			alert("請先登入系統!");
+			window.location.href = "auth_page.html";
+		}
+	  }
+	});
+}
+
+function LogOut() {
+	$.ajax({
+	  url: ApiRequestURL + "UserAccount/SignOut",
+	  type: "GET",
+	  headers: { "Authorization": 'Bearer '+ localStorage.bearer },
+	  success: function(data) {
+		window.location.href = "auth_page.html";
+	  }
+	});
+}
