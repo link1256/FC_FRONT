@@ -81,6 +81,16 @@ function tab(p){
 			     {
 				  fc_ini_page(i);
 				  
+			     }	
+                  else if(p === "te_manage")
+			     {
+				  te_ini_page(i);
+				  
+			     }		
+                   else if(p === "fi_manage")
+			     {
+				  fi_ini_page(i);
+				  
 			     }					 
 			  }
 			  
