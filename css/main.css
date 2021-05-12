@@ -727,6 +727,71 @@ thead{
 	width:115px;
 }
 
+.te_tab_list tr{
+	cursor:pointer;
+}
+
 .te_tab_list tr.active{
-	background-color:#e4ffb9;
+	background-color:#E9FEBC;
+}
+
+.manage_bt{
+	position:relative;
+}
+
+.normal_state{
+	
+}
+
+.edit_state{
+	display:none;
+}
+
+.manage_delete{
+	position: absolute;
+    right: 2%; 
+}
+
+.file_list{
+	
+}
+
+.file_list_item{
+	font-size:16px;
+	margin:10px;
+	height:38px;
+	display: flex;
+	align-items: center;
+	
+}
+
+.file_list_item_delete{
+	margin-left:20px;
+	display:none;
+}
+
+/* //未送審 */
+.state_type1{
+    background-color: yellow;
+}
+
+/* //已送審 */
+.state_type2{
+	background-color: orange;
+}
+
+/* //已完成 */
+.state_type3{
+	background-color: green;
+    color: white;
+}
+
+
+
+#te_data_basic_file{
+	display:none;
+}
+
+.list_height{
+	height:500px;
 }

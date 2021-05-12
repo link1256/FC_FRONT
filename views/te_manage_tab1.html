@@ -53,33 +53,33 @@
 	<div class="row_text">異動列表</div>
 	<div class="result_list">
 	<!-- <異動列表資料> -->
-	<table class="table table-striped table-hover te_tab_list" id="te_tab1_list">
-	    <tr class="active">		  
+	<table class="table table-hover te_tab_list" id="te_tab1_list">
+	    <tr  id="item1" class="active">		  
 		   <td>1100510001</td>
 		   <td>測試用異動1</td>
 		</tr>
 		
-		 <tr>
+		 <tr id="item2">
 		   <td>1100510002</td>
 		   <td>測試用異動2</td>
 		</tr>
 		
-		 <tr>
+		 <tr id="item3">
 		   <td>1100510003</td>
 		   <td>測試用異動3</td>
 		</tr>
 		
-		 <tr>
+		 <tr id="item4">
 		   <td>1100510004</td>
 		   <td>測試用異動4</td>
 		</tr>
 		
-		<tr>
+		<tr id="item5">
 		   <td>1100510005</td>
 		   <td>測試用異動5</td>
 		</tr>
 		
-		<tr>
+		<tr id="item6">
 		   <td>1100510006</td>
 		   <td>測試用異動6</td>
 		</tr>
@@ -89,104 +89,119 @@
 
 	
 </div>
-
-
 </div>
+
+
 <div class="detail_data main_scroll">
-<div class="content_row_data">
-	<div class="row_text">基本資料</div>
-	<!-- 選取異動的基本資料 -->
-	<div id="te_data_basic1">
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_uid" class="form-label"  style="width: 140px;">狀態</label>
-	    </div>
-	   <div id="te_data_basic_uid">未送審</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_uid" class="form-label"  style="width: 140px;">識別碼</label>
-	    </div>
-	   <div id="te_data_basic_uid">1100510001</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createuser" class="form-label"  style="width: 140px;">建立者</label>
-	    </div>
-		<div id="te_data_basic_createuser">測試者1</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createtime" class="form-label"  style="width: 140px;">建立時間</label>
-	    </div>
-		<div id="te_data_basic_createtime">2021/05/10 22:00</div>
-
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_title" class="form-label"  style="width: 140px;">標題</label>
-	    </div>
-	   <input id="te_data_basic_title" type="text" class="form-control" />
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_note" class="form-label"  style="width: 140px;">說明</label>
-	    </div>
-	   <textarea id="te_data_basic_note" type="text" class="form-control"rows="3"></textarea>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createuser" class="form-label"  style="width: 140px;">最後編輯者</label>
-	    </div>
-		<div id="te_data_basic_createuser">測試者1</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createtime" class="form-label"  style="width: 140px;">最後編輯時間</label>
-	    </div>
-		<div id="te_data_basic_createtime">2021/05/10 22:00</div>
-
-	</div>
-	
-	
-	</div>
-	<!-- 選取異動的基本資料 -->
+<!-- <編輯功能區 需確認權限是否可以編輯或刪除> -->
+<div class="content_row_data manage_bt_area" style="padding:10px;">
+<div class="normal_state manage_bt">
+   <button type="button" class="btn btn-success search_submit custom_bt2" id="detail_edit">編輯</button>
+   <!-- //送審功能僅在未送審狀態下出現 -->
+   
+   <button type="button" class="btn btn-info search_submit custom_bt2" id="sent_apply">送審</button>
 </div>
 
-<div class="content_row_data">
-	<div class="row_text">異動圖資列表</div>
-	<table id="fi_list1" class="table table-striped table-hover">
-	<thead>
-	<tr>
-		<th  width="10%" style="border-radius:10px 0 0 0;">序號</th>
-		<th width="30%">類型</th>
-		<th width="40%">圖資識別碼</th>
-		<th  width="20%" style="border-radius: 0 10px 0 0 ;">管理</th>
-	</tr>
-	</thead>
-	<tbody>
+<div class="edit_state manage_bt">
+    <button type="button" class="btn btn-success search_submit custom_bt2" id="detail_save">儲存</button>
+	<button type="button" class="btn btn-warning search_submit custom_bt2" id="detail_cancel">取消</button>
+	<button type="button" class="btn btn-danger search_submit custom_bt2 manage_delete" id="detail_delete">刪除</button>
+</div>
 	
 	
-	</tbody>
-	</table>
+</div>
+<!-- <基本資料> -->
+<div class="data_frame">
+
+
+</div>
+<!-- <基本資料> -->
+
+<!-- <編輯功能區 需確認權限是否可以編輯或刪除> -->
+<div class="content_row_data manage_bt_area" style="padding:10px;">
+<div class="normal_state manage_bt">
+   <button type="button" class="btn btn-success search_submit custom_bt2" id="feature_edit" style="width: 170px;">新增異動圖資</button>
+
 </div>
 
+	
+</div>
+
+<!-- <圖資資料> -->
+<div class="list_frame">
+
+</div>
+<!-- <圖資資料> -->
 </div>
 </div>
 <!-- 頁面區 -->
-	<script>
+<script>
+setTimeout(function(){
+      $("#item1").click();
+	  
+},50);
+
+var original_page = "";
+	
+	<!-- 查詢列表子項目點擊 -->
 	$(".te_tab_list tr").on("click",function(){
 	$(this).parent().children().removeClass("active");
 	$(this).addClass("active");
+	
+	let d = $(this).attr('id');
+	loadDetialData(d);           //載入基本資料
+	loadListData(d);             //載入圖資列表資料
+	$("#detail_cancel").click(); //復原編輯狀態
+	
+	setTimeout(function(){	
+	checkSentApply();            //載入異動案件時的判斷方法
+	
+	},50);
+
+    });
+
+$("#detail_edit").on("click",function(){
+	$(this).parent().hide();
+	$(".edit_state").show();
+	original_page = $("#basic_data").clone();
+	$('input,textarea').prop('readonly', false).prop('disabled', false);
+	$("#te_data_basic_file").show();
+	$(".file_list_item_delete").show();
 });
+
+$("#detail_save").on("click",function(){
+    $(".normal_state").show();
+	$(".edit_state").hide();
+	//送出資料並更新畫面資料(重新載入本筆異動)
+	
+});
+
+$("#detail_cancel").on("click",function(){
+    $(".normal_state").show();
+	$(".edit_state").hide();
+	//讀取原本資料
+	$(".data_frame").empty().html(original_page);
+	
+});
+
+$("#detail_delete").on("click",function(){
+    if(confirm("是否刪除本筆異動所有資料?")){
+	 $(".normal_state").show();
+	$(".edit_state").hide();
+	//刪除該筆異動所有資料
+	}
+   
+});
+
+$("#sent_apply").on("click",function(){
+    if(confirm("是否送審本筆異動資料?")){
+	 $(".normal_state").show();
+	$(".edit_state").hide();
+	//更改該筆異動狀態
+	}
+	
+});
+
 
     </script>
 	
