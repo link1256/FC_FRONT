@@ -62,10 +62,16 @@ function loadDetialData(id){
 		$("#te_data_basic_createuser").text("測試者1");
 		//建立時間
 		$("#te_data_basic_createtime").text("2021/05/10 22:00");
+		//所屬單位	
+		$("#te_data_basic_deptart").text("新竹林區管理處");
 		//標題
 		$("#te_data_basic_title").val("");
 		//說明
 		$("#te_data_basic_note").val("");
+		//最後編輯者
+		$("#te_data_basic_createuser").text("測試者1");
+		//最後編輯時間
+		$("#te_data_basic_createtime").text("2021/05/10 22:00");
 		//附件列表
 		var list_length = 2;
 		for(i=0; i< list_length; i++){
@@ -92,10 +98,16 @@ function loadDetialData(id){
 		$("#te_data_basic_createuser").text("測試者1");
 		//建立時間
 		$("#te_data_basic_createtime").text("2021/05/10 22:00");
+		//所屬單位	
+		$("#te_data_basic_deptart").text("新竹林區管理處");
 		//標題
 		$("#te_data_basic_title").val("");
 		//說明
 		$("#te_data_basic_note").val("");
+		//最後編輯者
+		$("#te_data_basic_createuser").text("測試者1");
+		//最後編輯時間
+		$("#te_data_basic_createtime").text("2021/05/10 22:00");
 		//附件列表
 		var list_length = 2;
 		for(i=0; i< list_length; i++){
@@ -122,10 +134,16 @@ function loadDetialData(id){
 		$("#te_data_basic_createuser").text("測試者1");
 		//建立時間
 		$("#te_data_basic_createtime").text("2021/05/10 22:00");
+		//所屬單位	
+		$("#te_data_basic_deptart").text("新竹林區管理處");
 		//標題
 		$("#te_data_basic_title").val("");
 		//說明
 		$("#te_data_basic_note").val("");
+		//最後編輯者
+		$("#te_data_basic_createuser").text("測試者1");
+		//最後編輯時間
+		$("#te_data_basic_createtime").text("2021/05/10 22:00");
 		//附件列表
 		var list_length = 2;
 		for(i=0; i< list_length; i++){
@@ -152,10 +170,16 @@ function loadDetialData(id){
 		$("#te_data_basic_createuser").text("測試者1");
 		//建立時間
 		$("#te_data_basic_createtime").text("2021/05/10 22:00");
+		//所屬單位	
+		$("#te_data_basic_deptart").text("新竹林區管理處");
 		//標題
 		$("#te_data_basic_title").val("");
 		//說明
 		$("#te_data_basic_note").val("");
+		//最後編輯者
+		$("#te_data_basic_createuser").text("測試者1");
+		//最後編輯時間
+		$("#te_data_basic_createtime").text("2021/05/10 22:00");
 		//附件列表
 		var list_length = 2;
 		for(i=0; i< list_length; i++){
@@ -182,10 +206,16 @@ function loadDetialData(id){
 		$("#te_data_basic_createuser").text("測試者1");
 		//建立時間
 		$("#te_data_basic_createtime").text("2021/05/10 22:00");
+		//所屬單位	
+		$("#te_data_basic_deptart").text("新竹林區管理處");
 		//標題
 		$("#te_data_basic_title").val("");
 		//說明
 		$("#te_data_basic_note").val("");
+		//最後編輯者
+		$("#te_data_basic_createuser").text("測試者1");
+		//最後編輯時間
+		$("#te_data_basic_createtime").text("2021/05/10 22:00");
 		//附件列表
 		var list_length = 2;
 		for(i=0; i< list_length; i++){
@@ -212,10 +242,16 @@ function loadDetialData(id){
 		$("#te_data_basic_createuser").text("測試者1");
 		//建立時間
 		$("#te_data_basic_createtime").text("2021/05/10 22:00");
+		//所屬單位	
+		$("#te_data_basic_deptart").text("新竹林區管理處");
 		//標題
 		$("#te_data_basic_title").val("");
 		//說明
 		$("#te_data_basic_note").val("");
+		//最後編輯者
+		$("#te_data_basic_createuser").text("測試者1");
+		//最後編輯時間
+		$("#te_data_basic_createtime").text("2021/05/10 22:00");
 		//附件列表
 		var list_length = 2;
 		for(i=0; i< list_length; i++){
@@ -236,186 +272,28 @@ function loadDetialData(id){
 function loadListData(id){
 	/* 先塞測試用資料，需要改寫 */
 	//讀取資料
-	switch (id){
-		case "item1":		
+		
 		$(".list_frame").empty().load("./views/list_data_temp.html"); //模板
 		
 		setTimeout(function(){
-		//狀態
+		//序號
 		$("#te_data_basic_state").addClass("state_type1").text("未送審");
-	    //識別碼
+	    //類型
 		$("#te_data_basic_uid").text("1100510001");
-		//建立者
+		//圖資識別碼
 		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
+		//管理
 		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	       "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
 		
-		case "item2":
-		$(".list_frame").empty().load("./views/list_data_temp.html"); //模板
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type1").text("未送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510002");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	       "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
 		},50);
 				
-		break;
-		
-		case "item3":
-		$(".list_frame").empty().load("./views/list_data_temp.html"); //模板
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type2").text("已送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510003");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
+}
+
+function newApplyDetail(){
+	    //建立者
+		$("#te_data_basic_new_createuser").text("測試者1");
 		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	      "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item4":
-		$(".list_frame").empty().load("./views/list_data_temp.html"); //模板
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type1").text("未送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510004");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	       "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item5":
-		$(".list_frame").empty().load("./views/list_data_temp.html"); //模板
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type3").text("已完成");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510005");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	       "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item6":
-		$(".list_frame").empty().load("./views/list_data_temp.html"); //模板
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type2").text("已送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510006");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	      "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-	}
+		$("#te_data_basic_new_createtime").text("2021/05/13 11:00");
+		//所屬單位	
+		$("#te_data_basic_new_deptart").text("新竹林區管理處");
 }
