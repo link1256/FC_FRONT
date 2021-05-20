@@ -639,6 +639,13 @@ thead{
     height: 35px;
 }
 
+.custom_bt3{
+    height: 30px;
+    margin: 0px;
+    width: 60px;
+    padding: 3px;
+}
+
 .upload_result_owner_table{
 	display:none;
 }
@@ -662,7 +669,7 @@ thead{
 
 .nav-item3.active{
 	margin: 5px;
-    cursor: pointer;
+    cursor: default;
     background-color: #008000;
     padding: 10px;
 	font-size: 18px;
@@ -734,6 +741,16 @@ thead{
 .te_tab_list tr.active{
 	background-color:#E9FEBC;
 }
+
+#list_table tr{
+	cursor:pointer;
+}
+
+#list_table tr.active{
+	background-color:#E9FEBC;
+}
+
+
 
 .manage_bt{
 	position:relative;

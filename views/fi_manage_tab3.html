@@ -1,5 +1,97 @@
 <!-- 頁面區 -->
-	test3
+<div class="manage_page">
+<div class="search_div">
+	<div class="content_row_search">
+	<div class="row_text">篩選條件</div>
+	<div class="new_ver_flex">
+	<div>
+	   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
+	 </div>  
+	   <select id="ver_year0" class="form-select" >
+		  <option selected>不指定</option>
+		  <option value="110">110</option>
+		  <option value="111">111</option>
+		  <option value="112">112</option>
+		</select>
+	</div>
+	
+		<div class="new_ver_flex">
+		<div>
+	   <label for="search_id" class="form-label" style="width: 110px;">識別碼</label>
+	   </div>
+	   <input id="search_id" type="text" class="form-control" />
+	</div>
+	
+	<div class="new_ver_flex">
+	<div>
+	   <label for="search_title" class="form-label"  style="width: 110px;">標題關鍵字</label>
+	    </div>
+	   <input id="search_title" type="text" class="form-control" />
+	</div>
+	
+	<div class="new_ver_flex">
+	<div>
+	   <label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+	   </div>
+	   <select id="search_stat" class="form-select"  >
+		  <option selected>不指定</option>
+		  <option value="0">未送審</option>
+		  <option value="1">已送審</option>
+		  <option value="2">已完成</option>
+		</select>
+	</div>
+	
+	<div class="new_ver" style="text-align:center;">
+	<button type="button" class="btn btn-success search_submit custom_bt2">查詢</button>
+	<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
+	</div>
+
+	</div>
+
+
+<div class="content_row_search" style="height: calc(100vh - 510px)">
+	<div class="row_text">圖資列表</div>
+	<div class="result_list">
+	<!-- <異動列表資料> -->
+	<table class="table table-hover te_tab_list" id="te_tab1_list">
+	    <tr  id="item1" class="active">		  
+		   <td>1100510001</td>
+		   <td>測試用異動1</td>
+		</tr>
+		
+		 <tr id="item2">
+		   <td>1100510002</td>
+		   <td>測試用異動2</td>
+		</tr>
+		
+		 <tr id="item3">
+		   <td>1100510003</td>
+		   <td>測試用異動3</td>
+		</tr>
+		
+		 <tr id="item4">
+		   <td>1100510004</td>
+		   <td>測試用異動4</td>
+		</tr>
+		
+		<tr id="item5">
+		   <td>1100510005</td>
+		   <td>測試用異動5</td>
+		</tr>
+		
+		<tr id="item6">
+		   <td>1100510006</td>
+		   <td>測試用異動6</td>
+		</tr>
+    </table>
+		<!-- <異動列表資料> -->
+	</div>
+
+	
+</div>
+</div>
+
+</div>	
 <!-- 頁面區 -->
 	<script>
 

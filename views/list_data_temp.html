@@ -5,13 +5,13 @@
 	<thead>
 	<tr>
 		<th  width="15%" style="border-radius:10px 0 0 0;">序號</th>
-		<th width="25%">類型</th>
-		<th width="40%">圖資識別碼</th>
-		<th  width="20%" style="border-radius: 0 10px 0 0 ;">管理</th>
+		<th width="35%">類型</th>
+		<th width="30%">編輯形式</th>
+		<th  width="30%" style="border-radius: 0 10px 0 0 ;">管理</th>
 	</tr>
 	</thead>
-	<tbody>
-	     
+	<tbody id = "list_table">
+	<!-- //塞入異動圖資列表 -->
 	
 	</tbody>
 	</table>
@@ -19,13 +19,20 @@
 
 <div class="content_row_47 list_height">
 	<div class="row_text">圖資屬性</div>
+	<div id="list_detail">
+	<!-- //塞入圖資基本資料 -->
+	
+	</div>
 </div>
 </div>
 <div class="content_row_data list_height">
 	<div class="row_text">空間位置</div>
+	<!-- //塞入圖資空間資料 -->
     <div id="mmap" style="height: calc(100% - 70px);"></div>
 </div>
 
 <script>
     map();
+		
+	
 </script>
