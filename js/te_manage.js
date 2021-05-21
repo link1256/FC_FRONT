@@ -380,34 +380,121 @@ function FM_detail(typeid,fmid)//圖資屬性資料
 	$("#list_detail").empty();
 	//資料分成國有林事業區及保安林
 	if(typeid === "國有林事業區"){
+		var DIST="新竹林區管理處";
+		var WKNG="烏來";
+		var CMPT="3";
+		var AREA_HA='230.00';
+		var UPDATETIME = "2021/05/21";
 		let detail;
-		detail = "<div></div>";
 		
+		detail = 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>林管處</div>"+
+		"<div class='detail_rows_value'>"+ DIST +"</div>"+
+		"</div>";
 		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>事業區</div>"+
+		"<div class='detail_rows_value'>"+ WKNG +"</div>"+
+		"</div>";
 		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>林班號</div>"+
+		"<div class='detail_rows_value'>"+ CMPT +"</div>"+
+		"</div>";
 		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>面積(公頃)</div>"+
+		"<div class='detail_rows_value'>"+ AREA_HA +"</div>"+
+		"</div>";
 		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>最後更新時間</div>"+
+		"<div class='detail_rows_value'>"+ UPDATETIME +"</div>"+
+		"</div>";
+				
 		
-		$("#list_detail").append("<div>test1"+ fmid +"</div>");
+		$("#list_detail").append(detail);
 		
 	}
-	else{
-		$("#list_detail").append("<div>test2"+ fmid +"</div>");
+	else if(typeid === "保安林"){
+		
+		var DIST="新竹林區管理處";
+		var PF_ID="1123";
+		var PFTYPE="水源涵養保安林";
+		var AREA_HA='230.00';
+		var EDITION=""
+		var UPDATETIME = "2021/05/21";
+		let detail;
+		
+		detail = 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>林管處</div>"+
+		"<div class='detail_rows_value'>"+ DIST +"</div>"+
+		"</div>";
+		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>保安林編號</div>"+
+		"<div class='detail_rows_value'>"+ PF_ID +"</div>"+
+		"</div>";
+		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>保安林類型</div>"+
+		"<div class='detail_rows_value'>"+ PFTYPE +"</div>"+
+		"</div>";
+		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>面積(公頃)</div>"+
+		"<div class='detail_rows_value'>"+ AREA_HA +"</div>"+
+		"</div>";
+		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>修訂資訊</div>"+
+		"<div class='detail_rows_value'>"+ EDITION +"</div>"+
+		"</div>";
+		
+		detail += 
+		"<div class='detail_rows'>"+
+		"<div class='detail_rows_name'>最後更新時間</div>"+
+		"<div class='detail_rows_value'>"+ UPDATETIME +"</div>"+
+		"</div>";
+				
+		
+		$("#list_detail").append(detail);
 	}
 	
 }
 
+	
+	
+
+
 function doCreate()//新增圖資
 {
+	$('#NewPageview').modal('show');
 	
 }
 
 function doEdit(fmid)//編輯圖資
 {
+	$('#EditPageview').modal('show');
 	
 }
 
 function doRemove(fmid)//移除待異動圖資
 {
 	confirm("確定要移除本項異動?");
+}
+
+function SaveEdit_fm()//執行資料更新
+{
+	
 }
