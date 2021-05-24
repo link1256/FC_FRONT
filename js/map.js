@@ -1,7 +1,8 @@
 //測量用的全域變數
 var group_vector;
 var group_vectorCollection;
-function map(target,m){
+
+function map(target,m,f){
 	
 	var projection = ol.proj.get('EPSG:3857');
 	var projectionExtent = projection.getExtent();
@@ -13,6 +14,7 @@ function map(target,m){
 	var base_photo2;
 	var eagle_map;
 	var overviewMapControl;
+	var FullScreen = new ol.control.FullScreen();
 	
 	var bt_class = "base_map_"+target;
 
@@ -151,36 +153,25 @@ function map(target,m){
    var coner1 = ol.proj.transform([118, 21], 'EPSG:4326', 'EPSG:3857');
    var coner2 = ol.proj.transform([123, 26], 'EPSG:4326', 'EPSG:3857');
    
-   if(m){	  
+   if(!m){
+		ToolControl1 = new ol.control.Control({element:document.createElement('div')});
+		ToolControl2 = new ol.control.Control({element:document.createElement('div')});
+		ToolControl3 = new ol.control.Control({element:document.createElement('div')});
+		}
+	if(!f){
+		FullScreen = new ol.control.Control({element:document.createElement('div')});
+	}
+	  
    mmap = new ol.Map({
         target: target,
-		controls: ol.control.defaults().extend([
-		overviewMapControl,
+		controls: ol.control.defaults().extend([		
+		overviewMapControl,			
 		BaseMapControl,
+		new ol.control.ZoomToExtent({extent:[coner1[0],coner1[1],coner2[0],coner2[1]]}),
+		FullScreen,
 		ToolControl1,
 		ToolControl2,
 		ToolControl3,
-		new ol.control.FullScreen(),		
-		new ol.control.ZoomToExtent({extent:[coner1[0],coner1[1],coner2[0],coner2[1]]})]),
-        layers: [
-		  group = new ol.layer.Group({ title:'measure'}),
-          base_emap
-		  				
-        ],
-        view: new ol.View({
-           center: ol.proj.fromLonLat([121.55, 25.05]),
-          zoom: 11,
-		  maxZoom: 22
-        })
-      });
-   }
-	 else{
-		mmap = new ol.Map({
-        target: target,
-		controls: ol.control.defaults().extend([
-		overviewMapControl,
-		BaseMapControl,
-		new ol.control.FullScreen(),		
 		]),
         layers: [
 		  group = new ol.layer.Group({ title:'measure'}),
@@ -193,7 +184,6 @@ function map(target,m){
 		  maxZoom: 22
         })
       });
-	 }
 	  
 	  group_vector = new ol.layer.Group();
       group_vectorCollection = group_vector.getLayers();

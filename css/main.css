@@ -585,6 +585,13 @@ thead{
 	border-radius: 10px;
 }
 
+.content_row_nogap2{
+	margin: 5px;
+	background-color:white;
+	padding: 5px;
+	border-radius: 10px;
+}
+
 .content_row_search{
 	margin: 10px 20px;
 	background-color:white;
@@ -887,4 +894,30 @@ thead{
 
 .fm_search_list{
 	height: 160px;
+}
+
+.fm_type2{
+	display:none;
+}
+
+.map_data_detail{
+	width:33%;
+}
+
+.map_area{
+	width:63%;
+}
+
+#mmapmodalEdit{
+	height: 62vh;
+}
+
+.map_edit_tools{
+	height: 6vh;
+	background-color: #ececec;
+}
+
+.map_edit_hint{
+	height: 6vh;
+	background-color: #ececec;
 }

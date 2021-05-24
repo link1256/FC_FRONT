@@ -359,7 +359,7 @@ function loadListData(fmtid){
 		$("#list_table tr").on("click",function(){
 			let fmid = $(this).attr('id');
 			let typeid = $(this).find(".typeid").text();
-			FM_detail(typeid,fmid);
+			FM_detail('list_detail',typeid,fmid);
 		});
 			
 		},50);
@@ -375,9 +375,9 @@ function newApplyDetail(){
 		$("#te_data_basic_new_deptart").text("新竹林區管理處");
 }
 
-function FM_detail(typeid,fmid)//圖資屬性資料
+function FM_detail(target,typeid,fmid)//圖資屬性資料
 {
-	$("#list_detail").empty();
+	$("#"+target).empty();
 	//資料分成國有林事業區及保安林
 	if(typeid === "國有林事業區"){
 		var DIST="新竹林區管理處";
@@ -418,7 +418,7 @@ function FM_detail(typeid,fmid)//圖資屬性資料
 		"</div>";
 				
 		
-		$("#list_detail").append(detail);
+		$("#"+target).append(detail);
 		
 	}
 	else if(typeid === "保安林"){
@@ -481,15 +481,30 @@ function doCreate()//新增圖資
 {
 	$('#NewPageview').modal('show');
 	setTimeout(function(){
-       map('mmapmodal',false);
+       map('mmapmodal',false,false);
 	   SelectType();
-		},300);
+		},280);
     		
+}
+
+function doCreate_next(){
+	setTimeout(function(){
+       doEdit();
+	   
+		},280)
 }
 
 function doEdit(fmid)//編輯圖資
 {
 	$('#EditPageview').modal('show');
+	setTimeout(function(){
+	   let fmid = $(this).attr('id');
+	   let typeid = "國有林事業區";
+	   FM_detail('fm_data_edit',typeid,fmid);	
+		
+       map('mmapmodalEdit',true,false);
+	   
+		},280)
 	
 }
 
@@ -500,7 +515,17 @@ function doRemove(fmid)//移除待異動圖資
 
 function SaveEdit_fm()//執行資料更新
 {
+	if(confirm("確定儲存目前編輯?")){
+		$('#EditPageview').modal('hide');
+	}
 	
+}
+
+function AbandonEdit()//放棄儲存
+{
+    if(confirm("確定放棄目前編輯?")){
+		$('#EditPageview').modal('hide');
+	}	
 }
 
 function SelectType()//選擇圖資類型
@@ -509,10 +534,14 @@ function SelectType()//選擇圖資類型
 	  if($(this).val()== 1){
 		  $(".fm_search_type1").show();
 		  $(".fm_search_type2").hide();
+		  $(".fm_type1").show();
+		  $(".fm_type2").hide();
 	  }
 	  else{
 		  $(".fm_search_type2").show();
 		  $(".fm_search_type1").hide();
+		  $(".fm_type2").show();
+		  $(".fm_type1").hide();
 	  }
   });
 	
