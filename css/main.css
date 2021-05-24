@@ -488,6 +488,7 @@ thead{
     top: 3em;
 }
 
+
 .button_tool_Line{
 	right: .5em;
     top: 5.5em;
@@ -877,6 +878,11 @@ thead{
 
 .fm_search_type1{
 	margin: 5px;
+}
+
+.fm_search_type2{
+	margin: 5px;
+	display:none;
 }
 
 .fm_search_list{

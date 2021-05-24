@@ -152,7 +152,7 @@
 			   <div class="row_text" style="margin:10px;">圖資類型</div>
 			   <div class="new_ver_flex">
 			   <div>
-				   <label for="ver_year" class="form-label" style="width: 110px;">類型</label>
+				   <label for="fm_type" class="form-label" style="width: 110px;">類型</label>
 				 </div> 
 		        <select id="fm_type" class="form-select" >		
                    <option value="1" selected>國有林事業區</option>
@@ -161,16 +161,16 @@
 		       </div>
 			   </div>
 			   </div>
-			   
+			   <!-- //國有林事業區 -->
 			   <div class="fm_search_type1">
 			   <div class="content_row_nogap">
 			   <div class="row_text" style="margin:10px;">條件查詢</div>
 			   <div class="new_ver_flex">
 			   
 				  <div>
-				   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
+				   <label for="ver_year1" class="form-label" style="width: 110px;">年度</label>
 				 </div>  
-				   <select id="ver_year0" class="form-select" >
+				   <select id="ver_year1" class="form-select" >
 					  <option selected>不指定</option>
 					  <option value="110">110</option>
 					  <option value="111">111</option>
@@ -180,9 +180,9 @@
 	
 				   <div class="new_ver_flex">
 				   <div>
-				   <label for="search_id_modal" class="form-label" style="width: 110px;">識別碼</label>
+				   <label for="search_id_modal1" class="form-label" style="width: 110px;">識別碼</label>
 				   </div>
-				   <input id="search_id_modal" type="text" class="form-control" />
+				   <input id="search_id_modal1" type="text" class="form-control" />
 				   </div>
 	
 				<div class="new_ver_flex">
@@ -194,9 +194,9 @@
 	
 				<div class="new_ver_flex">
 				<div>
-				   <label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+				   <label for="search_stat1" class="form-label"  style="width: 110px;">狀態</label>
 				   </div>
-				   <select id="search_stat" class="form-select"  >
+				   <select id="search_stat1" class="form-select"  >
 					  <option selected>不指定</option>
 					  <option value="0">未送審</option>
 					  <option value="1">已送審</option>
@@ -212,6 +212,60 @@
 		     </div>
 			 
 			 </div>
+			 <!-- //國有林事業區 -->
+			 <!-- //保安林 -->
+			   <div class="fm_search_type2">
+			   <div class="content_row_nogap">
+			   <div class="row_text" style="margin:10px;">條件查詢</div>
+			   <div class="new_ver_flex">
+			   
+				  <div>
+				   <label for="ver_year2" class="form-label" style="width: 110px;">年度</label>
+				 </div>  
+				   <select id="ver_year2" class="form-select" >
+					  <option selected>不指定</option>
+					  <option value="110">110</option>
+					  <option value="111">111</option>
+					  <option value="112">112</option>
+					</select>
+				 </div>
+	
+				   <div class="new_ver_flex">
+				   <div>
+				   <label for="search_id_modal2" class="form-label" style="width: 110px;">識別碼</label>
+				   </div>
+				   <input id="search_id_modal2" type="text" class="form-control" />
+				   </div>
+	
+				<div class="new_ver_flex">
+				<div>
+				   <label for="search_title_modal2" class="form-label"  style="width: 110px;">標題關鍵字</label>
+					</div>
+				   <input id="search_title_modal2" type="text" class="form-control" />
+				</div>
+	
+				<div class="new_ver_flex">
+				<div>
+				   <label for="search_stat2" class="form-label"  style="width: 110px;">狀態</label>
+				   </div>
+				   <select id="search_stat2" class="form-select"  >
+					  <option selected>不指定</option>
+					  <option value="0">未送審</option>
+					  <option value="1">已送審</option>
+					  <option value="2">已完成</option>
+					</select>
+				</div>
+				
+				<div class="new_ver" style="text-align:center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2">查詢</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
+				</div>
+				
+		     </div>
+			 
+			 </div>
+			 <!-- //保安林 -->
+			 
              </div>
 			 <div class="modal_part_detail content_row_47_nogap">
 			 <div style="margin:5px; margin-top:-20px;">

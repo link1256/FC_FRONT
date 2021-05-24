@@ -1,7 +1,7 @@
 //測量用的全域變數
 var group_vector;
 var group_vectorCollection;
-function map(target){
+function map(target,m){
 	
 	var projection = ol.proj.get('EPSG:3857');
 	var projectionExtent = projection.getExtent();
@@ -13,6 +13,8 @@ function map(target){
 	var base_photo2;
 	var eagle_map;
 	var overviewMapControl;
+	
+	var bt_class = "base_map_"+target;
 
     //底圖切換按鈕
 	var button_base = document.createElement('button');
@@ -20,13 +22,14 @@ function map(target){
     button_base.setAttribute("title","切換為正射影像");
 	
     var element1 = document.createElement('div');
-    element1.className = 'EMAP base_map ol-unselectable ol-control';
+	element1.className = 'EMAP base_map '+ bt_class +' ol-unselectable ol-control';
     element1.appendChild(button_base);
 	
 	var BaseMapControl =  new ol.control.Control({
 	element: element1}
     );
 	
+	if(m){
 	//測量工具按鈕-線
 	var button_tool_Line = document.createElement('button');
     button_tool_Line.innerHTML = 'L';
@@ -65,7 +68,7 @@ function map(target){
 	var ToolControl3 =  new ol.control.Control({
 	element: element4}
     );
-	
+	}
   
   $("#"+target).empty();
   //底圖圖層
@@ -146,8 +149,9 @@ function map(target){
 	
    //台灣範圍坐標轉換
    var coner1 = ol.proj.transform([118, 21], 'EPSG:4326', 'EPSG:3857');
-   var coner2 = ol.proj.transform([124, 26], 'EPSG:4326', 'EPSG:3857'),
-	  
+   var coner2 = ol.proj.transform([123, 26], 'EPSG:4326', 'EPSG:3857');
+   
+   if(m){	  
    mmap = new ol.Map({
         target: target,
 		controls: ol.control.defaults().extend([
@@ -169,6 +173,27 @@ function map(target){
 		  maxZoom: 22
         })
       });
+   }
+	 else{
+		mmap = new ol.Map({
+        target: target,
+		controls: ol.control.defaults().extend([
+		overviewMapControl,
+		BaseMapControl,
+		new ol.control.FullScreen(),		
+		]),
+        layers: [
+		  group = new ol.layer.Group({ title:'measure'}),
+          base_emap
+		  				
+        ],
+        view: new ol.View({
+           center: ol.proj.fromLonLat([121.55, 25.05]),
+          zoom: 11,
+		  maxZoom: 22
+        })
+      });
+	 }
 	  
 	  group_vector = new ol.layer.Group();
       group_vectorCollection = group_vector.getLayers();
@@ -179,7 +204,7 @@ function map(target){
 	  $(".ol-overviewmap").children("button").attr("title","鷹眼圖");	
 	  $(".ol-full-screen").children().attr("title","全螢幕模式");	
 	  
-	  $(".base_map").click(function(){
+	  $("."+ bt_class).click(function(){
 		if($(this).hasClass("EMAP")){
 			addPHOTO2(mmap);
 			$(this).removeClass("EMAP");
@@ -232,326 +257,5 @@ function map(target){
 	}	
 }
 
-function map_mini(target){
-	
-	var projection = ol.proj.get('EPSG:3857');
-	var projectionExtent = projection.getExtent();
-	var size = ol.extent.getWidth(projectionExtent) / 256;
-	var resolutions = new Array(21);
-	var matrixIds = new Array(21);
-	var mmapl;
-	var base_emap;
-	var base_photo2;
-	var eagle_map;
-
-    //底圖切換按鈕
-	var button_base = document.createElement('button');
-    button_base.innerHTML = 'P';
-    button_base.setAttribute("title","切換為正射影像");
-	
-    var element1 = document.createElement('div');
-    element1.className = 'EMAP base_map ol-unselectable ol-control';
-    element1.appendChild(button_base);
-	
-	var BaseMapControl =  new ol.control.Control({
-	element: element1}
-    );
-	
-  
-  $("#"+target).empty();
-  //底圖圖層
-   base_emap = new ol.layer.Tile({
-			  opacity: 1,
-			  source: new ol.source.WMTS({
-				attributions:
-				  '國土測繪中心WMTS',
-				url:
-				  'https://wmts.nlsc.gov.tw/wmts?',
-				layer: '0',
-				matrixSet: 'EPSG:3857',
-				format: 'image/png',
-				projection: projection,
-				tileGrid: new ol.tilegrid.WMTS({
-				  origin: ol.extent.getTopLeft(projectionExtent),
-				  resolutions: resolutions,
-				  matrixIds: matrixIds,
-				}),
-				layer:'EMAP5',
-				style: 'default',
-				wrapX: true,
-			  }),			  
-			}) 
-			
-   base_photo2 = new ol.layer.Tile({
-			  opacity: 1,
-			  source: new ol.source.WMTS({
-				attributions:
-				  '國土測繪中心WMTS',
-				url:
-				  'https://wmts.nlsc.gov.tw/wmts?',
-				layer: '0',
-				matrixSet: 'EPSG:3857',
-				format: 'image/png',
-				projection: projection,
-				tileGrid: new ol.tilegrid.WMTS({
-				  origin: ol.extent.getTopLeft(projectionExtent),
-				  resolutions: resolutions,
-				  matrixIds: matrixIds,
-				}),
-				layer:'PHOTO2',
-				style: 'default',
-				wrapX: true,
-			  }),			  
-			})
-			
-   eagle_map = new ol.layer.Tile({
-			  opacity: 1,
-			  source: new ol.source.WMTS({
-				url:
-				  'https://wmts.nlsc.gov.tw/wmts?',
-				layer: '0',
-				matrixSet: 'EPSG:3857',
-				format: 'image/png',
-				projection: projection,
-				tileGrid: new ol.tilegrid.WMTS({
-				  origin: ol.extent.getTopLeft(projectionExtent),
-				  resolutions: resolutions,
-				  matrixIds: matrixIds,
-				}),
-				layer:'EMAP5',
-				style: 'default',
-				wrapX: true,
-			  }),			  
-			}) 
-	
-	for (var z = 0; z < 21; ++z) {
-	  // generate resolutions and matrixIds arrays for this WMTS
-	  resolutions[z] = size / Math.pow(2, z);
-	  matrixIds[z] = z;
-	}	
-	  overviewMapControl = new ol.control.OverviewMap({
-	  layers: [
-		eagle_map
-		],
-	});
-	
-   //台灣範圍坐標轉換
-   var coner1 = ol.proj.transform([118, 21], 'EPSG:4326', 'EPSG:3857');
-   var coner2 = ol.proj.transform([124, 26], 'EPSG:4326', 'EPSG:3857'),
-	  
-   mmapl = new ol.Map({
-        target: target,
-		controls: ol.control.defaults().extend([
-		overviewMapControl,
-		BaseMapControl,
-		new ol.control.FullScreen(),		
-		new ol.control.ZoomToExtent({extent:[coner1[0],coner1[1],coner2[0],coner2[1]]})]),
-        layers: [
-		  group = new ol.layer.Group({ title:'measure'}),
-          base_emap
-		  				
-        ],
-        view: new ol.View({
-           center: ol.proj.fromLonLat([121.55, 25.05]),
-          zoom: 11,
-		  maxZoom: 22
-        })
-      });
-	  
-	  
-	  $(".ol-zoom-extent").children().attr("title","全臺範圍");	
-	  $(".ol-overviewmap").children("button").attr("title","鷹眼圖");	
-	  $(".ol-full-screen").children().attr("title","全螢幕模式");	
-	  
-	  $(".base_map").click(function(){
-		if($(this).hasClass("EMAP")){
-			addPHOTO2(mmapl);
-			$(this).removeClass("EMAP");
-			$(this).addClass("PHOTO");
-			$(this).children().text("M").attr("title","切換為電子地圖");			
-		}
-		else{
-			addEMAP(mmapl);
-			$(this).removeClass("PHOTO");
-			$(this).addClass("EMAP");
-			$(this).children().text("P").attr("title","切換為正射影像");		
-		}		
-	});
-		
-	
-    function addPHOTO2(mmapl){		
-					
-		mmapl.addLayer(base_photo2);		
-		mmapl.removeLayer(base_emap);	
-	}	
-	
-	function addEMAP(mmapl){		
-				
-		mmapl.addLayer(base_emap);		
-		mmapl.removeLayer(base_photo2);		
-	}	
-
-}
-
-function map_mini_modal(target){
-	
-	var projection = ol.proj.get('EPSG:3857');
-	var projectionExtent = projection.getExtent();
-	var size = ol.extent.getWidth(projectionExtent) / 256;
-	var resolutions = new Array(21);
-	var matrixIds = new Array(21);
-	var mmapm;
-	var base_emap;
-	var base_photo2;
-	var eagle_map;
-
-    //底圖切換按鈕
-	var button_base = document.createElement('button');
-    button_base.innerHTML = 'P';
-    button_base.setAttribute("title","切換為正射影像");
-	
-    var element1 = document.createElement('div');
-    element1.className = 'EMAP base_map ol-unselectable ol-control';
-    element1.appendChild(button_base);
-	
-	var BaseMapControl =  new ol.control.Control({
-	element: element1}
-    );
-	
-  
-  $("#"+target).empty();
-  //底圖圖層
-   base_emap = new ol.layer.Tile({
-			  opacity: 1,
-			  source: new ol.source.WMTS({
-				attributions:
-				  '國土測繪中心WMTS',
-				url:
-				  'https://wmts.nlsc.gov.tw/wmts?',
-				layer: '0',
-				matrixSet: 'EPSG:3857',
-				format: 'image/png',
-				projection: projection,
-				tileGrid: new ol.tilegrid.WMTS({
-				  origin: ol.extent.getTopLeft(projectionExtent),
-				  resolutions: resolutions,
-				  matrixIds: matrixIds,
-				}),
-				layer:'EMAP5',
-				style: 'default',
-				wrapX: true,
-			  }),			  
-			}) 
-			
-   base_photo2 = new ol.layer.Tile({
-			  opacity: 1,
-			  source: new ol.source.WMTS({
-				attributions:
-				  '國土測繪中心WMTS',
-				url:
-				  'https://wmts.nlsc.gov.tw/wmts?',
-				layer: '0',
-				matrixSet: 'EPSG:3857',
-				format: 'image/png',
-				projection: projection,
-				tileGrid: new ol.tilegrid.WMTS({
-				  origin: ol.extent.getTopLeft(projectionExtent),
-				  resolutions: resolutions,
-				  matrixIds: matrixIds,
-				}),
-				layer:'PHOTO2',
-				style: 'default',
-				wrapX: true,
-			  }),			  
-			})
-			
-   eagle_map = new ol.layer.Tile({
-			  opacity: 1,
-			  source: new ol.source.WMTS({
-				url:
-				  'https://wmts.nlsc.gov.tw/wmts?',
-				layer: '0',
-				matrixSet: 'EPSG:3857',
-				format: 'image/png',
-				projection: projection,
-				tileGrid: new ol.tilegrid.WMTS({
-				  origin: ol.extent.getTopLeft(projectionExtent),
-				  resolutions: resolutions,
-				  matrixIds: matrixIds,
-				}),
-				layer:'EMAP5',
-				style: 'default',
-				wrapX: true,
-			  }),			  
-			}) 
-	
-	for (var z = 0; z < 21; ++z) {
-	  // generate resolutions and matrixIds arrays for this WMTS
-	  resolutions[z] = size / Math.pow(2, z);
-	  matrixIds[z] = z;
-	}	
-	  overviewMapControl = new ol.control.OverviewMap({
-	  layers: [
-		eagle_map
-		],
-	});
-	
-   //台灣範圍坐標轉換
-   var coner1 = ol.proj.transform([118, 21], 'EPSG:4326', 'EPSG:3857');
-   var coner2 = ol.proj.transform([124, 26], 'EPSG:4326', 'EPSG:3857'),
-	  
-   mmapm = new ol.Map({
-        target: target,
-		controls: ol.control.defaults().extend([
-		overviewMapControl,
-		BaseMapControl,
-		new ol.control.FullScreen(),		
-		new ol.control.ZoomToExtent({extent:[coner1[0],coner1[1],coner2[0],coner2[1]]})]),
-        layers: [
-		  group = new ol.layer.Group({ title:'measure'}),
-          base_emap
-		  				
-        ],
-        view: new ol.View({
-           center: ol.proj.fromLonLat([121.55, 25.05]),
-          zoom: 11,
-		  maxZoom: 22
-        })
-      });
-	  
-	  
-	  $(".ol-zoom-extent").children().attr("title","全臺範圍");	
-	  $(".ol-overviewmap").children("button").attr("title","鷹眼圖");	
-	  $(".ol-full-screen").children().attr("title","全螢幕模式");	
-	  
-	  $(".base_map").click(function(){
-		if($(this).hasClass("EMAP")){
-			addPHOTO2(mmapm);
-			$(this).removeClass("EMAP");
-			$(this).addClass("PHOTO");
-			$(this).children().text("M").attr("title","切換為電子地圖");			
-		}
-		else{
-			addEMAP(mmapm);
-			$(this).removeClass("PHOTO");
-			$(this).addClass("EMAP");
-			$(this).children().text("P").attr("title","切換為正射影像");		
-		}		
-	});
-		
-	
-    function addPHOTO2(mmapm){		
-					
-		mmapm.addLayer(base_photo2);		
-		mmapm.removeLayer(base_emap);	
-	}	
-	
-	function addEMAP(mmapm){		
-				
-		mmapm.addLayer(base_emap);		
-		mmapm.removeLayer(base_photo2);		
-	}	
-
-}
 
 	

@@ -481,9 +481,9 @@ function doCreate()//新增圖資
 {
 	$('#NewPageview').modal('show');
 	setTimeout(function(){
-       map_mini_modal('mmapmodal');
-		
-		},50);
+       map('mmapmodal',false);
+	   SelectType();
+		},300);
     		
 }
 
@@ -500,5 +500,20 @@ function doRemove(fmid)//移除待異動圖資
 
 function SaveEdit_fm()//執行資料更新
 {
+	
+}
+
+function SelectType()//選擇圖資類型
+{
+  $("#fm_type").on("change",function(){
+	  if($(this).val()== 1){
+		  $(".fm_search_type1").show();
+		  $(".fm_search_type2").hide();
+	  }
+	  else{
+		  $(".fm_search_type2").show();
+		  $(".fm_search_type1").hide();
+	  }
+  });
 	
 }
