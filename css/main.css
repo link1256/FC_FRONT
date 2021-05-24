@@ -577,6 +577,13 @@ thead{
 	border-radius: 10px;
 }
 
+.content_row_nogap{
+	margin: 10px 20px;
+	background-color:white;
+	padding: 5px;
+	border-radius: 10px;
+}
+
 .content_row_search{
 	margin: 10px 20px;
 	background-color:white;
@@ -601,7 +608,15 @@ thead{
 	background-color:white;
 	padding: 20px;
 	border-radius: 10px;
-	width: 50%;
+	width: 46%;
+}
+
+.content_row_47_nogap{
+	margin: 10pxpx;
+	background-color:white;
+	padding: 5px;
+	border-radius: 10px;
+	width: 48%;
 }
 
 .row_text{
@@ -639,7 +654,7 @@ thead{
 
 .new_ver_flex{
 	display: inline-flex;
-    align-items: baseline;
+    align-items: center;
 	margin: 5px;
 	max-width: 96%;
 	min-width: 96%;
@@ -858,4 +873,12 @@ thead{
 
 .detail_rows_value{
 	padding:5px;
+}
+
+.fm_search_type1{
+	margin: 5px;
+}
+
+.fm_search_list{
+	height: 160px;
 }

@@ -480,7 +480,11 @@ function FM_detail(typeid,fmid)//圖資屬性資料
 function doCreate()//新增圖資
 {
 	$('#NewPageview').modal('show');
-	
+	setTimeout(function(){
+       map_mini_modal('mmapmodal');
+		
+		},50);
+    		
 }
 
 function doEdit(fmid)//編輯圖資

@@ -136,7 +136,7 @@
 </div>
 <!-- 頁面區 -->
 <!-- <MODAL 新增> -->
-	<div class="modal fade" id="NewPageview" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="false">
+	<div class="modal fade" id="NewPageview" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
 	  <div class="modal-dialog modal-xl">
 		<div class="modal-content">
 		  <div class="modal-header">
@@ -144,21 +144,164 @@
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		  </div>
 		  <div class="modal-body">
-			<div class=""></div>
+		    <div style="display:flex">
+			<div class="modal_part_search content_row_47_nogap">
 			
-		  </div>
+               <div style="margin:5px; margin-top:-20px;">
+			   <div class="content_row_nogap">
+			   <div class="row_text" style="margin:10px;">圖資類型</div>
+			   <div class="new_ver_flex">
+			   <div>
+				   <label for="ver_year" class="form-label" style="width: 110px;">類型</label>
+				 </div> 
+		        <select id="fm_type" class="form-select" >		
+                   <option value="1" selected>國有林事業區</option>
+                   <option value="2">保安林</option>				   
+			    </select>
+		       </div>
+			   </div>
+			   </div>
+			   
+			   <div class="fm_search_type1">
+			   <div class="content_row_nogap">
+			   <div class="row_text" style="margin:10px;">條件查詢</div>
+			   <div class="new_ver_flex">
+			   
+				  <div>
+				   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
+				 </div>  
+				   <select id="ver_year0" class="form-select" >
+					  <option selected>不指定</option>
+					  <option value="110">110</option>
+					  <option value="111">111</option>
+					  <option value="112">112</option>
+					</select>
+				 </div>
+	
+				   <div class="new_ver_flex">
+				   <div>
+				   <label for="search_id_modal" class="form-label" style="width: 110px;">識別碼</label>
+				   </div>
+				   <input id="search_id_modal" type="text" class="form-control" />
+				   </div>
+	
+				<div class="new_ver_flex">
+				<div>
+				   <label for="search_title_modal" class="form-label"  style="width: 110px;">標題關鍵字</label>
+					</div>
+				   <input id="search_title_modal" type="text" class="form-control" />
+				</div>
+	
+				<div class="new_ver_flex">
+				<div>
+				   <label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+				   </div>
+				   <select id="search_stat" class="form-select"  >
+					  <option selected>不指定</option>
+					  <option value="0">未送審</option>
+					  <option value="1">已送審</option>
+					  <option value="2">已完成</option>
+					</select>
+				</div>
+				
+				<div class="new_ver" style="text-align:center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2">查詢</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
+				</div>
+				
+		     </div>
+			 
+			 </div>
+             </div>
+			 <div class="modal_part_detail content_row_47_nogap">
+			 <div style="margin:5px; margin-top:-20px;">
+			   <div class="content_row_nogap">
+			   <div class="row_text" style="margin:10px;">查詢結果</div>
+			   <div class="new_ver">
+			      
+				  <div class="fm_search_list main_scroll_mini">
+					<!-- <圖資列表資料> -->
+					<table class="table table-hover te_tab_list" id="fm_search_list">
+						<tr  id="fm01" class="active">		  
+						   <td>1100510001</td>
+						   <td>測試用異動1</td>
+						</tr>
+						
+						 <tr id="fm02">
+						   <td>1100510002</td>
+						   <td>測試用異動2</td>
+						</tr>
+						
+						 <tr id="fm03">
+						   <td>1100510003</td>
+						   <td>測試用異動3</td>
+						</tr>
+						
+						 <tr id="fm04">
+						   <td>1100510004</td>
+						   <td>測試用異動4</td>
+						</tr>
+						
+						<tr id="fm05">
+						   <td>1100510005</td>
+						   <td>測試用異動5</td>
+						</tr>
+						
+						<tr id="fm06">
+						   <td>1100510006</td>
+						   <td>測試用異動6</td>
+						</tr>
+						<tr id="fm07">
+						   <td>1100510006</td>
+						   <td>測試用異動6</td>
+						</tr>
+						<tr id="fm08">
+						   <td>1100510006</td>
+						   <td>測試用異動6</td>
+						</tr>
+						<tr id="fm09">
+						   <td>1100510006</td>
+						   <td>測試用異動6</td>
+						</tr>
+						<tr id="fm10">
+						   <td>1100510006</td>
+						   <td>測試用異動6</td>
+						</tr>
+					</table>
+	            </div>
+				  
+		       </div>
+			   </div>
+			   
+			   <div class="content_row_nogap">
+			   <div class="row_text" style="margin:10px;">空間位置</div>
+			   <div class="new_ver">
+			      <!-- //塞入圖資空間資料 -->
+                     <div id="mmapmodal" style="height: 300px;"></div>  
+					
+					
+	           </div>
+				  
+		       </div>
+			   </div>
+			   
+			   </div>
+			 
+			 </div>
+
+			</div>
+			
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-			<button type="button" class="btn btn-primary" onclick="SaveEdit_fm()">儲存變更</button>
+			<button type="button" class="btn btn-primary" data-bs-target="#EditPageview" data-bs-toggle="modal" data-bs-dismiss="modal">下一步</button>
 		  </div>
 		</div>
 	  </div>
-	</div>
-
+ </div>
 
 <!-- <MODAL 新增> -->
 <!-- <MODAL 編輯> -->
-	<div class="modal fade" id="EditPageview" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="false">
+	<div class="modal fade" id="EditPageview" tabindex="-1" data-bs-backdrop="static" aria-labelledby="EditPageview" aria-hidden="false">
 	  <div class="modal-dialog modal-xl">
 		<div class="modal-content">
 		  <div class="modal-header">
