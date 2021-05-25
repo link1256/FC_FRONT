@@ -10,6 +10,33 @@ td{
 	vertical-align: middle !important;
 }
 
+.custom-mouse-position{
+	position: absolute;
+    bottom: 0%;
+    left: calc(50% - 115px);
+    transform: translateX(-40%);
+	display:none;
+	background-color:#ffd65d;
+	font-size:15px;
+}
+
+.custom-mouse-position::before{
+	content:"WGS84: ";
+}
+
+.twd97{
+	position: absolute;
+    bottom: 0%;
+    left: calc(50% + 115px);
+    transform: translateX(-40%);
+	background-color:orange;
+	font-size:15px;
+}
+
+.twd97::before{
+	content:"TWD97: ";
+}
+
 .front_title{
 	display: flex;
     font-size: 35px;

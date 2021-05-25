@@ -14,6 +14,8 @@ function map(target,m,f){
 	var base_photo2;
 	var eagle_map;
 	var overviewMapControl;
+	var mousePositionControl;
+	
 	var FullScreen = new ol.control.FullScreen();
 	
 	var bt_class = "base_map_"+target;
@@ -153,6 +155,8 @@ function map(target,m,f){
    var coner1 = ol.proj.transform([118, 21], 'EPSG:4326', 'EPSG:3857');
    var coner2 = ol.proj.transform([123, 26], 'EPSG:4326', 'EPSG:3857');
    
+   mousePosition();
+   
    if(!m){
 		ToolControl1 = new ol.control.Control({element:document.createElement('div')});
 		ToolControl2 = new ol.control.Control({element:document.createElement('div')});
@@ -164,7 +168,8 @@ function map(target,m,f){
 	  
    mmap = new ol.Map({
         target: target,
-		controls: ol.control.defaults().extend([		
+		controls: ol.control.defaults().extend([
+		mousePositionControl,
 		overviewMapControl,			
 		BaseMapControl,
 		new ol.control.ZoomToExtent({extent:[coner1[0],coner1[1],coner2[0],coner2[1]]}),
@@ -244,7 +249,23 @@ function map(target,m,f){
 				
 		mmap.addLayer(base_emap);		
 		mmap.removeLayer(base_photo2);		
-	}	
+	}
+	
+	function mousePosition() //滑鼠座標位置
+	{
+		
+	  mousePositionControl = new ol.control.MousePosition({
+	  coordinateFormat: ol.coordinate.createStringXY(6),
+	  projection: 'EPSG:4326',
+
+	  className: 'custom-mouse-position',
+	  target: document.getElementById('mouse_position'),
+	  undefinedHTML: '&nbsp;',
+	});
+	
+	prjtwd97(target);
+
+    }
 }
 
 

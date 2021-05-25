@@ -186,3 +186,51 @@ function createMeasureTooltip() {
 group_vectorCollection.push(vector);
 addInteraction();	
 }
+
+
+
+   function prjtwd97(map){
+	//定義坐標系統的參數
+		 proj4.defs([
+		  [
+			'EPSG:4326',
+			'+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees'],
+		  [
+			'EPSG:3826',
+			'+title=TWD97 TM2+proj=tmerc +lat_0=0 +lon_0=121 +k=0.9999 +x_0=250000 +y_0=0 +ellps=GRS80 +units=公尺 +no_defs'
+		  ],
+		  [
+			'EPSG:3825',
+			'+title=TWD97 TM2+proj=tmerc +lat_0=0 +lon_0=119 +k=0.9999 +x_0=250000 +y_0=0 +ellps=GRS80 +units=公尺 +no_defs'
+		  ]
+		]);
+		
+		var EPSG3826 = new proj4.Proj('EPSG:3826');//TWD97 121分帶
+		var EPSG3825 = new proj4.Proj('EPSG:3825');//TWD97 119分帶
+		var EPSG4326 = new proj4.Proj('EPSG:4326');//WGS84
+		var mouseposition;
+		
+			
+		$("#"+map).on('pointermove', function(evt){
+        mouseposition = $(".custom-mouse-position").text();
+		$(".twd97").remove();
+        $(".custom-mouse-position").show();		
+		$(".custom-mouse-position").after("<div class='twd97'></div>");	
+		
+		var mouseposition_text = mouseposition.split(",");
+	    var mX = parseFloat(mouseposition_text[0]);
+	    var mY = parseFloat(mouseposition_text[1]);
+		
+		var newprj3826 = proj4(EPSG4326, EPSG3826, [mX,mY]);
+		var X97 = newprj3826[0].toString().substring(0,9);
+		var Y97 = newprj3826[1].toString().substring(0,10);
+	    // var newprj3825 = proj4(EPSG4326, EPSG3825, [mX, mY]);
+		
+		$(".twd97").text(X97+", "+Y97);
+		});
+		
+		$("#"+map).on('pointerout',function(){
+			$(".twd97").remove();
+			$(".custom-mouse-position").hide();
+		});
+    }

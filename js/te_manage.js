@@ -480,9 +480,10 @@ function FM_detail(target,typeid,fmid)//圖資屬性資料
 function doCreate()//新增圖資
 {
 	$('#NewPageview').modal('show');
+	SelectType(1,1);
 	setTimeout(function(){
        map('mmapmodal',false,false);
-	   SelectType();
+	   
 		},280);
     		
 }
@@ -528,15 +529,13 @@ function AbandonEdit()//放棄儲存
 	}	
 }
 
-function SelectType()//選擇圖資及編輯類型
+function SelectType(type,edit_type)//選擇圖資及編輯類型
 {
-  let type = "";
-  let edit_type = "";
-  
-  function change(type,edit_type){
-	  if(edit_type == 3){
+ 
+  function change(type1,edit_type1){
+	  if(edit_type1 == 3){
 		  $(".CreateNew").hide();
-		   if(type == 1){
+		   if(type1 == 1){
 		  $(".fm_new_type1").show();
 		  $(".fm_new_type2").hide();
 		 
@@ -550,7 +549,7 @@ function SelectType()//選擇圖資及編輯類型
 	  else{
 	  $(".CreateNew").show();
 	  $(".CreateNew_input").hide();  
-		  if(type == 1){
+		  if(type1 == 1){
 		  $(".fm_search_type1").show();
 		  $(".fm_search_type2").hide();
 		  $(".fm_type1").show();
@@ -564,13 +563,19 @@ function SelectType()//選擇圖資及編輯類型
 	  }			  
 	  }
   }
-  
+  change(type,edit_type);
   
   $("#fm_type,#fm_edit_type").on("change",function(){
-    type = $("#fm_type").val();
-    edit_type = $("#fm_edit_type").val();
-	change(type,edit_type);
+    type1 = $("#fm_type").val();
+    edit_type1 = $("#fm_edit_type").val();
+	change(type1,edit_type1);
 
   });
   	
+}
+
+function resetModal(){
+   $("#fm_type").prop('selectedIndex',0);
+   $("#fm_edit_type").prop('selectedIndex',0);
+
 }

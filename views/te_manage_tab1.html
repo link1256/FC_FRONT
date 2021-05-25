@@ -475,7 +475,7 @@
 			</div>
 			
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetModal()">取消</button>
 			<button type="button" class="btn btn-primary" onClick="doCreate_next()" data-bs-dismiss="modal">下一步</button>
 		  </div>
 		</div>
@@ -506,7 +506,9 @@
 			<div class="map_area">
 			     <div class="map_edit_hint" id="map_edit_hint">地圖編輯提示</div>
 			     <div id="mmapmodalEdit"></div> 
-                 <div class="map_edit_tools">地圖編輯工具</div>				 
+                 <div class="map_edit_tools">地圖編輯工具
+				 
+				 </div>				 
 			</div>
 			
 		  </div>
@@ -592,6 +594,7 @@ $("#sent_apply").on("click",function(){
 	}
 	
 });
+
 
 
     </script>
