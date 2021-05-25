@@ -528,10 +528,29 @@ function AbandonEdit()//放棄儲存
 	}	
 }
 
-function SelectType()//選擇圖資類型
+function SelectType()//選擇圖資及編輯類型
 {
-  $("#fm_type").on("change",function(){
-	  if($(this).val()== 1){
+  let type = "";
+  let edit_type = "";
+  
+  function change(type,edit_type){
+	  if(edit_type == 3){
+		  $(".CreateNew").hide();
+		   if(type == 1){
+		  $(".fm_new_type1").show();
+		  $(".fm_new_type2").hide();
+		 
+		  }
+		  else{
+			  $(".fm_new_type2").show();
+			  $(".fm_new_type1").hide();
+		  }		
+          		  
+	  }
+	  else{
+	  $(".CreateNew").show();
+	  $(".CreateNew_input").hide();  
+		  if(type == 1){
 		  $(".fm_search_type1").show();
 		  $(".fm_search_type2").hide();
 		  $(".fm_type1").show();
@@ -542,7 +561,16 @@ function SelectType()//選擇圖資類型
 		  $(".fm_search_type1").hide();
 		  $(".fm_type2").show();
 		  $(".fm_type1").hide();
+	  }			  
 	  }
+  }
+  
+  
+  $("#fm_type,#fm_edit_type").on("change",function(){
+    type = $("#fm_type").val();
+    edit_type = $("#fm_edit_type").val();
+	change(type,edit_type);
+
   });
-	
+  	
 }

@@ -921,3 +921,7 @@ thead{
 	height: 6vh;
 	background-color: #ececec;
 }
+
+.CreateNew_input{
+	display:none;
+}

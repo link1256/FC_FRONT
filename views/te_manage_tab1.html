@@ -149,7 +149,7 @@
 			
                <div style="margin:5px; margin-top:-20px;">
 			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">圖資類型</div>
+			   <div class="row_text" style="margin:10px;">異動類型</div>
 			   <div class="new_ver_flex">
 			   <div>
 				   <label for="fm_type" class="form-label" style="width: 110px;">類型</label>
@@ -159,10 +159,22 @@
                    <option value="2">保安林</option>				   
 			    </select>
 		       </div>
+			   
+
+			   <div class="new_ver_flex">
+			   <div>
+				   <label for="fm_edit_type" class="form-label" style="width: 110px;">編輯形式</label>
+				 </div> 
+		        <select id="fm_edit_type" class="form-select" >		
+                   <option value="1" selected>編輯</option>
+                   <option value="2">刪除</option>	
+                   <option value="3">新增</option>					   
+			    </select>
+		       </div>
 			   </div>
 			   </div>
 			   <!-- //國有林事業區 -->
-			   <div class="fm_search_type1">
+			   <div class="fm_search_type1 CreateNew">
 			   <div class="content_row_nogap">
 			   <div class="row_text" style="margin:10px;">條件查詢</div>
 			   <div class="new_ver_flex">		   
@@ -214,7 +226,7 @@
 			 </div>
 			 <!-- //國有林事業區 -->
 			 <!-- //保安林 -->
-			   <div class="fm_search_type2">
+			   <div class="fm_search_type2 CreateNew">
 			   <div class="content_row_nogap">
 			   <div class="row_text" style="margin:10px;">條件查詢</div>
 			   <div class="new_ver_flex">		   
@@ -272,8 +284,103 @@
 			 </div>
 			 <!-- //保安林 -->
 			 
+			  <!-- //新增國有林事業區 -->
+			   <div class="fm_new_type1 CreateNew_input">
+			   <div class="content_row_nogap">
+			   <div class="row_text" style="margin:10px;">基本資料</div>
+			   <div class="new_ver_flex">		   
+				  <div>
+				   <label for="new_dist1" class="form-label" style="width: 110px;">林區管理處</label>
+				 </div>  
+				   <select id="new_dist1" class="form-select" >
+					  <option selected>請選擇</option>
+					  <option value="1">羅東</option>
+					  <option value="2">新竹</option>
+					  <option value="3">東勢</option>
+					  <option value="4">南投</option>
+					  <option value="5">嘉義</option>
+					  <option value="6">屏東</option>
+					  <option value="7">台東</option>
+					  <option value="8">花蓮</option>
+					</select>
+				 </div>
+				 
+				 <!-- //管理處轄下事業區列表 -->
+				 <div class="new_ver_flex">
+				  <div>
+				   <label for="new_wkng1" class="form-label" style="width: 110px;">事業區</label>
+				 </div>  
+				   <select id="new_wkng1" class="form-select" >
+					  <option selected>請選擇</option>
+					  <!-- //動態塞值 -->
+					</select>
+				 </div>
+				 
+				  <div class="new_ver_flex">
+				   <div>
+				   <label for="new_cmpt" class="form-label" style="width: 110px;">林班編號</label>
+				   </div>
+				    <input id="new_cmpt" class="form-control" />
+					 
+				   </div>
+				   
+				   <div class="new_ver_flex">
+				   <div>
+				   <label for="new_edition1" class="form-label" style="width: 110px;">修訂資訊</label>
+				   </div>
+				    <textarea id="new_edition1" class="form-control" rows = 3></textarea>
+					 
+				   </div>
+				
+		     </div>
+			 
+			 </div>
+			 <!-- //新增國有林事業區 -->
+			 <!-- //新增保安林 -->
+			   <div class="fm_new_type2 CreateNew_input">
+			   <div class="content_row_nogap">
+			   <div class="row_text" style="margin:10px;">基本資料</div>
+			   <div class="new_ver_flex">		   
+				  <div>
+				   <label for="new_dist2" class="form-label" style="width: 110px;">林區管理處</label>
+				 </div>  
+				   <select id="new_dist2" class="form-select" >
+					  <option selected>請選擇</option>
+					  <option value="1">羅東</option>
+					  <option value="2">新竹</option>
+					  <option value="3">東勢</option>
+					  <option value="4">南投</option>
+					  <option value="5">嘉義</option>
+					  <option value="6">屏東</option>
+					  <option value="7">台東</option>
+					  <option value="8">花蓮</option>
+					</select>
+				 </div>
+	
+				   <div class="new_ver_flex">
+				   <div>
+				   <label for="new_pfid" class="form-label" style="width: 110px;">保安林編號</label>
+				   </div>
+				    <input id="new_pfid" class="form-control" />
+					 
+				   </div>
+				   
+				   <div class="new_ver_flex">
+				   <div>
+				   <label for="new_edition2" class="form-label" style="width: 110px;">修訂資訊</label>
+				   </div>
+				    <textarea id="new_edition2" class="form-control" rows = 3></textarea>
+					 
+				   </div>
+					
+		     </div>
+			 
+			 </div>
+			 <!-- //新增保安林 -->
+			 
+			 
              </div>
-			 <div class="modal_part_detail content_row_47_nogap">
+			 <div class="modal_part_detail content_row_47_nogap CreateNew">
 			 <div style="margin:5px; margin-top:-20px;">
 			   <div class="content_row_nogap">
 			   <div class="row_text" style="margin:10px;">查詢結果</div>
