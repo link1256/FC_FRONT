@@ -483,6 +483,7 @@ function doCreate()//新增圖資
 	$('#NewPageview').modal('show');
 	SelectType(1,1);
 	setTimeout(function(){
+	   $("#mmapmodal").after("<div id='mouse_position'></div>");
        map('mmapmodal',false,false);
 	   
 		},280);
@@ -491,6 +492,7 @@ function doCreate()//新增圖資
 
 function doCreate_next(){
 	setTimeout(function(){
+	   $("#mouse_position").remove();
        doEdit();
 	   
 		},280)
@@ -578,7 +580,7 @@ function SelectType(type,edit_type)//選擇圖資及編輯類型
 function resetModal(){
    $("#fm_type").prop('selectedIndex',0);
    $("#fm_edit_type").prop('selectedIndex',0);
-
+   $("#mouse_position").remove();
 }
 
 function InsertNewChangeEvent() //新增異動資料
