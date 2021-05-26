@@ -129,6 +129,7 @@ function thousandComma(number) {
 	return num;
 }
 
+var Logindata = null;
 function LoginCheck() {
 	$.ajax({
 	  url: ApiRequestURL + "UserAccount/GetLoginUser",
@@ -141,8 +142,8 @@ function LoginCheck() {
 	  success: function(data) {
 		if (data && data.data) {
 			$("#account_name").html(data.data.name);
+			Logindata = data.data;
 		} else {
-			debugger;
 			alert("請先登入系統!");
 			window.location.href = "auth_page.html";
 		}

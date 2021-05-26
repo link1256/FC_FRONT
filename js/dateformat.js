@@ -26,3 +26,19 @@ function formatDateTime_Time_NonSecond(date) {
 	else
 		return date;
 }
+//前端取得時間
+function GetDateNow()
+{
+	var d = new Date();
+	var month = d.getMonth()+1;
+	var day = d.getDate();
+	var hour = d.getHours();
+	var minute = d.getMinutes();
+
+	var output = d.getFullYear() + "/" +
+		(month < 10 ? "0" : "") + month + "/" +
+		(day < 10 ? "0" : "") + day + " " + 
+		(hour < 10 ? "0" : "") + hour + ":" + (minute < 10 ? "0" : "") + minute;
+		
+	return output;
+}

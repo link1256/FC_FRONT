@@ -33,6 +33,7 @@ function step_tab()
 						  }
 						  else{
 							   if(confirm("是否建立新異動?")){
+							InsertNewChangeEvent();
 			                create_step(2,j);
 						
 		                  }
@@ -367,12 +368,12 @@ function loadListData(fmtid){
 }
 
 function newApplyDetail(){
-	    //建立者
-		$("#te_data_basic_new_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_new_createtime").text("2021/05/13 11:00");
-		//所屬單位	
-		$("#te_data_basic_new_deptart").text("新竹林區管理處");
+	//建立者
+	$("#te_data_basic_new_createuser").text(Logindata.name);
+	//建立時間		
+	$("#te_data_basic_new_createtime").text(GetDateNow());
+	//所屬單位	
+	$("#te_data_basic_new_deptart").text(Logindata.deptName);
 }
 
 function FM_detail(target,typeid,fmid)//圖資屬性資料
@@ -578,4 +579,36 @@ function resetModal(){
    $("#fm_type").prop('selectedIndex',0);
    $("#fm_edit_type").prop('selectedIndex',0);
 
+}
+
+function InsertNewChangeEvent() //新增異動資料
+{
+	debugger;
+	var formdata = new FormData();
+	formdata.append("CreateUserId", Logindata.sid);
+	formdata.append("Title", $("#te_data_basic_new_title").val());
+	formdata.append("Note", $("#te_data_basic_new_note").val());
+	formdata.append("Deptid", Logindata.deptid);
+	
+	var date = $("#te_data_basic_new_createtime").text();
+	formdata.append("CreateTime", date);
+	var date2 = date.split(" ");
+	formdata.append("CreateTime2", date2[0]);
+	
+	$.each($(".hiddenupload"), function(i, obj) {
+        $.each(obj.files,function(j, file){
+            formdata.append('files', file);
+        })
+	});
+	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/InsertNewChangeEventInfo",
+	  type: "Post",
+	  data: formdata,
+	  processData: false,
+	  contentType: false,
+	  success: function(data) {
+		
+	  }
+	});
 }

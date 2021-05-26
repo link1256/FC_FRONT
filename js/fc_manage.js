@@ -92,7 +92,7 @@ function GetFileList() {
 		}
 	});
 }
-
+var comparefinishData = null;
 function StartParsingShpFile(filename) {
 	// $( ".nav-item3.tab2" ).click();
 	$("#upload_city_result").remove();
@@ -101,7 +101,7 @@ function StartParsingShpFile(filename) {
 		.done(function(data) {
 			if (data.isSuccess === true) {
 				var rdata = data.data;
-				
+				comparefinishData = rdata;
 				//解析結果
 				var appendtr = "";
 				appendtr += "<tr class=\"align-middle\">";
@@ -125,7 +125,7 @@ function StartParsingShpFile(filename) {
 						appendtr2 += "<td>" + cmdata[i].landName + "</td>";
 						appendtr2 += "<td>" + cmdata[i].regArea + "</td>";
 						appendtr2 += "<td>" + cmdata[i].state + "</td>";
-						appendtr2 += "<td><button type=\"button\" class=\"btn btn-success\">更新</button></td>";
+						appendtr2 += "<td><button type=\"button\" class=\"btn btn-success\" OnClick=\"UpdateVersionCompare();\">更新</button></td>";
 						appendtr2 += "</tr>";
 					}
 					$("#compare_city_result").append(appendtr2);
@@ -175,6 +175,13 @@ function GetNewestVersionList() {
 			city_result(rdata.versionlist);
 		}
 	});
+}
+function UpdateVersionCompare() {
+	if (comparefinishData) {
+		$.post(ApiRequestURL + "ImportFile/UpdateVersionCompare", comparefinishData)
+			.done(function(data) {
+			});
+	}
 }
 //批次匯入 END
 
@@ -243,8 +250,14 @@ function DeleteVersion() {
 		.done(function(data) {
 			if (data.message === "success")
 				alert("刪除成功.");
+			
 			$('#DeleteVersion').modal('hide');
 			GetVersionList();
 		});
 }
+
+function UpdateVersion() {
+	
+}
+
 //版次管理 END
