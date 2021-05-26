@@ -583,7 +583,6 @@ function resetModal(){
 
 function InsertNewChangeEvent() //新增異動資料
 {
-	debugger;
 	var formdata = new FormData();
 	formdata.append("CreateUserId", Logindata.sid);
 	formdata.append("Title", $("#te_data_basic_new_title").val());
@@ -609,6 +608,25 @@ function InsertNewChangeEvent() //新增異動資料
 	  contentType: false,
 	  success: function(data) {
 		
+	  }
+	});
+}
+
+function GetContainerTable() {
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetContainerTable",
+	  type: "Post",
+	  success: function(data) {
+		var data = data.data;
+		var htmltext = "";
+	    for (var i = 0; i < data.length; i++) {
+			htmtext += "<tr>";
+			htmtext += "<td>" + data[i].uid + "</td>";
+			htmtext += "<td>" + data[i].title + "</td>";
+			htmtext += "</tr>";
+		}
+		var output = document.getElementById("te_tab1_list");
+		output.innerHTML = htmltext;
 	  }
 	});
 }
