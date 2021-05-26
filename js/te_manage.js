@@ -314,17 +314,17 @@ function loadListData(fmtid){
 		for(i=1;i < 4;i++){
 			FM_ID = 'FM'+i;
 		if(i==3){
-			rows = "<tr id='"+ FM_ID +"'><td>"+ i +"</td>" +
-	           "<td class='typeid'>"+ type1 +"</td>" +
-		       "<td>"+ edit_type3 +"</td>"+
-	           "<td><button type='button' class='btn btn-danger search_submit custom_bt3 manage_bt_area' onclick='doRemove("+ FM_ID +")'>移除</button></td></tr>";
+			rows = "<tr  id='"+ FM_ID +"'><td width='15%'>"+ i +"</td>" +
+	           "<td width='35%' class='typeid'>"+ type1 +"</td>" +
+		       "<td width='30%'>"+ edit_type3 +"</td>"+
+	           "<td width='30%'><button type='button' class='btn btn-danger search_submit custom_bt3 manage_bt_area' onclick='doRemove("+ FM_ID +")'>移除</button></td></tr>";
              $("#list_table").append(rows);	
 		}
 		else{
-			rows = "<tr id='"+ FM_ID +"'><td>"+ i +"</td>" +
-	            "<td class='typeid'>"+ type1 +"</td>" +
-		       "<td>"+ edit_type2 +"</td>"+
-	           "<td><button type='button' class='btn btn-warning search_submit custom_bt3 manage_bt_area' onclick='doEdit("+ FM_ID +")'>編輯</button></td></tr>";
+			rows = "<tr id='"+ FM_ID +"'><td width='15%'>"+ i +"</td>" +
+	            "<td width='35%' class='typeid'>"+ type1 +"</td>" +
+		       "<td width='30%'>"+ edit_type2 +"</td>"+
+	           "<td width='30%'><button type='button' class='btn btn-warning search_submit custom_bt3 manage_bt_area' onclick='doEdit("+ FM_ID +")'>編輯</button></td></tr>";
            $("#list_table").append(rows);	
 		}
 		
@@ -333,18 +333,18 @@ function loadListData(fmtid){
 		for(i=4;i < 7;i++){
 			FM_ID = 'FM'+i;
 		if(i==6){
-			rows = "<tr id='"+ FM_ID +"'><td>"+ i +"</td>" +
-	           "<td class='typeid'>"+ type2 +"</td>" +
-		       "<td>"+ edit_type3 +"</td>"+
-	           "<td><button type='button' class='btn btn-danger search_submit custom_bt3 manage_bt_area' onclick='doRemove("+ FM_ID +")'>移除</button></td></tr>";
+			rows = "<tr id='"+ FM_ID +"'><td width='15%'>"+ i +"</td>" +
+	           "<td width='35%' class='typeid'>"+ type2 +"</td>" +
+		       "<td width='30%'>"+ edit_type3 +"</td>"+
+	           "<td width='30%'><button type='button' class='btn btn-danger search_submit custom_bt3 manage_bt_area' onclick='doRemove("+ FM_ID +")'>移除</button></td></tr>";
              $("#list_table").append(rows);	
 		}
 		
 		else{
-			rows = "<tr id='"+ FM_ID +"'><td>"+ i +"</td>" +
-	            "<td class='typeid'>"+ type2 +"</td>" +
-		       "<td>"+ edit_type2 +"</td>"+
-	           "<td><button type='button' class='btn btn-warning search_submit custom_bt3 manage_bt_area' onclick='doEdit("+ FM_ID +")'>編輯</button></td></tr>";
+			rows = "<tr id='"+ FM_ID +"'><td width='15%'>"+ i +"</td>" +
+	            "<td width='35%' class='typeid'>"+ type2 +"</td>" +
+		       "<td width='30%'>"+ edit_type2 +"</td>"+
+	           "<td width='30%'><button type='button' class='btn btn-warning search_submit custom_bt3 manage_bt_area' onclick='doEdit("+ FM_ID +")'>編輯</button></td></tr>";
            $("#list_table").append(rows);	
 		}
 		}
