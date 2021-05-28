@@ -75,7 +75,7 @@
 		}
 		
 		for (var i = 0; i < filelist.length; i++) {
-			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button   onclick=UploadDeleteThis(" + i + ")>X</button></td></tr>";
+			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
 		}
 
 		HTML += "</table>";
@@ -89,9 +89,8 @@
 		var HTML = "<table style=\"width: 500px;\">";
 		
 		for (var i = 0; i < filelist.length; i++) {
-			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button   onclick=UploadDeleteThis(" + i + ")>X</button></td></tr>";
+			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
 		}
-		
 		output.innerHTML = HTML;
 		
 		var hiddenlist = document.getElementsByClassName("hiddenupload");

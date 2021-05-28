@@ -59,9 +59,15 @@
 	   <label for="te_data_basic_note" class="form-label"  style="width: 140px;">附件</label>
 	   </div>
 	<div style="width: 100%;">
-	   <input id="te_data_basic_file" type="file" class="form-control" disabled multiple />
+	   <input id="te_data_basic_file" type="file" class="form-control" disabled multiple onchange="FileListUpload()" />
 	   <div class="file_list" id="file_list">
 	   
+	   </div>
+	   <div class="file_list" id="upload_file_list">
+	   
+	   </div>
+	   <!-- 隱藏用上傳INPUT -->
+	   <div id="upload_file_hide_list" style="display: none;">
 	   </div>
 	</div>
 	</div>

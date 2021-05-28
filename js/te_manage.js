@@ -70,227 +70,72 @@ function checkSentApply(){
 	}
 }
 
+var nowloadDetialData = null;
 function loadDetialData(id){
 	/* 先塞測試用資料，需要改寫 */
 	//讀取資料
-	switch (id){
-		case "item1":		
-		$(".data_frame").empty().load("./views/detail_data_temp.html"); //模板
+	$(".data_frame").empty().load("./views/detail_data_temp.html?rnd=" + Math.round(Math.random()*10000));
+	
+	var post = {};
+	post.Uid = id;
+	nowloadDetialData = id;
+	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetTargetChangeEventInfo",
+	  type: "Post",
+	  data: post,
+	  async: false,
+	  success: function(data) {
+		var data = data.data;
 		
-		setTimeout(function(){
-		//狀態
-		$("#te_data_basic_state").addClass("state_type1").text("未送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510001");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//所屬單位	
-		$("#te_data_basic_deptart").text("新竹林區管理處");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//最後編輯者
-		$("#te_data_basic_createuser").text("測試者1");
-		//最後編輯時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	        "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item2":
-		$(".data_frame").empty().load("./views/detail_data_temp.html");
-		setTimeout(function(){
+		setTimeout(function() {
 			//狀態
-		$("#te_data_basic_state").addClass("state_type1").text("未送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510002");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//所屬單位	
-		$("#te_data_basic_deptart").text("新竹林區管理處");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//最後編輯者
-		$("#te_data_basic_createuser").text("測試者1");
-		//最後編輯時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	      "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item3":
-		$(".data_frame").empty().load("./views/detail_data_temp.html");
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type2").text("已送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510003");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//所屬單位	
-		$("#te_data_basic_deptart").text("新竹林區管理處");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//最後編輯者
-		$("#te_data_basic_createuser").text("測試者1");
-		//最後編輯時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	       "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item4":
-		$(".data_frame").empty().load("./views/detail_data_temp.html");
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type1").text("未送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510004");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//所屬單位	
-		$("#te_data_basic_deptart").text("新竹林區管理處");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//最後編輯者
-		$("#te_data_basic_createuser").text("測試者1");
-		//最後編輯時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	       "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete '>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item5":
-		$(".data_frame").empty().load("./views/detail_data_temp.html");
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type3").text("已完成");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510005");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//所屬單位	
-		$("#te_data_basic_deptart").text("新竹林區管理處");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//最後編輯者
-		$("#te_data_basic_createuser").text("測試者1");
-		//最後編輯時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	        "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-		
-		case "item6":
-		$(".data_frame").empty().load("./views/detail_data_temp.html");
-		setTimeout(function(){
-			//狀態
-		$("#te_data_basic_state").addClass("state_type2").text("已送審");
-	    //識別碼
-		$("#te_data_basic_uid").text("1100510006");
-		//建立者
-		$("#te_data_basic_createuser").text("測試者1");
-		//建立時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//所屬單位	
-		$("#te_data_basic_deptart").text("新竹林區管理處");
-		//標題
-		$("#te_data_basic_title").val("");
-		//說明
-		$("#te_data_basic_note").val("");
-		//最後編輯者
-		$("#te_data_basic_createuser").text("測試者1");
-		//最後編輯時間
-		$("#te_data_basic_createtime").text("2021/05/10 22:00");
-		//附件列表
-		var list_length = 2;
-		for(i=0; i< list_length; i++){
-		  var item =
-		  "<div class='file_list_item'>"+
-	        "<a href=''><i class='fas fa-file-alt'></i>"+ "測試檔案" + i +"</a>"+
-		  "<button type='button' class='btn btn-danger file_list_item_delete'>刪除</button>"+
-	      "</div>"
-						
-		  $("#file_list").append(item);	
-		}			
-		},50);
-				
-		break;
-	}
+			var stat = "";
+			if (data.sent == "False")
+				stat = "未送審";
+			else if (data.checkTime != "" && data.checkUserName != "")
+			{
+				stat = "已完成";
+				$(".normal_state").hide();
+			}
+			else
+			{
+				stat = "已送審";
+				$(".normal_state").hide();
+			}
+			
+			$("#te_data_basic_state").addClass("state_type1").text(stat);
+			//識別碼
+			$("#te_data_basic_uid").text(data.uid);
+			//建立者
+			$("#te_data_basic_createuser").text(data.createUserName);
+			//建立時間
+			$("#te_data_basic_createtime").text(data.createTime);
+			//所屬單位	
+			$("#te_data_basic_deptart").text(data.distName);
+			//標題
+			$("#te_data_basic_title").val(data.title);
+			//說明
+			$("#te_data_basic_note").val(data.note);
+			//最後編輯者
+			$("#te_data_basic_createuser").text(data.updateUserName);
+			//最後編輯時間
+			$("#te_data_basic_createtime").text(data.updateTime);
+			//附件列表
+			var files = data.files;
+			$("#file_list").innerHTML = "";
+			for (i = 0 ; i < files.length; i++){
+			  var item =
+			  "<div class='file_list_item'>"+
+			  "<a href='" + DownLoadURL + files[i].savename + "'><i class='fas fa-file-alt'></i>"+ files[i].filename +"</a>"+
+			  "<button type='button' class='btn btn-danger file_list_item_delete' onclick=\"PushDFile('" + files[i].fileId + "', this)\">刪除</button>"+
+			  "</div>"
+							
+			  $("#file_list").append(item);	
+			}
+		}, 50);
+	  }
+	});
 }
 
 function loadListData(fmtid){
@@ -582,8 +427,8 @@ function resetModal(){
    $("#fm_edit_type").prop('selectedIndex',0);
    $("#mouse_position").remove();
 }
-
-function InsertNewChangeEvent() //新增異動資料
+//新增異動資料
+function InsertNewChangeEvent()
 {
 	var formdata = new FormData();
 	formdata.append("CreateUserId", Logindata.sid);
@@ -613,22 +458,98 @@ function InsertNewChangeEvent() //新增異動資料
 	  }
 	});
 }
-
+// 取得異動列表
 function GetContainerTable() {
 	$.ajax({
 	  url: ApiRequestURL + "ChangeEvent/GetContainerTable",
 	  type: "Post",
+	  async: false,
 	  success: function(data) {
 		var data = data.data;
 		var htmltext = "";
 	    for (var i = 0; i < data.length; i++) {
-			htmtext += "<tr>";
-			htmtext += "<td>" + data[i].uid + "</td>";
-			htmtext += "<td>" + data[i].title + "</td>";
-			htmtext += "</tr>";
+			htmltext += "<tr id=\"" + data[i].uid + "\">";
+			htmltext += "<td>" + data[i].uid + "</td>";
+			htmltext += "<td>" + data[i].title + "</td>";
+			htmltext += "</tr>";
 		}
 		var output = document.getElementById("te_tab1_list");
 		output.innerHTML = htmltext;
+		
+		setTimeout(function(){
+			if (data.length > 0) $("#" + data[0].uid).click();
+		},50);
+	  }
+	});
+}
+// 編輯列表
+function UpdateChangeEventInfo()
+{
+	var formdata = new FormData();
+	formdata.append("UpdateUserId", Logindata.sid);
+	formdata.append("Title", $("#te_data_basic_title").val());
+	formdata.append("Note", $("#te_data_basic_note").val());
+	formdata.append("UpdataUid", nowloadDetialData);
+		
+	$.each($(".hiddenupload"), function(i, obj) {
+        $.each(obj.files,function(j, file){
+            formdata.append('files', file);
+        })
+	});
+	
+	formdata.append("deletefiles", dfilelist);
+	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/UpdateChangeEventInfo",
+	  type: "Post",
+	  data: formdata,
+	  processData: false,
+	  contentType: false,
+	  success: function(data) {
+		if (data.data == "1")
+			alert("編輯成功.")
+		else
+			alert("編輯失敗.")
+		
+		loadDetialData(nowloadDetialData);
+	  }
+	});
+}
+// 刪除列表
+function DeleteChangeEventInfo() {
+	var post = {}
+	post.UpdataUid = nowloadDetialData;
+	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/DeleteChangeEventInfo",
+	  type: "Post",
+	  data: post,
+	  success: function(data) {
+		if (data.data == "1")
+			alert("刪除成功.")
+		else
+			alert("刪除失敗.")
+		
+		// loadDetialData(nowloadDetialData);
+	  }
+	});
+}
+//審核列表
+function SentChangeEventInfo() {
+	var post = {}
+	post.UpdataUid = nowloadDetialData;
+	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/SentChangeEventInfo",
+	  type: "Post",
+	  data: post,
+	  success: function(data) {
+		if (data.data == "1")
+			alert("送審成功.")
+		else
+			alert("送審失敗.")
+		
+		loadDetialData(nowloadDetialData);
 	  }
 	});
 }
