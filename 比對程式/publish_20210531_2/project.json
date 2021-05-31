@@ -1,0 +1,50 @@
+﻿{
+  // 輸出處理資訊的檔案名稱 (若指定全路徑, 字串需 Escape, 例 : "C:\\Path\\File.txt")
+  "LogFile": "output.txt",
+  // DB 連線字串
+  "ConnectionString": "Data Source=192.168.3.201;Initial Catalog=FCDB; uid=FCDB_app;pwd=12949916;Application Name=FcmConnection;",
+  // 批次處理 Source 的筆數.
+  "BatchCount": 100,
+  // Geometry 是否已經過 MakeVlid() 處理, 若先前已處理, 速度可以快三倍.
+  "IsGeometryValid": true,
+  // 是否額外用邊界過濾完全在內部
+  "FullContains": false,
+  // 來源 Table, 會針對每一筆 SID, 以自身的 Geometry 欄位和 Target 指定的 Geometry 做相交運算, 得到相交面積的比例.
+  "Source": {
+    "TableName": "FM_GEO_DATA",
+    "SID": "SID",
+    "Geometry": "SHAPE97",
+    "Envelope": {
+      "Xmin": "XMIN97",
+      "Xmax": "XMAX97",
+      "Ymin": "YMIN97",
+      "Ymax": "YMAX97"
+    }
+  },
+  // 運算目標 Table
+  "Target": {
+    "TableName": "FC_GEO_DATA",
+    "SID": "SID",
+    "Geometry": "SHAPE97",
+    "Envelope": {
+      "Xmin": "XMIN97",
+      "Xmax": "XMAX97",
+      "Ymin": "YMIN97",
+      "Ymax": "YMAX97"
+    }
+  },
+  // 輸出結果
+  "Connection": {
+    // Connection 結果的資料表, 必須存在
+    "TableName": "TEST_CONNECTION",
+    // Connection 輸出欄位, 以 "," 分隔, 每個欄位再以 "=" 分別指定 ColumnName=Value
+    // Value 帶有 Source 或 Target 者, 是 "Source" 或 "Target" 資料表的欄位, 其餘則為 SQL 內容, 若無指定 Value, 會以 null 替代
+    "Output": "SID=0, FM_SID=Source.SID, FC_SID=Target.SID, FC_ID=Target.FC_ID, FM_TYPE=Source.TYPE_ID, FM_ID=Source.FM_ID, FC_RATIO=RATIO, FC_CHANGE, UPDATETIME=getdate()",
+    // 值的呈現以原數值 "" 或百分比 "%", 
+    // KeepGreater 需搭配此設定
+    "Percentage": "",
+    // 佔比大於等於 value 才處理資料, 此值若不存在或空 : Ratio > 0, 此值若存在 : Ratio >= value, 值的範例 : "" 或 "0.02"
+    // 需搭配 Percentage 的設定
+    "KeepGreater": ""
+  }
+}
