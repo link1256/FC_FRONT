@@ -2,7 +2,7 @@
 var group_vector;
 var group_vectorCollection;
 
-function map(target,m,f){
+function map(target,m,f) {
 	
 	var projection = ol.proj.get('EPSG:3857');
 	var projectionExtent = projection.getExtent();
@@ -15,6 +15,7 @@ function map(target,m,f){
 	var eagle_map;
 	var overviewMapControl;
 	var mousePositionControl;
+	var vector;
 	
 	var FullScreen = new ol.control.FullScreen();
 	
@@ -139,7 +140,7 @@ function map(target,m,f){
 				wrapX: true,
 			  }),			  
 			}) 
-	
+		
 	for (var z = 0; z < 21; ++z) {
 	  // generate resolutions and matrixIds arrays for this WMTS
 	  resolutions[z] = size / Math.pow(2, z);
@@ -266,6 +267,8 @@ function map(target,m,f){
 	prjtwd97(target);
 
     }
+	
+	return mmap;
 }
 
 

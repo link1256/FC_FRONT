@@ -54,7 +54,7 @@
 			   <div>
 				   <label for="fm_type" class="form-label" style="width: 110px;">類型</label>
 				 </div> 
-		        <select id="fm_type" class="form-select" >		
+		        <select id="fm_type" class="form-select">		
                    <option value="1" selected>國有林事業區</option>
                    <option value="2">保安林</option>				   
 			    </select>
@@ -81,16 +81,8 @@
 				  <div>
 				   <label for="search_dist1" class="form-label" style="width: 110px;">林區管理處</label>
 				 </div>  
-				   <select id="search_dist1" class="form-select" >
-					  <option selected>請選擇</option>
-					  <option value="1">羅東</option>
-					  <option value="2">新竹</option>
-					  <option value="3">東勢</option>
-					  <option value="4">南投</option>
-					  <option value="5">嘉義</option>
-					  <option value="6">屏東</option>
-					  <option value="7">台東</option>
-					  <option value="8">花蓮</option>
+				   <select id="search_dist1" class="form-select" onchange="dist1change();">
+					  <option value="-1" selected>請選擇</option>
 					</select>
 				 </div>
 				 
@@ -100,7 +92,7 @@
 				   <label for="search_wkng1" class="form-label" style="width: 110px;">事業區</label>
 				 </div>  
 				   <select id="search_wkng1" class="form-select" >
-					  <option selected>不指定</option>
+					  <option value="-1" selected>不指定</option>
 					  <!-- //動態塞值 -->
 					</select>
 				 </div>
@@ -110,14 +102,14 @@
 				   <label for="search_warning1" class="form-label"  style="width: 110px;">修訂提示</label>
 				   </div>
 				   <select id="search_warning1" class="form-select"  >
-					  <option value="0" selected>不指定</option>
+					  <option value="-1" selected>不指定</option>
 					  <option value="1">待修訂</option>
 
 					</select>
 				</div>
 				
 				<div class="new_ver" style="text-align:center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2">查詢</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetChangeForestData(true);">查詢</button>
 				<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
 				</div>
 				
@@ -131,18 +123,10 @@
 			   <div class="row_text" style="margin:10px;">條件查詢</div>
 			   <div class="new_ver_flex">		   
 				  <div>
-				   <label for="search_dist2" class="form-label" style="width: 110px;">林區管理處</label>
+				   <label for="search_dist2" class="form-label" style="width: 110px;" >林區管理處</label>
 				 </div>  
-				   <select id="search_dist2" class="form-select" >
-					  <option selected>請選擇</option>
-					  <option value="1">羅東</option>
-					  <option value="2">新竹</option>
-					  <option value="3">東勢</option>
-					  <option value="4">南投</option>
-					  <option value="5">嘉義</option>
-					  <option value="6">屏東</option>
-					  <option value="7">台東</option>
-					  <option value="8">花蓮</option>
+				   <select id="search_dist2" class="form-select" onchange="dist2change();">
+					  <option value="-1" selected>請選擇</option>
 					</select>
 				 </div>
 	
@@ -151,23 +135,15 @@
 				   <label for="search_pfid" class="form-label" style="width: 110px;">保安林編號</label>
 				   </div>
 				    <select id="search_pfid" class="form-select" >
-					  <option value="0" selected>不指定</option>
-					  <option value="1001">1001</option>
-					  <option value="1002">1002</option>
-					  <option value="1003">1003</option>
-					  <option value="1004">1004</option>
-					  <option value="1005">1005</option>
-					  <option value="1006">1006</option>
-					  <option value="1007">1007</option>
-					  <option value="1008">1008</option>
+					  <option value="-1" selected>不指定</option>
 					</select>
 				   </div>
 	
 				<div class="new_ver_flex">
 				<div>
-				   <label for="ver_warning2" class="form-label"  style="width: 110px;">修訂提示</label>
+				   <label for="search_warning2" class="form-label"  style="width: 110px;">修訂提示</label>
 				   </div>
-				   <select id="ver_warning2" class="form-select"  >
+				   <select id="search_warning2" class="form-select"  >
 					  <option value="0" selected>不指定</option>
 					  <option value="1">待修訂</option>
 
@@ -175,7 +151,7 @@
 				</div>
 				
 				<div class="new_ver" style="text-align:center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2">查詢</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetChangeProtectionData(true);">查詢</button>
 				<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
 				</div>
 				
@@ -289,66 +265,10 @@
 				  <div class="fm_search_list main_scroll_mini">
 					<!-- <圖資列表資料> -->
 					<table class="table table-hover te_tab_list fm_type1" id="fm_search_list">
-						<tr id="t1f1" class="active">		  
-						   <td>新竹處</td>
-						   <td>大溪事業區</td>
-						   <td>1林班</td>
-						</tr>
 						
-						 <tr id="t1f2">
-						   <td>新竹處</td>
-						   <td>大溪事業區</td>
-						   <td>2林班</td>
-						</tr>
-						
-						 <tr id="t1f3">
-						   <td>新竹處</td>
-						   <td>大溪事業區</td>
-						   <td>3林班</td>
-						</tr>
-						
-						 <tr id="t1f4">
-						    <td>新竹處</td>
-						   <td>大溪事業區</td>
-						   <td>4林班</td>
-						</tr>
-						
-						<tr id="t1f5">
-						    <td>新竹處</td>
-						   <td>大溪事業區</td>
-						   <td>5林班</td>
-						</tr>
-						
-						<tr id="t1f6">
-						    <td>新竹處</td>
-						   <td>大溪事業區</td>
-						   <td>6林班</td>
-						</tr>
-						<tr id="t1f7">
-						    <td>新竹處</td>
-						   <td>大溪事業區</td>
-						   <td>7林班</td>
-						</tr>
 					</table>
 					
-					<table class="table table-hover te_tab_list fm_type2" id="fm_search_list">
-						<tr id="t2f1" class="active">		  
-						   <td>新竹處</td>
-						   <td>1123號</td>
-						   <td>水源涵養林</td>
-						</tr>
-						
-						 <tr id="t2f2">
-						   <td>新竹處</td>
-						   <td>1124號</td>
-						   <td>水源涵養林</td>
-						</tr>
-						
-						 <tr id="t2f3">
-						   <td>新竹處</td>
-						   <td>1125號</td>
-						   <td>水源涵養林</td>
-						</tr>
+					<table class="table table-hover te_tab_list fm_type2" id="fm_search_list2">
 											
 					</table>
 	            </div>
@@ -440,5 +360,6 @@
 <script>
 	 tab("te_manage");
      upload_result_owner();
+	 searchlistinit(); //初始化林區管理處選項
 </script>
 	

@@ -2,7 +2,7 @@
 function te_ini_page(i)
 {
 	$(".tab_body_content").empty();
-	$(".tab_body_content.tab"+i).load("./views/te_manage_tab"+i+".html"); 
+	$(".tab_body_content.tab" + i).load("./views/te_manage_tab"+i+".html"); 
 	
 	
 }
@@ -118,9 +118,9 @@ function loadDetialData(id){
 			//說明
 			$("#te_data_basic_note").val(data.note);
 			//最後編輯者
-			$("#te_data_basic_createuser").text(data.updateUserName);
+			$("#te_data_basic_updateuser").text(data.updateUserName);
 			//最後編輯時間
-			$("#te_data_basic_createtime").text(data.updateTime);
+			$("#te_data_basic_updatetime").text(data.updateTime);
 			//附件列表
 			var files = data.files;
 			$("#file_list").innerHTML = "";
@@ -319,17 +319,14 @@ function FM_detail(target,typeid,fmid)//圖資屬性資料
 	
 }
 
-	
-	
-
-
+var insertmap;
 function doCreate()//新增圖資
 {
 	$('#NewPageview').modal('show');
 	SelectType(1,1);
 	setTimeout(function(){
 	   $("#mmapmodal").after("<div id='mouse_position'></div>");
-       map('mmapmodal',false,false);
+       insertmap = map('mmapmodal',false,false);
 	   
 		},280);
     		
@@ -416,8 +413,8 @@ function SelectType(type,edit_type)//選擇圖資及編輯類型
   $("#fm_type,#fm_edit_type").on("change",function(){
     type1 = $("#fm_type").val();
     edit_type1 = $("#fm_edit_type").val();
+	
 	change(type1,edit_type1);
-
   });
   	
 }
@@ -552,4 +549,203 @@ function SentChangeEventInfo() {
 		loadDetialData(nowloadDetialData);
 	  }
 	});
+}
+//初始化林管去選項
+var WkngList = [];
+var PfidList = [];
+function searchlistinit() {
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetDistList",
+	  type: "Post",
+	  success: function(data) {
+		if (data.data) {
+			var d = data.data;
+			for (var i = 0; i < d.length; i++) {
+				$("#search_dist1").append('<option value="' + d[i].distId + '">' + d[i].distName + '</option>');
+				$("#search_dist2").append('<option value="' + d[i].distId + '">' + d[i].distName + '</option>');
+			}
+		}
+	  }
+	});
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetWkngList",
+	  type: "Post",
+	  success: function(data) {
+		if (data.data) {
+			WkngList = data.data;
+		}
+	  }
+	});
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetPfidList",
+	  type: "Post",
+	  success: function(data) {
+		if (data.data) {
+			PfidList = data.data;
+		}
+	  }
+	});
+}
+var ChangeForestData = [];
+function GetChangeForestData(IsSerarch) {
+	var post = {}
+
+	if (IsSerarch) {
+		var dist = $("#search_dist1").val();
+		var wkng = $("#search_wkng1").val();
+		var warning = $("#search_warning1").val();
+		
+		if (dist != "-1") post.Dist = dist;
+		if (wkng != "-1") post.Wid = wkng;
+		if (warning != "-1") post.Revision = warning;
+	}
+	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetChangeForestData",
+	  type: "Post",
+	  data: post,
+	  success: function(data) {
+		if (data.data) {
+			$("#fm_search_list").empty();
+			var d = data.data;
+			ChangeForestData = d;
+			for (var i = 0; i < d.length; i++) {
+				var text = '<tr id="' + d[i].sid + '" onclick="ChangeForestDataClick(this);">';
+				text += '<td>' + d[i].distName + '</td>';
+				text += '<td>' + d[i].weildName + '</td>';
+				text += '<td>' + d[i].cmpt + '林班</td>';
+				text += '</tr>';
+				$("#fm_search_list").append(text);
+			}
+		}
+	  }
+	});
+}
+var ForestDataDraw = null;
+function ChangeForestDataClick(that) {
+	
+	if (ForestDataDraw) {
+		insertmap.removeLayer(ForestDataDraw);
+		ForestDataDraw = null;
+	}
+	
+	$("#fm_search_list tr").removeClass("active");
+	$(that).addClass("active");
+	
+	var wkt = "";
+	for (var i = 0; i < ChangeForestData.length; i++) {
+		if (ChangeForestData[i].sid == that.id) {
+			wkt = ChangeForestData[i].wkt;
+			break;
+		}
+	}
+	
+	var format = new ol.format.WKT();
+	var feature = format.readFeature(wkt);
+	feature.getGeometry().transform('EPSG:4326', 'EPSG:3857');
+
+	var vector = new ol.layer.Vector({
+	  source: new ol.source.Vector({
+		features: [feature]
+	  })
+	});
+	
+	insertmap.addLayer(vector);
+	
+	var exetend = feature.getGeometry().getExtent()
+	insertmap.getView().fit(exetend)
+	
+	ForestDataDraw = vector;
+}
+var ChangeProtectionData = [];
+function GetChangeProtectionData(IsSerarch) {
+	var post = {}
+
+	if (IsSerarch) {
+		var dist = $("#search_dist2").val();
+		var pfid = $("#search_pfid").val();
+		var warning = $("#search_warning2").val();
+		
+		if (dist != "-1") post.Dist = dist;
+		if (pfid != "-1") post.Pfid = pfid;
+		if (warning != "-1") post.Revision = warning;
+	}
+	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetChangeProtectionData",
+	  type: "Post",
+	  data: post,
+	  success: function(data) {
+		if (data.data) {
+			$("#fm_search_list2").empty();
+			
+			var d = data.data;
+			ChangeProtectionData = d;
+			for (var i = 0; i < d.length; i++) {
+				var text = '<tr id="' + d[i].sid + '" onclick="ChangeProtectionDataClick(this);">';
+				text += '<td>' + d[i].distName + '</td>';
+				text += '<td>' + d[i].pfName + '</td>';
+				text += '<td>' + d[i].pfid + '林班</td>';
+				text += '</tr>';
+				$("#fm_search_list2").append(text);
+			}
+		}
+	  }
+	});
+}
+var ProtectionData = null;
+function ChangeProtectionDataClick(that) {
+	$("#fm_search_list2 tr").removeClass("active");
+	$(that).addClass("active");
+	
+	if (ProtectionData) {
+		insertmap.removeLayer(ProtectionData);
+		ProtectionData = null;
+	}
+	
+	$("#fm_search_list tr").removeClass("active");
+	$(that).addClass("active");
+	
+	var wkt = "";
+	for (var i = 0; i < ChangeProtectionData.length; i++) {
+		if (ChangeProtectionData[i].sid == that.id) {
+			wkt = ChangeProtectionData[i].wkt;
+			break;
+		}
+	}
+	
+	var format = new ol.format.WKT();
+	var feature = format.readFeature(wkt);
+	feature.getGeometry().transform('EPSG:4326', 'EPSG:3857');
+
+	var vector = new ol.layer.Vector({
+	  source: new ol.source.Vector({
+		features: [feature]
+	  })
+	});
+	
+	insertmap.addLayer(vector);
+	
+	var exetend = feature.getGeometry().getExtent()
+	insertmap.getView().fit(exetend)
+	
+	ForestDataDraw = vector;
+}
+function dist1change() {
+	$("#search_wkng1").empty();
+	$("#search_wkng1").append('<option value="-1">不限</option>');
+	var target = $("#search_dist1").val();
+	for (var i = 0; i < WkngList.length; i++) {
+		if (target == WkngList[i].distId)
+			$("#search_wkng1").append('<option value="' + WkngList[i].wid + '">' + WkngList[i].wkngName + '</option>');
+	}
+}
+function dist2change() {
+	$("#search_pfid").empty();
+	$("#search_pfid").append('<option value="-1">不限</option>');
+	var target = $("#search_dist2").val();
+	for (var i = 0; i < PfidList.length; i++) {
+		if (target == PfidList[i].distId)
+			$("#search_pfid").append('<option value="' + PfidList[i].pfid + '">' + PfidList[i].pfid + '</option>');
+	}
 }
