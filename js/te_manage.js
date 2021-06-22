@@ -212,7 +212,7 @@ function loadListData(fmtid){
 				
 }
 
-function newApplyDetail(){
+function newApplyDetail() {
 	//建立者
 	$("#te_data_basic_new_createuser").text(Logindata.name);
 	//建立時間		
@@ -221,102 +221,115 @@ function newApplyDetail(){
 	$("#te_data_basic_new_deptart").text(Logindata.deptName);
 }
 
-function FM_detail(target,typeid,fmid)//圖資屬性資料
+function FM_detail(target, typeid, fmid) //圖資屬性資料
 {
-	$("#"+target).empty();
-	//資料分成國有林事業區及保安林
-	if(typeid === "國有林事業區"){
-		var DIST="新竹林區管理處";
-		var WKNG="烏來";
-		var CMPT="3";
-		var AREA_HA='230.00';
-		var UPDATETIME = "2021/05/21";
-		let detail;
-		
-		detail = 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>林管處</div>"+
-		"<div class='detail_rows_value'>"+ DIST +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>事業區</div>"+
-		"<div class='detail_rows_value'>"+ WKNG +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>林班號</div>"+
-		"<div class='detail_rows_value'>"+ CMPT +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>面積(公頃)</div>"+
-		"<div class='detail_rows_value'>"+ AREA_HA +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>最後更新時間</div>"+
-		"<div class='detail_rows_value'>"+ UPDATETIME +"</div>"+
-		"</div>";
-				
-		
-		$("#"+target).append(detail);
-		
-	}
-	else if(typeid === "保安林"){
-		
-		var DIST="新竹林區管理處";
-		var PF_ID="1123";
-		var PFTYPE="水源涵養保安林";
-		var AREA_HA='230.00';
-		var EDITION=""
-		var UPDATETIME = "2021/05/21";
-		let detail;
-		
-		detail = 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>林管處</div>"+
-		"<div class='detail_rows_value'>"+ DIST +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>保安林編號</div>"+
-		"<div class='detail_rows_value'>"+ PF_ID +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>保安林類型</div>"+
-		"<div class='detail_rows_value'>"+ PFTYPE +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>面積(公頃)</div>"+
-		"<div class='detail_rows_value'>"+ AREA_HA +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>修訂資訊</div>"+
-		"<div class='detail_rows_value'>"+ EDITION +"</div>"+
-		"</div>";
-		
-		detail += 
-		"<div class='detail_rows'>"+
-		"<div class='detail_rows_name'>最後更新時間</div>"+
-		"<div class='detail_rows_value'>"+ UPDATETIME +"</div>"+
-		"</div>";
-				
-		
-		$("#list_detail").append(detail);
-	}
+	var post = {};
+	post.id = fmid;
+	post.type = typeid;
 	
+	$.ajax({
+	  url: ApiRequestURL + "ChangeEvent/GetChangeEditData",
+	  type: "Post",
+	  data: post,
+	  success: function(data) {
+		if (data.data) {
+			$("#" + target).empty();
+			
+			var d = data.data;
+			CreateDataDraw.target_data = d;
+			//資料分成國有林事業區及保安林
+			if (typeid === "國有林事業區") {
+				var DIST = d.distName;
+				var WKNG = d.weildName;
+				var CMPT = d.cmpt;
+				var AREA_HA = d.area_ha;
+				var UPDATETIME = d.updateTime;
+				let detail;
+				
+				detail = 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>林管處</div>"+
+				"<div class='detail_rows_value'>"+ DIST +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>事業區</div>"+
+				"<div class='detail_rows_value'>"+ WKNG +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>林班號</div>"+
+				"<div class='detail_rows_value'>"+ CMPT +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>面積(公頃)</div>"+
+				"<div class='detail_rows_value'>"+ AREA_HA +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>最後更新時間</div>"+
+				"<div class='detail_rows_value'>"+ UPDATETIME +"</div>"+
+				"</div>";
+						
+				
+				$("#" + target).append(detail);
+			}
+			else if (typeid === "保安林") {
+				var DIST = d.distName;
+				var PF_ID = d.pfid;
+				var PFTYPE = d.pfName;
+				var AREA_HA = d.area_ha;
+				var EDITION = d.edition;
+				var UPDATETIME = d.updateTime;
+				let detail;
+				
+				detail = 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>林管處</div>"+
+				"<div class='detail_rows_value'>"+ DIST +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>保安林編號</div>"+
+				"<div class='detail_rows_value'>"+ PF_ID +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>保安林類型</div>"+
+				"<div class='detail_rows_value'>"+ PFTYPE +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>面積(公頃)</div>"+
+				"<div class='detail_rows_value'>"+ AREA_HA +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>修訂資訊</div>"+
+				"<div class='detail_rows_value'>"+ EDITION +"</div>"+
+				"</div>";
+				
+				detail += 
+				"<div class='detail_rows'>"+
+				"<div class='detail_rows_name'>最後更新時間</div>"+
+				"<div class='detail_rows_value'>"+ UPDATETIME +"</div>"+
+				"</div>";
+						
+				
+				$("#" + target).append(detail);
+			}
+		}
+	  }
+	});
 }
 
 var insertmap;
@@ -324,33 +337,54 @@ function doCreate()//新增圖資
 {
 	$('#NewPageview').modal('show');
 	SelectType(1,1);
-	setTimeout(function(){
+	setTimeout(function() {
 	   $("#mmapmodal").after("<div id='mouse_position'></div>");
        insertmap = map('mmapmodal',false,false);
-	   
-		},280);
-    		
+	},280);
 }
 
-function doCreate_next(){
-	setTimeout(function(){
+function doCreate_next() {
+	setTimeout(function() {
 	   $("#mouse_position").remove();
-       doEdit();
-	   
-		},280)
+       doEdit(CreateDataDraw.target_data);
+	}, 280)
 }
 
-function doEdit(fmid)//編輯圖資
+var editmap;
+function doEdit(target)//編輯圖資
 {
 	$('#EditPageview').modal('show');
-	setTimeout(function(){
-	   let fmid = $(this).attr('id');
-	   let typeid = "國有林事業區";
-	   FM_detail('fm_data_edit',typeid,fmid);	
-		
-       map('mmapmodalEdit',true,false);
-	   
-		},280)
+	setTimeout(function() {
+		if (target) {
+			let fmid = target.sid;
+			let typeid = target.typeid;
+			FM_detail('fm_data_edit', typeid, fmid);
+			
+			// 初始化編輯的地圖
+			editmap = map("mmapmodalEdit", true, false);
+			if (CreateDataDraw) {
+				var geomTypeSelected = CreateDataDraw.getGeometry().getType();
+				//將資料庫內要做編輯的加到編輯地圖
+				if (geomTypeSelected == "Polygon") {
+					editmap.geomvector_source.addFeature(CreateDataDraw);
+					var exetend = CreateDataDraw.getGeometry().getExtent();
+					editmap.getView().fit(exetend);
+				}
+				else if (geomTypeSelected == "MultiPolygon") {
+					// MultiPolygon 情況拆分成Polygon處理
+					var polygons = CreateDataDraw.getGeometry().getPolygons();
+					
+					for (var i = 0; i < polygons.length; i++) {
+						var feature = new ol.Feature({
+						  geometry: polygons[i]
+						});
+						editmap.geomvector_source.addFeature(feature);
+					}
+					editmap.getView().fit(editmap.geomvector_source.getExtent());
+				}
+			}
+		}
+	},280);
 	
 }
 
@@ -361,68 +395,72 @@ function doRemove(fmid)//移除待異動圖資
 
 function SaveEdit_fm()//執行資料更新
 {
-	if(confirm("確定儲存目前編輯?")){
+	if(confirm("確定儲存目前編輯?")) {
 		$('#EditPageview').modal('hide');
 	}
-	
 }
 
 function AbandonEdit()//放棄儲存
 {
-    if(confirm("確定放棄目前編輯?")){
+    if(confirm("確定放棄目前編輯?")) {
 		$('#EditPageview').modal('hide');
 	}	
 }
 
 function SelectType(type,edit_type)//選擇圖資及編輯類型
 {
- 
-  function change(type1,edit_type1){
-	  if(edit_type1 == 3){
+  function change(type1,edit_type1) {
+	  if (edit_type1 == 3) {
 		  $(".CreateNew").hide();
-		   if(type1 == 1){
-		  $(".fm_new_type1").show();
-		  $(".fm_new_type2").hide();
-		 
+		  if (type1 == 1) {
+			  $(".fm_new_type1").show();
+			  $(".fm_new_type2").hide();
 		  }
-		  else{
+		  else {
 			  $(".fm_new_type2").show();
 			  $(".fm_new_type1").hide();
-		  }		
-          		  
+		  }
 	  }
-	  else{
-	  $(".CreateNew").show();
-	  $(".CreateNew_input").hide();  
-		  if(type1 == 1){
-		  $(".fm_search_type1").show();
-		  $(".fm_search_type2").hide();
-		  $(".fm_type1").show();
-		  $(".fm_type2").hide();
-	  }
-	  else{
-		  $(".fm_search_type2").show();
-		  $(".fm_search_type1").hide();
-		  $(".fm_type2").show();
-		  $(".fm_type1").hide();
-	  }			  
-	  }
+	  else {
+		  $(".CreateNew").show();
+		  $(".CreateNew_input").hide();  
+			  if(type1 == 1) {
+				  $(".fm_search_type1").show();
+				  $(".fm_search_type2").hide();
+				  $(".fm_type1").show();
+				  $(".fm_type2").hide();
+			  }
+			  else {
+				  $(".fm_search_type2").show();
+				  $(".fm_search_type1").hide();
+				  $(".fm_type2").show();
+				  $(".fm_type1").hide();
+			  }			  
+	}
   }
+  
   change(type,edit_type);
   
-  $("#fm_type,#fm_edit_type").on("change",function(){
+  $("#fm_type,#fm_edit_type").on("change",function() {
     type1 = $("#fm_type").val();
     edit_type1 = $("#fm_edit_type").val();
 	
 	change(type1,edit_type1);
   });
-  	
 }
 
-function resetModal(){
+function resetModal() {
    $("#fm_type").prop('selectedIndex',0);
    $("#fm_edit_type").prop('selectedIndex',0);
    $("#mouse_position").remove();
+   $("#import_reference_features").val("");
+   $("#import_replace_features").val("");
+   $("#search_dist1").val(-1);
+   dist1change();
+   $("#search_dist2").val(-1);
+   dist2change();
+   $("#fm_search_list").html("");
+   $("#fm_search_list2").html("");
 }
 //新增異動資料
 function InsertNewChangeEvent()
@@ -473,9 +511,9 @@ function GetContainerTable() {
 		var output = document.getElementById("te_tab1_list");
 		output.innerHTML = htmltext;
 		
-		setTimeout(function(){
+		setTimeout(function() {
 			if (data.length > 0) $("#" + data[0].uid).click();
-		},50);
+		}, 50);
 	  }
 	});
 }
@@ -526,8 +564,6 @@ function DeleteChangeEventInfo() {
 			alert("刪除成功.")
 		else
 			alert("刪除失敗.")
-		
-		// loadDetialData(nowloadDetialData);
 	  }
 	});
 }
@@ -621,45 +657,9 @@ function GetChangeForestData(IsSerarch) {
 	  }
 	});
 }
-var ForestDataDraw = null;
-function ChangeForestDataClick(that) {
-	
-	if (ForestDataDraw) {
-		insertmap.removeLayer(ForestDataDraw);
-		ForestDataDraw = null;
-	}
-	
-	$("#fm_search_list tr").removeClass("active");
-	$(that).addClass("active");
-	
-	var wkt = "";
-	for (var i = 0; i < ChangeForestData.length; i++) {
-		if (ChangeForestData[i].sid == that.id) {
-			wkt = ChangeForestData[i].wkt;
-			break;
-		}
-	}
-	
-	var format = new ol.format.WKT();
-	var feature = format.readFeature(wkt);
-	feature.getGeometry().transform('EPSG:4326', 'EPSG:3857');
-
-	var vector = new ol.layer.Vector({
-	  source: new ol.source.Vector({
-		features: [feature]
-	  })
-	});
-	
-	insertmap.addLayer(vector);
-	
-	var exetend = feature.getGeometry().getExtent()
-	insertmap.getView().fit(exetend)
-	
-	ForestDataDraw = vector;
-}
 var ChangeProtectionData = [];
 function GetChangeProtectionData(IsSerarch) {
-	var post = {}
+	var post = {};
 
 	if (IsSerarch) {
 		var dist = $("#search_dist2").val();
@@ -693,43 +693,74 @@ function GetChangeProtectionData(IsSerarch) {
 	  }
 	});
 }
-var ProtectionData = null;
-function ChangeProtectionDataClick(that) {
-	$("#fm_search_list2 tr").removeClass("active");
-	$(that).addClass("active");
+var CreateDataDraw = null;
+function ChangeForestDataClick(that) {
 	
-	if (ProtectionData) {
-		insertmap.removeLayer(ProtectionData);
-		ProtectionData = null;
+	if (CreateDataDraw) {
+		insertmap.geomvector_source.clear();
+		CreateDataDraw = null;
 	}
 	
 	$("#fm_search_list tr").removeClass("active");
 	$(that).addClass("active");
 	
 	var wkt = "";
-	for (var i = 0; i < ChangeProtectionData.length; i++) {
-		if (ChangeProtectionData[i].sid == that.id) {
-			wkt = ChangeProtectionData[i].wkt;
+	var target = null;
+	for (var i = 0; i < ChangeForestData.length; i++) {
+		if (ChangeForestData[i].sid == that.id) {
+			wkt = ChangeForestData[i].wkt;
+			target = ChangeForestData[i];
 			break;
 		}
 	}
 	
+	target.typeid = "國有林事業區";
 	var format = new ol.format.WKT();
 	var feature = format.readFeature(wkt);
-	feature.getGeometry().transform('EPSG:4326', 'EPSG:3857');
-
-	var vector = new ol.layer.Vector({
-	  source: new ol.source.Vector({
-		features: [feature]
-	  })
-	});
+	feature.getGeometry().transform("EPSG:4326", "EPSG:3857");
+	feature.target_data = target;
 	
-	insertmap.addLayer(vector);
+	insertmap.geomvector_source.addFeature(feature);
 	
-	var exetend = feature.getGeometry().getExtent()
-	insertmap.getView().fit(exetend)
+	var exetend = feature.getGeometry().getExtent();
+	insertmap.getView().fit(exetend);
 	
-	ForestDataDraw = vector;
+	CreateDataDraw = feature;
+}
+function ChangeProtectionDataClick(that) {
+	$("#fm_search_list2 tr").removeClass("active");
+	$(that).addClass("active");
+	
+	if (CreateDataDraw) {
+		insertmap.geomvector_source.clear();
+		CreateDataDraw = null;
+	}
+	
+	$("#fm_search_list tr").removeClass("active");
+	$(that).addClass("active");
+	
+	var target = null;
+	var wkt = "";
+	for (var i = 0; i < ChangeProtectionData.length; i++) {
+		if (ChangeProtectionData[i].sid == that.id) {
+			wkt = ChangeProtectionData[i].wkt;
+			target = ChangeProtectionData[i];
+			break;
+		}
+	}
+	
+	target.typeid = "保安林";
+	var format = new ol.format.WKT();
+	var feature = format.readFeature(wkt);
+	feature.getGeometry().transform("EPSG:4326", "EPSG:3857");
+	feature.target_data = target;
+	
+	insertmap.geomvector_source.addFeature(feature);
+	
+	var exetend = feature.getGeometry().getExtent();
+	insertmap.getView().fit(exetend);
+	
+	CreateDataDraw = feature;
 }
 function dist1change() {
 	$("#search_wkng1").empty();
@@ -747,5 +778,361 @@ function dist2change() {
 	for (var i = 0; i < PfidList.length; i++) {
 		if (target == PfidList[i].distId)
 			$("#search_pfid").append('<option value="' + PfidList[i].pfid + '">' + PfidList[i].pfid + '</option>');
+	}
+}
+// 讀取檔案(SHP/KML)
+function readimportfile(file, target, edituse) {
+	var ShpReg = /\.(shp)$/i;
+	var KmlReg = /\.(kml)$/i;
+	
+	var FileTag = true;
+	var fileType = file.name;
+	
+	if (ShpReg.test(fileType)) FileTag = false;
+	if (KmlReg.test(fileType)) FileTag = false;
+	
+	if (FileTag) {
+		alert("檔案格式有誤!只接受 shp,kml 格式");
+		return false;
+	}
+	
+	var filesExtent = file.name.split(".").pop();
+
+	var reader = new FileReader();
+	if (typeof FileReader === "undefined") {
+		alert("此瀏覽器不支援此功能.");
+		file.setAttribute("disabled", "disabled");
+		return false;
+	}
+	
+	if (filesExtent === "shp")
+		reader.readAsArrayBuffer(file);
+	else reader.readAsText(file);
+	
+	reader.onload = function(f) {
+		var parserdata;
+		var inputjson;
+		var parser;
+		var tempfeature;
+		
+		switch (filesExtent) {
+			case "kml":
+				parser = new DOMParser();
+				parserdata = parser.parseFromString(this.result, "text/xml");
+				inputjson = toGeoJSON.kml(parserdata);
+				break;
+			case "shp":
+				var tempresult = [];
+				inputjson = {
+					type: "FeatureCollection",
+					features: []
+				};
+				tempfeature = shp.parseShp(this.result);
+				for (let i = 0; i < tempfeature.length; i++) {
+					tempresult.push({
+						type: "Feature",
+						geometry: {
+							type: tempfeature[i].type,
+							coordinates: tempfeature[i].coordinates
+						}
+					});
+				}
+				inputjson.features = tempresult;
+				break;
+			default:
+				alert("上傳類型" + filesExtent + "無支援");
+				return false;
+		};
+		var json = inputjson;
+		var format = new ol.format.GeoJSON();
+		
+		// 預設匯入都是用TWD97座標處理
+		var feature = format.readFeatures(json, {
+			dataProjection: "EPSG:3826",
+			featureProjection: "EPSG:3857"
+		});
+		
+		if (!edituse) //正常使用
+			target.addFeatures(feature);
+		else //需要分析MultiPolygon的時候
+		{
+			var tf = feature[0];
+			var geomTypeSelected = tf.getGeometry().getType();
+			//將資料庫內要做編輯的加到編輯地圖
+			if (geomTypeSelected == "Polygon") {
+				target.addFeature(tf);
+				var exetend = tf.getGeometry().getExtent();
+				editmap.getView().fit(exetend);
+			}
+			else if (geomTypeSelected == "MultiPolygon") {
+				// MultiPolygon 情況拆分成Polygon處理
+				var polygons = tf.getGeometry().getPolygons();
+				
+				for (var i = 0; i < polygons.length; i++) {
+					var f = new ol.Feature({
+					  geometry: polygons[i]
+					});
+					target.addFeature(f);
+				}
+				editmap.getView().fit(target.getExtent());
+			}
+		}
+		$("#import_reference_features").val("");
+		$("#import_replace_features").val("");
+	};
+}
+// 匯入參考圖資
+var ReferenceIdx = 1;
+var ReferenceLayers = [];
+function ImportReferenceFeatures(that) {
+	if (that.files.length == 0) return;
+	
+	var file = that.files[0];
+	
+	var vsource = new ol.source.Vector({
+		features: []
+	});
+	var vlayer = new ol.layer.Vector({
+	  source: vsource,
+	  style: new ol.style.Style({
+		fill: new ol.style.Fill({
+			color: "rgba(255, 255, 255, 0.5)",
+		}),
+		stroke: new ol.style.Stroke({
+			color: getRandomColor(),
+			width: 2,
+		}),
+	  }),
+	});
+	
+	editmap.group_importCollection.push(vlayer);
+	readimportfile(file, vsource);
+	
+	ReferenceLayers.push(vlayer);
+	vlayer.ReferenceIdx = ReferenceIdx;
+	
+	var items = "<tr id='ReferenceLayer_" + ReferenceIdx + "' onclick='ReferenceLayerZoom(" + ReferenceIdx + ")'>";
+	items += "<td><input type='checkbox' onchange='ReferenceLayerVisible(" + ReferenceIdx + ", this);' checked></td>";
+	items += "<td><button onclick='ReferenceLayerDelete(" + ReferenceIdx + ", this);'>刪除</button></td>";
+	items += "<td>參考圖層" + (ReferenceIdx++) + "</td>";
+	items += "</tr>";
+
+	$("#ExportReferenceMap").append(items);
+}
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+// 取得目標layers
+function GetReferenceLayer(idx) {
+	if (!ReferenceLayers) return null;
+	
+	for (var i = 0; i < ReferenceLayers.length; i++) {
+		if (ReferenceLayers[i].ReferenceIdx == idx)
+			return ReferenceLayers[i];
+	}
+	return null;
+}
+// 顯不顯示參考圖層
+function ReferenceLayerVisible(idx, that) {
+	var target = GetReferenceLayer(idx);
+	
+	if (that.checked)
+		target.setVisible(true);
+	else
+		target.setVisible(false);
+}
+// 刪除參考圖層
+function ReferenceLayerDelete(idx) {
+	var n = -1;
+	for (var i = 0; i < ReferenceLayers.length; i++) {
+		if (ReferenceLayers[i].ReferenceIdx == idx) {
+			n = i;
+			break;
+		}
+	}
+	editmap.group_import.getLayers().array_.splice(n, 1);
+	ReferenceLayers.splice(n, 1);
+	$("#ReferenceLayer_" + idx).remove();
+	editmap.group_import.setVisible(false);
+	editmap.group_import.setVisible(true);
+}
+// 點選縮放至該圖層
+function ReferenceLayerZoom(idx) {
+	var target = GetReferenceLayer(idx);
+}
+// 匯入取代圖資
+function ImportReplaceFeatures(that) {
+	if (that.files.length == 0) return;
+	
+	var file = that.files[0];
+	
+	editmap.geomvector_source.clear();
+	readimportfile(file, editmap.geomvector_source, true);
+}
+// 匯出目前圖資
+function ExportNowFeature(type) {
+	if (!editmap) return;
+	
+	//判斷目前的圖形個數是否要轉成MultiPolygon
+	var features = editmap.geomvector_source.getFeatures();
+	var format = new ol.format.WKT();
+	var wkt = "";
+	if (features.length == 1) // 單一Polygon
+	{
+		// 讀取WKT
+		wkt = format.writeFeature(features[0], {
+			dataProjection: "EPSG:3857",
+			featureProjection: "EPSG:3826"
+		});
+	}
+	else if (features.length > 1) //多個Polygon需組成MultiPolygon
+	{
+		var polygons = [];
+		for (var i = 0; i < features.length; i++) {
+			polygons.push(features[i].getGeometry());
+		}
+		var mploygons = new ol.geom.MultiPolygon(polygons);
+		wkt = format.writeGeometry(mploygons, {
+			dataProjection: "EPSG:3857",
+			featureProjection: "EPSG:3826"
+		});
+	}
+	else return;
+	
+	if (type == "SHP") {
+		var post = {};
+		post.wkt = wkt;
+		
+		$.ajax({
+			url: ApiRequestURL + "ChangeEvent/ExportTargetShpFile",
+			type: "Post",
+			data: post,
+			success: function(data) {
+				if (data.data) {
+					var guid = data.data;
+					var a = document.createElement("a");
+					a.href = DonwLoadExportURL + guid + ".zip";
+					a.click();
+					document.remove(a);
+				}
+			}
+		});
+	}
+}
+//重置事件
+function ResetChangeFeatureEvent(type) {
+	if (type != "add" && editmap.addmodify) {
+		editmap.addmodify.setActive(false);
+		editmap.isadd = false;
+	}
+	if (type != "edit" && editmap.editmodify) {
+		editmap.editmodify.setActive(false);
+		editmap.isedit = false;
+	}
+	if (type != "delete" && editmap.delselect) {
+		editmap.delselect.getFeatures().clear();
+		editmap.delselect.setActive(false);
+		editmap.isdel = false;
+		$("#DelChangeFeatureEventBtn").hide();
+	}
+	if (type != "hollow" && editmap.holemodify) {
+		editmap.holemodify.setActive(false);
+		editmap.ishole = false;
+	}
+}
+//新增異動圖徵
+function AddChangeFeature() {
+	if (!editmap) return;
+	ResetChangeFeatureEvent("add");
+	if (!editmap.addmodify) {
+		var polygonInteraction = new ol.interaction.Draw({
+			type: 'Polygon',
+			source: editmap.geomvector_source,
+		})
+		polygonInteraction.setActive(true);
+		polygonInteraction.on("drawend", onDrawend);
+		editmap.addInteraction(polygonInteraction);
+		editmap.addmodify = polygonInteraction;
+		editmap.isadd = true;
+	} else if (!editmap.isadd) {
+		editmap.addmodify.setActive(true);
+		editmap.isadd = true;
+	} else {
+		editmap.addmodify.setActive(false);
+		editmap.isadd = false;
+	}
+	
+	function onDrawend(e) {
+		
+	}
+}
+//編輯異動圖徵
+function EditChangeFeature(that) {
+	if (!editmap) return;
+	ResetChangeFeatureEvent("edit");
+	if (!editmap.editmodify) {
+		var modify = new ol.interaction.Modify({source: editmap.geomvector_source});
+		editmap.addInteraction(modify);
+		editmap.editmodify = modify;
+		editmap.isedit = true;
+	} else if (!editmap.isedit) {
+		editmap.editmodify.setActive(true);
+		editmap.isedit = true;
+	} else {
+		editmap.editmodify.setActive(false);
+		editmap.isedit = false;
+	}
+}
+//刪除異動圖徵
+function DeleteChangeFeature(that) {
+	if (!editmap) return;
+	ResetChangeFeatureEvent("delete");
+	if (!editmap.delselect) {
+		var modify = new ol.interaction.Select({
+		  condition: ol.events.condition.click,
+		});
+		editmap.addInteraction(modify);
+		editmap.delselect = modify;
+		editmap.isdel = true;
+		$("#DelChangeFeatureEventBtn").show();
+	} else if (!editmap.isdel) {
+		editmap.delselect.setActive(true);
+		editmap.isdel = true;
+		$("#DelChangeFeatureEventBtn").show();
+	} else {
+		editmap.delselect.getFeatures().clear();
+		editmap.delselect.setActive(false);
+		editmap.isdel = false;
+		$("#DelChangeFeatureEventBtn").hide();
+	}
+}
+function DeleteSelectFeature() {
+	if (!editmap || !editmap.delselect) return;
+	
+	var target = editmap.delselect.getFeatures();
+	if (target.array_.length == 1) {
+		editmap.geomvector_source.removeFeature(target.array_[0]);
+	}
+}
+//挖空異動圖徵
+function HollowChangeFeature(that) {
+	if (!editmap) return;
+	ResetChangeFeatureEvent("hollow");
+	if (!editmap.holemodify) {
+		var modify = new ol.interaction.DrawHole({ layers: [ editmap.geomvector_layer ] });
+		editmap.addInteraction(modify);
+		editmap.holemodify = modify;
+		editmap.ishole = true;
+	} else if (!editmap.ishole) {
+		editmap.holemodify.setActive(true);
+		editmap.ishole = true;
+	} else {
+		editmap.holemodify.setActive(false);
+		editmap.ishole = false;
 	}
 }

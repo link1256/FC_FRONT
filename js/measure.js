@@ -4,11 +4,10 @@ var measureTooltipElement;
 var helpMsg = null;
 
 
-function measure(mmap,t){
+function measure(mmap,t) {
  
 		  
 //量測功能
-		
 var source = new ol.source.Vector();
 var vector = new ol.layer.Vector({
    source: source,
@@ -183,7 +182,7 @@ function createMeasureTooltip() {
 }
 
 //group_vectorCollection.getArray().push(vector);
-group_vectorCollection.push(vector);
+mmap.group_vectorCollection.push(vector);
 addInteraction();	
 }
 
@@ -211,22 +210,22 @@ addInteraction();
 		var mouseposition;
 		
 			
-		$("#"+map).on('pointermove', function(evt){
-        mouseposition = $(".custom-mouse-position").text();
-		$(".twd97").remove();
-        $(".custom-mouse-position").show();		
-		$(".custom-mouse-position").after("<div class='twd97'></div>");	
-		
-		var mouseposition_text = mouseposition.split(",");
-	    var mX = parseFloat(mouseposition_text[0]);
-	    var mY = parseFloat(mouseposition_text[1]);
-		
-		var newprj3826 = proj4(EPSG4326, EPSG3826, [mX,mY]);
-		var X97 = newprj3826[0].toString().substring(0,9);
-		var Y97 = newprj3826[1].toString().substring(0,10);
-	    // var newprj3825 = proj4(EPSG4326, EPSG3825, [mX, mY]);
-		
-		$(".twd97").text(X97+", "+Y97);
+		$("#"+map).on('pointermove', function(evt) {
+			mouseposition = $(".custom-mouse-position").text();
+			$(".twd97").remove();
+			$(".custom-mouse-position").show();		
+			$(".custom-mouse-position").after("<div class='twd97'></div>");	
+			
+			var mouseposition_text = mouseposition.split(",");
+			var mX = parseFloat(mouseposition_text[0]);
+			var mY = parseFloat(mouseposition_text[1]);
+			
+			var newprj3826 = proj4(EPSG4326, EPSG3826, [mX,mY]);
+			var X97 = newprj3826[0].toString().substring(0,9);
+			var Y97 = newprj3826[1].toString().substring(0,10);
+			// var newprj3825 = proj4(EPSG4326, EPSG3825, [mX, mY]);
+			
+			$(".twd97").text(X97+", "+Y97);
 		});
 		
 		$("#"+map).on('pointerout',function(){

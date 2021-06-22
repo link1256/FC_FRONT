@@ -322,26 +322,49 @@
 				<div class="content_row_nogap2" id="map_overlay">
 				圖層套疊
 				</div>
+				<div class="content_row_nogap2">
+					<div>
+						介接參考圖層
+					</div>
+					<div class="content_table">
+						<table id="">
+						</table>
+					</div>
+				</div>
+				<div class="content_row_nogap2">
+					<div>
+						匯入參考圖層
+					</div>
+					<div class="content_table">
+						<table id="ExportReferenceMap">
+						</table>
+					</div>
+				</div>
 			</div>
 			<div class="map_area">
 			     <div class="map_edit_hint" id="map_edit_depend">
-				 <button>匯入參考圖資</button>
+				 <input type="file" id="import_reference_features" accept=".shp,.kml" style="display: none;" onchange="ImportReferenceFeatures(this);" />
+				 <button onclick="$('#import_reference_features').click();">匯入參考圖資</button>
 				 
 				 </div>
 				 
 			     <div id="mmapmodalEdit"></div> 
-                 
-				 <button>編輯區域</button>
 				 
-				  <button>新增區域</button>
-				  
-				   <button>刪除區域</button>
-				   
+				<button onclick="EditChangeFeature(this);">編輯區域</button>
+
+				<button onclick="AddChangeFeature(this);">新增區域</button>
+
+				<button onclick="DeleteChangeFeature(this);">刪除區域</button>
+				<button id="DelChangeFeatureEventBtn" onclick="DeleteSelectFeature();" style="display: none;">刪除選擇的區域</button>
 				 
-				 <button>匯出目前圖資</button>
-				 <button>匯入取代圖資</button>
+				<button onclick="HollowChangeFeature(this);">挖空區域</button>
 				 
-				 </div>				 
+				 <button onclick="ExportNowFeature('SHP');">匯出目前圖資</button>
+				 
+				 <input type="file" id="import_replace_features" accept=".shp,.kml" style="display: none;" onchange="ImportReplaceFeatures(this);" />
+				 <button onclick="$('#import_replace_features').click();">匯入取代圖資</button>
+				 
+				 </div>
 			</div>
 			
 		  </div>

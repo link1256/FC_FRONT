@@ -652,6 +652,16 @@ thead{
 	border-radius: 10px;
 }
 
+.content_table {
+	border-style: solid;
+	border-color: #4574C4;
+	border-width: 1px;
+	border-radius: 10px;
+	min-height: 150px;
+	max-height: 150px;
+	overflow: auto;
+}
+
 .result_list{
 	overflow-y: scroll;
     height:calc(100% - 70px);
