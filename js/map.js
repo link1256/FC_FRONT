@@ -47,8 +47,8 @@ function map(target, m, f) {
 		});
 		
 		//測量工具按鈕-面
-		var button_tool_Polygon = document.createElement('button');
-		button_tool_Polygon.innerHTML = 'A';
+		var button_tool_Polygon = document.createElement("button");
+		button_tool_Polygon.innerHTML = "A";
 		button_tool_Polygon.setAttribute("title","面積量測工具");
 
 		var element3 = document.createElement('div');
@@ -56,24 +56,22 @@ function map(target, m, f) {
 		element3.appendChild(button_tool_Polygon);
 		
 		var ToolControl2 =  new ol.control.Control({
-		element: element3}
-		);
+			element: element3
+		});
 		
 		//測量工具按鈕-清除
-		var button_tool_Clear = document.createElement('button');
-		button_tool_Clear.innerHTML = 'C';
+		var button_tool_Clear = document.createElement("button");
+		button_tool_Clear.innerHTML = "C";
 		button_tool_Clear.setAttribute("title","清除測量");
 
-		var element4 = document.createElement('div');
-		element4.className = 'button_tool_Clear ol-unselectable ol-control';
+		var element4 = document.createElement("div");
+		element4.className = "button_tool_Clear ol-unselectable ol-control";
 		element4.appendChild(button_tool_Clear);
 		
-		var ToolControl3 =  new ol.control.Control({
-		element: element4}
-		);
+		var ToolControl3 =  new ol.control.Control({element: element4});
 	}
   
-  $("#"+target).empty();
+  $("#" + target).empty();
   //底圖圖層
    base_emap = new ol.layer.Tile({
 			  opacity: 1,
@@ -114,7 +112,7 @@ function map(target, m, f) {
 			  resolutions: resolutions,
 			  matrixIds: matrixIds,
 			}),
-			layer:'PHOTO2',
+			layer: 'PHOTO2',
 			style: 'default',
 			wrapX: true,
 		  }),			  

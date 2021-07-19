@@ -1051,9 +1051,9 @@ function AddChangeFeature() {
 	ResetChangeFeatureEvent("add");
 	if (!editmap.addmodify) {
 		var polygonInteraction = new ol.interaction.Draw({
-			type: 'Polygon',
+			type: "Polygon",
 			source: editmap.geomvector_source,
-		})
+		});
 		polygonInteraction.setActive(true);
 		polygonInteraction.on("drawend", onDrawend);
 		editmap.addInteraction(polygonInteraction);

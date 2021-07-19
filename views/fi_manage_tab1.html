@@ -3,30 +3,31 @@
 <div class="search_div">
 	<div class="content_row_search">
 	<div class="row_text">篩選條件</div>
+
+	
 	<div class="new_ver_flex">
-	<div>
-	   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
-	 </div>  
-	   <select id="ver_year0" class="form-select" >
-		  <option selected>不指定</option>
-		  <option value="110">110</option>
-		  <option value="111">111</option>
-		  <option value="112">112</option>
+		<div>
+			<label for="search_dist" class="form-label" style="width: 110px;">林區管理處</label>
+		</div>
+        <select id="search_dist" class="form-select" onchange="tab1_search_dist_change();">
+			<option value="-1" selected>不指定</option>
 		</select>
 	</div>
-	
-		<div class="new_ver_flex">
-		<div>
-	   <label for="search_id" class="form-label" style="width: 110px;">識別碼</label>
-	   </div>
-	   <input id="search_id" type="text" class="form-control" />
-	</div>
-	
 	<div class="new_ver_flex">
-	<div>
-	   <label for="search_title" class="form-label"  style="width: 110px;">標題關鍵字</label>
-	    </div>
-	   <input id="search_title" type="text" class="form-control" />
+		<div>
+		   <label for="search_wkng" class="form-label"  style="width: 110px;">事業區</label>
+		</div>
+		<select id="search_wkng" class="form-select" onchange="tab1_search_wkng_change();">
+			<option value="-1" selected>不指定</option>
+		</select>
+	</div>
+	<div class="new_ver_flex">
+		<div>
+			<label for="search_cmpt" class="form-label"  style="width: 110px;">林班</label>
+		</div>
+		<select id="search_cmpt" class="form-select">
+			  <option value="-1" selected>不指定</option>
+		</select>
 	</div>
 	
 	<div class="new_ver_flex">
@@ -34,66 +35,88 @@
 	   <label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
 	   </div>
 	   <select id="search_stat" class="form-select"  >
-		  <option selected>不指定</option>
-		  <option value="0">未送審</option>
-		  <option value="1">已送審</option>
-		  <option value="2">已完成</option>
+		  <option value="-1" selected>不指定</option>
+		  <option value="1">待異動</option>
+		 
 		</select>
 	</div>
 	
 	<div class="new_ver" style="text-align:center;">
-	<button type="button" class="btn btn-success search_submit custom_bt2">查詢</button>
+	<button type="button" class="btn btn-success search_submit custom_bt2" onclick="tab1_go_search();">查詢</button>
 	<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
 	</div>
 
 	</div>
 
 
-<div class="content_row_search" style="height: calc(100vh - 510px)">
-	<div class="row_text">圖資列表</div>
+<div class="content_row_search" style="height: calc(100vh - 498px)">
+	<div class="row_text">結果列表</div>
 	<div class="result_list main_scroll_mini">
-	<!-- <異動列表資料> -->
+	<!-- <圖資列表> -->
 	<table class="table table-hover te_tab_list" id="te_tab1_list">
-	    <tr  id="item1" class="active">		  
-		   <td>1100510001</td>
-		   <td>測試用異動1</td>
-		</tr>
-		
-		 <tr id="item2">
-		   <td>1100510002</td>
-		   <td>測試用異動2</td>
-		</tr>
-		
-		 <tr id="item3">
-		   <td>1100510003</td>
-		   <td>測試用異動3</td>
-		</tr>
-		
-		 <tr id="item4">
-		   <td>1100510004</td>
-		   <td>測試用異動4</td>
-		</tr>
-		
-		<tr id="item5">
-		   <td>1100510005</td>
-		   <td>測試用異動5</td>
-		</tr>
-		
-		<tr id="item6">
-		   <td>1100510006</td>
-		   <td>測試用異動6</td>
-		</tr>
     </table>
-		<!-- <異動列表資料> -->
+		<!-- <圖資列表> -->
 	</div>
 
 	
 </div>
 </div>
 
+<div class="fi_detail_data">
+<div class="detail_data_map">
+<!-- <圖資> -->
+<div class="map_detail">
+<div id="mmap"></div>
+
+</div>
+<!-- <圖資> -->
+	<div style="width: 30%;">
+	<!-- <功能區-權限判斷> -->
+	<div class="fi_manage_area">
+	   <div>
+		 <button type="button" class="btn btn-secondary fi_button">下載</button>
+	   </div>
+	   <div class="fi_pro">
+		 <button type="button" id="fi_edit_bt" class="btn btn-warning fi_button">編輯</button>
+	   </div>
+	   <div class="fi_edit">
+		 
+	   </div>
+	</div>
+	<!-- <功能區-權限判斷> -->
+
+	<!-- <細項> -->
+	<div class="data_detail">
+	<div class="row_text">資料內容</div>
+	<div id="list_detail" class="main_scroll_mini">
+		<!-- //塞入圖資基本資料 -->
+		<div>未選取</div>
+		</div>
+	</div>
+	<!-- <細項> -->
+
+	</div>
+</div>
+
+
+<!-- <地籍> -->
+<div class="fc_detail">
+<div class="row_text">關聯地籍列表</div>
+<div id="fc_detail_list"></div>
+</div>
+<!-- <地籍> -->
+
+</div>
+
 </div>	
 <!-- 頁面區 -->
 	<script>
-
+     // fi_tab1.map = map("mmap", true, false);
+	 // optionactive("te_tab1_list");
+	 // list_click("te_tab1_list", "國有林事業區");
+	 // $("#item1").click();
+	 fi_tab1_init();
+	 fi_edit();
+	 
     </script>
 	

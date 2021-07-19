@@ -91,7 +91,17 @@ function tab(p){
 			     {
 				  fi_ini_page(i);
 				  
-			     }					 
+			     }			
+                   else if(p === "api_manage")
+			     {
+				  api_ini_page(i);
+				  
+			     }
+                   else if(p === "sys_manage")
+			     {
+				  sys_ini_page(i);
+				  
+			     }						 
 			  }
 			  
 		  }
