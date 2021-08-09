@@ -80,6 +80,7 @@ function fi_tab1_init() {
 	fi_tab1.map = map("mmap", true, false);
 	optionactive("te_tab1_list");
 	list_click("te_tab1_list", "國有林事業區");
+	big_window();
 	
 	// 圖徵Highlight初始化
 	var SelectSingleClick = new ol.interaction.Select();
@@ -120,7 +121,7 @@ function fi_tab2_init() {
 	fi_tab2.map = map("mmap", true, false);
 	optionactive("te_tab2_list");
 	list_click("te_tab2_list", "保安林");
-	
+	big_window();
 	// 圖徵Highlight初始化
 	var SelectSingleClick = new ol.interaction.Select();
 	SelectSingleClick.on("select", fi_fc_feature_click);
@@ -163,7 +164,7 @@ function fi_tab3_init() {
 	fi_tab3.map = map("mmap", true, false);
 	optionactive("te_tab3_list");
 	list_click("te_tab3_list", "森林遊樂區");
-	
+	big_window();
 	// 圖徵Highlight初始化
 	var SelectSingleClick = new ol.interaction.Select();
 	SelectSingleClick.on("select", fi_fc_feature_click);
@@ -195,7 +196,7 @@ function fi_tab4_init() {
 	fi_tab4.map = map("mmap", true, false);
 	optionactive("te_tab4_list");
 	list_click("te_tab4_list", "實驗林");
-	
+	big_window();
 	// 圖徵Highlight初始化
 	var SelectSingleClick = new ol.interaction.Select();
 	SelectSingleClick.on("select", fi_fc_feature_click);
@@ -309,11 +310,13 @@ function tab1_go_search() {
 	if (wkng != "-1") post.Wid = wkng;
 	if (cmpt != "-1") post.Cmpt = cmpt;
 	
+	WaitingShow(true);
 	$.ajax({
 	  url: ApiRequestURL + "ProjectManagement/GetForestData",
 	  type: "Post",
 	  data: post,
 	  success: function(data) {
+		setTimeout(function() { WaitingShow(false); }, 900);
 		if (data.data) {
 			var d = data.data;
 			fi_tab1.NowOption = d;
@@ -331,6 +334,22 @@ function tab1_go_search() {
 	  }
 	});
 }
+//重置選項
+function tab1_reset() {
+	$("#search_dist").val("-1");
+	$("#search_wkng").val("-1");
+	$("#search_cmpt").val("-1");
+	$("#search_stat").val("-1");
+	
+	$("#search_wkng").empty();
+	$("#search_wkng").append('<option value="-1">不限</option>');
+	$("#search_cmpt").empty();
+	$("#search_cmpt").append('<option value="-1">不限</option>');
+	
+	$("#te_tab1_list").empty();
+	$(".fc_detail_data").hide();
+}
+
 function tab2_go_search() {
 	var dist = $("#search_dist").val();
 	var pftype = $("#search_pfid").val();
@@ -339,11 +358,13 @@ function tab2_go_search() {
 	if (dist != "-1") post.Dist = dist;
 	if (pftype != "-1") post.Pftype = pftype;
 	
+	WaitingShow(true);
 	$.ajax({
 	  url: ApiRequestURL + "ProjectManagement/GetProtectionData",
 	  type: "Post",
 	  data: post,
 	  success: function(data) {
+		WaitingShow(false);
 		if (data.data) {
 			var d = data.data;
 			fi_tab2.NowOption = d;
@@ -361,16 +382,31 @@ function tab2_go_search() {
 	  }
 	});
 }
+//重置選項
+function tab2_reset() {
+	$("#search_dist").val("-1");
+	$("#search_pfid").val("-1");
+	$("#search_stat").val("-1");
+	
+	$("#search_pfid").empty();
+	$("#search_pfid").append('<option value="-1">不限</option>');
+	
+	$("#te_tab2_list").empty();
+	$(".fc_detail_data").hide();
+}
+
 function tab3_go_search() {
 	var dist = $("#search_dist").val();
 	var post = {};
 	if (dist != "-1") post.Dist = dist;
 	
+	WaitingShow(true);
 	$.ajax({
 	  url: ApiRequestURL + "ProjectManagement/GetRecreationData",
 	  type: "Post",
 	  data: post,
 	  success: function(data) {
+		WaitingShow(false);
 		if (data.data) {
 			var d = data.data;
 			fi_tab3.NowOption = d;
@@ -392,19 +428,21 @@ function tab4_go_search() {
 	var post = {};
 	if (dist != "-1") post.Dist = dist;
 	
+	WaitingShow(true);
 	$.ajax({
 	  url: ApiRequestURL + "ProjectManagement/GetResearchData",
 	  type: "Post",
 	  data: post,
 	  success: function(data) {
+		WaitingShow(false);
 		if (data.data) {
 			var d = data.data;
 			fi_tab4.NowOption = d;
 			$("#te_tab4_list").empty();
 			for (var i = 0; i < d.length; i++) {
 				var text = '<tr id="' + d[i].sid + '" onclick="tab4_search_list_click(this);">';
-				text += '<td>' + d[i].name + '</td>';
 				text += '<td>' + d[i].manager + '</td>';
+				text += '<td>' + d[i].name + '</td>';
 				text += '</tr>';
 				
 				$("#te_tab4_list").append(text);
@@ -417,11 +455,13 @@ function tab4_go_search() {
 function tab1_search_list_click(that) {
 	$("#te_tab1_list tr").removeClass("active");
 	$(that).addClass("active");
+	$(".fc_detail_data").show();
 	
 	var post = {};
 	post.Type = "1";
 	post.Fmid = that.id;
 	
+	WaitingShow(true);
 	$("#fc_detail_list").empty();
 	$("#fc_detail_list").load("./views/temp/fc_data_temp.html");
 	Get_FM_Detail("list_detail", "國有林事業區", that.id);
@@ -432,11 +472,13 @@ function tab1_search_list_click(that) {
 function tab2_search_list_click(that) {
 	$("#te_tab2_list tr").removeClass("active");
 	$(that).addClass("active");
+	$(".fc_detail_data").show();
 	
 	var post = {};
 	post.Type = "2";
 	post.Fmid = that.id;
 	
+	WaitingShow(true);
 	$("#fc_detail_list").empty();
 	$("#fc_detail_list").load("./views/temp/fc_data_temp.html");
 	Get_FM_Detail("list_detail", "保安林", that.id);
@@ -447,11 +489,13 @@ function tab2_search_list_click(that) {
 function tab3_search_list_click(that) {
 	$("#te_tab3_list tr").removeClass("active");
 	$(that).addClass("active");
+	$(".fc_detail_data").show();
 	
 	var post = {};
 	post.Type = "3";
 	post.Fmid = that.id;
 	
+	WaitingShow(true);
 	$("#fc_detail_list").empty();
 	$("#fc_detail_list").load("./views/temp/fc_data_temp.html");
 	Get_FM_Detail("list_detail", "森林遊樂區", that.id);
@@ -462,11 +506,13 @@ function tab3_search_list_click(that) {
 function tab4_search_list_click(that) {
 	$("#te_tab4_list tr").removeClass("active");
 	$(that).addClass("active");
+	$(".fc_detail_data").show();
 	
 	var post = {};
 	post.Type = "4";
 	post.Fmid = that.id;
 	
+	WaitingShow(true);
 	$("#fc_detail_list").empty();
 	$("#fc_detail_list").load("./views/temp/fc_data_temp.html");
 	Get_FM_Detail("list_detail", "實驗林", that.id);
@@ -516,6 +562,7 @@ function GetAssociateOptionMaps(targettab, targetlist, targetclick, post) {
 		type: "Post",
 		data: post,
 		success: function(data) {
+			setTimeout(function() { WaitingShow(false); }, 900);
 			if (data.data) {
 				var d = data.data;
 				targettab.map.geomvector_source.clear();
@@ -639,7 +686,10 @@ function fi_fc_list4_item_click(that) {
 function fi_fc_feature_click(e) {
 	$("#fi_fc_list1 tr").removeClass("active");
 	if (e.selected.length == 1) {
-		$("#list_item_" + e.selected[0].fcid).addClass("active");
+		var $objTr = $("#list_item_" + e.selected[0].fcid);
+		$objTr.addClass("active");
+		var objTr = $objTr[0];
+		$(".main_scroll_mini_4").animate({scrollTop:objTr.offsetTop}, "slow");
 	}
 }
 // 取得Detail

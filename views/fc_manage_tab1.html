@@ -53,22 +53,22 @@
 	<div class="row_text">地籍列表</div>
 	<div class="result_list main_scroll_mini">
 	<!-- <異動列表資料> -->
-	<table class="table table-hover fc_tab_list" id="fc_tab1_list">
+	<table class="table fc_tab_list" id="fc_tab1_list">
     </table>
-		<!-- <異動列表資料> -->
+	<!-- <異動列表資料> -->
 	</div>
-
-	
 </div>
 </div>
 
 <div class="fc_detail_data flex">
-<div class="fc_partA">
+<div class="fc_partA main_scroll_mini">
 <div class="fc_detail_data_map">
 <!-- <圖資> -->
 <div class="fc_map_detail">
 <div id="mmap"></div>
-
+<div id="big_window">
+	<i class="fas fa-caret-square-down"></i>
+</div>
 </div>
 <!-- <圖資> -->
 
@@ -119,7 +119,7 @@
 		</div>
 		
 		<div class="fi_tab_content">
-			<table class="table table-hover tab_content_table fc_tab1_associate" id="type1_list">
+			<table class="table tab_content_table fc_tab1_associate" id="type1_list">
 			  
 			</table>
 		</div>
@@ -134,7 +134,7 @@
 		</div>
 		
 		<div class="fi_tab_content">
-		<table class="table table-hover tab_content_table fc_tab1_associate" id="type2_list">
+		<table class="table tab_content_table fc_tab1_associate" id="type2_list">
 			
 		</table>
 
@@ -148,7 +148,7 @@
 		</div>
 		
 		<div class="fi_tab_content">
-		<table class="table table-hover tab_content_table fc_tab1_associate" id="type3_list">
+		<table class="table  tab_content_table fc_tab1_associate" id="type3_list">
 
 		</table>
 		</div>
@@ -161,7 +161,7 @@
 		</div>
 		
 		<div class="fi_tab_content">
-		<table class="table table-hover tab_content_table fc_tab1_associate" id="type4_list">
+		<table class="table  tab_content_table fc_tab1_associate" id="type4_list">
 
 		</table>
 		</div>
@@ -180,5 +180,6 @@
 <!-- 頁面區 -->
 <script>
 	fc_tab1_init();
+	$(".fc_detail_data").hide();
 </script>
 	

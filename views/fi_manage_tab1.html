@@ -43,7 +43,7 @@
 	
 	<div class="new_ver" style="text-align:center;">
 	<button type="button" class="btn btn-success search_submit custom_bt2" onclick="tab1_go_search();">查詢</button>
-	<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
+	<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="tab1_reset();">重置</button>
 	</div>
 
 	</div>
@@ -53,7 +53,7 @@
 	<div class="row_text">結果列表</div>
 	<div class="result_list main_scroll_mini">
 	<!-- <圖資列表> -->
-	<table class="table table-hover te_tab_list" id="te_tab1_list">
+	<table class="table  te_tab_list" id="te_tab1_list">
     </table>
 		<!-- <圖資列表> -->
 	</div>
@@ -62,12 +62,14 @@
 </div>
 </div>
 
-<div class="fi_detail_data">
+<div class="fc_detail_data main_scroll_mini">
 <div class="detail_data_map">
 <!-- <圖資> -->
 <div class="map_detail">
 <div id="mmap"></div>
-
+<div id="big_window">
+	<i class="fas fa-caret-square-down"></i>
+</div>
 </div>
 <!-- <圖資> -->
 	<div style="width: 30%;">
@@ -117,6 +119,7 @@
 	 // $("#item1").click();
 	 fi_tab1_init();
 	 fi_edit();
+	 $(".fc_detail_data").hide();
 	 
     </script>
 	

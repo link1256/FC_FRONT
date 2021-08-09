@@ -305,6 +305,7 @@ function fc_tab1_init() {
 	
 	fc_tab1_getCountyList();
 	tab_click();
+	big_window_fc();
 	
 	// optionactive("fc_tab1_list");
 	// $("#fi_tab_list1").click();
@@ -340,6 +341,8 @@ function fc_tab1_getTownList() {
 				for (var i = 0; i < d.length; i++) {
 					$("#search_town").append('<option value="' + d[i].code + '">' + d[i].name + '</option>');
 				}
+				$("#search_sec").empty();
+				$("#search_sec").append('<option selected value="-1">不指定</option>');
 			}
 		}
 	});
@@ -384,11 +387,15 @@ function fc_tab1_queryLandList() {
 	if (pm != "") post.PmNo = pm;
 	if (pc != "") post.PcNo = pc;
 	
+	WaitingShow(true);
 	$.ajax({
 		url: ApiRequestURL + "InfoOverView/QueryLandList",
 		type: "Post",
 		data: post,
 		success: function(data) {
+			setTimeout(function() {
+				WaitingShow(false);
+			}, 900);
 			if (data.data) {
 				var d = data.data;
 				$("#fc_tab1_list").empty();
@@ -418,16 +425,29 @@ function fc_tab1_searchlistClick(that) {
 	var post = {};
 	post.Sid = id;
 	
+	WaitingShow(true);
 	$.ajax({
 		url: ApiRequestURL + "InfoOverView/QueryTargetLand",
 		type: "Post",
 		data: post,
 		success: function(data) {
+			WaitingShow(false);
 			if (data.data) {
 				var d = data.data;
 
+				$(".fc_detail_data").show();
 				var basedata = d.baseData;
 				var text = "";
+				text += '<div class="detail_rows">';
+				text += '<div class="detail_rows_name">林管處轄區</div>';
+				text += '<div class="detail_rows_value">' + basedata.distName + '</div>';
+				text += '</div>';
+				
+				text += '<div class="detail_rows">';
+				text += '<div class="detail_rows_name">工作站</div>';
+				text += '<div class="detail_rows_value">' + basedata.workName + '</div>';
+				text += '</div>';
+				
 				text += '<div class="detail_rows">';
 				text += '<div class="detail_rows_name">地籍編碼</div>';
 				text += '<div class="detail_rows_value">' + basedata.landCode + '</div>';
@@ -464,6 +484,10 @@ function fc_tab1_searchlistClick(that) {
 				var ownerdata = d.ownerData;
 				$("#fc_owner_data").empty();
 				for (var i = 0; i < ownerdata.length; i++) {
+					if (i != 0) {
+						var hr = '<hr />';
+						$("#fc_owner_data").append(hr);
+					}
 					var tmp = "";
 					
 					tmp += '<div class="detail_rows">';
@@ -506,6 +530,7 @@ function fc_tab1_searchlistClick(that) {
 					tmp += '<td>' + forestdata[i].distName + '</td>';
 					tmp += '<td>' + forestdata[i].weildName + '</td>';
 					tmp += '<td>' + forestdata[i].cmpt + '林班</td>';
+					tmp += '<td>' + forestdata[i].ratio + '</td>';
 					tmp += "</tr>";
 					
 					$("#type1_list").append(tmp);
@@ -523,6 +548,7 @@ function fc_tab1_searchlistClick(that) {
 					tmp += '<td>' + protectiondata[i].distName + '</td>';
 					tmp += '<td>' + protectiondata[i].pfName + '</td>';
 					tmp += '<td>' + protectiondata[i].pfid + '號</td>';
+					tmp += '<td>' + protectiondata[i].ratio + '</td>';
 					tmp += "</tr>";
 					
 					$("#type2_list").append(tmp);
@@ -539,6 +565,7 @@ function fc_tab1_searchlistClick(that) {
 					tmp += '<tr id="list_item_' + recreationData[i].sid + '" onclick="fc_tab1_item_click(this);">';
 					tmp += '<td>' + recreationData[i].distName + '</td>';
 					tmp += '<td>' + recreationData[i].reName + '</td>';
+					tmp += '<td>' + recreationData[i].ratio + '</td>';
 					tmp += "</tr>";
 					
 					$("#type3_list").append(tmp);
@@ -555,6 +582,7 @@ function fc_tab1_searchlistClick(that) {
 					tmp += '<tr id="list_item_' + researchData[i].sid + '" onclick="fc_tab1_item_click(this);">';
 					tmp += '<td>' + researchData[i].name + '</td>';
 					tmp += '<td>' + researchData[i].manager + '</td>';
+					tmp += '<td>' + researchData[i].ratio + '</td>';
 					tmp += "</tr>";
 					
 					$("#type4_list").append(tmp);
@@ -567,6 +595,7 @@ function fc_tab1_searchlistClick(that) {
 		type: "Post",
 		data: post,
 		success: function(data) {
+			WaitingShow(false);
 			if (data.data) {
 				var d = data.data;
 				
@@ -704,12 +733,13 @@ function fc_tab1_downloadshp() {
 	if (wkts.length > 0) {
 		var post = {};
 		post.Wkts = wkts;
-		
+		WaitingShow(true);
 		$.ajax({
 			url: ApiRequestURL + "InfoOverView/DownloadQueryShp",
 			type: "Post",
 			data: post,
 			success: function(data) {
+				WaitingShow(false);
 				if (data.data) {
 					var guid = data.data;
 					var a = document.createElement("a");
@@ -725,8 +755,18 @@ function fc_tab1_reset() {
 	$("#search_county").val("-1");
 	$("#search_town").val("-1");
 	$("#search_sec").val("-1");
+	
+	$("#search_town").empty();
+	$("#search_town").append('<option value="-1">請選擇</option>');
+	
+	$("#search_sec").empty();
+	$("#search_sec").append('<option value="-1">不指定</option>');
+	
 	$("#search_number1").val("");
 	$("#search_number2").val("");
+	
+	$(".fc_detail_data").hide();
+	$("#fc_tab1_list").empty();
 }
 function fc_tab1_api() {
 	

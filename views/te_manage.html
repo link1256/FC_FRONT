@@ -12,7 +12,7 @@
 
                <li class="nav-item2 tab3">
 				<span class="nav-link">異動審核</span>
-			  </li>			  
+			  </li>
 			  		  
 		</ul>
 	</div>
@@ -65,7 +65,7 @@
 			   <div>
 				   <label for="fm_edit_type" class="form-label" style="width: 110px;">編輯形式</label>
 				 </div> 
-		        <select id="fm_edit_type" class="form-select" >		
+		        <select id="fm_edit_type" class="form-select" onchange="te_edittype_change();">		
                    <option value="1" selected>編輯</option>
                    <option value="2">刪除</option>	
                    <option value="3">新增</option>					   
@@ -143,9 +143,8 @@
 				   <label for="search_warning2" class="form-label"  style="width: 110px;">修訂提示</label>
 				   </div>
 				   <select id="search_warning2" class="form-select"  >
-					  <option value="0" selected>不指定</option>
+					  <option value="-1" selected>不指定</option>
 					  <option value="1">待修訂</option>
-
 					</select>
 				</div>
 				
@@ -167,16 +166,8 @@
 				  <div>
 				   <label for="new_dist1" class="form-label" style="width: 110px;">林區管理處</label>
 				 </div>  
-				   <select id="new_dist1" class="form-select" >
-					  <option selected>請選擇</option>
-					  <option value="1">羅東</option>
-					  <option value="2">新竹</option>
-					  <option value="3">東勢</option>
-					  <option value="4">南投</option>
-					  <option value="5">嘉義</option>
-					  <option value="6">屏東</option>
-					  <option value="7">台東</option>
-					  <option value="8">花蓮</option>
+				   <select id="new_dist1" class="form-select" onchange="te_new_dist1_change();">
+					  <option value="-1" selected>請選擇</option>
 					</select>
 				 </div>
 				 
@@ -186,7 +177,7 @@
 				   <label for="new_wkng1" class="form-label" style="width: 110px;">事業區</label>
 				 </div>  
 				   <select id="new_wkng1" class="form-select" >
-					  <option selected>請選擇</option>
+					  <option value="-1" selected>請選擇</option>
 					  <!-- //動態塞值 -->
 					</select>
 				 </div>
@@ -220,17 +211,19 @@
 				   <label for="new_dist2" class="form-label" style="width: 110px;">林區管理處</label>
 				 </div>  
 				   <select id="new_dist2" class="form-select" >
-					  <option selected>請選擇</option>
-					  <option value="1">羅東</option>
-					  <option value="2">新竹</option>
-					  <option value="3">東勢</option>
-					  <option value="4">南投</option>
-					  <option value="5">嘉義</option>
-					  <option value="6">屏東</option>
-					  <option value="7">台東</option>
-					  <option value="8">花蓮</option>
+					  <option value="-1" selected>請選擇</option>
 					</select>
 				 </div>
+				 
+					<div class="new_ver_flex">
+				   <div>
+				   <label for="new_pftype" class="form-label" style="width: 110px;">保安林類型</label>
+				   </div>
+					<select id="new_pftype" class="form-select">
+						<option value="-1" selected>請選擇</option>
+					</select>
+					 
+				   </div>
 	
 				   <div class="new_ver_flex">
 				   <div>
@@ -263,11 +256,11 @@
 			      
 				  <div class="fm_search_list main_scroll_mini">
 					<!-- <圖資列表資料> -->
-					<table class="table table-hover te_tab_list fm_type1" id="fm_search_list">
+					<table class="table  te_tab_list fm_type1" id="fm_search_list">
 						
 					</table>
 					
-					<table class="table table-hover te_tab_list fm_type2" id="fm_search_list2">
+					<table class="table  te_tab_list fm_type2" id="fm_search_list2">
 											
 					</table>
 	            </div>
@@ -295,7 +288,7 @@
 			
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetModal()">取消</button>
-			<button type="button" class="btn btn-primary" onClick="doCreate_next()" data-bs-dismiss="modal">下一步</button>
+			<button type="button" class="btn btn-primary" onClick="doCreate_next()">下一步</button>
 		  </div>
 		</div>
 	  </div>
@@ -308,7 +301,7 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<h5 class="modal-title">編輯異動圖資</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="resetModal()"></button>
 		  </div>
 		  <div class="modal-body">
 		  <div style="display:flex">
@@ -367,10 +360,10 @@
 			</div>
 			
 		  </div>
-		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" onclick="AbandonEdit()">取消</button>
 			<button type="button" class="btn btn-primary" onclick="SaveEdit_fm()">儲存變更</button>
+		  </div>
 		  </div>
 		</div>
 	  </div>
@@ -383,5 +376,9 @@
 	 tab("te_manage");
      upload_result_owner();
 	 searchlistinit(); //初始化林區管理處選項
+	 
+	 setTimeout(function () {
+		$(".detail_data").hide();
+	 }, 10);
 </script>
 	

@@ -171,3 +171,45 @@ function LogOut() {
 	  }
 	});
 }
+
+//林業管理項目
+function big_window()
+{
+	$("#big_window").on("click",function(){
+		if ($(".detail_data_map, .fc_detail_data").hasClass ("big_window")) {
+			$(".detail_data_map, .fc_detail_data").removeClass("big_window");
+			$(this).children(). removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
+		}
+		else {
+			$(".detail_data_map, .fc_detail_data").addClass("big_window");
+			$(this).children(). removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
+		}
+		if (fi_tab1 && fi_tab1.map) fi_tab1.map.updateSize();
+		if (fi_tab2 && fi_tab2.map) fi_tab2.map.updateSize();
+		if (fi_tab3 && fi_tab3.map) fi_tab3.map.updateSize();
+		if (fi_tab4 && fi_tab4.map) fi_tab4.map.updateSize();
+	});
+}
+
+//地籍總攬
+function big_window_fc()
+{
+	$("#big_window").on("click",function() {
+		if($(".fc_partA,.fc_detail_data_map").hasClass ("big_window")) {
+		   $(".fc_partA,.fc_detail_data_map").removeClass("big_window");
+		   $(this).children(). removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
+		}
+		else {
+			$(".fc_partA,.fc_detail_data_map").addClass("big_window");
+			$(this).children(). removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
+		}
+		if (fc_tab1 && fc_tab1.map) fc_tab1.map.updateSize();
+	});
+}
+
+function WaitingShow(show) {
+	if (show)
+		$("#pleaseWaitDialog").modal("show");
+	else
+		$("#pleaseWaitDialog").modal("hide");
+}

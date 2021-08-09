@@ -80,7 +80,7 @@ td{
     background-color: #5C776F;
     width: 6px;
     position: absolute;
-    top: 3px;
+    top: 2px;
     left: -12px;
 }
 
@@ -651,7 +651,7 @@ thead{
 }
 
 .content_row{
-	margin: 10px 20px;
+	margin: 10px;
 	background-color:white;
 	padding: 20px;
 	border-radius: 10px;
@@ -672,14 +672,14 @@ thead{
 }
 
 .content_row_search{
-	margin: 10px 20px;
+	margin: 10px;
 	background-color:white;
 	padding: 10px;
 	border-radius: 10px;
 }
 
 .content_row_data{
-	margin: 10px 20px;
+	margin: 10px;
 	background-color:white;
 	padding: 20px;
 	border-radius: 10px;
@@ -687,15 +687,15 @@ thead{
 
 .result_list{
 	overflow-y: scroll;
-    height:calc(100% - 70px);
+    height:calc(100% - 60px);
 }
 
 .content_row_47{
-	margin: 10px 20px;
+	margin: 10px;
 	background-color:white;
 	padding: 20px;
 	border-radius: 10px;
-	width: 47%;
+	width: 48%;
 }
 
 .content_row_47_nogap{
@@ -710,15 +710,16 @@ thead{
 	margin: 10px 10px 20px 10px;
 	font-size: 20px;
 	position:relative;
+	left: 2px;
 }
 
 .row_text::after{
 	content: "";
     height: 20px;
     background-color: #5C776F;
-    width: 6px;
+    width: 5px;
     position: absolute;
-    top: 6px;
+    top: 5px;
     left: -12px;
 }
 
@@ -861,8 +862,23 @@ thead{
 	width:120px;
 }
 
+tr{
+	cursor:pointer;
+}
+
+tr.active{
+	background-color:#E9FEBC;
+}
+
 .te_tab_list tr{
 	cursor:pointer;
+	border-bottom-width: 0.5px;
+	
+}
+
+.te_tab_list tr:hover{
+	background-color:#E9FEBC;
+	
 }
 
 .te_tab_list tr.active{
@@ -871,6 +887,11 @@ thead{
 
 #list_table tr{
 	cursor:pointer;
+	border-bottom-width: 0.5px;
+}
+
+#list_table tr:hover{
+	background-color:#E9FEBC;
 }
 
 #list_table tr.active{
@@ -879,6 +900,11 @@ thead{
 
 #fi_fc_list1 tr{
 	cursor:pointer;
+	border-bottom-width: 0.5px;
+}
+
+#fi_fc_list1 tr:hover{
+	background-color:#E9FEBC;
 }
 
 #fi_fc_list1 tr.active{
@@ -1026,16 +1052,19 @@ thead{
 	
 }
 
-.fc_detail_data,.fi_detail_data{	
-	width: calc(100vw - 420px);	
-    height: calc(100vh - 135px);	
-    overflow-y: hidden;		
+.fc_detail_data {
+	width: calc(100vw - 420px);
+    height: calc(100vh - 135px);
+    overflow-y: hidden;	
 }
-.fc_partA{	
-	width:calc(60% - 10px);	
-}	
-.fc_partB{	
-	width:40%;	
+
+.fc_partA{
+	width:calc(60% - 10px);
+	min-width: 650px;
+}
+
+.fc_partB{
+	width:40%;
 }
 
 .flex{
@@ -1044,14 +1073,13 @@ thead{
 
 .detail_data_map{
 
-	height: calc(52% - 10px);
+	height: calc(59% - 10px);
 	width: calc(100% - 10px);
 	display:flex;
 }
 
-		
-.fc_detail_data_map{	
-	height: calc(52% - 10px);	
+.fc_detail_data_map{
+	height: calc(52% - 10px);
 }
 
 .map_detail{
@@ -1065,15 +1093,15 @@ thead{
     border-radius: 10px;
 }
 
-.fc_map_detail{	
-		
-	min-width:650px;	
-	width: 100%;	
-    height: calc(100% - 10px);	
-    background-color: white;	
-    margin: 10px 0px;	
-    padding: 10px;	
-    border-radius: 10px;	
+.fc_map_detail{
+	
+	min-width:650px;
+	width: 100%;
+    height: calc(100% - 10px);
+    background-color: white;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .fi_manage_area{
@@ -1096,6 +1124,7 @@ thead{
 	display:none;
 }
 
+
 .data_detail{
 	min-width:350px;
 	width:100%;
@@ -1109,20 +1138,20 @@ thead{
 
 .fc_detail{
 	min-width:650px;
-    height: 40%;	
-    background-color: white;	
-    margin: 10px 0px;	
-    padding: 10px;	
+    height: 40%;
+    background-color: white;
+    margin: 10px 0px;
+    padding: 10px;
     border-radius: 10px;
 }
 
-.fc_fc_detail{	
-	width:50%;	
-    height:100%;	
-    background-color: white;	
-    margin: 10px 0px;	
-    padding: 10px;	
-    border-radius: 10px;	
+.fc_fc_detail{
+	width:50%;
+    height:100%;
+    background-color: white;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .data_detail_title{
@@ -1164,69 +1193,160 @@ textarea:read-only,input:read-only{
     max-height: 150px;
     overflow: auto;
 }
-.search_land_no{	
-	display:flex;	
-}	
-.fi_tab{	
-	background-color:#ae8b0b;	
-	color:white;	
-	height:40px;	
-	cursor:pointer;	
-	margin:0px 10px;	
-	padding:10px;	
-	font-size:18px;	
-	border-radius:10px;	
-	align-items: center;	
-    display: flex;	
-	justify-content: space-between;	
-}	
-.fi_tab.active{	
-	background-color:#74642A;	
-	border-radius:10px 10px 0px 0px;	
-}	
-.fi_tab_content{	
-    background-color:#f0f0f0;	
-	color:white;	
-	margin:0px 10px;	
-	padding:5px;	
-	font-size:18px;	
-	border-radius:0px 0px 10px 10px;	
-	align-items: center;	
-    display: flex;	
-}	
-.fi_tab_content.active{	
-	background-color:#f1f2f2;	
-	color:white;	
-	margin:0px 10px;	
-	padding:5px;	
-	font-size:18px;	
-	border-radius:0px 0px 10px 10px;	
-	align-items: center;	
-    display: flex;	
-}	
-.tab_content_table{	
-	margin:0px;	
-	font-size: 15px;	
-}	
-#fi_fc_list1 td{	
-	padding:5px;	
-	word-break:keep-all;	
-}	
-table tr *{	
-	padding:5px !important;	
-}	
-#fc_main_data,#fc_owner_data{	
-	height: calc(100% - 60px);	
-}	
+.search_land_no{
+	display:flex;
+}
+.fi_tab{
+	background-color:#ae8b0b;
+	color:white;
+	height:40px;
+	cursor:pointer;
+	margin:0px 10px;
+	padding:10px;
+	font-size:18px;
+	border-radius:10px;
+	align-items: center;
+    display: flex;
+	justify-content: space-between;
+}
+
+.fi_tab.active{
+	background-color:#74642A;
+	border-radius:10px 10px 0px 0px;
+}
+
+.fi_tab_content{
+    background-color:#f0f0f0;
+	color:white;
+	margin:0px 10px;
+	padding:5px;
+	font-size:18px;
+	border-radius:0px 0px 10px 10px;
+	align-items: center;
+    display: flex;
+
+}
+
+.fi_tab_content.active{
+	background-color:#f1f2f2;
+	color:white;
+	margin:0px 10px;
+	padding:5px;
+	font-size:18px;
+	border-radius:0px 0px 10px 10px;
+	align-items: center;
+    display: flex;
+
+}
+
+.tab_content_table{
+	margin:0px;
+	font-size: 15px;
+}
+
+#fi_fc_list1 td{
+	padding:5px;
+	word-break:keep-all;
+}
+
+table tr *{
+	padding:5px !important;
+}
+
+#fc_main_data,#fc_owner_data{
+	height: calc(100% - 60px);
+}
 .fc_tab_list tr.active {
     background-color: #E9FEBC;
 }
 .fc_tab_list tr {
     cursor: pointer;
+	border-bottom-width: 0.5px;
 }
+
+.fc_tab_list tr:hover{
+    background-color: #E9FEBC;
+}
+
 .fc_tab1_associate tr.active {
 	background-color: #E9FEBC;
 }
 .fc_tab1_associate tr {
     cursor: pointer;
+}
+
+.content_row_search.cs{
+	height:calc(100vh - 235px);
+	margin: 10px;
+}
+
+.cs_search{
+	height: 55px;
+    margin: 10px;
+}
+
+.cs1_search_bar{
+	width: 700px;
+}
+
+.cs2_search_bar{
+	width: 400px;
+}
+
+.cs_result{
+	width: 100%;
+}
+
+.content_row_result{
+	margin: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    height: calc(100vh - 158px);
+}
+
+.fw_data{
+	background-color: white;
+    margin: 10px 0px 10px 10px;
+    padding: 10px;
+    border-radius: 10px;
+	width: 100%;
+    height:140px;
+}
+
+.fw_data_head{
+	
+}
+
+.fw_data_body{
+	
+}
+
+#big_window{
+    color: saddlebrown;
+    font-size: 30px;
+    margin: 0 auto;
+    width: 30px;
+    z-index: 100;
+    position: relative;
+    bottom: -2px;
+    cursor:pointer;
+}
+
+.detail_data_map.big_window{
+	height:75%;
+}
+
+.fc_detail_data.big_window {
+    width: calc(100vw - 416px);
+    overflow-y: auto;
+}
+
+.fc_detail_data_map.big_window{
+height:75%;
+}
+
+.fc_partA.big_window {
+ overflow-y: auto;
+ margin-bottom: 10px;
 }
