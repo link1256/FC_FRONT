@@ -1,6 +1,6 @@
 <!-- 上傳基本設定功能頁面區 -->
 		<div class="row_flex row_justify">
-		<div class="content_row_47">
+		<div class="content_row" style="width:100%">
 		<div class="row_text">匯入版次</div>
 		<div class="row_flex">
 		<div class="new_ver">
@@ -23,48 +23,48 @@
 			
 		</div>
 		
-		<div class="content_row_47">
-		<div class="row_text">比較版次</div>
-		<div class="row_flex">
-		<div class="new_ver">
-		   <label for="ver_year" class="form-label">年度</label>
-		   <select id="ver_year2" class="form-select" style="width: 160px;">
-			  <option value="110" selected>110</option>
-			</select>
-		</div>
+		<!-- <div class="content_row_47"> -->
+		<!-- <div class="row_text">比較版次</div> -->
+		<!-- <div class="row_flex"> -->
+		<!-- <div class="new_ver"> -->
+		   <!-- <label for="ver_year" class="form-label">年度</label> -->
+		   <!-- <select id="ver_year2" class="form-select" style="width: 160px;"> -->
+			  <!-- <option value="110" selected>110</option> -->
+			<!-- </select> -->
+		<!-- </div> -->
 		
-		<div class="new_ver">
-		   <label for="ver_month2" class="form-label">月份</label>
-		   <select id="ver_month2" class="form-select" style="width: 160px;">
-			  <option value="3" selected>3</option>			  
-			</select>
-		</div>
+		<!-- <div class="new_ver"> -->
+		   <!-- <label for="ver_month2" class="form-label">月份</label> -->
+		   <!-- <select id="ver_month2" class="form-select" style="width: 160px;"> -->
+			  <!-- <option value="3" selected>3</option>			   -->
+			<!-- </select> -->
+		<!-- </div> -->
 
-		</div>
+		<!-- </div> -->
 			
-		</div>
+		<!-- </div> -->
 		
 	</div>
 	
 	<div class="row_flex row_justify">
 	
-			<div class="content_row_47">
-		<div class="row_text">已執行結果</div>
-		<div class="row_flex">
-		<!-- to do 讀取資料庫該版次匯入紀錄 -->
-		<div class="new_ver" style="width: 100%;">
-		   <label for="" class="form-label">已上傳縣市列表</label>
-		   <table  class="table table-striped " id="city_list">
-	<thead>
-	<tr>
-		<th style="border-radius:10px 0 0 0;width:10%;">序號</th>
-		<th style="width:15%;">縣市</th>
-		<th style="width:20%;">資料筆數</th>
-		<th style="width:20%;">執行時間</th>			
-		<th style="border-radius: 0 10px 0 0 ;width:20%;">執行人員</th>
-	</tr>
-	</thead>
-	<tbody id="city_result">
+		<div class="content_row_47">
+	<div class="row_text">已執行結果</div>
+	<div class="row_flex">
+	<!-- to do 讀取資料庫該版次匯入紀錄 -->
+	<div class="new_ver" style="width: 100%;">
+	   <label for="" class="form-label">已上傳縣市列表</label>
+	   <table  class="table table-striped " id="city_list">
+<thead>
+<tr>
+	<th style="width:10%;">序號</th>
+	<th style="width:15%;">縣市</th>
+	<th style="width:20%;">資料筆數</th>
+	<th style="width:20%;">執行時間</th>			
+	<th style="width:20%;">執行人員</th>
+</tr>
+</thead>
+<tbody id="city_result">
 	
 	</tbody>
 	</table>
@@ -82,12 +82,12 @@
 		   <table  class="table table-striped " id="file_list">
 	<thead>
 	<tr>
-		<th style="border-radius:10px 0 0 0;width:10%;">序號</th>
+		<th style="width:10%;">序號</th>
 		<th style="width:20%;">檔案名稱</th>
 		<th style="width:18%;">檔案大小</th>
 		<th style="width:18%;">檔案完整性</th>	
         <th style="width:20%;">最後修改時間</th>		
-		<th style="border-radius: 0 10px 0 0 ;width:14%;">選取</th>
+		<th style="width:14%;">選取</th>
 	</tr>
 	</thead>
 	<tbody>

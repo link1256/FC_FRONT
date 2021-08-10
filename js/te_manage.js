@@ -74,7 +74,7 @@ var nowloadDetialData = null;
 function loadDetialData(id){
 	/* 先塞測試用資料，需要改寫 */
 	//讀取資料
-	$(".data_frame").empty().load("./views/detail_data_temp.html?rnd=" + Math.round(Math.random()*10000));
+	$(".data_frame").empty().load("./views/temp/detail_data_temp.html?rnd=" + Math.round(Math.random()*10000));
 	
 	var post = {};
 	post.Uid = id;
@@ -144,7 +144,7 @@ function loadListData(fmtid){
 	/* 先塞測試用資料，需要改寫 */
 	//讀取RELATION資料
 		
-		$(".list_frame").empty().load("./views/list_data_temp.html"); //模板
+		$(".list_frame").empty().load("./views/temp/list_data_temp.html"); //模板
 		
 		let type1 = "國有林事業區";
 		let type2 = "保安林";
@@ -212,6 +212,10 @@ function loadListData(fmtid){
 			
 		},50);
 				
+}
+
+function loadTeListData(){
+	$(".list_frame").empty().load("./views/temp/te_list_data_temp.html"); //模板
 }
 
 function newApplyDetail() {

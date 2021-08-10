@@ -155,6 +155,7 @@ height:55px;
 
 .main_scroll{
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .main_scroll::-webkit-scrollbar-track
@@ -1052,7 +1053,7 @@ tr.active{
 	
 }
 
-.fc_detail_data {
+.fc_detail_data{
 	width: calc(100vw - 420px);
     height: calc(100vh - 135px);
     overflow-y: hidden;	
@@ -1199,7 +1200,7 @@ textarea:read-only,input:read-only{
 .fi_tab{
 	background-color:#ae8b0b;
 	color:white;
-	height:40px;
+	height:35px;
 	cursor:pointer;
 	margin:0px 10px;
 	padding:10px;
@@ -1349,4 +1350,9 @@ height:75%;
 .fc_partA.big_window {
  overflow-y: auto;
  margin-bottom: 10px;
+}
+
+.thead_fix{
+	position:sticky;
+	top:0;
 }
