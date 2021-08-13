@@ -5,10 +5,9 @@ $("search_type.fc_manage").children().on("click",function(){
 });
 
 //子功能頁籤
-function step_tab()
+function fc_manage_step_tab()
 {
 	$(".fc_manage_tab3 .nav-item3").on("click",function(){
-		 		  
 		  for(j = 1; j < 4; j++){
 			  if($(this).hasClass("tab"+j)){
 				  if(j==1){
@@ -54,7 +53,7 @@ function step_tab()
 function upload_step(i,j)
 {
 	$(".upload_step").empty();
-	$(".upload_step.tab"+i).load("./views/fc_manage_tab"+i+"_step"+j+".html"); 
+	$(".upload_step.tab"+i).load("./views/fc_manage_tab" + i + "_step" + j + ".html"); 
 }
 
 function fc_ini_page(i)

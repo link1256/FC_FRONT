@@ -364,7 +364,7 @@ function tab2_go_search() {
 	  type: "Post",
 	  data: post,
 	  success: function(data) {
-		WaitingShow(false);
+		setTimeout(function() { WaitingShow(false); }, 900);
 		if (data.data) {
 			var d = data.data;
 			fi_tab2.NowOption = d;
@@ -406,7 +406,7 @@ function tab3_go_search() {
 	  type: "Post",
 	  data: post,
 	  success: function(data) {
-		WaitingShow(false);
+		setTimeout(function() { WaitingShow(false); }, 900);
 		if (data.data) {
 			var d = data.data;
 			fi_tab3.NowOption = d;
@@ -434,7 +434,7 @@ function tab4_go_search() {
 	  type: "Post",
 	  data: post,
 	  success: function(data) {
-		WaitingShow(false);
+		setTimeout(function() { WaitingShow(false); }, 900);
 		if (data.data) {
 			var d = data.data;
 			fi_tab4.NowOption = d;
@@ -534,18 +534,18 @@ function GetAssociateOptionMaps(targettab, targetlist, targetclick, post) {
 			for (var i = 0; i < d.length; i++) {
 				var rows = "";
 				rows = "<tr id='list_item_" + d[i].fcid + "' onclick='" + targetclick + "(this);'><td width='4%'>" + (i + 1) + "</td>";
-				rows += "<td width='10%'>" + d[i].landCode + "</td>";
+				rows += "<td width='11%'>" + d[i].landCode + "</td>";
 				rows += "<td width='4.5%'>" + d[i].cityName + "</td>";
 				rows += "<td width='4.5%'>" + d[i].townName + "</td>";
-				rows += "<td width='8%'>" + d[i].landName + "</td>";
+				rows += "<td width='9%'>" + d[i].landName + "</td>";
 				rows += "<td width='4%'>" + d[i].pmNo + "</td>";
 				rows += "<td width='4%'>" + d[i].pcNo + "</td>";
-				rows += "<td width='7%'>" + d[i].zoningName + "</td>";
+				rows += "<td width='6.5%'>" + d[i].zoningName + "</td>";
 				rows += "<td width='9%'>" + d[i].lclassName + "</td>";
-				rows += "<td width='6%'>" + d[i].regArea + "</td>";
-				rows += "<td width='8%'>" + formatDateTime_Date(d[i].updateTime) + "</td>";
+				rows += "<td width='6.5%'>" + d[i].regArea + "</td>";
+				rows += "<td width='7.5%'>" + formatDateTime_Date(d[i].updateTime) + "</td>";
 				
-				rows += "<td width='6%'>" + d[i].holdAccess + "</td>";
+				rows += "<td width='3.5%'>" + d[i].holdAccess + "</td>";
 				rows += "<td width='12%'>" + d[i].holdCenter + "</td>";
 				rows += "<td width='4%'>" + d[i].numerator + "</td>";
 				rows += "<td width='4%'>" + d[i].denominator + "</td>";

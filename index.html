@@ -19,6 +19,7 @@
 	<script src="js/togeojson.js"></script>
 	<script src="js/shp.js"></script>
 	<script src="js/tracing.js"></script>
+	<script src="js/proj4.js"></script>
 	<script src="js/jsts.min.js"></script>
 	
     <!-- 頁面 -->
@@ -83,13 +84,8 @@
 	<div class="modal fade" id="pleaseWaitDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h1>資料載入中...</h1>
-				</div>
-				<div class="modal-body">
-					<div class="progress">
-					  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-					</div>
+				<div class="modal-body AllCenter">
+					<img src="image/loader.gif" />
 				</div>
 			</div>
 		</div>

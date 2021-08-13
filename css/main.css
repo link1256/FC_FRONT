@@ -218,7 +218,7 @@ height:55px;
 	background-color: #919191;
 }
 
-.main_scroll_mini_4{
+.main_scroll_mini_4 {
 	overflow-y: auto;
 }
 
@@ -234,7 +234,6 @@ height:55px;
 {
 	width: 4px;
 	background-color: #F5F5F5;
-	
 }
 
 .main_scroll_mini_4::-webkit-scrollbar-thumb
@@ -255,24 +254,24 @@ thead{
     color: white;
 }
 
-.main_content{
+.main_content {
 	position: absolute;
     left: 278px;
     width: calc(100% - 290px);
 	top: 0px;
 }
 
-.main_result{
+.main_result {
 	height:calc(100vh - 110px);
 	display: flex;
     flex-wrap: wrap;
 }
 
-.between_icon{
+.between_icon {
 	margin:0px 10px;
 }
 
-.function_bt{
+.function_bt {
 	display:flex;
 	position: relative;
     top: 13px;
@@ -1352,7 +1351,55 @@ height:75%;
  margin-bottom: 10px;
 }
 
-.thead_fix{
-	position:sticky;
-	top:0;
+.AllCenter {
+	justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#pleaseWaitDialog .modal-content {
+	background-color: transparent;
+	border: none;
+}
+
+.ol-popup {
+	position: absolute;
+	background-color: white;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #cccccc;
+	bottom: 12px;
+	left: -50px;
+	min-width: 200px;
+}
+.ol-popup:after, .ol-popup:before {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.ol-popup:after {
+	border-top-color: white;
+	border-width: 10px;
+	left: 48px;
+	margin-left: -10px;
+}
+.ol-popup:before {
+	border-top-color: #cccccc;
+	border-width: 11px;
+	left: 48px;
+	margin-left: -11px;
+}
+.ol-popup-closer {
+	text-decoration: none;
+	position: absolute;
+	top: 2px;
+	right: 8px;
+}
+.ol-popup-closer:after {
+	content: "✖";
 }
