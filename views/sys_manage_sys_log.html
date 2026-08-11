@@ -1,0 +1,72 @@
+<!-- 使用者管理頁面 -->
+<div>
+	<div id="sys_rowsearch" class="search_div">
+		<div class="row_text2">系統操作紀錄</div>
+		<div class="rowsearch">
+			<div class="rowsearchitem">
+				<label>使用者名稱</label>
+				<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+			</div>
+			<div class="rowsearchitem">
+				<label>單位名稱</label>
+				<input id="sys_unit" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+			</div>
+			<div class="rowsearchitem">
+				<label>角色群組</label>
+				<select id="sys_group" class="form-select form-custom-select">
+					<option value="-1">請選擇</option>
+				</select>
+			</div>
+			<div class="rowsearchitem">
+				<label>操作行為</label>
+				<select id="sys_action" class="form-select form-custom-select">
+					<option value="-1">請選擇</option>
+				</select>
+			</div>
+			<div class="rowsearchitem">
+				<label>功能模組</label>
+				<select id="sys_function" class="form-select form-custom-select">
+					<option value="-1">請選擇</option>
+				</select>
+			</div>
+			<div class="rowsearchitem">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetLogList();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="LogListSearchClear();">清除條件</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button type="button" class="btn btn-success custom_bt2" onclick="download_sys_log('excel');">
+			匯出資料(EXCEL)
+		</button>
+		<button type="button" class="btn btn-success custom_bt2" onclick="download_sys_log('ods');">
+			匯出資料(ODS)
+		</button>
+	</div>
+	<div id="sys_user_page">
+		<table class="table_c fc_tab_list" id="sys_user_manage_list2">
+			<thead>
+				<tr>
+					<th>序號</th>
+					<th>使用者名稱</th>
+					<th>帳號</th>
+					<th>署(分署)名稱</th>
+					<th>單位名稱</th>
+					<th>角色群組</th>
+					<th>功能模組</th>
+					<th>操作行為</th>
+					<th>IP</th>
+					<th>操作時間</th>
+				</tr>
+			</thead>
+			<tbody id="fc_tab_list_body" class="ztbody">
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	getGroupList();
+	getFunctionList();
+	GetLogList();
+</script>

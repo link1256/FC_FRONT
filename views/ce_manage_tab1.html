@@ -1,0 +1,111 @@
+<!-- 頁面區 -->
+<div class="manage_page" style="height: calc(100vh - 140px);">
+	<div class="search_div" style="height: 100%;">
+		<div class="content_row_search" style="height: 290px;">
+			<div class="row_text">篩選條件</div>
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+				</div>
+				<select id="search_dist" class="form-select" onchange="ce_tab1_dist_change();">
+					<option value="-1" selected>不指定</option>
+				</select>
+			</div>
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_wkng" class="form-label"  style="width: 110px;">事業區</label>
+				</div>
+				<select id="search_wkng" class="form-select" onchange="ce_tab1_wkng_change();">
+					<option value="-1" selected>不指定</option>
+				</select>
+			</div>
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_cmpt" class="form-label"  style="width: 110px;">林班</label>
+				</div>
+				<select id="search_cmpt" class="form-select">
+					<option value="-1" selected>不指定</option>
+				</select>
+			</div>
+			<div class="new_ver" style="text-align:center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ce_tab1_go_search();">查詢</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ce_tab1_reset();">重置</button>
+			</div>
+		</div>
+		<div class="content_row_search" style="height: calc(100% - 320px)">
+			<div class="row_text">
+				查詢結果
+				<button type="button" class="btn btn-warning search_submit custom_bt2" style="position: absolute; top: -15px; right: 0px;" onclick="ce_tab1_list_add();">加入</button>
+			</div>
+			<input type="checkbox" class="form-check-input" value="select-all" onclick="ce_tab1_check_select_all(this);" />
+			<label for="search_land_code">全選</label>
+			<div class="result_list main_scroll_mini">
+				<!-- <異動列表資料> -->
+				<table class="table te_tab_list" id="ce_tab1_list">
+				</table>
+				<!-- <異動列表資料> -->
+			</div>
+		</div>
+	</div>
+	<div class="ce_tab1_result_list">
+		<div class="content_row_search ce_content_row_search">
+			<div class="row_text">林班列表</div>
+			<div class="result_list main_scroll_mini">
+				<table class="table" id="ce_tab1_add_list1">
+					<tr>
+						<td>尚無資料</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="content_row_search ce_content_row_search">
+			<div class="row_text">
+				地籍資訊
+				<button id="ce_tab1_list_edit" type="button" class="btn btn-success search_submit custom_bt2" style="position: absolute; top: -15px; right: 0px; display: none;" onclick="ce_tab1_list_edit_click();">編輯</button>
+				<button id="ce_tab1_list_save" type="button" class="btn btn-success search_submit custom_bt2" style="position: absolute; top: -15px; right: 110px; display: none;" onclick="ce_tab1_list_save_click();">儲存</button>
+				<button id="ce_tab1_list_cancel" type="button" class="btn btn-warning search_submit custom_bt2" style="position: absolute; top: -15px; right: 0px; display: none;" onclick="ce_tab1_list_cancel_click();">取消</button>
+			</div>
+			<div class="result_list main_scroll_mini">
+				<table class="table" id="ce_tab1_add_list2">
+					<tr>
+						<td>尚無資料</td>
+					</tr>
+				</table>
+				<table class="table" id="edit_select_list2" style="display: none; border-bottom-width: 0px;">
+					<tr>
+						<td>管理單位</td>
+						<td>
+							<select id="search_dist2" class="form-select" onchange="ce_tab1_dist_change2();">
+								<option value="-1" selected>不指定</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>事業區</td>
+						<td>
+							<select id="search_wkng2" class="form-select" onchange="ce_tab1_wkng_change2();">
+								<option value="-1" selected>不指定</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>林班</td>
+						<td>
+							<select id="search_cmpt2" class="form-select">
+								<option value="-1" selected>不指定</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="content_row_search map_area">
+		<div style="height: 80vh; position: relative;">
+			<div id="mmap"></div>
+		</div>
+	</div>
+</div>
+<script>
+	ce_tab1_init();
+</script>

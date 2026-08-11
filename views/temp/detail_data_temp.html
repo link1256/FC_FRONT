@@ -1,91 +1,174 @@
+<div class="content_row_data" id="cancel_reason">
+	<div class="row_text">取消異動</div>
+	<div id="te_data_basic1">
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_cancel_user" class="form-label"  style="width: 140px;">取消人員</label>
+			</div>
+			<div id="te_cancel_user"></div>
+		</div>
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_cancel_time" class="form-label"  style="width: 140px;">取消時間</label>
+			</div>
+			<div id="te_cancel_time"></div>
+		</div>
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_cancel_reason" class="form-label"  style="width: 140px;">取消異動原因</label>
+			</div>
+			<div id="te_cancel_reason"></div>
+		</div>
+	</div>
+</div>
 <div class="content_row_data" id="basic_data">
 	<div class="row_text">基本資料</div>
 	<!-- 選取異動的基本資料 -->
 	<div id="te_data_basic1">
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_state" class="form-label"  style="width: 140px;">狀態</label>
-	   </div>
-	   <div id="te_data_basic_state" class=""></div>
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_uid" class="form-label"  style="width: 140px;">識別碼</label>
-	   </div>
-	   <div id="te_data_basic_uid"></div>
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_createuser" class="form-label"  style="width: 140px;">建立者</label>
-	   </div>
-		<div id="te_data_basic_createuser"></div>
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_createtime" class="form-label"  style="width: 140px;">建立時間</label>
-	   </div>
-		<div id="te_data_basic_createtime"></div>
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_state" class="form-label"  style="width: 140px;">狀態</label>
+			</div>
+			<div id="te_data_basic_state" class=""></div>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_uid" class="form-label"  style="width: 140px;">流水代碼</label>
+			</div>
+			<div id="te_data_basic_uid"></div>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_createuser" class="form-label"  style="width: 140px;">建立者</label>
+			</div>
+			<div id="te_data_basic_createuser"></div>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_createunit" class="form-label"  style="width: 140px;">單位資訊</label>
+			</div>
+			<div id="te_data_basic_createunit"></div>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_createtime" class="form-label"  style="width: 140px;">建立日期</label>
+			</div>
+			<div id="te_data_basic_createtime"></div>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_deptart" class="form-label"  style="width: 140px;">用地機關</label>
+			</div>
+			<input id="te_data_basic_deptart" type="text" class="form-control" readonly />
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_changetype" class="form-label"  style="width: 140px;">異動類型</label>
+			</div>
+			<select id="te_data_basic_changetype" class="form-select form-custom-select" onchange="te_data_basic_changetype_change();" disabled>
+				<option value="-1" selected>請選擇</option>
+				<option value="1">森林法第8條撥用</option>
+				<option value="2">增劃編原住民保留地</option>
+				<option value="3">專案計畫移出</option>
+			</select>
+			<select id="te_data_basic_changetype_sub" class="form-select form-custom-select" style="display: none; margin-left: 5px;" disabled>
+				<option value="-1" selected>請選擇</option>
+				<option value="1">公共設施</option>
+				<option value="2">國防</option>
+				<option value="3">交通</option>
+				<option value="4">水利</option>
+				<option value="5">公用事業</option>
+				<option value="6">國家公園</option>
+				<option value="7">風景特定區</option>
+			</select>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_note" class="form-label" style="width: 140px;">附件</label>
+			</div>
+			<div style="width: 100%;">
+				<input id="te_data_basic_file" type="file" class="form-control" disabled multiple onchange="FileListUpload1()" accept=".zip,.doc,.docx,.odt,.pdf,.jpg,.png" />
+				<div class="file_list" id="file_list">
+					
+				</div>
+				<div class="file_list" id="upload_file_list">
+					
+				</div>
+				<!-- 隱藏用上傳INPUT --> 
+				<div id="upload_file_hide_list" style="display: none;">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_title" class="form-label" style="width: 140px;">案由</label>
+			</div>
+			<textarea id="te_data_basic_title" type="text" class="form-control"rows="3" readonly></textarea>
+		</div>
+		
+		<div class="new_ver_flex">
+			<div>
+				<label for="te_data_basic_updateuser" class="form-label"  style="width: 140px;">最後編輯者</label>
+			</div>
+			<div id="te_data_basic_updateuser">測試者1</div>
+		</div>
+		
+		<div class="new_ver_flex">
+		   <div>
+		   <label for="te_data_basic_updatetime" class="form-label"  style="width: 140px;">最後編輯時間</label>
+		   </div>
+			<div id="te_data_basic_updatetime">2021/05/10 22:00</div>
 
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_deptart" class="form-label"  style="width: 140px;">所屬單位</label>
-	   </div>
-		<div id="te_data_basic_deptart"></div>
-
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_title" class="form-label"  style="width: 140px;">標題</label>
-	   </div>
-	   <input id="te_data_basic_title" type="text" class="form-control" readonly />
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_note" class="form-label"  style="width: 140px;">說明</label>
-	   </div>
-	   <textarea id="te_data_basic_note" type="text" class="form-control"rows="3" readonly></textarea>
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_note" class="form-label"  style="width: 140px;">附件</label>
-	   </div>
-	<div style="width: 100%;">
-	   <input id="te_data_basic_file" type="file" class="form-control" disabled multiple onchange="FileListUpload()" />
-	   <div class="file_list" id="file_list">
-	   
-	   </div>
-	   <div class="file_list" id="upload_file_list">
-	   
-	   </div>
-	   <!-- 隱藏用上傳INPUT -->
-	   <div id="upload_file_hide_list" style="display: none;">
-	   </div>
-	</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_updateuser" class="form-label"  style="width: 140px;">最後編輯者</label>
-	   </div>
-		<div id="te_data_basic_updateuser">測試者1</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	   <div>
-	   <label for="te_data_basic_updatetime" class="form-label"  style="width: 140px;">最後編輯時間</label>
-	   </div>
-		<div id="te_data_basic_updatetime">2021/05/10 22:00</div>
-
-	</div>	
+		</div>	
 	</div>
 	<!-- 選取異動的基本資料 -->
 </div>
+<script>
+	var filelist1 = new Array();
+	function FileListUpload1() {
+		var input = document.getElementById("te_data_basic_file");
+		var output = document.getElementById("file_list");
+
+		var clone = $("#te_data_basic_file").clone();
+		clone.attr("class", "hiddenupload");
+		$("#upload_file_hide_list").append(clone);
+		
+		var HTML = "<table style=\"width: 500px;\">";
+		for (var i = 0; i < input.files.length; i++) {
+			filelist1.push(input.files.item(i));
+		}
+		
+		for (var i = 0; i < filelist1.length; i++) {
+			HTML += "<tr><td>" + filelist1[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis1(" + i + ")>刪除</button></td></tr>";
+		}
+
+		HTML += "</table>";
+		output.innerHTML = HTML;
+		
+		$("#te_data_basic_file").replaceWith($("#te_data_basic_file").val('').clone(true));
+	}
+	function UploadDeleteThis1(idx) {
+		var output = document.getElementById("file_list");
+		filelist1.splice(idx, 1);
+		var HTML = "<table style=\"width: 500px;\">";
+		
+		for (var i = 0; i < filelist1.length; i++) {
+			HTML += "<tr><td>" + filelist1[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis1(" + i + ")>刪除</button></td></tr>";
+		}
+		output.innerHTML = HTML;
+		
+		var hiddenlist = document.getElementsByClassName("hiddenupload");
+		for (var i = 0; i < hiddenlist.length; i++) {
+			if (i == idx) hiddenlist[i].remove();
+		}
+	}
+</script>

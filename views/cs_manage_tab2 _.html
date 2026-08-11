@@ -1,0 +1,139 @@
+<div class="manage_page flex">
+	<div class="cs2_search_bar">	
+		<div class="flex">
+			<div class="search_div">
+				<div class="content_row_search" style="height: calc(100vh - 158px);">
+					<div class="row_text">常用查詢組合項目</div>	
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_temp" class="form-label" style="width: 110px;">主題</label>
+						</div>
+						<select class="form-select" aria-label="search_temp" id="search_temp" onchange="cs_manage_custom_change();">
+							<option disabled selected value="-1">請選擇</option>
+						</select>
+					</div>
+					<div id="search_item0" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_year" class="form-label" style="width: 110px;">年度</label>
+						</div>
+						<select id="search_year" class="form-select">
+							<option value="-1">請選擇</option>
+							<option value="109">109年度</option>
+						</select>
+					</div>
+					<div id="search_item1" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+						</div>
+						<select id="search_county" class="form-select" onchange="cs_manage_getTown2();">
+							<option value="-1">請選擇</option>
+						</select>
+					</div>
+					<div id="search_item2" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_town" class="form-label" style="width: 110px;">鄉鎮</label>
+						</div>
+						<select id="search_town" class="form-select">
+							<option value="-1">請選擇</option>
+						</select>
+					</div>
+					<div id="search_item3" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_class" class="form-label" style="width: 110px;">所有權類別</label>
+						</div>
+						<select id="search_class" class="form-select">
+							<option value="-1">請選擇</option>
+							<option value="私有">私有林地</option>
+							<option value="國有">國有林地</option>
+							<option value="公有">公有林地</option>
+						</select>
+					</div>
+					<div id="search_item4" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_dep" class="form-label" style="width: 110px;">管理機關</label>
+						</div>
+						<select id="search_dep" class="form-select">
+							<option value="-1">請選擇</option>
+							<option name="中興大學實驗林" value="中興大學">中興大學實驗林</option>
+							<option name="宜蘭大學實驗林" value="宜蘭大學">宜蘭大學實驗林</option>
+							<option name="屏東科技大學實驗林" value="屏東科技大學">屏東科技大學實驗林</option>
+							<option name="嘉義大學實驗林" value="嘉義大學">嘉義大學實驗林</option>
+							<option name="臺灣大學實驗林" value="臺灣大學">臺灣大學實驗林</option>
+							<option name="林務局" value="林務局">林務局</option>
+							<option name="林業試驗所" value="林業試驗所">林業試驗所</option>
+							<option name="原住民族事務委員會" value="原住民族事務委員會">原住民族事務委員會</option>
+							<option name="國有財產署" value="國有財產署">國有財產署</option>
+							<option name="其他" value="其他">其他</option>
+						</select>
+					</div>
+					<div id="search_item5" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+						</div>
+						<select id="search_dist" class="form-select" onchange="cs_manage_getWorkShop2();">
+							<option value="-1">請選擇</option>
+						</select>
+					</div>
+					<div id="search_item6" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_workshop" class="form-label" style="width: 110px;">工作站</label>
+						</div>
+						<select id="search_workshop" class="form-select">
+							<option value="-1">請選擇</option>
+						</select>
+					</div>
+					<div id="search_item7" class="new_ver_flex cs_custom_search_item">
+						<div>
+							<label for="search_option" class="form-label" style="width: 110px;">林業管理項目</label>
+						</div>
+						<select id="search_option" class="form-select">
+							<option value="-1">請選擇</option>
+							<option name="國有林事業區" value="1">國有林事業區</option>
+							<option name="保安林" value="2">保安林</option>
+							<option name="森林遊樂區" value="3">森林遊樂區</option>
+							<option name="實驗林" value="4">實驗林</option>
+						</select>
+					</div>
+					<div class="new_ver" style="text-align:center;position: relative;top: -25px;">
+						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="cs_manage_search_2();">查詢</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cs_result">
+		<div class="content_row_result">
+			<div class="fc_map_detail" style="max-height: 400px;">
+				<div id="mmap" style="width: 100%; height: calc(100% - 10px); position: relative; top: 8px;"></div>
+			</div>
+		</div>
+		<div class="flex fc_detail_zone" style="max-height: 47%;">
+			<div class="fc_fc_detail" style="margin-right:10px;">
+				<div id="cs_main_data" class="main_scroll_mini_4" style="max-height: 350px; overflow: auto;">
+				</div>
+				<div id="cs_main_data2" class="main_scroll_mini_4" style="max-height: 350px; overflow: auto;">
+				</div>
+			</div>
+			<div class="fc_fc_detail" style="margin-right:10px">
+				<div id="cs_chart_data" class="main_scroll_mini_4">
+					<input id="changechart2" type="button" value="切換單位" onclick="cs_chart_change2();" />
+					<div id="fcchart" class="fc_map_detail" style="max-height: 300px;">
+						<div id="fc_chart_detail1">
+						</div>
+						<div id="fc_chart_detail2">
+						</div>
+					</div>
+					<div id="barchart" class="fc_map_detail" style="max-height: 300px;">
+						<div id="fc_chart_detail3">
+						</div>
+						<div id="fc_chart_detail4">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	cs_manage_init2();
+</script>

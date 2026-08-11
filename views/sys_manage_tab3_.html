@@ -1,0 +1,187 @@
+<!-- 使用者管理頁面 -->
+<div>
+	<div id="sys_custom_theme_search">
+		<div id="sys_rowsearch" class="search_div">
+			<div class="row_text2">自訂常用查詢</div>
+			<div class="rowsearch">
+				<div class="rowsearchitem">
+					<label>申請人</label>
+					<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+				</div>
+				<div class="rowsearchitem">
+					<button type="button" class="btn btn-success search_submit custom_bt2" onclick="">搜尋</button>
+					<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="">清除條件</button>
+				</div>
+			</div>
+		</div>
+		<div id="sys_rowsearch2">
+			<div>
+				<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_custom_insert();">
+					新增主題
+				</button>
+			</div>
+			<div id="sys_user_page">
+				<table class="table_c fc_tab_list" id="sys_custom_theme_list">
+					<thead>
+						<tr>
+							<th>序號</th>
+							<th>主題</th>
+							<th>建立者</th>
+							<th>建立時間</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="sys_custom_theme_body">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="sys_custom_theme_edit">
+		<input id="sys_custom_theme_editid" type="text" style="display: none;" />
+		<div class="content_row_head">
+			<div class="sub_tab fc_manage_tab3 AllCenter">
+				<div class="nav-item3 tab_1 active">
+					<div class="num_icon">1</div>
+					<span>基本設定</span>
+				</div>
+				<i class="fas fa-arrow-circle-right"></i>
+				<div class="nav-item3 tab_2">
+					<div class="num_icon">2</div>
+					<span>圖表設定</span>
+				</div>		
+				<i class="fas fa-arrow-circle-right"></i>			  
+				<div class="nav-item3 tab_3">
+					<div class="num_icon">3</div>
+					<span>圖表預覽</span>
+				</div>
+			</div>
+		</div>
+		<div class="content_row_result">
+			<div id="sys_cutom_theme_step1" class="container">
+				<div class="row">
+					<div class="col sys_col1">
+						主題名稱
+					</div>
+					<div class="col sys_col2">
+						<input id="sys_custom_theme" class="form-control form-custom-select" type="text" placeholder="輸入主題名稱" />
+					</div>
+					<div class="col sys_col1">
+						圖表呈現
+					</div>
+					<div class="col sys_col2">
+						<input id="sys_custom_theme_chart" class="form-check-input" type="radio" name="chart" value="0" onchange="sys_custom_chart_type_onchange();" checked />
+						<label for="sys_custom_theme_chart">圓餅圖</label>
+						<input id="sys_custom_theme_bar" class="form-check-input" type="radio" name="chart" value="1" onchange="sys_custom_chart_type_onchange();" />
+						<label for="sys_custom_theme_bar">長條圖</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col sys_col1">
+						查詢項目
+					</div>
+					<div class="col sys_col2">
+						<input id="sys_custom_theme_year" class="form-check-input" type="checkbox" name="items" value="0" onchange="sys_check_year_onchange();" />
+						<label for="sys_custom_theme_year">年度</label>
+						<input id="sys_custom_theme_city" class="form-check-input" type="checkbox" name="items" value="1" onchange="sys_check_city_onchange();" />
+						<label for="sys_custom_theme_city">縣市</label>
+						<input id="sys_custom_theme_town" class="form-check-input" type="checkbox" name="items" value="2" onchange="sys_check_town_onchange();" disabled />
+						<label for="sys_custom_theme_town">鄉鎮</label>
+						<input id="sys_custom_theme_class" class="form-check-input" type="checkbox" name="items" value="3" onchange="sys_check_owner_onchange();" />
+						<label for="sys_custom_theme_class">所有權類別</label>
+						<input id="sys_custom_theme_dep" class="form-check-input" type="checkbox" name="items" value="4" onchange="sys_check_dep_onchange();" />
+						<label for="sys_custom_theme_dep">管理機關</label>
+						<input id="sys_custom_theme_dep2" class="form-check-input" type="checkbox" name="items" value="5" onchange="sys_check_dist_onchange();" />
+						<label for="sys_custom_theme_dep2">管理單位</label>
+						<input id="sys_custom_theme_workshop" class="form-check-input" type="checkbox" name="items" value="6" onchange="sys_check_workshop_onchange();" disabled />
+						<label for="sys_custom_theme_workshop">工作站</label>
+						<input id="sys_custom_theme_option" class="form-check-input" type="checkbox" name="items" value="7" onchange="sys_check_option_onchange();" />
+						<label for="sys_custom_theme_option">林業管理項目</label>
+					</div>
+					<div class="col sys_col2">
+					</div>
+					<div class="col sys_col2">
+					</div>
+				</div>
+			</div>
+			<div id="sys_cutom_theme_step2">
+				<div class="row">
+					<div class="col sys_col2">
+					</div>
+					<div class="col sys_col1">
+						資料單位
+					</div>
+					<div class="col sys_col2">
+						<input id="sys_custom_theme_area" class="form-check-input" type="checkbox" name="unit" value="0" />
+						<label for="sys_custom_theme_area">面積(公頃)</label>
+						<input id="sys_custom_theme_count" class="form-check-input" type="checkbox" name="unit" value="1" />
+						<label for="sys_custom_theme_count">筆數(筆)</label>
+					</div>
+					<div class="col sys_col2">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col sys_col2">
+					</div>
+					<div class="col sys_col1">
+						統計項目
+					</div>
+					<div class="col sys_col2">
+						<input id="sys_custom_theme_year2" class="form-check-input" type="radio" name="classic" value="0" disabled />
+						<label for="sys_custom_theme_year2">年度</label>
+						<input id="sys_custom_theme_city2" class="form-check-input" type="radio" name="classic" value="1" disabled />
+						<label for="sys_custom_theme_city2">縣市</label>
+						<input id="sys_custom_theme_town2" class="form-check-input" type="radio" name="classic" value="2" disabled />
+						<label for="sys_custom_theme_town2">鄉鎮</label>
+						<input id="sys_custom_theme_class2" class="form-check-input" type="radio" name="classic" value="3" disabled />
+						<label for="sys_custom_theme_class2">所有權類別</label>
+						<input id="sys_custom_theme_dep3" class="form-check-input" type="radio" name="classic" value="4" disabled />
+						<label for="sys_custom_theme_dep3">管理機關</label>
+						<input id="sys_custom_theme_dep4" class="form-check-input" type="radio" name="classic" value="5" disabled />
+						<label for="sys_custom_theme_dep4">管理單位</label>
+						<input id="sys_custom_theme_workshop2" class="form-check-input" type="radio" name="classic" value="6" disabled />
+						<label for="sys_custom_theme_workshop2">工作站</label>
+						<input id="sys_custom_theme_option2" class="form-check-input" type="radio" name="classic" value="7" disabled />
+						<label for="sys_custom_theme_option2">林業管理項目</label>
+					</div>
+					<div class="col sys_col2">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col sys_col2">
+					</div>
+					<div class="col sys_col1">
+						項目屬性
+					</div>
+					<div class="col sys_col2">
+						<input id="sys_custom_theme_single" class="form-check-input" type="radio" name="choice" value="0" checked />
+						<label for="sys_custom_theme_single">單選</label>
+						<input id="sys_custom_theme_multiple" class="form-check-input" type="radio" value="1" name="choice" />
+						<label for="sys_custom_theme_multiple">複選</label>
+					</div>
+					<div class="col sys_col2">
+					</div>
+				</div>
+			</div>
+			<div id="sys_cutom_theme_step3">
+				<div class="AllCenter">
+					<img id="BarTemp" src="image/BarTempImg.svg">
+					<img id="PieTemp" src="image/PieTempImg.svg">
+				</div>
+			</div>
+			<div class="buttom_button">
+				<div class="AllCenter">
+					<button type="button" id="sys_custom_cancel" class="btn btn-warning search_submit custom_bt2" onclick="sys_custom_cancel();">取消</button>
+					<button type="button" id="sys_custom_prev" class="btn btn-warning search_submit custom_bt2" onclick="sys_custom_prevstep();">上一步</button>
+					<button type="button" id="sys_custom_next" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_nextstep();">下一步</button>
+					<button type="button" id="sys_custom_insert" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_insert_data();">新增</button>
+					<button type="button" id="sys_custom_edit" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_edit_data();">編輯</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	sys_custom_inti();
+	sys_get_custom_table();
+</script>

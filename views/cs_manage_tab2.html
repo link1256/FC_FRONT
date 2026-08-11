@@ -1,160 +1,34 @@
-    <form id="search_sub2_form" style="text-align: center;">
-		<div class="search_sub2_content">		
-		<div class="tab-pane search_b_a active">
-
-		<div class="form-row">
-			<label for="search_city">縣市</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_city">
-				  <option selected>不指定</option>
-				  <option value="1">台北市</option>
-				  <option value="2">新北市</option>
-				  <option value="3">台中市</option>
-			  </select>
+<div class="manage_page flex">
+	<div class="cs2_search_bar">	
+		<div class="flex">
+			<div class="search_div">
+				<div class="content_row_search" style="height: calc(100vh - 158px);">
+					<div class="row_text">常用查詢組合項目</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_custom_name" class="form-label" style="width: 110px;">主題名稱</label>
+						</div>
+						<select id="search_custom_name" class="form-select">
+						</select>
+					</div>
+					<div class="new_ver" style="text-align:center;position: relative;top: -25px;">
+						<button type="button" class="btn btn-success search_submit custom_bt2" style="margin-top: 20px;" onclick="cs_manage_search_2();">查詢</button>
+					</div>
+				</div>
 			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">鄉鎮</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_town">
-				  <option selected>不指定</option>
-				  <option value="1">內湖區</option>
-				  <option value="2">南港區</option>
-				  <option value="3">大安區</option>
-			  </select>
-			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">地段</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_sect">
-				  <option selected>不指定</option>
-				  <option value="1">One</option>
-				  <option value="2">Two</option>
-				  <option value="3">Three</option>
-			  </select>
-			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">地號</label>
-			<div class="search_select">
-			  <input class="form-control " id="search_number1"><span style="margin: 4px;">-</span>
-			  <input class="form-control " id="search_number2">  
-			</div>
-		  </div>
 		</div>
-		<div class="tab-pane search_b_b">
-		
-		<div class="form-row">
-			<label for="search_city">林管處</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f1_area1">
-				  <option selected>不指定</option>
-				  <option value="1">新竹</option>
-				  <option value="2">東勢</option>
-				  <option value="3">南投</option>
-				  <option value="3">嘉義</option>
-				  <option value="3">屏東</option>
-				  <option value="3">台東</option>
-				  <option value="3">花蓮</option>
-				  <option value="3">羅東</option>
-			  </select>
+	</div>
+	<div class="cs_result">
+		<div class="cs_pivot_zone">
+			<div class="cs_pivot_bt_zone">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="cs_pivot_export();">匯出</button>
+				<label class="cs_pivot_label"></label>
 			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">事業區</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f1_area2">
-				  <option selected>不指定</option>
-				  <option value="1">內湖區</option>
-				  <option value="2">南港區</option>
-				  <option value="3">大安區</option>
-			  </select>
+			<div id="cs_pivot_table" class="main_scroll_mini">
 			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">林區</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f1_area3">
-				  <option selected>不指定</option>
-				  <option value="1">One</option>
-				  <option value="2">Two</option>
-				  <option value="3">Three</option>
-			  </select>
-			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">林班</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f1_area4">
-				  <option selected>不指定</option>
-				  <option value="1">One</option>
-				  <option value="2">Two</option>
-				  <option value="3">Three</option>
-			  </select>
-			</div>
-		  </div>
 		</div>
-		<div class="tab-pane search_b_c">
-		
-		<div class="form-row">
-			<label for="search_city">林管處</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f2_area1">
-				  <option selected>不指定</option>
-				  <option value="1">新竹</option>
-				  <option value="2">東勢</option>
-				  <option value="3">南投</option>
-				  <option value="3">嘉義</option>
-				  <option value="3">屏東</option>
-				  <option value="3">台東</option>
-				  <option value="3">花蓮</option>
-				  <option value="3">羅東</option>
-			  </select>
-			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">工作站</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f2_area2">
-				  <option selected>不指定</option>
-				  <option value="1"></option>
-				  <option value="2"></option>
-				  <option value="3"></option>
-			  </select>
-			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">保安林</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f2_area3">
-				  <option selected>不指定</option>
-				  <option value="1">One</option>
-				  <option value="2">Two</option>
-				  <option value="3">Three</option>
-			  </select>
-			</div>
-		  </div>
-		  <div class="form-row">
-			<label for="search_city">林班</label>
-			<div class="search_select">
-			  <select class="form-select" id="search_f2_area4">
-				  <option selected>不指定</option>
-				  <option value="1">One</option>
-				  <option value="2">Two</option>
-				  <option value="3">Three</option>
-			  </select>
-			</div>
-		  </div>
-		</div>
-		
-		</div>
-		</form>
-		<div style="text-align:center;">
-		<button type="submit" class="btn btn-success search_submit search_b_bt">查詢</button>
-		<button type="reset" class="btn btn-success search_submit search_b_reset_bt">重置</button>
-		</div>
-		<!-- </form> -->
-	<script>
-
-    </script>
+	</div>
+</div>
+<script>
+	cs_manage_init2();
+</script>

@@ -1,0 +1,56 @@
+<!-- 使用者管理頁面 -->
+<div>
+	<div id="sys_rowsearch" class="search_div" style="width: 100%; height: 100%;">
+		<div class="row_text2">人員異動管理</div>
+		<div class="AllCenter">
+			<div style="width: 30vw;">
+				<label class="labelinlineblock">請選擇變更人員之角色群組</label>
+				<table class="table_c sys_pepole_tab_list" id="sys_user_manage_list">
+					<thead>
+						<tr>
+							<th>
+								角色群組
+								<select id="targetgroup" onchange="getTargetUser();">
+									<option value="-1">請選擇</option>
+								</select>
+							</th>
+						</tr>
+					</thead>
+					<tbody id="sys_pepole_tab_list_target">
+						
+					</tbody>
+				</table>
+			</div>
+			<div style="width: 70px;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" style="width: 50px;" onclick="UserToRight();"> &gt;&gt; </button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" style="width: 50px;" onclick="UserToLeft();"> &lt;&lt; </button>
+			</div>
+			<div style="width: 30vw;">
+				<label class="labelinlineblock"></label>
+				<table class="table_c sys_pepole_tab_list" id="sys_user_manage_list">
+					<thead>
+						<tr>
+							<th>
+								角色群組
+								<select id="changegroup" onchange="getTargetUser();">
+									<option value="-1">請選擇</option>
+								</select>
+							</th>
+						</tr>
+					</thead>
+					<tbody id="sys_pepole_tab_list_change">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="AllCenter">
+			<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="CancelUserChange();">取消</button>
+			<button type="button" class="btn btn-success search_submit custom_bt2" onclick="SaveUserChange();">儲存</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	getGroupManageList();
+</script>

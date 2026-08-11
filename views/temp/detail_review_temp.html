@@ -1,0 +1,132 @@
+<div class="content_row_data" id="basic_data">
+	<table style="width: 100%;">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+				確認人員
+			</div>
+			<div id="review_apply_number" class="col-md-3 col-sm-6 col-6 sys_col2">
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+				確認時間
+			</div>
+			<div id="review_apply_time" class="col-md-3 col-sm-6 col-6 sys_col2">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+				農業部會函
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col2">
+				<!--<label for="fnumber">公文文號</label>-->
+				<input id="fnumber" type="text" class="form-control form-custom-select" placeholder="輸入公文文號" />
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+				發文日期
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col2">
+				<input id="fdate" type="text" class="form-control form-custom-select" placeholder="yyyy/mm/dd" />
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+				同意撥用函
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col2">
+				<!--<label for="snumber">公文文號</label>-->
+				<input id="snumber" type="text" class="form-control form-custom-select" placeholder="輸入公文文號" />
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+				發文日期
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col2">
+				<input id="sdate" type="text" class="form-control form-custom-select" placeholder="yyyy/mm/dd" />
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+				說明備註
+			</div>
+			<div class="col-md-6 col-sm-6 col-6 sys_col2">
+				<textarea id="note" type="text" class="form-control" rows="3" placeholder="輸入說明備註"></textarea>
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			</div>
+		</div>
+	</table>
+</div>
+<div class="content_row_data" id="basic_data">
+	<div class="row_text">基本資料</div>
+	<div class="row">
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			流水代碼
+		</div>
+		<div id="te_data_basic_uid" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			建立日期
+		</div>
+		<div id="te_data_basic_createtime" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			用地機關
+		</div>
+		<div id="te_data_basic_deptart" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			申請者
+		</div>
+		<div id="te_data_basic_createuser" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			異動類型
+		</div>
+		<div id="te_data_basic_changetype" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			單位資訊
+		</div>
+		<div id="te_data_basic_createunit" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			案由
+		</div>
+		<div id="te_data_basic_title" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+		<div class="col-md-3 col-sm-6 col-6 sys_col1">
+			附件
+		</div>
+		<div id="file_list" class="col-md-3 col-sm-6 col-6 sys_col2">
+		</div>
+	</div>
+</div>
+<script>
+	$('#fdate,#sdate').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: 'yy/mm/dd',
+		beforeShow: function (e, t) {
+			if ($(this).attr('maxDate')) {
+				var dateItem = $('#' + $(this).attr('maxDate'));
+				if (dateItem.val() !== "") {
+					$(this).datepicker('option', 'maxDate', dateItem.val());
+				}
+			}
+
+			if ($(this).attr('minDate')) {
+				var dateItem = $('#' + $(this).attr('minDate'));
+				if (dateItem.val() !== "") {
+					$(this).datepicker('option', 'minDate', dateItem.val());
+				}
+			}
+		}
+	});
+</script>

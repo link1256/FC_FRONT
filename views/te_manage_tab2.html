@@ -1,38 +1,32 @@
 <!-- 頁面區 -->
 <div class="content_row">
-     <div class="row_text">新增作業</div>
-	 <div class="sub_tab te_manage_tab2">
-			  <div class="nav-item3 tab1 active">
-			    <div class="num_icon">1</div>
-				<span>基本資料</span>
-			  </div>
-			  <i class="fas fa-arrow-circle-right"></i>
-			  <div class="nav-item3 tab2">
-			   <div class="num_icon">2</div>
-				<span>地籍圖資</span>
-			  </div>		
-              <!-- <i class="fas fa-arrow-circle-right"></i>			   -->
-			  <!-- <div class="nav-item3 tab3"> -->
-			   <!-- <div class="num_icon">3</div> -->
-				<!-- <span>確認送審</span> -->
-			  <!-- </div>						   -->
-   </div>
+	<div class="sub_tab te_manage_tab2 AllCenter">
+		<div class="nav-item3 tab1 active" onclick="te_tab_back();">
+			<div class="num_icon">1</div>
+			<span>基本資料</span>
+		</div>
+		<i class="fas fa-arrow-circle-right"></i>
+		<div class="nav-item3 tab2" onclick="te_manage_next2();">
+			<div class="num_icon">2</div>
+			<span>異動土地清冊</span>
+		</div>
+		<i class="fas fa-arrow-circle-right"></i>
+		<div class="nav-item3 tab3" onclick="te_tab2_sent();">
+			<div class="num_icon">3</div>
+			<span>送出登記</span>
+		</div>
+    </div>
 </div>
 
 <!-- 圖資異動步驟 -->
-   <div id="te_step">
+<div id="te_step">
 
-	
-    </div>
+
+</div>
 <!-- 圖資異動步驟 -->	
 
 <!-- 頁面區 -->
-	<script>
-    $(".te_tab_list tr").on("click",function(){
-	$(this).parent().children().removeClass("active");
-	$(this).addClass("active");
-    });
-    step_tab();
-	create_step(2,1);		
-    </script>
+<script>
+	create_step(2, 1);
+</script>
 	

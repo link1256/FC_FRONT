@@ -163,7 +163,7 @@ function map(){
 		  				
         ],
         view: new ol.View({
-           center: ol.proj.fromLonLat([121.55, 25.05]),
+          center: ol.proj.fromLonLat([121.55, 25.05]),
           zoom: 11,
 		  maxZoom: 22
         })

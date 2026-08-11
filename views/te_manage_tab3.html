@@ -1,135 +1,77 @@
 <!-- 頁面區 -->
 <div class="manage_page">
-<div class="search_div">
-
-<div class="content_row_search" style="height: calc(100vh - 160px)">
-	<div class="row_text">異動列表</div>
-	<div class="result_list">
-	<!-- <異動列表資料> -->
-	<table class="table  te_tab_list" id="te_tab2_list">	
-		
-		<tr class="active">	
-		   <td>1100510003</td>
-		   <td>測試用異動3</td>
-		</tr>
-						
-		<tr>
-		   <td>1100510006</td>
-		   <td>測試用異動6</td>
-		</tr>
-    </table>
+	<div class="search_div">
+		<div class="content_row_search">
+			<div class="row_text">篩選條件</div>
+			<div class="new_ver_flex">
+			<div>
+			   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
+			 </div>  
+			   <select id="ver_year0" class="form-select" >
+				  <option value="-1" selected>不指定</option>
+				</select>
+			</div>
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_id" class="form-label" style="width: 110px;">識別碼</label>
+				</div>
+				<input id="search_id" type="text" class="form-control" />
+			</div>
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_title" class="form-label"  style="width: 110px;">標題關鍵字</label>
+				</div>
+				<input id="search_title" type="text" class="form-control" />
+			</div>
+			
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+				</div>
+				<select id="search_stat" class="form-select"  >
+					<option value="1" selected>未確認</option>
+					<option value="4">取消異動</option>
+				</select>
+			</div>
+			<div class="new_ver" style="text-align:center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="get_te_tab3_manage();">查詢</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_manage_reset();">重置</button>
+			</div>
+		</div>
+		<div class="content_row_search" style="height: calc(100vh - 520px)">
+			<div class="row_text">異動列表</div>
+			<div class="result_list main_scroll_mini">
+				<!-- <異動列表資料> -->
+				<table class="table te_tab_list" id="te_tab2_list">
+				</table>
+				<!-- <異動列表資料> -->
+			</div>
+		</div>
 	</div>
-
-	
-</div>
-
-
-</div>
-<div class="detail_data main_scroll">
-<div class="content_row_data">
-	<div class="row_text">基本資料</div>
-	<!-- 選取異動的基本資料 -->
-	<div id="te_data_basic2">
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_uid" class="form-label"  style="width: 140px;">識別碼</label>
-	    </div>
-	   <div id="te_data_basic_uid">1100510001</div>
+	<div class="detail_data main_scroll" style="display: none;">
+		<div class="content_row_data manage_bt_area" style="padding:10px;">
+			<div class="manage_bt">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" id="reject_apply" onclick="te_tab3_reject_apply();">退回修正</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" id="detail_apply" onclick="te_tab3_submit_apply();">通過</button>
+			</div>
+		</div>
+		<!-- <審核資料> -->
+		<div class="data_frame">
+		</div>
+		<!-- <審核資料> -->
+		<!-- <圖資資料> -->
+		<div class="list_frame">
+		</div>
+		<!-- <圖資資料> -->
 	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createuser" class="form-label"  style="width: 140px;">建立者</label>
-	    </div>
-		<div id="te_data_basic_createuser">測試者1</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createtime" class="form-label"  style="width: 140px;">建立時間</label>
-	    </div>
-		<div id="te_data_basic_createtime">2021/05/10 22:00</div>
-
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_title" class="form-label"  style="width: 140px;">標題</label>
-	    </div>
-		<div  id="te_data_basic_title">測試用異動3</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_note" class="form-label"  style="width: 140px;">說明</label>
-	    </div>
-		<div  id="te_data_basic_note" >測試用說明寫在這裡，我是測試資料</div>
-	   
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_note" class="form-label"  style="width: 140px;">附件</label>
-	</div>
-	<div style="width: 100%;">
-	   <div class="file_list">
-	   <div class="file_list_item">
-	      <a href=""><i class="fas fa-file-alt"></i>測試檔案1</a>
-	   </div>
-	   <div class="file_list_item">
-	      <a href=""><i class="fas fa-file-alt"></i>測試檔案2</a>
-	   </div>
-	   </div>
-	</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createuser" class="form-label"  style="width: 140px;">最後編輯者</label>
-	    </div>
-		<div id="te_data_basic_createuser">測試者1</div>
-	</div>
-	
-	<div class="new_ver_flex">
-	<div>
-	   <label for="te_data_basic_createtime" class="form-label"  style="width: 140px;">最後編輯時間</label>
-	    </div>
-		<div id="te_data_basic_createtime">2021/05/10 22:00</div>
-
-	</div>
-	
-	
-	</div>
-	<!-- 選取異動的基本資料 -->
-</div>
-
-<div class="content_row_data">
-	<div class="row_text">異動圖資列表</div>
-	<table id="fi_list2" class="table table-striped ">
-	<thead>
-	<tr>
-		<th  width="10%" style="border-radius:10px 0 0 0;">序號</th>
-		<th width="30%">類型</th>
-		<th width="40%">圖資識別碼</th>
-		<th  width="20%" style="border-radius: 0 10px 0 0 ;">管理</th>
-	</tr>
-	</thead>
-	<tbody>
-	
-	
-	</tbody>
-	</table>
-</div>
-
-
-</div>
 </div>
 <!-- 頁面區 -->
-	<script>
-    $(".te_tab_list tr").on("click",function(){
-	$(this).parent().children().removeClass("active");
-	$(this).addClass("active");
-});
-    </script>
+<script>
+	$(".te_tab_list tr").on("click",function(){
+		$(this).parent().children().removeClass("active");
+		$(this).addClass("active");
+	});
+	te_manage_get_yearlist();
+	// get_te_tab3_manage();
+</script>
 	

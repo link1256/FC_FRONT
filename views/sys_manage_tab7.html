@@ -1,0 +1,67 @@
+<!-- 圖資管理頁面 -->
+<div>
+	<!-- 圖層列表 -->
+	<div id="sys_manage_tab7">
+		<div class="row_text2">公告列表</div>
+		<div>
+			<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_manage_tab7_ann_add();">
+				新增公告
+			</button>
+		</div>
+		<div class="main_scroll_mini_4" style="max-height: calc(100vh - 186px - 20px);overflow-y: auto ;position: relative;">
+		<table class="table_d fc_tab_list2" id="sys_custom_theme_list" >
+			<thead style="position: sticky;top: 0;">
+				<tr>
+					<th style="width: 15%">日期</th>
+					<th>內容</th>
+					<th style="width: 15%">狀態</th>
+					<th style="width: 15%">編輯</th>
+				</tr>
+			</thead>
+			<tbody id="sys_manage_tab7_list" class="ztbody"></tbody>
+		</table>
+		</div>
+	</div>
+</div>
+<!-- <MODAL 新增> -->
+<div class="modal fade main_scroll" id="AddNewAnn" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="add_edit_file_modal" class="modal-title">公告管理</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<input id="add_edit_sid" type="text" style="display: none;" />
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td>
+								日期
+							</td>
+							<td>
+								<input id="add_ann_date" class="form-control" type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								說明
+							</td>
+							<td>
+								<textarea id="add_ann_note" class="form-control" rows="3"></textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_manage_tab7_ann_close();">取消</button>
+				<button id="add_file_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_manage_tab7_click_add();">新增</button>
+				<button id="edit_file_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_manage_tab7_click_edit();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	sys_manage_tab7_init();
+</script>

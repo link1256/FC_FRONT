@@ -1,0 +1,322 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- 圖資管理頁面 -->
+<div>
+	<!-- 圖層列表 -->
+	<div id="sys_map_page">
+		<div class="row_text2">圖資版本</div>
+		<div class="main_scroll_mini_4" style="max-height: calc(100vh - 186px - 20px);overflow-y: auto ;position: relative;">
+		<table class="table_c fc_tab_list2" id="sys_custom_theme_list" >
+			<thead style="position: sticky;top: 0;">
+				<tr>
+					<th>圖資名稱</th>
+					<th>敏感區</th>
+					<th>最新版次</th>
+					<th>圖徵數量</th>
+					<th>管理</th>
+				</tr>
+			</thead>
+			<tbody id="sys_map_list" class="ztbody"></tbody>
+		</table>
+		</div>
+	</div>
+	<!-- 載入中Modal -->
+	<div class="modal fade" id="sys_manage_tab5_dialog" data-bs-backdrop="static" aria-labelledby="NewMapVersion"
+		aria-hidden="false" role="dialog">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 id="tab5_title" class="modal-title"></h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body AllCenter">
+					<div id="sys_rowsearch" class="search_div">
+						<div class="step1">
+							<div class="row_text2">圖資管理</div>
+							<div class="rowsearch">
+								<div>
+									<!-- <label>圖資項目</label> -->
+									<input id="data_option" type="hidden" />
+									<label style="margin-left: 10px;">目前版本</label>
+									<select id="show_year" class="form-select form-custom-select" style="margin-right:10px;" disabled>
+										<option value="-1" selected>請選擇年度</option>
+									</select>
+									<select id="show_month" class="form-select form-custom-select" disabled>
+										<option value="-1" selected>請選擇月份</option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+								</div>
+							</div>
+							<div class="rowsearch">
+								<div>
+									<!-- <label>圖資項目</label> -->
+									<input id="data_option" type="hidden" />
+									<label style="margin-left: 10px;">匯入版本</label>
+									<select id="data_year" class="form-select form-custom-select" style="margin-right:10px;">
+										<option value="-1" selected>請選擇年度</option>
+									</select>
+									<select id="data_month" class="form-select form-custom-select">
+										<option value="-1" selected>請選擇月份</option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+								</div>
+							</div>
+							<div class="row_text2">圖資檔案</div>
+							<!-- <div>
+								<h6 style="color:red">注意!上傳前請確認圖資檔案坐標系統為TWD97(EPSG:3857)</h6>
+							</div> -->
+							<div class="rowsearch">
+								<div class="rowsearchitem" style="width: 30%;">
+									<input id="import_shp" type="file" class="form-control" multiple accept=".shp,.prj,.dbf" onchange="FileListUpload();" />
+								</div>
+							</div>
+							<div class="rowsearch">
+								<div class="rowsearchitem" style="width: 100%;">
+									<div id="import_shp_drag" class="AllCenter">
+										或把檔案拖放到這裡
+									</div>
+									<div id="import_shp_file_list"></div>
+								</div>
+							</div>
+							<!-- 20230619 hidden to use zip ,因jQuery那段code保留，先做隱藏，暫不拔除 -->
+							<div class="rowsearch" style="display: none;">
+								<div class="rowsearchitem" style="width: 30%;">
+									<div class="detail-title">.shp</div>
+									<input id="import_shp" type="file" class="form-control" accept=".shp" />
+								</div>
+								<div class="rowsearchitem" style="width: 30%;">
+									<div class="detail-title">.dbf</div>
+									<input id="import_dbf" type="file" class="form-control" accept=".dbf" />
+								</div>
+							</div>
+							<div class="rowsearch" style="display: none;">
+								<div class="rowsearchitem" style="width: 30%;">
+									<div class="detail-title">.prj</div>
+									<input id="import_prj" type="file" class="form-control" accept=".prj" />
+								</div>
+								<div class="rowsearchitem" style="width: 30%;">
+									<div class="detail-title">.cpg</div>
+									<input id="import_cpg" type="file" class="form-control" accept=".cpg" />
+								</div>
+							</div>
+							<div class="rowsearch mt-4" style="display: flex;width: 100%; justify-content: center;">
+								<button id="upload1" type="button" class="btn btn-success">解析檔案</button>
+								<button id="reset2" type="button" class="btn btn-warning ms-4">清除檔案</button>
+							</div>
+						</div>
+						<div class="step2" style="display: none;">
+							<div class="row_text2">圖資內容管理</div>
+							<div class="rowsearch">
+								<label>資料筆數</label>
+								<input id="map_count" type="text" class="form-control form-custom-select" disabled style="width: 50px;" />
+							</div>
+							<div class="">欄位對應</div>
+							<div class="rowsearch shp-content">
+								<div class="rowsearchitem">
+									<label>名稱(NAME)</label>
+									<select id="name_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+								<div class="rowsearchitem">
+									<label>次要名稱(SUB_NAME)</label>
+									<select id="sub_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+								<div class="rowsearchitem">
+									<label>日期(DATE)</label>
+									<select id="date_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+							</div>
+							<div class="rowsearch shp-content">
+								<div class="rowsearchitem">
+									<label>公布日期(ANNOUNCE)</label>
+									<select id="ann_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+								<div class="rowsearchitem">
+									<label>公頃面積(AREA_HA)</label>
+									<select id="ha_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+								<div class="rowsearchitem">
+									<label>管理單位(MANAGER)</label>
+									<select id="manager_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+							</div>
+							<div class="rowsearch shp-content">
+								<div class="rowsearchitem">
+									<label>備註事項(NOTE)</label>
+									<select id="note_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+								<div class="rowsearchitem">
+									<label>修訂資訊(EDITION)</label>
+									<select id="edition_select" class="form-select" style="margin-right:10px;">
+										<option selected>請選擇欄位</option>
+									</select>
+								</div>
+								<div class="rowsearchitem">
+								</div>
+							</div>
+							<div class="rowsearch mt-4" style="display: flex;width: 100%; justify-content: center;">
+								<button id="upload2" type="button" class="btn btn-success">確定上傳</button>
+								<button id="reset1" type="button" class="btn btn-warning ms-4">重新選擇</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 載入中Modal -->
+</div>
+<script>
+	$(document).ready(function () {
+		GetMapList();
+		setdatayear();
+		getoptmap();
+	});
+	// 在這裡寫入自訂 JavaScript
+	$("#upload1").on("click", function () {
+		checkotherdata();
+	});
+	$("#upload2").on("click", function () {
+		uploadotherdata();
+	});
+
+	$("#reset1").on("click", function () {
+		$(".step1").css("display", "block");
+		resetupload();
+	});
+
+	$("#reset2").on("click", function () {
+		resetupload();
+	});
+	
+	var filelist = new Array();
+	function FileListUpload() {
+		var input = document.getElementById("import_shp");
+		var output = document.getElementById("import_shp_file_list");
+		
+		var files = input.files;
+		var HTML = "<table>";
+		for (var i = 0; i < files.length; i++) {
+			if (files[i].name.split(".")[1] == "shp" || files[i].name.split(".")[1] == "prj" || files[i].name.split(".")[1] == "dbf")
+			{
+				var ishas = false;
+				for (var j = 0; j < filelist.length; j++) {
+					if (files[i].name == filelist[j].name)
+						ishas = true;
+				}
+				
+				if (!ishas)
+					filelist.push(files.item(i));
+			}
+		}
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+		}
+
+		HTML += "</table>";
+		output.innerHTML = HTML;
+		
+		$("#import_shp").replaceWith($("#import_shp").val('').clone(true));
+	}
+	function UploadDeleteThis(idx) {
+		var output = document.getElementById("import_shp_file_list");
+		filelist.splice(idx, 1);
+		var HTML = "<table>";
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+		}
+		output.innerHTML = HTML;
+		
+		var hiddenlist = document.getElementsByClassName("hiddenupload");
+		for (var i = 0; i < hiddenlist.length; i++) {
+			if (i == idx) hiddenlist[i].remove();
+		}
+	}
+	// 透過 selector 來選擇元素作為上傳區塊，這裡使用id='drop'的div元素
+	var dropbox;
+	dropbox = document.getElementById("import_shp_drag");
+	// element增加eventListener
+	dropbox.addEventListener("dragenter", dragenter, false);
+	dropbox.addEventListener("dragover", dragover, false);
+	dropbox.addEventListener("drop", drop, false);
+
+	function dragenter(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+	function dragover(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+	function drop(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		var dt = e.dataTransfer;
+		var files = dt.files;
+		handleFiles(files);
+	}
+
+	// 針對資料處理的方法
+	function handleFiles(files) {
+		if (files.length > 0) {
+			var output = document.getElementById("import_shp_file_list");
+			var HTML = "<table>";
+			for (var i = 0; i < files.length; i++) {
+				if (files[i].name.split(".")[1] == "shp" || files[i].name.split(".")[1] == "prj" || files[i].name.split(".")[1] == "dbf")
+				{
+					var ishas = false;
+					for (var j = 0; j < filelist.length; j++) {
+						if (files[i].name == filelist[j].name)
+							ishas = true;
+					}
+					
+					if (!ishas)
+						filelist.push(files.item(i));
+				}
+			}
+			
+			for (var i = 0; i < filelist.length; i++) {
+				HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+			}
+
+			HTML += "</table>";
+			output.innerHTML = HTML;
+		}
+	}
+</script>

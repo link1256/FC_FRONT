@@ -1,0 +1,514 @@
+<!-- 頁面區 -->
+<div class="manage_page">
+  <div class="search_div" style="height: calc(100vh - 153px)">
+    <div class="content_row_search" style="height: inherit;display: flex;
+    flex-direction: column;
+    justify-content: space-between;">
+      <div>
+        <div class="row_text">篩選條件</div>
+        <div class="new_ver_flex">
+          <div>
+            <label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+          </div>
+          <select id="search_dist" class="form-select" onchange="ca_tab1_get_protectnumber();">
+            <option value="-1" selected>不指定</option>
+          </select>
+        </div>
+        <div class="new_ver_flex">
+          <div>
+            <label for="search_pfid" class="form-label" style="width: 110px;">保安林類型</label>
+          </div>
+          <select id="search_pfid" class="form-select" onchange="ca_tab1_get_protectnumber();">
+            <option value="-1" selected>不指定</option>
+          </select>
+        </div>
+        <div class="new_ver_flex">
+          <div>
+            <label for="search_pfsid" class="form-label" style="width: 110px;">保安林編號</label>
+          </div>
+          <select id="search_pfsid" class="form-select">
+            <option value="-1" selected>不指定</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="new_ver mx-auto" style="text-align:center;">
+        <button type="button" class="btn btn-success search_submit custom_bt2" onclick="ca_tab1_go_search();">查詢</button>
+        <button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ca_tab1_reset();">重置</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="search_div" style="height: calc(100vh - 153px);width: 560px;">
+    <div class="content_row_search" style="height: inherit;">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="row_text">保安林列表</div>
+        <div id="p_list_count_show" style="display: none;">共<label id="p_list_count"></label>筆結果</div>
+      </div>
+      <div class="d-flex flex-column" style="height: calc(100% - 60px);">
+        <div id="p_list_nofound" class="mx-auto my-auto">
+          尚無資料，請先透過篩選條件查詢。
+        </div>
+        <!-- <保安林列表資料> -->
+        <div id="p_list_table1" class="main_scroll_mini" style="height: 100%;display: none;">
+          <table class="table_c fc_tab_list headernonehover">
+            <thead style="position: sticky;top: 0;">
+              <tr>
+                <th>管理單位</th>
+                <th>類型</th>
+                <th>編號</th>
+                <th>歷程</th>
+                <th>最新年度</th>
+              </tr>
+            </thead>
+            <tbody id="p_list_tbody" class="ztbody"></tbody>
+          </table>
+        </div>
+        <!-- <保安林列表資料> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="search_div" style="height: calc(100vh - 153px);width: 50%;">
+    <div class="content_row_search" style="height: inherit">
+      <div class="d-flex justify-content-between align-items-center">
+		<div class="row_text">檢訂歷程</div>
+		<div id="p_list_count_show2" style="display: none;">共<label id="p_list_count2"></label>筆結果</div>
+      </div>
+      <div class="d-flex flex-column " style="height: calc(100% - 60px);">
+		<div>
+          <button id="addnew" type="button" class="btn btn-success search_submit" style="display:none;" onclick="ca_tab1_AddNew();">新增</button>
+        </div>
+        <div id="p_list_nofound2" class="mx-auto my-auto">
+          尚無資料，請先透過篩選條件查詢。
+        </div>
+        <!-- <檢訂歷程列表資料> -->
+        <div id="p_list_table2" class="main_scroll_mini" style="height: calc(100% - 55px);display: none;">
+          <table class="table_c">
+            <thead style="position: sticky;top: 0;">
+              <tr>
+                <th>類型</th>
+                <th>公告年度</th>
+                <th>狀態</th>
+                <th>承辦人</th>
+                <th>更新時間</th>
+                <th>更新者</th>
+                <th>基本資料</th>
+                <th>作業內容</th>
+              </tr>
+            </thead>
+            <tbody id="p_list_tbody2" class="ztbody"></tbody>
+          </table>
+        </div>
+        <!-- <檢訂歷程列表資料> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 檢視Modal -->
+  <div class="modal fade" id="ca_manage_tab1_dialog" data-bs-backdrop="static" aria-labelledby="NewMapVersion"
+    aria-hidden="false" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center">基本資料</h5>
+          <button type="button" class="btn-close" aria-label="Close" onclick="ca_tab1_dialog_Close();"></button>
+        </div>
+        <div class="modal-body AllCenter">
+          <div class="search_div">
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					類型
+				</div>
+				<div class="detail_rows_value">
+					<span id="ca_type_show" class="info_show"></span>
+                    <select id="ca_type_edit" class="form-select info_edit">
+                      <option value="1" selected>檢訂</option>
+					  <option value="2">專案</option>
+                    </select>
+				</div>
+			</div>
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					公告年度
+				</div>
+				<div class="detail_rows_value">
+					<span id="ca_year_show" class="info_show"></span>
+                    <select id="ca_year_edit" class="form-select info_edit">
+                    </select>
+				</div>
+			</div>
+			<div class="detail_rows insert_nonshow">
+				<div class="detail_rows_name">
+					狀態
+				</div>
+				<div class="detail_rows_value">
+					<span id="ca_stat_show" class="info_show"></span>
+                    <select id="ca_stat_edit" class="form-select info_edit">
+                      <option value="1" selected>執行中</option>
+					  <option value="2">完成</option>
+					  <option value="3">刪除</option>
+                    </select>
+				</div>
+			</div>
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					承辦人
+				</div>
+				<div class="detail_rows_value">
+					<span id="ca_manger_show" class="info_show"></span>
+                    <span id="ca_manger_edit" class="info_edit"></span>
+				</div>
+			</div>
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					備註
+				</div>
+				<div class="detail_rows_value">
+					<span id="ca_note_show" class="info_show"></span>
+                    <textarea id="ca_note_edit" class="form-control main_scroll_mini info_edit" style="overflow-y: scroll;
+                    height: 92px;
+                    resize: none;"></textarea>
+				</div>
+			</div>
+			<div class="detail_rows info_show edit_nonshow">
+				<div class="detail_rows_name">
+					操作
+				</div>
+				<div class="detail_rows_value">
+					<button type="button" class="btn btn-success search_submit custom_bt2 ms-0" onclick="ca_tab1_EditNew();">編輯</button>
+				</div>
+			</div>
+          </div>
+        </div>
+        <!-- 編輯才要顯示 -->
+        <div class="modal-footer py-0 info_edit">
+          <div class="mx-auto my-0" style="text-align:center;">
+            <button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ca_tab1_dialog_Close();">取消</button>
+            <button type="button" class="btn btn-success search_submit custom_bt2" onclick="ca_tab1_dialog_Save();">儲存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 檢視Modal -->
+
+  <!-- 刪除案件Dialog -->
+  <div class="modal fade" id="DeleteCase" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center">刪除資料</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          是否刪除該版次?
+        </div>
+        <div class="modal-footer py-0">
+          <div class="mx-auto my-0" style="text-align:center;">
+            <button type="button" class="btn btn-warning search_submit custom_bt2"
+              onclick="closeDeleteAlert()">取消</button>
+            <button type="button" class="btn btn-success search_submit custom_bt2" onclick="deleteCase()">刪除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Insert Dialog -->
+  <div class="modal fade" id="InsertCase" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow: hidden;">
+    <div class="modal-dialog modal-fullscreen" style="margin: 20px; width: 97vw;">
+      <div class="modal-content" style="height: 95%; border-radius: 10px;">
+	    <div class="modal-header">
+          <h5 class="modal-title w-100 text-center showlast">新增檢訂</h5>
+          <h5 class="modal-title w-100 text-center shownow" style="display: none;">檢視檢訂</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+        <div id="insert_body" class="modal-body" style="overflow: hidden;"></div>
+      </div>
+    </div>
+  </div>
+  
+<!-- <MODAL STEP1 上傳> -->
+<div class="modal fade main_scroll" id="UploadFile" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="add_edit_user_modal" class="modal-title">上傳本次檢訂範圍圖</h5>
+				<button type="button" class="btn-close" onclick="UploadFileClose();"></button>
+			</div>
+			<div class="modal-body">
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td>
+								檢訂年度
+							</td>
+							<td>
+								<label id="upload_year"></label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							</td>
+							<td>
+								<label style="color: red;">請上傳包含.shp、.dbf、.prj檔案格式</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								上傳圖資
+							</td>
+							<td>
+								<input id="upload_shp" class="form-control" type="file" multiple onchange="FileListUpload();" accept=".shp,.prj,.dbf" />
+								<div id="upload_shp_drag" class="AllCenter">
+									或把檔案拖放到這裡
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<div id="upload_shp_file_list"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="Close_ca_UploadfileModal();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="Upload_ca_UploadfileModal();">上傳</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <DIFF MODAL> -->
+<div class="modal fade main_scroll" id="differencenote" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">清冊比對結果</h5>
+			</div>
+			<div class="modal-body">
+				<div class="row_text map_flex">
+					比對成功
+					<span id="diff_currect"></span>
+				</div>
+				<div class="row_text map_flex">
+					比對失敗
+					<span id="diff_error"></span>
+				</div>
+				<div style="height:calc(45vh);" class="main_scroll_mini main_scroll_mini2">
+					<table class="table_c" style="margin-bottom:0px;word-break: keep-all;">
+						<thead class="thead_fix">
+							<tr>
+								<th>狀態</th>
+								<th>縣市</th>
+								<th>鄉鎮</th>
+								<th>地段</th>
+								<th>地號</th>
+							</tr>
+						</thead>
+						<tbody id="ca_diff_body" class="ztbody">
+						</tbody>
+					</table>				
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ca_step1_diff_close();">關閉</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <DIFF MODAL> -->
+<!-- <MODAL STEP1 新增> -->
+<div class="modal fade main_scroll" id="AddNewProject" tabindex="2" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">新增保安林地籍</h5>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>縣市
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2">
+						<select id="add_pro_city" class="form-select form-custom-select" onchange="ca_insert_step1_getTownList();">
+						   <option value="-1" selected>請選擇</option>
+						</select>
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>地號/假(分割)地號
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2 AllCenter">
+						<input id="add_pro_pmno" class="form-control form-custom-select" type="text" maxlength="4" />-
+						<input id="add_pro_pcno" class="form-control form-custom-select" type="text" maxlength="4" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>鄉鎮市區
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2">
+						<select id="add_pro_town" class="form-select form-custom-select" onchange="ca_insert_step1_getLandList();">
+						   <option value="-1" selected>請選擇</option>
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-12 col-12 AllLeft">
+						<input id="ismoved" class="form-check-input" style="margin-top: 0px;" type="checkbox" name="items" onchange="ca_insert_step1_ismoved_change();"/>
+						<label for="ismoved" style="margin-left: 5px;">屬於資料庫地籍</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>地段
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2">
+						<select id="add_pro_land" class="form-select form-custom-select">
+						   <option value="-1" selected>請選擇</option>
+						</select>
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>面積(平方公尺)
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2 AllLeft">
+						<input id="add_pro_areaha" class="form-control form-custom-select" type="text" placeholder="請輸入面積" />
+					</div>	
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>清冊屬性
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2">
+						<select id="add_pro_attr" class="form-select">
+							<option value="整筆" selected>整筆</option>
+							<option value="之內">之內</option>
+							<!--<option value="排除">排除</option>-->
+						</select>
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2 AllLeft">
+					</div>	
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="Close_ca_AddNewProjectModal();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ca_AddNewSave();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+  
+  
+  <!-- <MODAL STEP2 新增> -->
+<div class="modal fade main_scroll" id="DownLoadLast" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="add_edit_user_modal" class="modal-title" style="width: 150px;">下載前次附件</h5>
+				<button type="button" class="btn-close" onclick="DownLoadLastClose();"></button>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ca_manage_insert_downloadAlllastfiles();">全部下載</button>
+				<table class="table fc_tab_list2 headernonehover" id="downloadlast_table">
+					<thead>
+						<tr>
+							<th>附件類型</th>
+							<th>前次附件</th>
+						</tr>
+					</thead>
+					<tbody id="downloadlast_tbody">
+						<tr>
+							<td>檢訂報告</td>
+							<td>
+								<div id="upload_report_file_list2"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>檢訂明細表</td>
+							<td>
+								<div id="upload_list_file_list2"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>檢訂成果圖</td>
+							<td>
+								<div id="upload_result_file_list2"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>編入解除區域成果圖</td>
+							<td>
+								<div id="upload_unlockresult_file_list2"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>相關函文</td>
+							<td>
+								<div id="upload_coss_file_list2"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>其他附件</td>
+							<td>
+								<div id="upload_other_file_list2"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <OWNER MODAL> -->
+<div class="modal fade main_scroll" id="ownerdata" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">所有權資訊</h5>
+			</div>
+			<div class="modal-body">
+				<div class="search_type ownerdata_manager">	
+					<ul class="nav nav-tabs">
+						<li class="nav-item8 tab1" style="width: 200px;">
+							<span class="nav-link active">所有權最新資訊</span>
+						</li>
+						<li class="nav-item8 tab2" style="width: 200px;">
+							<span class="nav-link">移轉歷程</span>
+						</li>
+					</ul>
+				</div>
+				<div id="owner_1">
+					查無相關權屬資訊
+				</div>
+				<div id="owner_2" style="display: none;">
+					查無相關權屬資訊
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ca_owner_close();">確認</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- 頁面區 -->
+
+<script>
+	function openDeleteAlert() {
+		$("#DeleteCase").modal("show");
+	}
+
+	function closeDeleteAlert() {
+		$("#DeleteCase").modal("hide");
+	}
+
+	function deleteCase() {
+		closeDeleteAlert();
+	}
+	
+	ca_tab1_init();
+	tab6("ownerdata_manager");
+</script>

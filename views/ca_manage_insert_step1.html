@@ -1,0 +1,265 @@
+<!-- 頁面區 -->
+<div class="manage_page" style="height: calc(100vh - 225px);">
+	<div class="content_row_search" style="width: calc(50% - 20px);">
+		<div style="height: 100%; position: relative;">
+			<div id="mmap"></div>
+		</div>
+	</div>
+	<div style="width: 50%">
+		<div class="search_type ca_sub_insert">	
+			<ul class="nav nav-tabs">
+				<li class="nav-item9 tab1 showlast">
+					<span class="nav-link AllCenter active" style="width: 200px;">
+						<input type="checkbox" style="margin-right:10px;" onchange="ca_insert_step1_lastcheckshow(this);" checked />
+						前次檢訂
+					</span>
+				</li>
+				<li id="nowcheck" class="nav-item9 tab2 shownow AllCenter">
+					<span class="nav-link AllCenter" style="width: 200px;">
+						<input type="checkbox" style="margin-right:10px;" onchange="ca_insert_step1_nowcheckshow(this);" checked />
+						本次檢訂
+					</span>
+				</li>
+			</ul>
+		</div>
+		<div id="ca_sub_insert_tab1" class="content_row_search showlast" >
+			<div class="row_text">前次檢訂範圍</div>
+			<div class="row">
+				<div class="col AllCenter">
+					<div class="detail_rows_name">檢訂年度</div>
+					<div id="last_year" class="detail_rows_value"></div>
+				</div>
+				<div class="col AllRight">
+					<button type="button" class="btn btn-success" style="margin-right: 10px;" onclick="ca_insert_step1_DownloadLastSHP();">下載範圍</button>
+				</div>
+			</div>
+			<hr />
+			<div class="row_text">
+				地籍清冊
+				<div id="last_count" class="ca_count"></div>
+				<button type="button" class="btn btn-secondary" onclick="ca_insert_step1_ExportLastCSV();" style="position: absolute; right: 100px;">匯出CSV</button>
+				<button type="button" class="btn btn-secondary" onclick="ca_insert_step1_ExportLastSHP();" style="position: absolute; right: 0px;">匯出SHP</button>
+			</div>
+			<div class="row_text">
+				<span>清冊屬性</span>
+				<select id="ca_insert_step1_cselect" class="form-select" onchange="ca_insert_step1_cselect_change();">
+					<option value="-1" selected>不限</option>
+					<option value="整筆">整筆</option>
+					<option value="之內">之內</option>
+				</select>
+				<span style="margin-left: 30px;">關鍵字</span>
+				<input type="input" id="ca_insert_step1_cinput" class="form-control" onchange="ca_insert_step1_cinput_change();" />
+			</div>
+			<div id="ca_insert_step1_tab1nofile">
+				查無資料
+			</div>
+			<div id="ca_insert_step1_tab1hasfile" class="main_scroll_mini_5" style="height: calc(100% - 200px); display: none;">
+				<table class="table_c fc_tab_list2 headernonehover" id="ca_insert_step1_tab1list" style="width: 1800px;">
+					<thead class="thead_fix">
+						<tr>
+							<th>地籍狀態</th>
+							<th>清冊屬性</th>
+							<th>面積比例</th>
+							<th>縣市</th>
+							<th>鄉鎮</th>
+							<th>地段</th>
+							<th>母號</th>
+							<th>子號</th>
+							<th>使用分區</th>
+							<th>使用類別</th>
+							<th>登記面積</th>
+							<th>更新時間</th>
+							<th>權別</th>
+							<th>管理單位</th>
+							<th>地籍編碼</th>
+							<th>API</th>
+						</tr>
+					</thead>
+					<tbody id="ca_insert_step1_tab1tbody" class="ztbody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="ca_sub_insert_tab2" class="content_row_search shownow" style="display: none;">
+			<div class="row_text">本次檢訂範圍</div>
+			<div class="row">
+				<div class="col AllCenter">
+					<div class="detail_rows_name">檢訂年度</div>
+					<div id="now_year" class="detail_rows_value"></div>
+				</div>
+				<div class="col AllRight">
+					<button type="button" class="btn btn-success ca_insert_step1_tab2hasfile" onclick="ca_insert_step1_DownloadLastSHP2();" style="margin-right: 10px; display: none;">下載範圍</button>
+					<button type="button" class="btn btn-success canedit singleadd" style="margin-right: 10px; display: none;" onclick="ca_insert_step1_tab2_uploadfile();">重新上傳</button>
+					<button type="button" class="btn btn-warning canedit singleadd" style="margin-right: 10px; display: none;" onclick="ca_insert_step1_tab2_clear();">清除</button>
+				</div>
+			</div>
+			<div class="ca_insert_step1_tab2nofile">
+				尚無資料，請先上傳本次檢訂範圍圖。
+				<button type="button" class="btn btn-success canedit" onclick="ca_insert_step1_tab2_uploadfile();">上傳檔案</button>
+			</div>
+			<hr />
+			<div class="row_text">
+				地籍清冊
+				<div id="now_count" class="ca_count"></div>
+				<button type="button" class="btn btn-success canedit singleadd" style="display: none; position: absolute; right: 200px;" onclick="ca_insert_step1_tab2_AddNewProject();">單筆新增</button>
+				<button type="button" class="btn btn-secondary ca_insert_step1_tab2hasfile" style="position: absolute; right: 100px; display: none;" onclick="ca_insert_step1_ExportTargetCSV();">匯出CSV</button>
+				<button id="dropdownExport" type="button" class="btn btn-secondary ca_insert_step1_tab2hasfile" style="position: absolute; right: 0px; display: none;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="ca_insert_step1_DropList();">匯出SHP</button>
+				<div id="dropdownExport_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdownExport">
+					<a class="dropdown-item ttab1" href="#" onclick="ca_insert_step1_ExportTargetSHP();">原始範圍</a>
+					<a class="dropdown-item ttab2" href="#" onclick="ca_insert_step1_ExportTargetSHP(true);">往外100公尺</a>
+				</div>
+			</div>
+			<div class="row_text ca_insert_step1_tab2hasfile" style="display: none;">
+				<span>清冊屬性</span>
+				<select id="ca_insert_step2_cselect" class="form-select" onchange="ca_insert_step2_cselect_change();">
+					<option value="-1" selected>不限</option>
+					<option value="整筆">整筆</option>
+					<option value="之內">之內</option>
+					<option value="排除">排除</option>
+				</select>
+				<span style="margin-left: 30px;">關鍵字</span>
+				<input type="input" id="ca_insert_step2_cinput" class="form-control" onchange="ca_insert_step2_cinput_change();" />
+			</div>
+			<div class="ca_insert_step1_tab2nofile">
+				尚無資料，請先上傳本次檢訂地籍清冊。
+				<a href="地籍查詢清單.xlsx" id="sample_download" style="display: none;"></a>
+				<button type="button" class="btn btn-success canedit" onclick="tab5_sample();">下載範本</button>
+				<button type="button" class="btn btn-success canedit" onclick="ca_manage_insert_step1_upload_xls();">上傳檔案</button>
+				<input id="upload_xls" class="form-control" type="file" accept=".xls,.xlsx" style="display: none;" onchange="ca_manage_insert_step1_upload_xls_toDB();" />
+			</div>
+			<hr />
+			<div id="ca_insert_step1_tab2hasfile" class="main_scroll_mini_5" style="height: calc(100% - 200px); display: none;">
+				<table class="table_c fc_tab_list2 headernonehover" id="ca_insert_step1_tab2list" style="width: 1800px;">
+					<thead class="thead_fix">
+						<tr>
+							<th>地籍狀態</th>
+							<th>清冊屬性</th>
+							<th>面積比例</th>
+							<th>縣市</th>
+							<th>鄉鎮</th>
+							<th>地段</th>
+							<th>母號</th>
+							<th>子號</th>
+							<th>使用分區</th>
+							<th>使用類別</th>
+							<th>登記面積</th>
+							<th>更新時間</th>
+							<th>權別</th>
+							<th>管理單位</th>
+							<th>地籍編碼</th>
+							<th>API</th>
+						</tr>
+					</thead>
+					<tbody id="ca_insert_step1_tab2tbody" class="ztbody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	setTimeout(function() {
+		tab8("ca_sub_insert");
+		ca_insert_step1_init();
+	}, 200);
+	function UploadFileClose() {
+		$("#UploadFile").modal("hide");
+	}
+	var filelist = new Array();
+	function FileListUpload() {
+		var input = document.getElementById("upload_shp");
+		var output = document.getElementById("upload_shp_file_list");
+		
+		var files = input.files;
+		var HTML = "<table>";
+		for (var i = 0; i < files.length; i++) {
+			if (files[i].name.split(".")[1] == "shp" || files[i].name.split(".")[1] == "prj" || files[i].name.split(".")[1] == "dbf")
+			{
+				var ishas = false;
+				for (var j = 0; j < filelist.length; j++) {
+					if (files[i].name == filelist[j].name)
+						ishas = true;
+				}
+				
+				if (!ishas)
+					filelist.push(files.item(i));
+			}
+		}
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+		}
+
+		HTML += "</table>";
+		output.innerHTML = HTML;
+		
+		$("#upload_shp").replaceWith($("#upload_shp").val('').clone(true));
+	}
+	function UploadDeleteThis(idx) {
+		var output = document.getElementById("upload_shp_file_list");
+		filelist.splice(idx, 1);
+		var HTML = "<table>";
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+		}
+		output.innerHTML = HTML;
+		
+		var hiddenlist = document.getElementsByClassName("hiddenupload");
+		for (var i = 0; i < hiddenlist.length; i++) {
+			if (i == idx) hiddenlist[i].remove();
+		}
+	}
+	
+	// 透過 selector 來選擇元素作為上傳區塊，這裡使用id='drop'的div元素
+	var dropbox;
+	dropbox = document.getElementById("upload_shp_drag");
+	// element增加eventListener
+	dropbox.addEventListener("dragenter", dragenter, false);
+	dropbox.addEventListener("dragover", dragover, false);
+	dropbox.addEventListener("drop", drop, false);
+
+	function dragenter(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+	function dragover(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+	function drop(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		var dt = e.dataTransfer;
+		var files = dt.files;
+		handleFiles(files);
+	}
+
+	// 針對資料處理的方法
+	function handleFiles(files) {
+		if (files.length > 0) {
+			var output = document.getElementById("upload_shp_file_list");
+			var HTML = "<table>";
+			for (var i = 0; i < files.length; i++) {
+				if (files[i].name.split(".")[1] == "shp" || files[i].name.split(".")[1] == "prj" || files[i].name.split(".")[1] == "dbf")
+				{
+					var ishas = false;
+					for (var j = 0; j < filelist.length; j++) {
+						if (files[i].name == filelist[j].name)
+							ishas = true;
+					}
+					
+					if (!ishas)
+						filelist.push(files.item(i));
+				}
+			}
+			
+			for (var i = 0; i < filelist.length; i++) {
+				HTML += "<tr><td>" + filelist[i].name + "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+			}
+
+			HTML += "</table>";
+			output.innerHTML = HTML;
+		}
+	}
+</script>

@@ -1,0 +1,98 @@
+<!-- 使用者管理頁面 -->
+<div>
+	<div id="sys_custom_theme_search">
+		<div id="sys_rowsearch" class="search_div">
+			<div class="row_text2">自訂常用查詢</div>
+		</div>
+		<div id="sys_rowsearch2">
+			<div>
+				<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_custom_insert();">
+					新增主題
+				</button>
+			</div>
+			<div id="sys_user_page">
+				<table class="table_c fc_tab_list" id="sys_custom_theme_list">
+					<thead>
+						<tr>
+							<th>序號</th>
+							<th>主題</th>
+							<th>主題說明</th>
+							<th>建立時間</th>
+							<th>顯示</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="sys_custom_theme_body" class="ztbody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="sys_custom_theme_edit">
+		<div class="new_ver_flex">
+			<div style="margin-left: 20px; width: 110px;">
+				查詢主題名稱
+			</div>
+			<input class="form-control" id="edit_custom_name" style="width: 300px;" placeholder="請輸入查詢主題名稱" />
+		</div>
+		<div class="new_ver_flex">
+			<div style="margin-left: 20px; width: 110px;">
+				查詢主題說明
+			</div>
+			<input class="form-control" id="edit_custom_note" style="width: 300px;" placeholder="請輸入說明" />
+		</div>
+		<div class="new_ver_flex" style="border-top: 1px solid #dee2e6; padding-top: 10px;">
+			<div style="margin-left: 20px; width: 110px;">
+				主分類依據
+			</div>
+			<select id="edit_custom_main" style="width: 300px;" class="form-select" onchange="sys_custom_main_change(this);">
+			</select>
+			<div style="margin-left: 20px; width: 110px;">
+				篩選
+			</div>
+			<select id="edit_custom_main_filter" style="width: 300px;" class="form-select" multiple="multiple">
+			</select>
+			<input class="form-control" id="edit_custom_main_input" style="width: 300px;  display: none;" placeholder="請輸入篩選" />
+		</div>
+		<div class="new_ver_flex">
+			<div style="margin-left: 20px; width: 110px;">
+				次分類依據
+			</div>
+			<select id="edit_custom_sub" style="width: 300px;" class="form-select" onchange="sys_custom_sub_change(this);">
+			</select>
+			<div style="margin-left: 20px; width: 110px;">
+				篩選
+			</div>
+			<select id="edit_custom_sub_filter" style="width: 300px;" class="form-select" multiple="multiple">
+			</select>
+			<input class="form-control" id="edit_custom_sub_input" style="width: 300px; display: none;" placeholder="請輸入篩選" />
+		</div>
+		<div class="new_ver_flex" style="border-top: 1px solid #dee2e6; padding-top: 10px;">
+			<div style="margin-left: 20px; width: 110px;">
+				土地類型
+			</div>
+			<select id="edit_custom_land_class" style="width: 300px;" class="form-select">
+				<option value="1">全部</option>
+				<option value="2">僅林地</option>
+			</select>
+		</div>
+		<div class="new_ver_flex">
+			<div style="margin-left: 20px; width: 110px;">
+				統計單位
+			</div>
+			<select id="edit_custom_unit" style="width: 300px;" class="form-select">
+				<option value="1">土地面積(平方公尺)</option>
+				<option value="2">土地筆數</option>
+			</select>
+		</div>
+		<div class="modal-footer" style="justify-content: center; margin-top: 10px;">
+			<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_custom_cancel();">取消</button>
+			<button type="button" id="sys_custom_insert" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_insertDB();">新增</button>
+			<button type="button" id="sys_custom_edit" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_editDB();">編輯</button>
+		</div>
+	</div>
+</div>
+<script>
+	sys_custom_inti();
+	sys_get_custom_table();
+</script>

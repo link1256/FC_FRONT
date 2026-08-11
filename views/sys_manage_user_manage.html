@@ -1,0 +1,135 @@
+<!-- 使用者管理頁面 -->
+<div id="sys_user_main_page">
+	<div id="sys_rowsearch" class="search_div">
+		<div class="row_text2">使用者管理</div>
+		<div class="rowsearch">
+			<div class="rowsearchitem">
+				<label>使用者名稱</label>
+				<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" autocomplete="off" />
+			</div>
+			<div class="rowsearchitem">
+				<label>單位名稱</label>
+				<input id="sys_unit" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" autocomplete="off" />
+			</div>
+			<div class="rowsearchitem">
+				<label>角色群組</label>
+				<select id="sys_group" class="form-select form-custom-select">
+					<option value="-1">請選擇</option>
+				</select>
+			</div>
+			<div class="rowsearchitem">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="get_sys_manage(true);">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_manage_clear();">清除條件</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_add_newuser();">新增使用者
+		</button>
+	</div>
+	<div id="sys_user_page" class="main_scroll_mini_4" style="height: calc(100vh - 400px);">
+		<table class="table_c fc_tab_list2" id="sys_user_manage_list2">
+			<thead class="thead_fix">
+				<tr>
+					<th style="width: 10%;">序號</th>
+					<th style="width: 15%;">使用者名稱</th>
+					<th style="width: 10%;">帳號</th>
+					<th style="width: 10%;">分署</th>
+					<th style="width: 15%;">單位名稱</th>
+					<th style="width: 10%;">角色群組</th>
+					<th style="width: 10%;">最後變更時間</th>
+					<th style="width: 10%;">狀態</th>
+					<th style="width: 10%;">編輯</th>
+				</tr>
+			</thead>
+			<tbody id="account_list_body" class="ztbody">
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- <MODAL 新增> -->
+<div class="modal fade main_scroll" id="AddNewUser" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="add_edit_user_modal" class="modal-title">新增使用者</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<input id="add_edit_sid" type="text" style="display: none;" />
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td>
+								使用者名稱
+							</td>
+							<td>
+								<input id="add_user_name" class="form-control" type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								帳號
+							</td>
+							<td>
+								<input id="add_user_account" class="form-control" type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								密碼
+							</td>
+							<td>
+								<input id="add_user_pass" class="form-control" type="password" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								電子信箱
+							</td>
+							<td>
+								<input id="add_user_mail" class="form-control" type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								單位名稱
+							</td>
+							<td>
+								<input id="add_user_unit" class="form-control" type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								單位資訊
+							</td>
+							<td>
+								<select id="add_user_dept" class="form-select form-custom-select">
+									<option value="-1">請選擇</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								角色群組
+							</td>
+							<td>
+								<select id="add_user_group" class="form-select form-custom-select">
+									<option value="-1">請選擇</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="CloseAddEditUserModal();">取消</button>
+				<button id="add_user_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_user_account_add();">新增</button>
+				<button id="edit_user_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_user_account_edit();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	get_sys_manage();
+</script>

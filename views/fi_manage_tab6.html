@@ -1,0 +1,392 @@
+<!-- 頁面區 -->
+<div class="manage_page">
+	<div class="search_div">
+		<div class="content_row_search manage_recreation map_cview" style="height: calc(100vh - 155px);">
+			<div id="map_window">
+				<i class="fas fa-caret-square-left"></i>
+			</div>
+			<div class="window_hide">
+				查詢及結果
+			</div>
+			<div class="row_text map_flex">
+				篩選條件
+				<div id="list_window">
+					<i class="fas fa-caret-square-down"></i>
+				</div>
+			</div>
+			
+			<div class="new_ver_flex map_flex">
+				<div>
+					<label for="upload_percent" class="form-label" style="width: 110px;">重疊百分比</label>
+				</div>
+				<input class="form-control" id="upload_percent" type="number" placeholder="重疊百分比" value="1" min="1" max="100" onchange="fi_tab6_percent_change();" />
+			</div>
+			
+			<div class="new_ver_flex new_ver_flex2">
+				<div>
+					<label for="upload_range" class="form-label" style="width: 110px;">上傳範圍</label>
+				</div>
+				<div>
+					<label id="upload_data_label" class="upload_zone" for="upload_range">請上傳包含.shp、.dbf、.prj檔案格式</label>
+					<input id="upload_shp" class="form-control upload_zone" type="file" multiple onchange="FileListUpload();" accept=".shp,.prj,.dbf" />
+				</div>
+			</div>
+			
+			<div class="new_ver_flex map_flex upload_zone">
+				<div>
+					<label for="upload_percent" class="form-label" style="width: 110px;"></label>
+				</div>
+				<div id="upload_shp_drag" class="AllCenter">
+					或把檔案拖放到這裡
+				</div>
+			</div>
+			
+			<div class="new_ver_flex map_flex">
+				<div>
+					<label for="upload_name" class="form-label" style="width: 110px;">上傳名稱</label>
+				</div>
+				<div id="upload_shp_file_list"></div>
+			</div>
+			
+			<div class="new_ver new_ver_flex map_flex AllCenter" style="text-align: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2 upload_zone" onclick="tab6_go_search();">查詢</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="tab6_reset();">重置</button>
+			</div>
+		</div>
+	</div>
+
+<div class="fc_detail_data main_scroll_mini">
+<div class="detail_data_map">
+<!-- <圖資> -->
+<div class="map_detail3">
+<div id="mmap"></div>
+<div id="big_window">
+	<i class="fas fa-caret-square-down"></i>
+</div>
+</div>
+</div>
+
+
+<!-- <地籍> -->
+<div class="fc_detail" style="position: relative;">
+	<div class="row_text">關聯地籍列表<label id="fc_detail_count">（0 筆）</label></div>
+	<button id="ddownload" type="button" class="btn btn-secondary fi_button" style="width: 115px; position: absolute; right: 145px; top: 10px;" onclick="fi_tab6_downloadCSV();">匯出CSV</button>
+	<button id="ddownload2" type="button" class="btn btn-secondary fi_button" style="width: 115px; position: absolute; right: 15px; top: 10px;" onclick="fi_tab6_downloadSHP();">匯出SHP</button>
+	<div id="fc_detail_list"></div>
+</div>
+<!-- <地籍> -->
+</div>
+
+<!-- <OWNER MODAL> -->
+<div class="modal fade main_scroll" id="ownerdata" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">所有權資訊</h5>
+			</div>
+			<div class="modal-body">
+				<div class="search_type ownerdata_manager" style="margin-bottom: 20px;">	
+					<ul class="nav nav-tabs">
+						<li class="nav-item8 tab1" style="width: 200px;">
+							<span class="nav-link active">所有權最新資訊</span>
+						</li>
+						<li class="nav-item8 tab2" style="width: 200px;">
+							<span class="nav-link">移轉歷程</span>
+						</li>
+					</ul>
+				</div>
+				<div id="owner_1" class="main_scroll_mini_4" style="max-height: 500px;">
+					
+				</div>
+				<div id="owner_2" class="main_scroll_mini_4" style="max-height: 500px; display: none;">
+					
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fi_tab5_owner_close();">確認</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <OWNER MODAL> -->
+<!-- <DIFF MODAL> -->
+<div class="modal fade main_scroll" id="differencenote" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">批次比對結果</h5>
+			</div>
+			<div class="modal-body">
+				<div class="row_text map_flex">
+					比對成功
+					<span id="diff_currect"></span>
+				</div>
+				<div class="row_text map_flex">
+					比對失敗
+					<span id="diff_error"></span>
+				</div>
+				<div style="height:calc(45vh);" class="main_scroll_mini main_scroll_mini2">
+					<table class="table_c" style="margin-bottom:0px;word-break: keep-all;">
+						<thead class="thead_fix">
+							<tr>
+								<th>狀態</th>
+								<th>縣市</th>
+								<th>鄉鎮</th>
+								<th>地段</th>
+								<th>地號</th>
+							</tr>
+						</thead>
+						<tbody id="fi_diff_body" class="ztbody">
+						</tbody>
+					</table>				
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fi_tab5_diff_close();">關閉</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <DIFF MODAL> -->
+<!-- <FCNOTIFICATION MODAL> -->
+<div class="modal fade main_scroll" id="fcnotificationdata" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">資料註記列表</h5>
+			</div>
+			<div class="modal-body">
+				<button id="not_add_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab5_notification_add();">新增</button>
+				<div style="height:calc(45vh);" class="main_scroll_mini main_scroll_mini2">
+					<table class="table_c" style="margin-bottom:0px;word-break: keep-all;">
+						<thead class="thead_fix">
+							<tr>
+								<th>時間</th>
+								<th>使用者</th>
+								<th>內容</th>
+								<th>管理</th>
+							</tr>
+						</thead>
+						<tbody id="fi_notification_body" class="ztbody">
+						</tbody>
+					</table>				
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab1_notification_close();">確認</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>	
+<!-- 頁面區 -->
+<script>
+	 fi_tab6_init();
+	 
+	 $(".fc_detail_data").hide();
+	 tab6("ownerdata_manager");
+	 
+	 var filelist = new Array();
+	 // tab7();
+	 var isshowright = true;
+	 $("#big_window").on("click",function() {
+		
+		if ($(".detail_data_map, .fc_detail_data").hasClass ("big_window")) {
+			$(".detail_data_map, .fc_detail_data").removeClass("big_window");
+			$(this).children().removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
+			$(".fc_detail").removeClass("fix_table_window");
+		}
+		else {
+			$(".detail_data_map, .fc_detail_data").addClass("big_window");
+			$(this).children().removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
+			$(".fc_detail").addClass("fix_table_window");
+		}
+		
+		if (fi_tab6 && fi_tab6.map) fi_tab6.map.updateSize();
+	});
+		 
+	 $("#list_window").on("click",function() {
+		if ($(".new_ver_flex").hasClass("itemhide")) {
+			$(".new_ver_flex").removeClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
+			$(".content_row_search").css("height", "82vh");
+			// $("#m_list").css("height", "calc(100vh - 420px)");
+		}
+		else {
+			$(".new_ver_flex").addClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
+			$(".content_row_search").css("height", 80);
+			// $("#m_list").css("height", "calc(100vh - 243px)");
+		}
+	});
+	
+	$("#map_window").on("click",function() {
+		if ($(".map_flex").hasClass("itemhide")) {
+			$(".map_flex").removeClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
+			$(".search_div").width(400);
+			$(".map_cview").height("");
+			$(".fc_detail_data").width("calc(100vw - 420px)");
+			if (isshowright) {
+				$(".fc_partA").width("calc(60% - 10px)");
+				$(".fc_partB").width("40%");
+			} else {
+				$(".fc_partB").width("0%");
+				$(".fc_partA").width("calc(100% - 30px)");
+			}
+			$(".window_hide").hide();
+		}
+		else {
+			$(".map_flex").addClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
+			$(".search_div").width(80);
+			$(".map_cview").height("calc(100vh - 160px)");
+			$(".fc_detail_data").width("calc(100vw - 80px)");
+			if (isshowright) {
+				$(".fc_partA").width("calc(70% - 10px)");
+				$(".fc_partB").width("30%");
+			} else {
+				$(".fc_partB").width("0%");
+				$(".fc_partA").width("calc(100% - 30px)");
+			}
+			$(".window_hide").show();
+		}
+		if (fi_tab6 && fi_tab6.map) fi_tab6.map.updateSize();
+	});
+	
+	$("#big_window3").on("click",function() {
+		if ($(".map_flex2").hasClass("itemhide")) {
+			$(".map_flex2").removeClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
+			$(".fc_partB").width("40%");
+			$(".fc_partA").width("calc(60% - 10px)");
+			isshowright = true;
+		}
+		else {
+			$(".map_flex2").addClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
+			$(".fc_partB").width("0%");
+			$(".fc_partA").width("calc(100% - 30px)");
+			isshowright = false;
+		}
+		if (fi_tab6 && fi_tab6.map) fi_tab6.map.updateSize();
+	});
+	
+	// 透過 selector 來選擇元素作為上傳區塊，這裡使用id='drop'的div元素
+	var dropbox;
+	dropbox = document.getElementById("upload_shp_drag");
+	// element增加eventListener
+	dropbox.addEventListener("dragenter", dragenter, false);
+	dropbox.addEventListener("dragover", dragover, false);
+	dropbox.addEventListener("drop", drop, false);
+
+	function dragenter(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+	
+	function dragover(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+	
+	function drop(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		var dt = e.dataTransfer;
+		var files = dt.files;
+		handleFiles(files);
+	}
+	
+	// 針對資料處理的方法
+	function handleFiles(files) {
+		if (files.length > 0) {
+			var output = document.getElementById("upload_shp_file_list");
+			var HTML = "<table>";
+			for (var i = 0; i < files.length; i++) {
+				if (files[i].name.split(".")[1] == "shp" || files[i].name.split(".")[1] == "prj" || files[i].name.split(".")[1] == "dbf")
+				{
+					var ishas = false;
+					for (var j = 0; j < filelist.length; j++) {
+						if (files[i].name == filelist[j].name)
+							ishas = true;
+					}
+					
+					if (!ishas)
+						filelist.push(files.item(i));
+				}
+			}
+			
+			for (var i = 0; i < filelist.length; i++) {
+				HTML += "<tr><td>" + filelist[i].name + "</td><td><button class=\"btn btn-danger btn-wid\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+			}
+
+			HTML += "</table>";
+			output.innerHTML = HTML;
+		}
+	}
+	
+	function FileListUpload() {
+		var input = document.getElementById("upload_shp");
+		var output = document.getElementById("upload_shp_file_list");
+		
+		var files = input.files;
+		var HTML = "<table>";
+		for (var i = 0; i < files.length; i++) {
+			if (files[i].name.split(".")[1] == "shp" || files[i].name.split(".")[1] == "prj" || files[i].name.split(".")[1] == "dbf")
+			{
+				var ishas = false;
+				for (var j = 0; j < filelist.length; j++) {
+					if (files[i].name == filelist[j].name)
+						ishas = true;
+				}
+				
+				if (!ishas)
+					filelist.push(files.item(i));
+			}
+		}
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<tr><td>" + filelist[i].name + "</td><td><button class=\"btn btn-danger btn-wid\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+		}
+
+		HTML += "</table>";
+		output.innerHTML = HTML;
+		
+		$("#upload_shp").replaceWith($("#upload_shp").val('').clone(true));
+	}
+	
+	function UploadDeleteThis(idx) {
+		var output = document.getElementById("upload_shp_file_list");
+		filelist.splice(idx, 1);
+		var HTML = "<table>";
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<tr><td>" + filelist[i].name + "</td><td><button class=\"btn btn-danger btn-wid\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+		}
+		output.innerHTML = HTML;
+		
+		var hiddenlist = document.getElementsByClassName("hiddenupload");
+		for (var i = 0; i < hiddenlist.length; i++) {
+			if (i == idx) hiddenlist[i].remove();
+		}
+	}
+	
+	function UploadDeleteThis(idx) {
+		var output = document.getElementById("upload_shp_file_list");
+		filelist.splice(idx, 1);
+		var HTML = "<table>";
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<tr><td>" + filelist[i].name + "</td><td><button class=\"btn btn-danger btn-wid\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
+		}
+		output.innerHTML = HTML;
+		
+		var hiddenlist = document.getElementsByClassName("hiddenupload");
+		for (var i = 0; i < hiddenlist.length; i++) {
+			if (i == idx) hiddenlist[i].remove();
+		}
+	}
+</script>
+	

@@ -1,0 +1,143 @@
+<!-- 使用者管理頁面 -->
+<div>
+	<div id="sys_rowsearch" class="search_div">
+		<div class="row_text2">API審核管理</div>
+		<div class="rowsearch">
+			<div class="rowsearchitem">
+				<label>申請人</label>
+				<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+			</div>
+			<div class="rowsearchitem">
+				<label>申請服務</label>
+				<input id="sys_user_unit" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+			</div>
+			<div class="rowsearchitem">
+				<label>審核狀態</label>
+				<select id="sys_ustatus" class="form-select form-custom-select">
+					<option value="-1">全部</option>
+					<option value="1">已通過</option>
+					<option value="0">未通過</option>
+					<option value="2">待審核</option>
+				</select>
+			</div>
+			<div class="rowsearchitem">
+				<label>服務狀態</label>
+				<select id="sys_sstatus" class="form-select form-custom-select">
+					<option value="-1">全部</option>
+					<option value="1">啟用</option>
+					<option value="0">停用</option>
+				</select>
+			</div>
+			<div class="rowsearchitem">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="getApiApplyList();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="clearApiApplySearch();">清除條件</button>
+			</div>
+		</div>
+	</div>
+	<div id="sys_user_page">
+		<table class="table_c fc_tab_list" id="sys_user_manage_list">
+			<thead>
+				<tr>
+					<th>序號</th>
+					<th>申請人</th>
+					<th>服務單位</th>
+					<th>申請時間</th>
+					<th>審核狀態</th>
+					<th>服務狀態</th>
+					<th>審核</th>
+				</tr>
+			</thead>
+			<tbody id="sys_apiapply_list" class="ztbody"></tbody>
+		</table>
+	</div>
+</div>
+<!-- <MODAL 新增> -->
+<div class="modal fade main_scroll" id="API_Apply" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">API審核</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="row_text2">申請人基本資料</div>
+				<input id="review_sid" style="display: none;" type="text" />
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td>申請單編號</td>
+							<td id="review_apply_number"></td>
+							<td>申請時間</td>
+							<td id="review_apply_time"></td>
+						</tr>
+						<tr>
+							<td>姓名</td>
+							<td id="review_apply_name"></td>
+							<td>服務單位</td>
+							<td id="review_apply_unit"></td>
+						</tr>
+						<tr>
+							<td>電子信箱</td>
+							<td id="review_apply_mail"></td>
+							<td>連絡電話</td>
+							<td id="review_apply_phone"></td>
+						</tr>
+						<tr>
+							<td>使用期間</td>
+							<td id="review_apply_usedate"></td>
+							<td>用途</td>
+							<td id="review_apply_puropse"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row_text2">API服務資料</div>
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td>介接應用程式名稱</td>
+							<td id="review_apply_servicename"></td>
+							<td>IP或(Domain)1</td>
+							<td id="review_apply_ip1"></td>
+						</tr>
+						<tr>
+							<td>IP或(Domain)2</td>
+							<td id="review_apply_ip2"></td>
+							<td>IP或(Domain)3</td>
+							<td id="review_apply_ip3"></td>
+						</tr>
+						<tr>
+							<td>IP或(Domain)4</td>
+							<td id="review_apply_ip4"></td>
+							<td>IP或(Domain)5</td>
+							<td id="review_apply_ip5"></td>
+						</tr>
+						<tr>
+							<td>核准使用期間</td>
+							<td colspan="3">
+								<input id="review_apply_start" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
+								至
+								<input id="review_apply_end" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
+							</td>
+						</tr>
+						<tr>
+							<td>是否通過</td>
+							<td colspan="3">
+								<input id="review_apply_pass" class="form-check-input" name="pass" value="pass" type="radio"  />
+								<label for="review_apply_pass" checked>通過</label>
+								<input id="review_apply_unpass" class="form-check-input" name="pass" value="unpass" type="radio"  />
+								<label for="review_apply_unpass">不通過</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="$('#API_Apply').modal('hide');">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ReviewApplyApi();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	sys_api_init();
+</script>

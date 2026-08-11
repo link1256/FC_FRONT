@@ -1,0 +1,58 @@
+<!-- 使用者管理頁面 -->
+<div>
+	<div id="sys_rowsearch" class="search_div">
+		<div class="row_text2">下載統計紀錄</div>
+		<div class="rowsearch">
+			<div class="rowsearchitem">
+				<label>使用者名稱</label>
+				<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+			</div>
+			<div class="rowsearchitem">
+				<label>單位名稱</label>
+				<input id="sys_unit" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+			</div>
+			<div class="rowsearchitem">
+				<label>下載項目</label>
+				<select id="sys_function" class="form-select form-custom-select">
+					<option value="-1">請選擇</option>
+				</select>
+			</div>
+			<div class="rowsearchitem">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetDownloadLogList();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="DownloadLogListSearchClear();">清除條件</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button type="button" class="btn btn-success custom_bt2" onclick="download_download_log('excel');">
+			匯出紀錄(EXCEL)
+		</button>
+		<button type="button" class="btn btn-success custom_bt2" onclick="download_download_log('ods');">
+			匯出紀錄(ODS)
+		</button>
+	</div>
+	<div id="sys_user_page">
+		<table class="table_c fc_tab_list" id="sys_user_manage_list2">
+			<thead>
+				<tr>
+					<th>序號</th>
+					<th>使用者名稱</th>
+					<th>署(分署)名稱</th>
+					<th>單位名稱</th>
+					<th>角色群組</th>
+					<th>下載項目</th>
+					<th>下載資料類型</th>
+					<th>IP</th>
+					<th>操作時間</th>
+				</tr>
+			</thead>
+			<tbody id="fc_tab_list_body" class="ztbody">
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	getDownloadFunctionList();
+	GetDownloadLogList();
+</script>

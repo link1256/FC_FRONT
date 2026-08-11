@@ -1,143 +1,178 @@
 <!-- 頁面區 -->
 <div class="manage_page">
-<div class="search_div">
-	<div class="content_row_search">
-		<div class="row_text">篩選條件</div>
-		<div class="new_ver_flex">
-		<div>
-		   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
-		 </div>  
-		   <select id="ver_year0" class="form-select" >
-			  <option value="-1" selected>不指定</option>
-			</select>
-		</div>
-		
+	<div class="search_div">
+		<div class="content_row_search">
+			<div class="row_text">篩選條件</div>
 			<div class="new_ver_flex">
 			<div>
-		   <label for="search_id" class="form-label" style="width: 110px;">識別碼</label>
-		   </div>
-		   <input id="search_id" type="text" class="form-control" />
-		</div>
-		
-		<div class="new_ver_flex">
-		<div>
-		   <label for="search_title" class="form-label"  style="width: 110px;">標題關鍵字</label>
+			   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
+			 </div>  
+			   <select id="ver_year0" class="form-select" >
+				  <option value="-1" selected>不指定</option>
+				</select>
 			</div>
-		   <input id="search_title" type="text" class="form-control" />
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_id" class="form-label" style="width: 110px;">識別碼</label>
+				</div>
+				<input id="search_id" type="text" class="form-control" />
+			</div>
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_title" class="form-label"  style="width: 110px;">標題關鍵字</label>
+				</div>
+				<input id="search_title" type="text" class="form-control" />
+			</div>
+			
+			<div class="new_ver_flex">
+				<div>
+					<label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+				</div>
+				<select id="search_stat" class="form-select"  >
+					<option value="-1" selected>不指定</option>
+					<option value="0">未送出</option>
+					<option value="1">未確認</option>
+					<option value="2">退回修正</option>
+					<option value="3">已通過</option>
+					<option value="4">取消異動</option>
+				</select>
+			</div>
+			<div class="new_ver" style="text-align:center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="get_te_manage_containerTable();">查詢</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_manage_reset();">重置</button>
+			</div>
 		</div>
-		
-		<div class="new_ver_flex">
-		<div>
-		   <label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
-		   </div>
-		   <select id="search_stat" class="form-select"  >
-			  <option value="-1" selected>不指定</option>
-			  <option value="0">未送審</option>
-			  <option value="1">已送審</option>
-			  <option value="2">已完成</option>
-			</select>
-		</div>
-		
-		<div class="new_ver" style="text-align:center;">
-			<button type="button" class="btn btn-success search_submit custom_bt2" onclick="get_te_manage_containerTable();">查詢</button>
-			<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
+		<div class="content_row_search" style="height: calc(100vh - 520px)">
+			<div class="row_text">異動列表</div>
+			<div class="result_list main_scroll_mini">
+				<!-- <異動列表資料> -->
+				<table class="table te_tab_list" id="te_tab1_list">
+				</table>
+				<!-- <異動列表資料> -->
+			</div>
 		</div>
 	</div>
 
-
-<div class="content_row_search" style="height: calc(100vh - 510px)">
-	<div class="row_text">異動列表</div>
-	<div class="result_list main_scroll_mini">
-	<!-- <異動列表資料> -->
-	<table class="table  te_tab_list" id="te_tab1_list">
-	    
-    </table>
-		<!-- <異動列表資料> -->
+	<div class="detail_data main_scroll" style="display: none;">
+		<!-- <編輯功能區 需確認權限是否可以編輯或刪除> -->
+		<div class="content_row_data manage_bt_area" style="padding:10px;">
+			<div class="normal_state manage_bt">
+			   <button type="button" class="btn btn-success search_submit custom_bt2" id="detail_edit">編輯</button>
+			   <!-- //送審功能僅在未送審狀態下出現 -->
+			   <button type="button" class="btn btn-info search_submit custom_bt2" id="sent_apply">送出</button>
+			</div>
+			<div class="edit_state manage_bt">
+				<button type="button" class="btn btn-success search_submit custom_bt2" id="detail_save">儲存</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" id="detail_cancel">取消</button>
+				<button type="button" class="btn btn-danger search_submit custom_bt2 manage_delete" id="detail_delete">刪除</button>
+			</div>
+			<div class="pass_state manage_bt">
+				<button type="button" class="btn btn-danger search_submit custom_bt2" id="detail_cancelchange">取消異動</button>
+			</div>
+		</div>
+		<!-- <基本資料> -->
+		<div class="data_frame">
+		
+		</div>
+		<!-- <基本資料> -->
+				
+		<!-- <圖資資料> -->
+		<div class="list_frame">
+		
+		</div>
+		<!-- <圖資資料> -->
 	</div>
-
-	
-</div>
 </div>
 
-
-<div class="detail_data main_scroll">
-<!-- <編輯功能區 需確認權限是否可以編輯或刪除> -->
-<div class="content_row_data manage_bt_area" style="padding:10px;">
-<div class="normal_state manage_bt">
-   <button type="button" class="btn btn-success search_submit custom_bt2" id="detail_edit">編輯</button>
-   <!-- //送審功能僅在未送審狀態下出現 -->
-   
-   <button type="button" class="btn btn-info search_submit custom_bt2" id="sent_apply">送審</button>
-</div>
-
-<div class="edit_state manage_bt">
-    <button type="button" class="btn btn-success search_submit custom_bt2" id="detail_save">儲存</button>
-	<button type="button" class="btn btn-warning search_submit custom_bt2" id="detail_cancel">取消</button>
-	<button type="button" class="btn btn-danger search_submit custom_bt2 manage_delete" id="detail_delete">刪除</button>
-</div>
-	
-	
-</div>
-<!-- <基本資料> -->
-<div class="data_frame">
-
-
-</div>
-<!-- <基本資料> -->
-
-<!-- <編輯功能區 需確認權限是否可以編輯或刪除> -->
-<div class="content_row_data manage_bt_area" style="padding:10px;">
-<div class="normal_state manage_bt">
-   <button type="button" class="btn btn-success search_submit custom_bt2" id="feature_edit" style="width: 170px;" onclick="doCreate();">新增異動圖資</button>
-</div>
-
-	
-</div>
-
-<!-- <圖資資料> -->
-<div class="list_frame">
-
-</div>
-<!-- <圖資資料> -->
-</div>
-</div>
 <!-- 頁面區 -->
-
+<!-- <取消異動MODAL> -->
+<div class="modal fade main_scroll" id="CancelChange" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">取消異動</h5>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-6 sys_col1">
+						取消人員
+					</div>
+					<div id="cancel_name" class="col-md-6 col-sm-6 col-6 sys_col2">
+						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-6 sys_col1">
+						取消時間
+					</div>
+					<div id="cancel_time" class="col-md-6 col-sm-6 col-6 sys_col2">
+						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-6 sys_col1">
+						取消異動原因
+					</div>
+					<div class="col-md-6 col-sm-6 col-6 sys_col2">
+						<textarea id="cancel_note" type="text" class="form-control" rows="3" placeholder="輸入案由"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_manage_cancelchange_hide();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_cancelchange_sent();">確定</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <取消異動MODAL> -->
 <script>
-setTimeout(function(){
-      // $("#item1").click();
-	  loadListData(0); //刻版測試用
-},50);
+	setTimeout(function(){
+		// $("#item1").click();
+		loadListData(0); //刻版測試用
+	},50);
 
 	// get_te_manage_containerTable();
 	te_manage_get_yearlist();
 
     var original_page = "";
 		
-$("#fm_search_list tr").on("click",function(){
+$("#fm_search_list tr").on("click",function() {
 	$(this).parent().children().removeClass("active");
 	$(this).addClass("active");
-	});
+});
 
-$("#detail_edit").on("click",function(){
+$("#detail_edit").on("click",function() {
+	var check = CheckUserAccess("異動事件管理", "異動總覽", "編輯圖資");
+	if (!check) {
+		alert("您沒有權限使用.")
+		return;
+	}
+
 	$(this).parent().hide();
 	$(".edit_state").show();
 	original_page = $("#basic_data").clone();
-	$('input,textarea').prop('readonly', false).prop('disabled', false);
+	$('input,textarea,select').prop('readonly', false).prop('disabled', false);
 	$("#te_data_basic_file").show();
 	$(".file_list_item_delete").show();
+	$(".row_button_zone").show();
+	$(".del_edit").show();
+	te_can_edit = true;
 });
 
-$("#detail_save").on("click",function(){
+$("#detail_save").on("click",function() {
     $(".normal_state").show();
 	$(".edit_state").hide();
 	//送出資料並更新畫面資料(重新載入本筆異動)
 	UpdateChangeEventInfo();
 });
 
-$("#detail_cancel").on("click",function(){
-    $(".normal_state").show();
+$("#detail_cancel").on("click",function() {
+	$(".normal_state").show();
 	$(".edit_state").hide();
+	$(".row_button_zone").hide();
+	$(".del_edit").hide();
+	te_can_edit = false;
 	//讀取原本資料
 	$(".data_frame").empty().html(original_page);
 	filelist = new Array();
@@ -145,25 +180,52 @@ $("#detail_cancel").on("click",function(){
 });
 
 $("#detail_delete").on("click",function(){
-    if(confirm("是否刪除本筆異動所有資料?")){
-	 $(".normal_state").show();
-	 $(".edit_state").hide();
-	//刪除該筆異動所有資料
-	DeleteChangeEventInfo();
-	tab("te_manage");
-    upload_result_owner();
+    if (confirm("是否刪除本筆異動所有資料?")) {
+		$(".normal_state").show();
+		$(".edit_state").hide();
+		//刪除該筆異動所有資料
+		DeleteChangeEventInfo();
+		
+		$(".detail_data").hide();
+		
+		setTimeout(function() {
+			tab("te_manage");
+			get_te_manage_containerTable();
+		}, 900);
+		upload_result_owner();
 	}
-   
 });
 
 $("#sent_apply").on("click",function(){
-    if(confirm("是否送審本筆異動資料?")){
-	 $(".normal_state").show();
-	 $(".edit_state").hide();
-	//更改該筆異動狀態
-	SentChangeEventInfo();
+    te_sent_apply();
+});
+
+function te_sent_apply() {
+	if (confirm("是否送審本筆異動資料?")) {
+		var t = te_checkhasnotupload();
+		if (t) {
+			alert('請先將地籍清單內未上傳的部分上傳.');
+			return;
+		}
+		
+		$(".normal_state").show();
+		$(".edit_state").hide();
+		//更改該筆異動狀態
+		SentChangeEventInfo();
 	}
-	
+}
+
+$("#detail_cancelchange").on("click", function() {
+	var dateObj = new Date();
+	var month = dateObj.getUTCMonth() + 1; //months from 1-12
+	var day = dateObj.getUTCDate();
+	var year = dateObj.getUTCFullYear();
+
+	var newdate = year + "/" + month + "/" + day;
+
+	$("#cancel_name").text(Logindata.name);
+	$("#cancel_time").text(newdate);
+	$('#CancelChange').modal('show');
 });
 
 var filelist = new Array();
@@ -171,7 +233,7 @@ var dfilelist = new Array();
 function FileListUpload() {
 	var input = document.getElementById("te_data_basic_file");
 	var output = document.getElementById("upload_file_list");
-
+	
 	var clone = $("#te_data_basic_file").clone();
 	clone.attr("class", "hiddenupload");
 	$("#upload_file_hide_list").append(clone);

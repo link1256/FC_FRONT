@@ -1,383 +1,160 @@
 <!-- 功能頁面區 -->
-	<div>
+<div>
     <div class="search_type te_manage">	
-		<ul class="nav nav-tabs">
-			  <li class="nav-item2 tab1">
-				<span class="nav-link active">異動總覽</span>
-			  </li>
-			 
-               <li class="nav-item2 tab2">
-				<span class="nav-link">新增異動</span>
-			  </li>			
-
-               <li class="nav-item2 tab3">
-				<span class="nav-link">異動審核</span>
-			  </li>	  
-		</ul>
+		<div class="scroller scroller-left float-left"><i class="fa fa-chevron-left"></i></div>
+		<div class="scroller scroller-right float-right"><i class="fa fa-chevron-right"></i></div>
+		<div class="wrapper">
+			<ul class="nav nav-tabs navlist">
+				<li class="nav-item2 tab1">
+					<div class="dropdown show">
+						<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdowntrig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							國有林事業區
+						</a>
+					</div>
+				</li>
+				<li class="nav-item2 tab2">
+					<div class="dropdown show">
+						<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdowntrig2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							保安林檢訂
+						</a>
+					</div>
+				</li>
+				<li class="nav-item2 tab3">
+					<div class="dropdown show">
+						<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdowntrig3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							地籍異動確認
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="dropdowntrig_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig">
+			<a class="dropdown-item ttab1" href="#" onclick="te_ini_drop_page('change_all');">異動總覽</a>
+			<a class="dropdown-item ttab2" href="#" onclick="te_ini_drop_page('change_set');">異動事件登記</a>
+			<a class="dropdown-item ttab3" href="#" onclick="te_ini_drop_page('change_check');">異動事件確認</a>
+			<a class="dropdown-item ttab4" href="#" onclick="te_ini_drop_page('change_statistics');">異動統計</a>
+		</div>
+		<div id="dropdowntrig_ul2" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig2">
+			<a class="dropdown-item ttab5" href="#" onclick="te_ini_drop_page('case_all');">案件總覽</a>
+			<a class="dropdown-item ttab6" href="#" onclick="te_ini_drop_page('case_statistics');">案件統計</a>
+		</div>
+		<div id="dropdowntrig_ul3" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig3">
+			<a class="dropdown-item ttab7" href="#" onclick="te_ini_drop_page('forest_update');">林班地籍異動</a>
+			<a class="dropdown-item ttab8" href="#" onclick="te_ini_drop_page('land_check');">地籍存摺比對</a>
+		</div>
 	</div>
-	
 	<div class="tab_body main_scroll">
-	<div class="tab_body_content tab1 active">
+		<div class="tab_body_content tab_change_all">
 
+		</div>
+		<div class="tab_body_content tab_change_set">
+
+		</div>
+		<div class="tab_body_content tab_change_check">
+
+		</div>
+		<div class="tab_body_content tab_change_statistics">
+
+		</div>
+		<div class="tab_body_content tab_case_all">
+
+		</div>
+		<div class="tab_body_content tab_case_statistics">
+
+		</div>
+		<div class="tab_body_content tab_forest_update">
+
+		</div>
+		<div class="tab_body_content tab_land_check">
+
+		</div>
 	</div>
-	
-	<div class="tab_body_content tab2">
-
-	</div>
-	
-	<div class="tab_body_content tab3">
-
-	</div>
-	
-
-</div>
 </div>
 	
 <!-- 功能頁面區 -->
-<!-- <MODAL 新增> -->
-	<div class="modal fade main_scroll" id="NewPageview" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
-	  <div class="modal-dialog modal-xl">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title">新增異動圖資</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="resetModal()" ></button>
-		  </div>
-		  <div class="modal-body" style="padding-bottom: 0px;">
-		    <div style="display:flex">
-			<div class="modal_part_search content_row_47_nogap">
-			
-               <div style="margin:5px; margin-top:-20px;">
-			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">異動類型</div>
-			   <div class="new_ver_flex">
-			   <div>
-				   <label for="fm_type" class="form-label" style="width: 110px;">類型</label>
-				 </div> 
-		        <select id="fm_type" class="form-select">		
-                   <option value="1" selected>國有林事業區</option>
-                   <option value="2">保安林</option>				   
-			    </select>
-		       </div>
-			   
-
-			   <div class="new_ver_flex">
-			   <div>
-				   <label for="fm_edit_type" class="form-label" style="width: 110px;">編輯形式</label>
-				 </div> 
-		        <select id="fm_edit_type" class="form-select" onchange="te_edittype_change();">		
-                   <option value="1" selected>編輯</option>
-                   <option value="2">刪除</option>	
-                   <option value="3">新增</option>					   
-			    </select>
-		       </div>
-			   </div>
-			   </div>
-			   <!-- //國有林事業區 -->
-			   <div class="fm_search_type1 CreateNew">
-			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">條件查詢</div>
-			   <div class="new_ver_flex">		   
-				  <div>
-				   <label for="search_dist1" class="form-label" style="width: 110px;">林區管理處</label>
-				 </div>  
-				   <select id="search_dist1" class="form-select" onchange="dist1change();">
-					  <option value="-1" selected>請選擇</option>
-					</select>
-				 </div>
-				 
-				 <!-- //管理處轄下事業區列表 -->
-				 <div class="new_ver_flex">
-				  <div>
-				   <label for="search_wkng1" class="form-label" style="width: 110px;">事業區</label>
-				 </div>  
-				   <select id="search_wkng1" class="form-select" >
-					  <option value="-1" selected>不指定</option>
-					  <!-- //動態塞值 -->
-					</select>
-				 </div>
-				 
-				<div class="new_ver_flex">
-				<div>
-				   <label for="search_warning1" class="form-label"  style="width: 110px;">修訂提示</label>
-				   </div>
-				   <select id="search_warning1" class="form-select"  >
-					  <option value="-1" selected>不指定</option>
-					  <option value="1">待修訂</option>
-					</select>
-				</div>
-				
-				<div class="new_ver" style="text-align:center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetChangeForestData(true);">查詢</button>
-				<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
-				</div>
-				
-		     </div>
-			 
-			 </div>
-			 <!-- //國有林事業區 -->
-			 <!-- //保安林 -->
-			   <div class="fm_search_type2 CreateNew">
-			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">條件查詢</div>
-			   <div class="new_ver_flex">		   
-				  <div>
-				   <label for="search_dist2" class="form-label" style="width: 110px;" >林區管理處</label>
-				 </div>  
-				   <select id="search_dist2" class="form-select" onchange="dist2change();">
-					  <option value="-1" selected>請選擇</option>
-					</select>
-				 </div>
-	
-				   <div class="new_ver_flex">
-				   <div>
-				   <label for="search_pfid" class="form-label" style="width: 110px;">保安林編號</label>
-				   </div>
-				    <select id="search_pfid" class="form-select" >
-					  <option value="-1" selected>不指定</option>
-					</select>
-				   </div>
-	
-				<div class="new_ver_flex">
-				<div>
-				   <label for="search_warning2" class="form-label"  style="width: 110px;">修訂提示</label>
-				   </div>
-				   <select id="search_warning2" class="form-select"  >
-					  <option value="-1" selected>不指定</option>
-					  <option value="1">待修訂</option>
-					</select>
-				</div>
-				
-				<div class="new_ver" style="text-align:center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetChangeProtectionData(true);">查詢</button>
-				<button type="button" class="btn btn-warning search_submit custom_bt2">重置</button>
-				</div>
-				
-		     </div>
-			 
-			 </div>
-			 <!-- //保安林 -->
-			 
-			  <!-- //新增國有林事業區 -->
-			   <div class="fm_new_type1 CreateNew_input">
-			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">基本資料</div>
-			   <div class="new_ver_flex">		   
-				  <div>
-				   <label for="new_dist1" class="form-label" style="width: 110px;">林區管理處</label>
-				 </div>  
-				   <select id="new_dist1" class="form-select" onchange="te_new_dist1_change();">
-					  <option value="-1" selected>請選擇</option>
-					</select>
-				 </div>
-				 
-				 <!-- //管理處轄下事業區列表 -->
-				 <div class="new_ver_flex">
-				  <div>
-				   <label for="new_wkng1" class="form-label" style="width: 110px;">事業區</label>
-				 </div>  
-				   <select id="new_wkng1" class="form-select" >
-					  <option value="-1" selected>請選擇</option>
-					  <!-- //動態塞值 -->
-					</select>
-				 </div>
-				 
-				  <div class="new_ver_flex">
-				   <div>
-				   <label for="new_cmpt" class="form-label" style="width: 110px;">林班編號</label>
-				   </div>
-				    <input id="new_cmpt" class="form-control" />
-					 
-				   </div>
-				   
-				   <div class="new_ver_flex">
-				   <div>
-				   <label for="new_edition1" class="form-label" style="width: 110px;">修訂資訊</label>
-				   </div>
-				    <textarea id="new_edition1" class="form-control" rows = 3></textarea>
-					 
-				   </div>
-				
-		     </div>
-			 
-			 </div>
-			 <!-- //新增國有林事業區 -->
-			 <!-- //新增保安林 -->
-			   <div class="fm_new_type2 CreateNew_input">
-			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">基本資料</div>
-			   <div class="new_ver_flex">		   
-				  <div>
-				   <label for="new_dist2" class="form-label" style="width: 110px;">林區管理處</label>
-				 </div>  
-				   <select id="new_dist2" class="form-select" >
-					  <option value="-1" selected>請選擇</option>
-					</select>
-				 </div>
-				 
-					<div class="new_ver_flex">
-				   <div>
-				   <label for="new_pftype" class="form-label" style="width: 110px;">保安林類型</label>
-				   </div>
-					<select id="new_pftype" class="form-select">
-						<option value="-1" selected>請選擇</option>
-					</select>
-					 
-				   </div>
-	
-				   <div class="new_ver_flex">
-				   <div>
-				   <label for="new_pfid" class="form-label" style="width: 110px;">保安林編號</label>
-				   </div>
-				    <input id="new_pfid" class="form-control" />
-					 
-				   </div>
-				   
-				   <div class="new_ver_flex">
-				   <div>
-				   <label for="new_edition2" class="form-label" style="width: 110px;">修訂資訊</label>
-				   </div>
-				    <textarea id="new_edition2" class="form-control" rows = 3></textarea>
-					 
-				   </div>
-					
-		     </div>
-			 
-			 </div>
-			 <!-- //新增保安林 -->
-			 
-			 
-             </div>
-			 <div class="modal_part_detail content_row_47_nogap CreateNew">
-			 <div style="margin:5px; margin-top:-20px;">
-			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">查詢結果</div>
-			   <div class="new_ver">
-			      
-				  <div class="fm_search_list main_scroll_mini">
-					<!-- <圖資列表資料> -->
-					<table class="table  te_tab_list fm_type1" id="fm_search_list">
-						
-					</table>
-					
-					<table class="table  te_tab_list fm_type2" id="fm_search_list2">
-											
-					</table>
-	            </div>
-				  
-		       </div>
-			   </div>
-			   
-			   <div class="content_row_nogap">
-			   <div class="row_text" style="margin:10px;">空間位置</div>
-			   <div class="new_ver">
-			      <!-- //塞入圖資空間資料 -->
-                     <div id="mmapmodal" style="height: 300px;"></div>
-
-					 
-	           </div>
-				  
-		       </div>
-			   </div>
-			   
-			   </div>
-			 
-			 </div>
-
-			</div>
-			
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetModal()">取消</button>
-			<button type="button" class="btn btn-primary" onClick="doCreate_next()">下一步</button>
-		  </div>
-		</div>
-	  </div>
- </div>
-
-<!-- <MODAL 新增> -->
-<!-- <MODAL 編輯> -->
-	<div class="modal fade main_scroll" id="EditPageview" tabindex="-1" data-bs-backdrop="static" aria-labelledby="EditPageview" aria-hidden="false">
-	  <div class="modal-dialog modal-xl">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title">編輯異動圖資</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="resetModal()"></button>
-		  </div>
-		  <div class="modal-body">
-		  <div style="display:flex">
-		    <div class="map_data_detail">
-			    <!-- //圖資編輯欄位 --><!-- //塞入圖資基本資料 -->
-				<div class="content_row_nogap2" id="fm_data_edit">
-				   
-				</div>
-				<!-- //圖資套疊欄位 -->
-				<div class="content_row_nogap2" id="map_overlay">
-				圖層套疊
-				</div>
-				<div class="content_row_nogap2">
-					<div>
-						介接參考圖層
-					</div>
-					<div class="content_table">
-						<table id="">
-						</table>
-					</div>
-				</div>
-				<div class="content_row_nogap2">
-					<div>
-						匯入參考圖層
-					</div>
-					<div class="content_table">
-						<table id="ExportReferenceMap">
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="map_area">
-			     <div class="map_edit_hint" id="map_edit_depend">
-				 <input type="file" id="import_reference_features" accept=".shp,.kml" style="display: none;" onchange="ImportReferenceFeatures(this);" />
-				 <button onclick="$('#import_reference_features').click();">匯入參考圖資</button>
-				 
-				 </div>
-				 
-			     <div id="mmapmodalEdit"></div> 
-				 
-				<button onclick="EditChangeFeature(this);">編輯區域</button>
-
-				<button onclick="AddChangeFeature(this);">新增區域</button>
-
-				<button onclick="DeleteChangeFeature(this);">刪除區域</button>
-				<button id="DelChangeFeatureEventBtn" onclick="DeleteSelectFeature();" style="display: none;">刪除選擇的區域</button>
-				 
-				<button onclick="HollowChangeFeature(this);">挖空區域</button>
-				 
-				 <button onclick="ExportNowFeature('SHP');">匯出目前圖資</button>
-				 
-				 <input type="file" id="import_replace_features" accept=".shp,.kml" style="display: none;" onchange="ImportReplaceFeatures(this);" />
-				 <button onclick="$('#import_replace_features').click();">匯入取代圖資</button>
-				 
-				 </div>
-			</div>
-			
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" onclick="AbandonEdit()">取消</button>
-			<button type="button" class="btn btn-primary" onclick="SaveEdit_fm()">儲存變更</button>
-		  </div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-
-
-<!-- <MODAL 編輯> -->
-	
 <script>
 	 tab("te_manage");
-     upload_result_owner();
-	 searchlistinit(); //初始化林區管理處選項
-	 
-	 setTimeout(function () {
-		$(".detail_data").hide();
-	 }, 10);
+	 te_ini_drop();
+	 $(document).ready(function(){
+		var widthOfList = function(){
+			var itemsWidth = 0;
+			$('.navlist li').each(function(){
+				var itemWidth = $(this).outerWidth();
+				itemsWidth += itemWidth;
+			});
+			return itemsWidth;
+		};
+
+		var widthOfHidden = function(){
+			var ww = 0 - $('.wrapper').outerWidth();
+			var hw = (($('.wrapper').outerWidth()) - widthOfList() - getLeftPosi()) - 40;
+			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
+			
+			if(ww > hw) {
+				return (rp > ww ? rp : ww);
+			}
+			else {
+				return (rp > hw ? rp : hw);
+			}
+		};
+
+		var getLeftPosi = function(){
+			var ww = 0 - $('.wrapper').outerWidth();
+			var lp = $('.navlist').position().left;
+			
+			if(ww > lp) {
+				return ww;
+			}
+			else {
+				return lp;
+			}
+		};
+
+		var reAdjust = function(){
+			// check right pos of last nav item
+			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
+			if (($('.wrapper').outerWidth()) < widthOfList() && (rp<0)) {
+				$('.scroller-right').show().css('display', 'flex');
+			}
+			else {
+				$('.scroller-right').hide();
+			}
+
+			if (getLeftPosi()<0) {
+				$('.scroller-left').show().css('display', 'flex');
+			}
+			else {
+				$('.item').animate({left: "-=" + getLeftPosi() + "px"}, 'slow');
+				$('.scroller-left').hide();
+			}
+		}
+
+		reAdjust();
+
+		$(window).on('resize',function(e){  
+			reAdjust();
+		});
+
+		$('.scroller-right').click(function() {
+			$('.scroller-left').fadeIn('slow');
+			$('.scroller-right').fadeOut('slow');
+
+			$('.navlist').animate({left:"+=" + widthOfHidden() + "px"}, 'slow',function(){
+				reAdjust();
+			});
+		});
+
+		$('.scroller-left').click(function() {
+			$('.scroller-right').fadeIn('slow');
+			$('.scroller-left').fadeOut('slow');
+		  
+			$('.navlist').animate({left:"-=" + getLeftPosi() + "px"}, 'slow',function(){
+				reAdjust();
+			});
+		});
+	});
+	
+	upload_result_owner();
+	searchlistinit(); //初始化林區管理處選項
 </script>
 	

@@ -1,0 +1,117 @@
+<!-- 使用者管理頁面 -->
+<div style="width: 100%; overflow: hidden;">
+	<div id="sys_rowsearch" class="search_div">
+		<div class="row_text2">群組管理</div>
+		<div class="rowsearch">
+			<div class="rowsearchitem">
+				<label>群組名稱</label>
+				<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
+			</div>
+			<div class="rowsearchitem">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_group_init();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_group_search_clear();">清除條件</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_add_modal_group();">
+			新增群組
+		</button>
+		<button type="button" class="btn btn-danger search_submit custom_bt2 user_group_base" onclick="sys_del_modal_group();">
+			刪除群組
+		</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_edit_group();">
+			編輯權限
+		</button>
+		<button type="button" class="btn btn-warning search_submit custom_bt2 user_group_edit" onclick="sys_cancel_edit_group();">取消</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_edit" onclick="sys_edit_update_group();">儲存</button>
+		<button type="button" class="btn btn-warning search_submit custom_bt2 user_group_add" onclick="sys_cancel_add_group();">取消</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_add" onclick="sys_add_update_group();">儲存</button>
+		<div class="sys_group_internel AllCenter">
+			<img src="image/IsUse.svg" style="margin-left: 10px;" />
+			可使用
+			<img src="image/NoUse.svg" style="margin-left: 10px;" />
+			無法使用
+			<img src="image/SomeUse.svg" style="margin-left: 10px;" />
+			部分使用
+		</div>
+	</div>
+	<div class="sys_group_table main_scroll_mini_4">
+		<table class="table_c fc_tab_list2 table-striped" id="sys_user_manage_list">
+			<thead class="thead_fix">
+				<tr id="sys_group_head">
+					<th>標頭</th>
+				</tr>
+			</thead>
+			<tbody id="sys_group_body">
+			</tbody>
+		</table>
+	</div>
+	<div id="toast_success" class="toast position-fixed align-items-center text-white custom-primary border-0 top-50 end-0 translate-middle-y" role="alert" aria-live="assertive" aria-atomic="true">
+	  <div class="d-flex">
+		<div id="toast_label_success" class="toast-body">
+		  更新成功
+		</div>
+		<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+	  </div>
+	</div>
+	<div id="toast_error" class="toast position-fixed align-items-center text-white custom-danger border-0 top-50 end-0 translate-middle-y" role="alert" aria-live="assertive" aria-atomic="true">
+	  <div class="d-flex">
+		<div id="toast_label_error" class="toast-body">
+		  更新失敗
+		</div>
+		<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+	  </div>
+	</div>
+</div>
+<!-- <addgroup MODAL> -->
+<div class="modal fade main_scroll" id="addgroup" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addgroup_modal" class="modal-title">新增群組</h5>
+			</div>
+			<div class="modal-body">
+				<div class="new_ver_flex">
+					<div style="margin-left: 20px; width: 110px;">
+						群組名稱
+					</div>
+					<input class="form-control" id="add_group_name" style="width: 300px;" placeholder="群組名稱" />
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_cancel_add_modal_group();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_add_update_modal_group();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <addgroup MODAL> -->
+<!-- <addgroup MODAL> -->
+<div class="modal fade main_scroll" id="delgroup" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addgroup_modal" class="modal-title">刪除群組</h5>
+			</div>
+			<div class="modal-body">
+				<div class="new_ver_flex">
+					<div style="margin-left: 20px; width: 110px;">
+						群組名稱
+					</div>
+					<select id="del_group_search" class="form-select">
+						<option selected value="-1">請選擇</option>
+					</select>
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_cancel_del_modal_group();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_del_update_modal_group();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <addgroup MODAL> -->
+<script>
+	sys_group_init();
+</script>

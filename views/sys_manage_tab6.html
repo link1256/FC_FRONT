@@ -1,0 +1,98 @@
+<!-- 圖資管理頁面 -->
+<div>
+	<!-- 圖層列表 -->
+	<div id="sys_manage_tab6">
+		<div class="row_text2">檔案列表</div>
+		<div>
+			<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_manage_tab6_file_add();">
+				新增檔案
+			</button>
+		</div>
+		<div class="main_scroll_mini_4" style="max-height: calc(100vh - 186px - 20px);overflow-y: auto ;position: relative;">
+		<table class="table_c fc_tab_list2" id="sys_custom_theme_list" >
+			<thead style="position: sticky;top: 0;">
+				<tr>
+					<th style="width: 15%">類型</th>
+					<th>名稱</th>
+					<th style="width: 25%">說明</th>
+					<th style="width: 15%">日期</th>
+					<th style="width: 10%">編輯</th>
+				</tr>
+			</thead>
+			<tbody id="sys_manage_tab6_list" class="ztbody"></tbody>
+		</table>
+		</div>
+	</div>
+</div>
+<!-- <MODAL 新增> -->
+<div class="modal fade main_scroll" id="AddNewAnnFile" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="add_edit_file_modal" class="modal-title"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<input id="add_edit_sid" type="text" style="display: none;" />
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td style="width:150px;">
+								類型
+							</td>
+							<td>
+								<select id="add_file_type" class="form-select form-custom-select">
+									<option value="-1" selected>請選擇</option>
+									<option value="1">操作手冊</option>
+									<option value="2">行政文件</option>
+									<option value="3">一般檔案</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								名稱
+							</td>
+							<td>
+								<input id="add_file_name" class="form-control" type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								說明
+							</td>
+							<td>
+								<textarea id="add_file_note" rows="2" class="form-control"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								日期
+							</td>
+							<td>
+								<input id="add_file_date" class="form-control" type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								檔案
+							</td>
+							<td>
+								<input id="add_file_files" class="form-control" type="file" accept=".zip,.txt,.doc,.docx,.odt,.pdf,.jpg,.png" />
+								<div id="add_file_zone"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_manage_tab6_file_close();">取消</button>
+				<button id="add_file_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_manage_tab6_click_add();">新增</button>
+				<button id="edit_file_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_manage_tab6_click_edit();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	sys_manage_tab6_init();
+</script>

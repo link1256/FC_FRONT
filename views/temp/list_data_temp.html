@@ -1,37 +1,67 @@
-<div style="display:flex; justify-content: space-between;">
-<div class="content_row_47 list_height">
-	<div class="row_text">異動圖資列表</div>
-	<div style="height:233px;" class="main_scroll_mini">
-	<table id="fi_list1" class="table" style="margin-bottom:0px;">
-	<thead class="thead_fix">
-	<tr>
-		<th  width="15%">序號</th>
-		<th width="35%">類型</th>
-		<th width="30%">編輯形式</th>
-		<th  width="30%">管理</th>
-	</tr>
-	</thead>
-	<tbody id = "list_table" >
-	<!-- //塞入異動圖資列表 -->
-	
-	</tbody>
-	</table>
-</div>
-</div>
-<div class="content_row_47 list_height">
-	<div class="row_text">圖資屬性</div>
-	<div id="list_detail">
-	<!-- //塞入圖資基本資料 -->
-	<div>未選取</div>
+<div class="content_row_data" id="basic_data" style="position: relative">
+	<div class="row_text">地籍圖資</div>
+	<div class="buttonzone">
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_export_assSHP();">匯出範圍</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_export_assEXCEL();">匯出清冊</button>
+	</div>
+	<div class="search_type te_tab_review">	
+		<ul class="nav nav-tabs">
+			<li class="nav-item5 tab1" style="width: 250px;">
+				<span id="review_1" class="nav-link active">事業區內地籍清單(0筆)</span>
+			</li>
+			<li class="nav-item5 tab2" style="width: 250px;">
+				<span id="review_2" class="nav-link">非事業區內地籍清單(0筆)</span>
+			</li>
+		</ul>
+	</div>
+	<div class="row_table_zone" style="margin-top: 10px;">
+		<div id="te_inarea_table" style="height:calc(42vh - 155px);" class="main_scroll_mini_4">
+			<table id="zone_inarea" class="table" style="margin-bottom:0px;word-break: keep-all;">
+				<thead class="thead_fix">
+					<tr>
+						<th>序號</th>
+						<th>縣市</th>
+						<th>鄉鎮市區</th>
+						<th>地段</th>
+						<th>地號</th>
+						<th>地籍編碼</th>
+						<th>面積</th>
+						<th>管理單位</th>
+						<th>事業區</th>
+						<th>林班</th>
+						<th>解編方式</th>
+					</tr>
+				</thead>
+				<tbody id="te_inarea_body" class="ztbody">
+				</tbody>
+			</table>
+		</div>
+		<div id="te_notinarea_table" style="height:calc(42vh - 155px);display: none;" class="main_scroll_mini_4">
+			<table class="table" style="margin-bottom:0px;word-break: keep-all;">
+				<thead class="thead_fix">
+					<tr>
+						<th>序號</th>
+						<th>縣市</th>
+						<th>鄉鎮市區</th>
+						<th>地段</th>
+						<th>地號</th>
+						<th>地籍編碼</th>
+						<th>面積</th>
+					</tr>
+				</thead>
+				<tbody id="te_notinarea_body" class="ztbody">
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
+<div style="display:flex; justify-content: space-between;">
+	<div class="content_row_data list_height_map" style="width: 100%;">
+		<div class="row_text">空間位置</div>
+		<!-- //塞入圖資空間資料 -->
+		<div id="mmaplist" style="height: calc(100% - 70px);"></div>
+	</div>
 </div>
-<div class="content_row_data list_height_map">
-	<div class="row_text">空間位置</div>
-	<!-- //塞入圖資空間資料 -->
-    <div id="mmaplist" style="height: calc(100% - 70px);"></div>
-</div>
-
 <script>
     te_list_data_init();
 </script>

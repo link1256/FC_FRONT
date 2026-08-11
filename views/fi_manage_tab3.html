@@ -1,51 +1,115 @@
 <!-- 頁面區 -->
 <div class="manage_page">
 <div class="search_div">
-
-	<div class="content_row_search manage_recreation">
-	<div class="row_text">篩選條件</div>
-	
-	<div class="new_ver_flex">
+	<div class="content_row_search map_cview">
+	<div id="map_window">
+		<i class="fas fa-caret-square-left"></i>
+	</div>
+	<div class="window_hide">
+		查詢及結果
+	</div>
+	<div class="row_text map_flex">
+		篩選條件
+		<div id="list_window">
+			<i class="fas fa-caret-square-down"></i>
+		</div>
+	</div>
+	<div class="new_ver_flex map_flex">
 		<div>
 			<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
 		</div>
-		<select id="search_dist" class="form-select" onchange="tab3_go_search();">
-			<option value="-1" selected>不指定</option>		 
+		<select id="search_dist" class="form-select" onchange="fi_tab2_get_protectnumber(true);" multiple>
+			
 		</select>
 	</div>
+	
+	<div class="new_ver_flex map_flex">
+		<div>
+			<label for="search_pfid" class="form-label"  style="width: 110px;">保安林類型</label>
+		</div>
+		<select id="search_pfid" class="form-select" onchange="fi_tab2_get_protectnumber();" multiple>
+			
+		</select>
+	</div>
+	
+	<div class="new_ver_flex map_flex">
+		<div>
+			<label for="search_pfsid" class="form-label" style="width: 110px;">保安林編號</label>
+		</div>
+		<select id="search_pfsid" class="form-select">
+			<option value="-1" selected>不指定</option>
+		</select>
+	</div>
+	
+	<div class="new_ver_flex map_flex">
+		<div>
+			<label for="search_forest" class="form-label"  style="width: 110px;">保安林檢索</label>
+		</div>
+		<input class="form-control " id="search_forest" />
+	</div>
+	
+	<div class="new_ver_flex map_flex" style="display: none;">
+		<div>
+	   <label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+	   </div>
+	   <select id="search_stat" class="form-select">
+		  <option value="-1" selected>不指定</option>
+		  <option value="1">待異動</option>
+		 
+		</select>
+	</div>
+	
+	<div class="new_ver new_ver_flex map_flex AllCenter" style="text-align:center;">
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="tab2_go_search();">查詢</button>
+		<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="tab2_reset();">重置</button>
+	</div>
 
 	</div>
 
 
-<div class="content_row_search" style="height: calc(100vh - 286px)">
-	<div class="row_text">圖資列表</div>
+<div id="m_list" class="content_row_search map_flex" style="height: calc(100vh - 500px)">
+	<div class="row_text">
+		結果列表
+		<span id="te_tab2_count"></span>
+	</div>
 	<div class="result_list main_scroll_mini">
 	<!-- <圖資列表> -->
-	<table class="table  te_tab_list" id="te_tab3_list">	
+	<table class="table_c  te_tab_list" id="te_tab2_list">
     </table>
 		<!-- <圖資列表> -->
 	</div>
-
-	
 </div>
 </div>
 
 <div class="fc_detail_data main_scroll_mini">
 <div class="detail_data_map">
 <!-- <圖資> -->
-<div class="map_detail">
+<div class="map_detail2">
 <div id="mmap"></div>
 <div id="big_window">
 	<i class="fas fa-caret-square-down"></i>
 </div>
+<div id="big_window2">
+	<i class="fas fa-caret-square-right"></i>
+</div>
 </div>
 <!-- <圖資> -->
-<div style="width: 30%;">
+<div class="fi_detail">
 	<!-- <功能區-權限判斷> -->
+	<div class="year_detail">
+		圖資版本:<label id="fi_year"></label>
+	</div>
 	<div class="fi_manage_area">
-	   <div>
-		 <button type="button" class="btn btn-secondary fi_button">下載</button>
+	   <div class="fi_pro">
+		<button id="fitab1dropdowntrig3" type="button" class="btn btn-secondary fi_button dropdown-toggle" style="width: 115px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
+		<div id="dropdowntrig_fi_tabl_ul3" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="fitab1dropdowntrig3">
+			<a class="dropdown-item ttab1" href="#" onclick="fi_tab2_download();">保安林</a>
+			<a class="dropdown-item ttab3" href="#" onclick="fi_tab2_downloaddist();">分署</a>
+		</div>
 	   </div>
+	   <!--<div class="fi_pro">
+		 <button type="button" class="btn btn-secondary fi_button" style="width: 115px;" onclick="fi_tab2_downloaddist();">匯出分署</button>
+	   </div>-->
 	   <div class="fi_pro">
 		 <button type="button" id="fi_edit_bt" class="btn btn-warning fi_button">編輯</button>
 	   </div>
@@ -56,11 +120,11 @@
 	<!-- <功能區-權限判斷> -->
 
 	<!-- <細項> -->
-	<div class="data_detail">
-	<div class="row_text">資料內容</div>
-	<div id="list_detail" class="main_scroll_mini">
-		<!-- //塞入圖資基本資料 -->
-		<div>未選取</div>
+	<div class="data_detail2">
+		<div class="row_text">資料內容</div>
+		<div id="list_detail" class="main_scroll_mini">
+			<!-- //塞入圖資基本資料 -->
+			<div>未選取</div>
 		</div>
 	</div>
 	<!-- <細項> -->
@@ -71,25 +135,99 @@
 
 
 <!-- <地籍> -->
-<div class="fc_detail">
-<div class="row_text">關聯地籍列表</div>
-<div id="fc_detail_list"></div>
+<div class="fc_detail" style="position: relative;">
+	<div class="row_text">關聯地籍列表<label id="fc_detail_count">（0 筆）</label></div>
+	<button id="fitab1dropdowntrig" type="button" class="btn btn-secondary fi_button dropdown-toggle" style="width: 115px; position: absolute; right: 145px; top: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出CSV</button>
+	<div id="dropdowntrig_fi_tabl_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="fitab1dropdowntrig">
+		<a class="dropdown-item ttab1" href="#" onclick="fi_tab2_downloadAssCsv('fmid');">保安林</a>
+		<a class="dropdown-item ttab3" href="#" onclick="fi_tab2_downloadAssCsv('dist');">分署</a>
+	</div>
+	<button id="fitab1dropdowntrig2" type="button" class="btn btn-secondary fi_button dropdown-toggle" style="width: 115px; position: absolute; right: 15px; top: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
+	<div id="dropdowntrig_fi_tab2_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="fitab1dropdowntrig2">
+		<a class="dropdown-item ttab1" href="#" onclick="fi_tab2_downloadAssMaps('fmid');">保安林</a>
+		<a class="dropdown-item ttab3" href="#" onclick="fi_tab2_downloadAssMaps('dist');">分署</a>
+	</div>
+	<div id="fc_detail_list"></div>
 </div>
 <!-- <地籍> -->
 
 </div>
 
+<!-- <OWNER MODAL> -->
+<div class="modal fade main_scroll" id="ownerdata" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">所有權資訊</h5>
+			</div>
+			<div class="modal-body">
+				<div class="search_type ownerdata_manager">	
+					<ul class="nav nav-tabs">
+						<li class="nav-item8 tab1" style="width: 200px;">
+							<span class="nav-link active">所有權最新資訊</span>
+						</li>
+						<li class="nav-item8 tab2" style="width: 200px;">
+							<span class="nav-link">移轉歷程</span>
+						</li>
+					</ul>
+				</div>
+				<div id="owner_1">
+					查無相關權屬資訊
+				</div>
+				<div id="owner_2" style="display: none;">
+					查無相關權屬資訊
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab1_owner_close();">確認</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </div>	
 <!-- 頁面區 -->
 	<script>
-     /*map('mmap',true,false);
-	 optionactive("te_tab3_list");
-	 list_click("te_tab3_list","遊樂區");
-	 
-	 $("#item1").click();*/
-	 fi_tab3_init();
-	 fi_edit();
+	 fi_tab2_init();
+	 fi_edit("保安林");
 	 $(".fc_detail_data").hide();
 	 
+	 tab6("ownerdata_manager");
+	 
+	 $("#list_window").on("click",function() {
+		if ($(".new_ver_flex").hasClass("itemhide")) {
+			$(".new_ver_flex").removeClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
+			$("#m_list").css("height", "calc(100vh - 500px)");
+		}
+		else {
+			$(".new_ver_flex").addClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
+			$("#m_list").css("height", "calc(100vh - 243px)");
+		}
+	});
+	$("#map_window").on("click",function() {
+		if ($(".map_flex").hasClass("itemhide")) {
+			$(".map_flex").removeClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
+			$(".search_div").width(400);
+			$(".map_cview").height("");
+			$(".fc_detail_data").width("calc(100vw - 420px)");
+			$(".fc_partA").width("calc(60% - 10px)");
+			$(".fc_partB").width("40%");
+			$(".window_hide").hide();
+		}
+		else {
+			$(".map_flex").addClass("itemhide");
+			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
+			$(".search_div").width(80);
+			$(".map_cview").height("calc(100vh - 160px)");
+			$(".fc_detail_data").width("calc(100vw - 80px)");
+			$(".fc_partA").width("calc(70% - 10px)");
+			$(".fc_partB").width("30%");
+			$(".window_hide").show();
+		}
+		if (fi_tab2 && fi_tab2.map) fi_tab2.map.updateSize();
+	});
     </script>
 	

@@ -1,0 +1,285 @@
+<!-- 頁面區 -->
+<div class="manage_page">
+	<div class="search_div">
+		<div class="content_row_search map_cview" style="height: calc(100vh - 160px);">
+			<div class="window_hide">
+				查詢及結果
+			</div>
+			<div class="row_text map_flex">
+				篩選條件
+			</div>
+			<div class="search_type lu_search_tab2">	
+				<ul class="nav nav-tabs">
+					<li class="nav-item9 tab1" style="width: 50%;">
+						<span class="nav-link active">全國縣市</span>
+					</li>
+					<li class="nav-item9 tab2" style="width: 50%;">
+						<span class="nav-link">地籍查詢</span>
+					</li>
+				</ul>
+			</div>
+			<div id="lu_stype1">
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_county2" class="form-label" style="width: 110px;">縣市</label>
+					</div>
+					<select id="search_county2" class="form-select" multiple>
+						
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_zoning2"  style="width: 110px;">使用分區</label>
+					</div>
+					<select id="search_zoning2" multiple>
+
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_manage2" style="width: 110px;">管理單位</label>
+					</div>
+					<input class="form-control" id="search_manage2" placeholder="管理單位名稱" />
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+					   <label for="search_land_code2"  style="width: 110px;">地籍編碼</label>
+					</div>
+					<input class="form-control" id="search_land_code2" placeholder="AB123456780000" />
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_state2"  style="width: 110px;">追蹤狀態</label>
+					</div>
+					<select id="search_state2" class="form-select">
+						<option selected value="-1">全部</option>
+						<option value="0">未確認</option>
+						<option value="1">已確認</option>
+						<option value="2">持續追蹤</option>
+						<option value="3">不查核</option>
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_comstate2"  style="width: 110px;">比對狀態</label>
+					</div>
+					<select id="search_comstate2" class="form-select">
+						<option selected value="-1">全部</option>
+						<option value="1">比對成功</option>
+						<option value="2">比對失敗</option>
+					</select>
+				</div>
+				<div class="new_ver new_ver_flex map_flex AllCenter" style="text-align:center;">
+					<button type="button" class="btn btn-success search_submit custom_bt2" onclick="lu_tab2_queryLandList2();">查詢</button>
+					<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="lu_tab2_reset2();">重置</button>
+				</div>
+			</div>
+			<div id="lu_stype2" style="display: none;">
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+					</div>
+					<select id="search_county" class="form-select" onchange="lu_tab2_getTownList(this);">
+						<option selected value="-1">請選擇</option>
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_town" class="form-label" style="width: 110px;">鄉鎮</label>
+					</div>
+					<select id="search_town" class="form-select" onchange="lu_tab2_getLandList();">
+						<option selected value="-1">請選擇</option>
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_sec" class="form-label"  style="width: 110px;">地段</label>
+					</div>
+					<select id="search_sec">
+						<option selected value="-1">請選擇</option>
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_land_no"  style="width: 110px;">地號</label>
+					</div>
+					<div class="search_land_no">
+						<input class="form-control " id="search_number1" maxlength="4" />
+						<span style="margin: 4px;">-</span>
+						<input class="form-control " id="search_number2" maxlength="4" />  
+					</div>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_zoning"  style="width: 110px;">使用分區</label>
+					</div>
+					<select id="search_zoning" multiple>
+
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_manage"  style="width: 110px;">管理單位</label>
+					</div>
+					<input class="form-control" id="search_manage" placeholder="管理單位名稱" />
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+					   <label for="search_land_code"  style="width: 110px;">地籍編碼</label>
+					</div>
+					<input class="form-control" id="search_land_code" placeholder="AB123456780000" />
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_state"  style="width: 110px;">追蹤狀態</label>
+					</div>
+					<select id="search_state" class="form-select">
+						<option selected value="-1">全部</option>
+						<option value="0">未確認</option>
+						<option value="1">已確認</option>
+						<option value="2">持續追蹤</option>
+					</select>
+				</div>
+				<div class="new_ver_flex map_flex">
+					<div>
+						<label for="search_comstate"  style="width: 110px;">比對狀態</label>
+					</div>
+					<select id="search_comstate" class="form-select">
+						<option selected value="-1">全部</option>
+						<option value="1">比對成功</option>
+						<option value="2">比對失敗</option>
+					</select>
+				</div>
+				<div class="new_ver new_ver_flex map_flex AllCenter" style="text-align:center;">
+					<button type="button" class="btn btn-success search_submit custom_bt2" onclick="lu_tab2_queryLandList();">查詢</button>
+					<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="lu_tab2_reset();">重置</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content_row_data lu_search" id="lu_search_result_zone" style="position: relative;">
+		<div class="row_text">地籍存摺版本:<span id="lu_landversion"></span></div>
+		<div class="row_text">總筆數:<span id="lu_landcount"></span>筆</div>
+		<button type="button" class="btn btn-secondary fi_button" style="width: 115px; position: absolute; right: 25px; top: 70px;" onclick="lu_tab2_downloadCsv();">匯出CSV</button>
+		<div id="lu_tab2_page">
+			<div class="main_scroll_mini main_scroll_mini2" style="width: 99%; height: calc(100vh - 350px);">
+				<table id="search_page" class="table_c" style="margin-bottom:0px;word-break: keep-all;">
+					<thead class="thead_fix">
+						<tr>
+							<td>縣市</td>
+							<td>鄉鎮</td>
+							<td>地段</td>
+							<td>地號</td>
+							<td>編碼</td>
+							<td>狀態</td>
+							<td>備註</td>
+							<td>管理</td>
+						</tr>
+					</thead>
+					<tbody id="lu_search_result" class="ztbody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 檢視Modal -->
+  <div class="modal fade" id="lu_manage_tab2_dialog" data-bs-backdrop="static" aria-labelledby="NewMapVersion"
+    aria-hidden="false" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="lu_manage_tab2_title" class="modal-title w-100 text-center"></h5>
+          <button type="button" class="btn-close" aria-label="Close" onclick="lu_tab2_dialog_Close();"></button>
+        </div>
+        <div class="modal-body AllCenter">
+          <div class="search_div">
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					縣市
+				</div>
+				<div class="detail_rows_value">
+					<span id="lu_county_show"></span>
+				</div>
+			</div>
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					鄉鎮
+				</div>
+				<div class="detail_rows_value">
+					<span id="lu_town_show"></span>
+				</div>
+			</div>
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					地段
+				</div>
+				<div class="detail_rows_value">
+					<span id="lu_landname_show"></span>
+				</div>
+			</div>
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					地號
+				</div>
+				<div class="detail_rows_value">
+					<span id="lu_landno_show"></span>
+				</div>
+			</div>
+			<div class="detail_rows">
+				<div class="detail_rows_name">
+					狀態
+				</div>
+				<div class="detail_rows_value">
+					<select id="lu_landstate_show" class="form-select">
+						<option selected value="-1">請選擇</option>
+						<option value="0">未確認</option>
+						<option value="1">已確認</option>
+						<option value="2">持續追蹤</option>
+						<option value="3">不查核</option>
+					</select>
+				</div>
+			</div>
+			<div class="detail_rows info_show edit_nonshow">
+				<div class="detail_rows_name">
+					備註
+				</div>
+				<div class="detail_rows_value">
+					<textarea id="lu_notetext_show" class="form-control main_scroll_mini" style="overflow-y: scroll;
+                    height: 92px;
+                    resize: none;"></textarea>
+				</div>
+			</div>
+          </div>
+        </div>
+        <!-- 編輯才要顯示 -->
+        <div class="modal-footer py-0">
+			<div class="mx-auto my-0" style="text-align:center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="lu_tab2_dialog_Close();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="lu_tab2_dialog_Save();">儲存</button>
+			</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 檢視Modal -->
+</div>
+<script>
+	lu_tab2_init();
+	tab9("lu_search_tab2");
+	$("#search_sec").selectpicker({
+		liveSearch: true
+	});
+	$("#search_zoning").multiselect({
+		buttonClass: 'form-select',
+		buttonTextAlignment: 'left',
+		buttonWidth: '235px',
+		nonSelectedText: '請選擇',
+		nSelectedText: '已選擇',
+		allSelectedText: '全選',
+		includeSelectAllOption: true,
+		templates: {
+			button: '<button type="button" class="multiselect dropdown-toggle" data-bs-toggle="dropdown"><span class="multiselect-selected-text"></span></button>',
+		}
+	});
+</script>

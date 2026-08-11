@@ -1,0 +1,97 @@
+/* For pad: */
+@media only screen and (min-width: 375px) {
+	body {
+		min-width: 375px;	
+		margin: 0 auto;	
+		overflow-y: hidden;
+	}
+	.user_name, 
+	.function_bt,
+	#login_bt {
+		display: none;
+	}
+	.rwd_hum {
+		display: flex;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		cursor: pointer;
+	}
+	.banner nav {
+		float: none;
+		padding: 0;
+		background: none;
+		display: none;
+		position: absolute;
+		width: 100%;
+		top: 60px;
+	}
+	.banner nav ul {
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+		padding: 0;
+	}
+	.banner nav ul li {
+		float: none;
+		margin: 0;
+		list-style-type: none;
+		cursor: pointer;
+	}
+	.banner nav ul li {
+		height: 4em;
+		line-height: 4em;
+		text-align: center;
+		color: #fff;
+		background-color: #405A40;
+	}
+	.banner nav ul li.current {
+		background-color: #047c75;
+	}
+	.banner nav ul li.current span {
+		color: #ffde2a;
+		border-bottom: none;
+	}
+	.banner nav ul li:hover span {
+		color: #fff;
+		border-bottom: none;
+	}
+	.rwdopen {
+		display: block !important;
+	}
+}
+
+@media only screen and (max-width: 375px){
+	.content_row {
+		padding: 3px !important;
+	}
+	.row_table_zone {
+		overflow: auto;
+		width: 53vh;
+	}
+	.table th {
+		min-width: 120px;
+	}
+	#te_step {
+		width: 100%;
+	}
+	.modal_rwd_flex {
+		flex-wrap: wrap;
+	}
+	.search_detail {
+		width: 100% !important;
+		max-width: auto !important;
+	}
+	.map_data_detail {
+		width: 100% !important;
+	}
+	.add_area {
+		width: 100% !important;
+	}
+	.map_area {
+		width: 100% !important;
+	}
+	#ExpandButton {
+		display: none;
+	}
+}

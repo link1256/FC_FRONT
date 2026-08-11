@@ -1,0 +1,184 @@
+<!-- 功能頁面區 -->
+<div>
+    <div class="search_type sys_manage">
+		<div class="scroller scroller-left float-left"><i class="fa fa-chevron-left"></i></div>
+		<div class="scroller scroller-right float-right"><i class="fa fa-chevron-right"></i></div>
+		<div class="wrapper">
+			<ul class="nav nav-tabs navlist">
+				<li class="nav-item2 tab1">
+					<div class="dropdown show">
+						<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdowntrig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							帳號權限管理
+						</a>
+					</div>
+				</li>
+				<li class="nav-item2 tab2">
+					<div class="dropdown show">
+						<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdowntrig2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							系統紀錄管理
+						</a>
+					</div>
+				</li>		  
+				<li class="nav-item2 tab3">
+					<span class="nav-link">自訂常用查詢</span>
+				</li>		
+				<li class="nav-item2 tab4">
+					<span class="nav-link">API審核管理</span>
+				</li>
+				<li class="nav-item2 tab5">
+					<span class="nav-link">圖資管理</span>
+				</li>
+				<li class="nav-item2 tab6">
+					<span class="nav-link">檔案管理</span>
+				</li>
+				<li class="nav-item2 tab7">
+					<span class="nav-link">公告管理</span>
+				</li>
+			</ul>
+		</div>
+		<div id="dropdowntrig_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig">
+			<a class="dropdown-item" href="#" onclick="sys_ini_drop_page('user_manage');">使用者管理</a>
+			<a class="dropdown-item" href="#" onclick="sys_ini_drop_page('group_manage');">群組權限管理</a>
+			<a class="dropdown-item" href="#" onclick="sys_ini_drop_page('pepole_manage');">人員異動管理</a>
+		</div>
+		<div id="dropdowntrig_ul2" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig2">
+			<a class="dropdown-item" href="#" onclick="sys_ini_drop_page('sys_log');">系統操作紀錄</a>
+			<a class="dropdown-item" href="#" onclick="sys_ini_drop_page('download_log');">下載統計紀錄</a>
+		</div>
+	</div>
+	
+	<div class="tab_body">
+		<div class="tab_body_content tab1 active">
+		
+		</div>
+		
+		<div class="tab_body_content tab2">
+
+		</div>
+		
+		<div class="tab_body_content tab3">
+		
+		</div>
+		
+		<div class="tab_body_content tab4">
+
+		</div>
+		
+		<div class="tab_body_content tab5">
+
+		</div>
+		
+		<div class="tab_body_content tab6">
+
+		</div>
+		
+		<div class="tab_body_content tab7">
+
+		</div>
+		
+		<div class="tab_body_content tab_user_manage">
+
+		</div>
+		
+		<div class="tab_body_content tab_group_manage">
+
+		</div>
+		
+		<div class="tab_body_content tab_pepole_manage" style="width: 100%; height: 100%;">
+		
+		</div>
+		
+		<div class="tab_body_content tab_sys_log">
+
+		</div>
+		
+		<div class="tab_body_content tab_download_log">
+
+		</div>
+		
+	</div>
+</div>
+	<!-- 功能頁面區 -->
+	
+<script>
+	tab("sys_manage");
+	sys_ini_drop();
+	$(document).ready(function(){
+		var widthOfList = function(){
+			var itemsWidth = 0;
+			$('.navlist li').each(function(){
+				var itemWidth = $(this).outerWidth();
+				itemsWidth += itemWidth;
+			});
+			return itemsWidth;
+		};
+
+		var widthOfHidden = function(){
+			var ww = 0 - $('.wrapper').outerWidth();
+			var hw = (($('.wrapper').outerWidth()) - widthOfList() - getLeftPosi()) - 40;
+			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
+			
+			if(ww > hw) {
+				return (rp > ww ? rp : ww);
+			}
+			else {
+				return (rp > hw ? rp : hw);
+			}
+		};
+
+		var getLeftPosi = function(){
+			var ww = 0 - $('.wrapper').outerWidth();
+			var lp = $('.navlist').position().left;
+			
+			if(ww > lp) {
+				return ww;
+			}
+			else {
+				return lp;
+			}
+		};
+
+		var reAdjust = function(){
+			// check right pos of last nav item
+			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
+			if (($('.wrapper').outerWidth()) < widthOfList() && (rp<0)) {
+				$('.scroller-right').show().css('display', 'flex');
+			}
+			else {
+				$('.scroller-right').hide();
+			}
+
+			if (getLeftPosi()<0) {
+				$('.scroller-left').show().css('display', 'flex');
+			}
+			else {
+				$('.item').animate({left: "-=" + getLeftPosi() + "px"}, 'slow');
+				$('.scroller-left').hide();
+			}
+		}
+
+		reAdjust();
+
+		$(window).on('resize',function(e){  
+			reAdjust();
+		});
+
+		$('.scroller-right').click(function() {
+			$('.scroller-left').fadeIn('slow');
+			$('.scroller-right').fadeOut('slow');
+
+			$('.navlist').animate({left:"+=" + widthOfHidden() + "px"}, 'slow',function(){
+				reAdjust();
+			});
+		});
+
+		$('.scroller-left').click(function() {
+			$('.scroller-right').fadeIn('slow');
+			$('.scroller-left').fadeOut('slow');
+		  
+			$('.navlist').animate({left:"-=" + getLeftPosi() + "px"}, 'slow',function(){
+				reAdjust();
+			});
+		});
+	});
+</script>

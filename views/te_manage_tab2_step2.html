@@ -1,22 +1,534 @@
-
+<!-- <圖資資料> -->
+<div class="content_row_data list_inarea">
+	<div class="row_button_zone">
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_add_show(1);">單筆新增</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_import_show(1);">批次匯入</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2 del_btn1" onclick="te_manage_import_del(1);" disabled>刪除</button>
+	</div>
+	<div class="row_text">事業區內地籍清單</div>
+	<div class="row_table_zone">
+		<div id="zone_inarea" style="height:calc(42vh - 155px);" class="main_scroll_mini_4">
+			<table class="table" id="te_inarea_table" style="margin-bottom:0px;word-break: keep-all;">
+				<thead class="thead_fix">
+					<tr>
+						<th><input class="del_select_all1 form-check-input del_edit" type="checkbox" name="items" value="0" onchange="te_manage_selectdel_all(this, 1);" /></th>
+						<th>序號</th>
+						<th>縣市</th>
+						<th>鄉鎮市區</th>
+						<th>地段</th>
+						<th>地號</th>
+						<th>地籍編碼</th>
+						<th>面積</th>
+						<th>管理單位</th>
+						<th>事業區</th>
+						<th>林班</th>
+						<th>解編方式</th>
+						<th>範圍資訊</th>
+					</tr>
+				</thead>
+				<tbody id="te_inarea_body">
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!-- <圖資資料> -->
+<div class="content_row_data list_notinarea">
+	<div class="row_text">非事業區內地籍清單</div>
+	<div class="row_button_zone" style="display: none;">
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_add_show(2);">單筆新增</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_import_show(2);">批次匯入</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2 del_btn2" onclick="te_manage_import_del(2);" disabled>刪除</button>
+	</div>
+	<div class="row_table_zone">
+		<div style="height:calc(42vh - 155px);" class="main_scroll_mini_4">
+			<table class="table" id="te_notinarea_table">
+				<thead class="thead_fix">
+					<tr>
+						<th>
+							<input class="del_select_all2 form-check-input del_edit" type="checkbox" name="items" value="0" onchange="te_manage_selectdel_all(this, 2);" />
+						</th>
+						<th>序號</th>
+						<th>縣市</th>
+						<th>鄉鎮市區</th>
+						<th>地段</th>
+						<th>地號</th>
+						<th>地籍編碼</th>
+						<th>面積</th>
+					</tr>
+				</thead>
+				<tbody id="te_notinarea_body">
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 <div class="content_row_data manage_bt_area" style="padding:10px;">
-<div class="normal_state manage_bt">
-   <button type="button" class="btn btn-success search_submit custom_bt2" id="feature_edit" style="width: 170px;" onclick="doCreate()">查詢地籍參考圖資</button>
-   <button type="button" class="btn btn-warning search_submit custom_bt2" id="feature_edit" style="width: 170px;" onclick="doCreate()">匯入地籍參考圖資</button>
+	<div class="row_text">空間位置</div>
+	<div class="fc_map_detail" style="height: 400px;">
+		<div id="mmap" style="width: 100%; height: calc(100% - 10px); position: relative; top: 8px;"></div>
+	</div>
+</div>
+<div class="content_row_data list_notinarea sent_button_zone" style="display: none;">
+	<div class="AllCenter">
+		<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_tab_back();">上一步</button>
+		<button type="button" class="btn btn-success send_bt2" onclick="te_tab2_sent();">送出</button>
+		<button type="button" class="btn btn-success send_bt3" onclick="te_sent_apply();">送出</button>
+	</div>
 </div>
 
-	
+<!-- <單筆新增MODAL> -->
+<div class="modal fade main_scroll" id="AddNewte" tabindex="2" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="addnewte_modal" class="modal-title">新增事業區內地籍清單</h5>
+			</div>
+			<div class="modal-body">
+				<input id="add_edit_sid" type="text" style="display: none;" />
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>縣市
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2">
+						<select id="add_te_city" class="form-select form-custom-select" onchange="te_tab2_addnew_getTownList();">
+						   <option value="-1" selected>請選擇</option>
+						</select>
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>地號/假(分割)地號
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2 AllCenter">
+						<input id="add_te_landnum1" class="form-control form-custom-select" type="text" maxlength="4" />-
+						<input id="add_te_landnum2" class="form-control form-custom-select" type="text" maxlength="4" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>鄉鎮市區
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2">
+						<select id="add_te_town" class="form-select form-custom-select" onchange="te_tab2_addnew_getLandList();">
+						   <option value="-1" selected>請選擇</option>
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-12 col-12 AllLeft">
+						<input id="ismoved" class="form-check-input" style="margin-top: 0px;" type="checkbox" name="items" onchange="te_manage_ismoved_change();"/>
+						<label for="ismoved" style="margin-left: 5px;">整筆移出</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>地段
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2">
+						<select id="add_te_land" class="form-select form-custom-select">
+						   <option value="-1" selected>請選擇</option>
+						</select>
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col1">
+						<span style="color: red;">*</span>面積(平方公尺)
+					</div>
+					<div class="col-md-3 col-sm-6 col-6 sys_col2 AllLeft">
+						<input id="add_te_area" class="form-control form-custom-select" type="text" placeholder="請輸入面積" />
+					</div>	
+				</div>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_manage_add_hide();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_check_show();">儲存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <批次匯入MODAL> -->
+<div class="modal fade main_scroll" id="ImportNewte" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="importnewte_modal" class="modal-title">批次匯入事業區內地籍清單</h5>
+			</div>
+			<div class="modal-body">
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td>
+								範本
+							</td>
+							<td>
+								<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_download_exm();">下載範本</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								上傳檔案
+							</td>
+							<td>
+								<input id="te_data_basic_new_file" type="file" class="form-control" onchange="" accept=".xlsx,.xls" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_manage_import_hide();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_manage_upload();">確定</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <上傳空間位置MODAL> -->
+<div class="modal fade main_scroll" id="EditPageview" tabindex="-1" data-bs-backdrop="static" aria-labelledby="EditPageview" aria-hidden="false" data-bs-keyboard="false">
+	<div class="modal-dialog modal-fullscreen">
+		<div class="modal-content">
+			<div class="modal-body" style="overflow: hidden;">
+				<div class="modal_rwd_flex" style="height: calc(100vh - 90px);">
+					<div class="add_area">
+						<div class="row_text">加入參考圖資</div>
+						<div class="modal_rwd_flex">
+							<div class="search_detail">
+								<div class="search_type te_edit_manage">	
+									<ul class="nav nav-tabs">
+										<li class="nav-item4 tab1">
+											<span class="nav-link active">全國地籍</span>
+										</li>
+										<li class="nav-item4 tab2">
+											<span class="nav-link">林班</span>
+										</li>
+										<li class="nav-item4 tab3">
+											<span class="nav-link">匯入參考</span>
+										</li>
+									</ul>
+								</div>
+								<div id="te_edit_manage_1" class="changemap_modal">
+									<div class="content_row_search bk_gray">
+										<div class="new_ver_flex">
+											<div>
+												<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+											</div>
+											<select id="search_county" class="form-select" onchange="te_tab2_getTownList();">
+												<option selected value="-1">請選擇</option>
+											</select>
+										</div>
+										<div class="new_ver_flex">
+											<div>
+												<label for="search_town" class="form-label" style="width: 110px;">鄉鎮</label>
+											</div>
+											<select id="search_town" class="form-select" onchange="te_tab2_getLandList();">
+												<option selected value="-1">請選擇</option>
+											</select>
+										</div>
+										<div class="new_ver_flex">
+											<div>
+												<label for="search_sec" class="form-label"  style="width: 110px;">地段</label>
+											</div>
+											<select id="search_sec" class="form-select" >
+												<!-- [SEC_C]+'段 '+[SEC_C_SUB]+'小段' -->
+												<option selected value="-1">請選擇</option>
+											</select>
+										</div>
+										<div class="new_ver_flex">
+											<div>
+												<label for="search_land_no"  style="width: 110px;">地號</label>
+											</div>
+											<div class="search_land_no">
+												<input class="form-control" id="search_number1" /><span style="margin: 4px;">-</span>
+												<input class="form-control" id="search_number2" />  
+											</div>
+										</div>
+										<div class="new_ver_flex">
+											<div>
+											   <label for="search_land_code"  style="width: 110px;">地籍編碼</label>
+											</div>
+											<input class="form-control" id="search_land_code" />
+										</div>
+										<div class="new_ver" style="margin: 0px; text-align:center;">
+											<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_tab2_queryLandList();">查詢</button>
+											<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="reset_tab5_list();">重置</button>
+										</div>
+									</div>
+									<div class="content_row_search bk_gray" style="height: calc(100vh - 495px);">
+										<div class="row_text">結果列表</div>
+										<div style="position: absolute; top: 10px; right: 0px;">
+											<input id="te_tab5_all" type="checkbox" class="form-check-input" style="margin-top: 18px;" value="select-all" onchange="select_all_te_tab5_list(this);" />
+											<label for="search_land_code">全選</label>
+											<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_tab5_list_add();">加入</button>
+										</div>
+										<div class="result_list main_scroll_mini">
+											<table class="table" id="te_tab5_list">
+											</table>
+										</div>
+									</div>
+								</div>
+								<div id="te_edit_manage_2" class="changemap_modal" style="display: none;">
+									<div class="content_row_search bk_gray">
+										<div class="new_ver_flex">
+											<div>
+												<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+											</div>
+											<select id="search_dist" class="form-select" onchange="te_tab2_dist_change();">
+												<option value="-1" selected>不指定</option>
+											</select>
+										</div>
+										<div class="new_ver_flex">
+											<div>
+												<label for="search_wkng" class="form-label"  style="width: 110px;">事業區</label>
+											</div>
+											<select id="search_wkng" class="form-select" onchange="te_tab2_wkng_change();">
+												<option value="-1" selected>不指定</option>
+											</select>
+										</div>
+										<div class="new_ver_flex">
+											<div>
+												<label for="search_cmpt" class="form-label"  style="width: 110px;">林班</label>
+											</div>
+											<select id="search_cmpt" class="form-select">
+												<option value="-1" selected>不指定</option>
+											</select>
+										</div>
+										<div class="new_ver_flex" style="display: none;">
+											<div>
+												<label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+											</div>
+											<select id="search_stat" class="form-select"  >
+												<option value="-1" selected>不指定</option>
+												<option value="1">待異動</option>
+											</select>
+										</div>
+										<div class="new_ver" style="margin: 0px;text-align:center;">
+											<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_tab2_go_search();">查詢</button>
+											<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="reset_tab6_list();">重置</button>
+										</div>
+									</div>
+									<div class="content_row_search bk_gray" style="height: calc(100vh - 412px);">
+										<div class="row_text">結果列表</div>
+										<div style="position: absolute; top: 10px; right: 0px;">
+											<input id="te_tab6_all" type="checkbox" class="form-check-input" style="margin-top: 18px;" value="select-all" onchange="select_all_te_tab6_list(this);" />
+											<label for="search_land_code">全選</label>
+											<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_tab6_list_add();">加入</button>
+										</div>
+										<div class="result_list main_scroll_mini">
+											<table class="table" id="te_tab6_list">
+											</table>
+										</div>
+									</div>
+								</div>
+								<div id="te_edit_manage_3" class="changemap_modal" style="height: calc(100vh - 190px); display: none;">
+									<div class="content_row_search bk_gray">
+										<div class="new_ver_flex">
+											<div>
+											
+												<label for="search_dist" class="form-label" style="width: 110px;">上傳檔案</label>
+											</div>
+											<div id="map_edit_depend">
+												<input id="te_data_basic_new_file2" type="file" class="form-control" multiple accept=".shp" onchange="FileListUpload();" accept=".zip,.doc,.docx,.odt,.pdf,.jpg,.png" />
+												<!-- 隱藏用上傳INPUT -->
+												<div id="te_data_basic_hidden_list" style="display: none;">
+												</div>
+												<div id="te_data_basic_file_list"></div>
+											</div>
+										</div>
+										<div class="new_ver" style="margin: 0px;text-align:center;">
+											<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ImportReferenceFeatures();">匯入</button>
+											<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="uploadreset();">重置</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="map_data_detail" style="height: calc(100vh - 144px);">
+								<div class="content_row_search bk_gray" style="height: 31%; max-height: 31%;">
+									<div style="font-weight: 900;">全國地籍列表</div>
+									<div class="result_list main_scroll_mini" style="height: calc(100% - 22px);">
+										<table class="table" id="te_tab_add_list1">
+											<tr>
+												<td>尚無資料</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="content_row_search bk_gray" style="height: 31%; max-height: 31%;">
+									<div style="font-weight: 900;">林班列表</div>
+									<div class="result_list main_scroll_mini" style="height: calc(100% - 22px);">
+										<table class="table" id="te_tab_add_list2">
+											<tr>
+												<td>尚無資料</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="content_row_search bk_gray" style="height: 31%; max-height: 31%;">
+									<div style="font-weight: 900;">匯入參考圖資</div>
+									<div class="result_list main_scroll_mini" style="height: calc(100% - 22px);">
+										<table class="table" id="te_tab_add_list3">
+											<tr>
+												<td>尚無資料</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="map_area">
+						<div class="row_text">繪製異動圖資</div>
+						<button id="ExpandButton" type="button" class="btn btn-warning expand_btn" onclick="Expand_te_map_modal()"><image src="image/button_image/Expand2.svg" />展開圖台</button>
+						<button id="CollapseButton" type="button" class="btn btn-warning expand_btn" style="display: none;" onclick="Collapse_te_map_modal()"><image src="image/button_image/Expand.svg" />收合圖台</button>
+						<div style="height: calc(100vh - 156px); position: relative;">
+							<div id="mmapmodalEdit"></div>
+							<div class="AllLeft mmapbuttonzone">
+								<div class="image_button" onclick="EditChangeFeature(this);">
+									<div class="AllCenter">
+										<img src="image/button_image/Edit_Area.svg" />
+									</div>
+									<div class="AllCenter">
+										<span>編輯區域</span>
+									</div>
+								</div>
+								<div class="image_button" onclick="AddChangeFeature(this);">
+									<div class="AllCenter">
+										<img src="image/button_image/Add_Area.svg" />
+									</div>
+									<div class="AllCenter">
+										<span>新增區域</span>
+									</div>
+								</div>
+								<div class="image_button" onclick="DeleteChangeFeature(this);">
+									<div class="AllCenter">
+										<img src="image/button_image/Delete_Area.svg" />
+									</div>
+									<div class="AllCenter">
+										<span>刪除區域</span>
+									</div>
+								</div>
+								<div id="DelChangeFeatureEventBtn" class="image_button" onclick="DeleteSelectFeature();" style="display: none;">
+									<div class="AllCenter">
+										<img src="image/button_image/Delete_Select_Area.svg" />
+									</div>
+									<div class="AllCenter">
+										<span>刪除選擇的區域</span>
+									</div>
+								</div>
+								<div class="image_button" onclick="HollowChangeFeature(this);">
+									<div class="AllCenter">
+										<img src="image/button_image/Discope_Area.svg" />
+									</div>
+									<div class="AllCenter">
+										<span>挖空區域</span>
+									</div>
+								</div>
+								<div class="image_button" onclick="ExportNowFeature('SHP');">
+									<div class="AllCenter">
+										<img src="image/button_image/Export_Shp.svg" />
+									</div>
+									<div class="AllCenter">
+										<span>匯出目前圖資</span>
+									</div>
+								</div>
+								<input type="file" id="import_replace_features" accept=".shp,.kml" style="display: none;" onchange="ImportReplaceFeatures(this);" />
+								<div class="image_button" onclick="$('#import_replace_features').click();">
+									<div class="AllCenter">
+										<img src="image/button_image/Import_Shp.svg" />
+									</div>
+									<div class="AllCenter">
+										<span>匯入取代圖資</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" onclick="AbandonEdit()">取消</button>
+				<button type="button" class="btn btn-primary" onclick="SaveEdit_fm()">儲存變更</button>
+			</div>
+		</div>
+	</div>
+</div>
 </div>
 
-<!-- <圖資資料> -->
-<div class="list_frame">
+<!-- <檢查是否儲存MODAL> -->
+<div class="modal fade main_scroll" id="CheckAddNewte" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="checkchangete_modal" class="modal-title">新增事業區內地籍清單</h5>
+			</div>
+			<div class="modal-body">
+				是否儲存此筆事業區內地籍清單?
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_add_sure_cancel();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_add_sure_save();">確定</button>
+			</div>
+		</div>
+	</div>
+</div>
 
-</div>
-<!-- <圖資資料> -->
-</div>
+<!-- <檢查是否儲存MODAL> -->
+<div class="modal fade main_scroll" id="ExportErrorLine" tabindex="-1" data-bs-backdrop="static" aria-labelledby="NewPageview" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">批次匯入下列列數重複或者代碼有誤</h5>
+			</div>
+			<div id="errorlinezone" class="modal-body">
+				
+			</div>
+			<div class="modal-footer" style="justify-content: center;">
+				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="errorlineclose();">確定</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script>
-loadTeListData(); //刻版測試用
+	te_manage_tab2_init();
+	var filelist = new Array();
+	function FileListUpload() {
+		var input = document.getElementById("te_data_basic_new_file2");
+		var output = document.getElementById("te_data_basic_file_list");
 
+		var clone = $("#te_data_basic_new_file2").clone();
+		clone.attr("class", "hiddenupload");
+		$("#te_data_basic_hidden_list").append(clone);
+		
+		var HTML = "<div style=\"width: 260px;\">";
+		for (var i = 0; i < input.files.length; i++) {
+			filelist.push(input.files.item(i));
+		}
+		
+		for (var i = 0; i < filelist.length; i++) {
+			HTML += "<div style='word-break: break-all;'>" + filelist[i].name + "</div>";
+		}
+
+		HTML += "</div>";
+		output.innerHTML = HTML;
+		
+		$("#te_data_basic_new_file2").replaceWith($("#te_data_basic_new_file2").val('').clone(true));
+	}
+	function uploadreset() {
+		filelist = [];
+		var output = document.getElementById("te_data_basic_file_list");
+		output.innerHTML = "";
+	}
+	function reset_tab5_list() {
+		$('#search_county').val('-1');
+		$('#search_town').val('-1');
+		$('#search_sec').val('-1');
+		$('#search_number1').val('');
+		$('#search_number2').val('');
+		$('#search_land_code').val('');
+		
+		$('#te_tab5_all').prop('checked', false);
+		$('#te_tab5_list').empty();
+	}
+	function reset_tab6_list() {
+		$('#search_dist').val('-1');
+		$('#search_wkng').val('-1');
+		$('#search_cmpt').val('-1');
+		
+		$('#te_tab6_all').prop('checked', false);
+		$('#te_tab6_list').empty();
+	}
 </script>

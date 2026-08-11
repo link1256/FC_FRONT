@@ -1,0 +1,149 @@
+<!-- 頁面區 -->
+<div class="manage_page">
+	<div class="search_div">
+		<div class="content_row_search" style="height: calc(100vh - 160px)">
+			<div class="row_text">查詢條件</div>
+			<div class="search_type ce_search_tab2">	
+				<ul class="nav nav-tabs">
+					<li class="nav-item7 tab1">
+						<span class="nav-link active">地籍資訊</span>
+					</li>
+					<li class="nav-item7 tab2">
+						<span class="nav-link">事業區資訊</span>
+					</li>
+				</ul>
+			</div>
+			<div style="display:flex">
+				<div id="ce_search_tab2_1">
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_date" class="form-label" style="width: 110px;">釐整日期</label>
+						</div>
+						<input id="search_date_start1" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
+						至
+						<input id="search_date_end1" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+						</div>
+						<select id="search_county" class="form-select" onchange="ce_search_tab2_get_TownList();">
+							<option selected value="-1">請選擇</option>
+						</select>
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_town" class="form-label" style="width: 110px;">鄉鎮</label>
+						</div>
+						<select id="search_town" class="form-select" onchange="ce_search_tab2_get_LandList();">
+							<option selected value="-1">請選擇</option>
+						</select>
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_sec" class="form-label" style="width: 110px;">地段</label>
+						</div>
+						<select id="search_sec" class="form-select">
+							<option selected value="-1">請選擇</option>
+						</select>
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_land_no" class="form-label" style="width: 110px;">地號</label>
+						</div>
+						<div class="search_land_no">
+							<input class="form-control " id="search_number1" /><span style="margin: 4px;">-</span>
+							<input class="form-control " id="search_number2" />
+						</div>
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_land_code" class="form-label" style="width: 110px;">地籍編碼</label>
+						</div>
+						<input class="form-control " id="search_land_code" />
+					</div>
+					<div class="new_ver" style="text-align:center;">
+						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ce_search_list_gosearch_1();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ce_search_list_reset_1()">重置</button>
+					</div>
+				</div>
+				<div id="ce_search_tab2_2" style="display: none;">
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_date" class="form-label" style="width: 110px;">釐整日期</label>
+						</div>
+						<input id="search_date_start2" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
+						至
+						<input id="search_date_end2" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+						</div>
+						<select id="search_dist" class="form-select" onchange="ce_search_tab2_dist_change();">
+							<option selected value="-1">請選擇</option>
+						</select>
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_wkng" class="form-label" style="width: 110px;">事業區</label>
+						</div>
+						<select id="search_wkng" class="form-select" onchange="ce_search_tab2_wkng_change();">
+							<option selected value="-1">請選擇</option>
+						</select>
+					</div>
+					<div class="new_ver_flex">
+						<div>
+							<label for="search_cmpt" class="form-label" style="width: 110px;">林班</label>
+						</div>
+						<select id="search_cmpt" class="form-select">
+							<option selected value="-1">請選擇</option>
+						</select>
+					</div>
+					<div class="new_ver" style="text-align:center;">
+						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ce_search_list_gosearch_2();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ce_search_list_reset_2()">重置</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="query_1" class="detail_data main_scroll" style="display: none;">
+		<div class="content_row_data" id="basic_data" style="height: calc(100vh - 160px);">
+			<div class="row_text">查詢結果</div>
+			<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ce_searchlist_export();">匯出</button>
+			<div id="sys_user_page">
+				<div class="main_scroll_mini_4 row_table_zone" style="margin-bottom: 10px;">
+					<table id="search_page" style="min-width: 100%; width: auto;">
+						<thead>
+							<tr>
+								<td>釐整日期</td>
+								<td>釐整人員</td>
+								<td>縣市</td>
+								<td>鄉鎮市區</td>
+								<td>地段</td>
+								<td>地號</td>
+								<td>地籍編碼</td>
+								<td>釐整前林區管理處</td>
+								<td>釐整前事業區</td>
+								<td>釐整前林班</td>
+								<td>釐整後林區管理處</td>
+								<td>釐整後事業區</td>
+								<td>釐整後林班</td>
+							</tr>
+						</thead>
+						<tbody id="ce_search_result">
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 頁面區 -->
+<script>
+	tab5("ce_search_tab2");
+	ce_search_tab2_init();
+</script>
+	
