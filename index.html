@@ -6,6 +6,7 @@
     <title>林業保育署-全國林地地籍管理系統</title>
 	<link rel="shortcut icon" type="image/x-icon" href="image/favicon.png">
     <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/csp-event-dispatcher.js"></script>
     <script src="js/outjs/d47cec7725.js"></script>
 	<script src="js/outjs/bootstrap.bundle.min.js"></script>
 	<link href="js/outjs/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +24,7 @@
 	<script type="text/javascript" src="js/datepicker-zh-TW.js"></script>
 	<script type="text/javascript" src="js/idle-timer.min.js"></script>
 	<script type="text/javascript" src="js/pivot.min.js"></script>
-	
+
 	<!-- 地圖 -->
     <script src="js/ol.js"></script>
 	<script src="js/ol-ext.js"></script>
@@ -34,12 +35,12 @@
 	<script src="js/tracing.js"></script>
 	<script src="js/proj4.js"></script>
 	<script src="js/jsts.min.js"></script>
-	
+
     <!-- 頁面 -->
 	<script src="js/connection.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/dateformat.js"></script>
-	
+
 	<script src="js/d3pie.js"></script>
 	<script src="js/fc_manage.js"></script>
 	<script src="js/cs_manage.js"></script>
@@ -52,59 +53,59 @@
 	<script src="js/api_manage.js"></script>
 	<script src="js/sys_manage.js"></script>
 	<script src="js/shpimport.js"></script>
-	
+
 	<link rel="stylesheet" href="css/ol.css">
 	<link rel="stylesheet" href="css/navlist.css">
 	<link rel="stylesheet" href="css/main_mobile.css">
 	<link rel="stylesheet" href="css/main_pad.css">
     <link rel="stylesheet" href="css/main.css">
-	
-    <style type="text/css">
-    </style>
+
+
+    <link rel="stylesheet" href="css/csp-inline-styles.css">
 </head>
 
 <body class="mainbody">
 	<!-- 標題列 -->
     <div class="banner">
 		<div class="logo">
-			<img src="./image/logo.png" width="40" style="margin: 10px;">
+			<img src="./image/logo.png" width="40" class="csp-style-1">
 			<div class="logo_text">
 				<span class="logo_t1">農業部林業及自然保育署</span>
 				<span class="logo_t2">全國林地地籍管理系統</span>
 			</div>
 		</div>
 		<div class="function_bt">
-			<div class="function_bt_c" style="display: none;">圖資查詢</div>
-			<div class="function_bt_h" style="display: none;">下載專區</div>
-			<div class="function_bt_d" style="display: none;">異動事件管理</div>
-			<div class="function_bt_a" style="display: none;">統計分析</div>
-			<!--<div class="function_bt_g" style="display: none;">林班釐整</div>-->
-			<div class="function_bt_e" style="display: none;">API服務</div>
-			<div class="function_bt_f" style="display: none;">系統管理</div>
+			<div class="function_bt_c csp-style-12">圖資查詢</div>
+			<div class="function_bt_h csp-style-12">下載專區</div>
+			<div class="function_bt_d csp-style-12">異動事件管理</div>
+			<div class="function_bt_a csp-style-12">統計分析</div>
+			<!--<div class="function_bt_g csp-style-12">林班釐整</div>-->
+			<div class="function_bt_e csp-style-12">API服務</div>
+			<div class="function_bt_f csp-style-12">系統管理</div>
 		</div>
 		<div class="logout_count">
 			帳號登出倒數時間:<span id="logcount">60:00</span>
 		</div>
 		<div class="user_name">
-			<img src="./image/login_person.png" width="30" height="30" style="margin: 10px;">
+			<img src="./image/login_person.png" width="30" height="30" class="csp-style-1">
 			<div id="account_name"></div>
 		</div>
-		<button id="login_bt" type="button" class="btn btn-success" onclick="LogOut();">登出</button>
+		<button id="login_bt" type="button" class="btn btn-success" data-csp-onclick="LogOut();">登出</button>
 		<img class="rwd_hum" src="image/button_image/Hamburger.svg" />
 		<nav>
             <ul id="ulTop">
-                <li class="function_bt_c" style="display: none;"><a><span>圖資查詢</span></a></li>
-				<li class="function_bt_h" style="display: none;"><a><span>下載專區</span></a></li>
-                <li class="function_bt_a" style="display: none;"><a><span>統計分析</span></a></li>
-				<li class="function_bt_g" style="display: none;"><a><span>林班釐整</span></a></li>
-                <li class="function_bt_d" style="display: none;"><a><span>異動事件管理</span></a></li>
-				<li class="function_bt_e" style="display: none;"><a><span>API服務</span></a></li>
-				<li class="function_bt_f" style="display: none;"><a><span>系統管理</span></a></li>
+                <li class="function_bt_c csp-style-12"><a><span>圖資查詢</span></a></li>
+				<li class="function_bt_h csp-style-12"><a><span>下載專區</span></a></li>
+                <li class="function_bt_a csp-style-12"><a><span>統計分析</span></a></li>
+				<li class="function_bt_g csp-style-12"><a><span>林班釐整</span></a></li>
+                <li class="function_bt_d csp-style-12"><a><span>異動事件管理</span></a></li>
+				<li class="function_bt_e csp-style-12"><a><span>API服務</span></a></li>
+				<li class="function_bt_f csp-style-12"><a><span>系統管理</span></a></li>
             </ul>
             <div class="hit"></div>
         </nav>
 	</div>
-	
+
 	<!-- 麵包屑 -->
 	<div class="breadcrumb">
 		<div class="nav_indicate">
@@ -122,12 +123,12 @@
 		<div class="nav_report">
 			<a href="https://docs.google.com/forms/d/1RxneTUovSwbGaP8tpjh1jaftC_QABvo84OidhisoqSY/edit" target="_blank">問題回報</a>
 		</div>
-		<div class="nav_announ" onclick="sys_ann_show_show();">
+		<div class="nav_announ" data-csp-onclick="sys_ann_show_show();">
 			<span>系統公告</a>
 		</div>
 	</div>
-	<!-- 麵包屑 -->	
-	
+	<!-- 麵包屑 -->
+
 	<!-- 載入中Modal -->
 	<div class="modal fade" id="pleaseWaitDialog" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -146,9 +147,9 @@
 				<div class="modal-body AllCenter">
 					再過<span id="logoutchkpt">5分鐘</span>就要被登出，是否要延長登出時間?
 				</div>
-				<div class="modal-footer" style="justify-content: center;">
-					<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="closeLogOutCheckDialog();">取消</button>
-					<button id="edit_user" type="button" class="btn btn-success search_submit custom_bt2" onclick="extendLogOutTime();">延長</button>
+				<div class="modal-footer csp-style-13">
+					<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="closeLogOutCheckDialog();">取消</button>
+					<button id="edit_user" type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="extendLogOutTime();">延長</button>
 				</div>
 			</div>
 		</div>
@@ -167,8 +168,8 @@
 						<tbody id="sys_announ_show_list" class="ztbody"></tbody>
 					</table>
 				</div>
-				<div class="modal-footer" style="justify-content: center;">
-					<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_ann_show_close();">關閉</button>
+				<div class="modal-footer csp-style-13">
+					<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="sys_ann_show_close();">關閉</button>
 				</div>
 			</div>
 		</div>
@@ -177,16 +178,11 @@
 	<div id="main_page" class="">
 	<!-- 功能頁面區 -->
 	</div>
-	<div id="sversion" style="position: fixed; right: 0; bottom: 0;"></div>
+	<div id="sversion" class="csp-style-11"></div>
 	<footer>
-			
+
 	</footer>
 </body>
-<script>
-	$(document).ready(function(){
-		main();
-		LoginCheck();
-	});
-</script>
+<script src="./js/csp-inline/index_1.js"></script>
 
 </html>

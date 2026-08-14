@@ -4,17 +4,17 @@
 	<div class="row_flex">
 	<div class="new_ver">
 	   <label for="ver_year" class="form-label">年度</label>
-	   <select id="ver_year0" class="form-select" style="width: 160px;">
+	   <select id="ver_year0" class="form-select csp-style-37">
 		  <option selected>請選擇</option>
 		  <option value="110">110</option>
 		  <option value="111">111</option>
 		  <option value="112">112</option>
 		</select>
 	</div>
-	
+
 	<div class="new_ver">
 	   <label for="ver_month0" class="form-label">月份</label>
-	   <select id="ver_month0" class="form-select" style="width: 160px;">
+	   <select id="ver_month0" class="form-select csp-style-37">
 		  <option selected>請選擇</option>
 		  <option value="1">1</option>
 		  <option value="2">2</option>
@@ -30,15 +30,15 @@
 		  <option value="12">12</option>
 		</select>
 	</div>
-	
+
 	<div class="new_ver">
 	<button type="button" class="btn btn-success custom_bt0" data-bs-toggle="modal" data-bs-target="#AddNewVersion">新增版次</button>
 	</div>
 	</div>
-	
-	
+
+
 	</div>
-	
+
 	<!-- 新增版次Dialog -->
 	<div class="modal fade" id="AddNewVersion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
@@ -52,12 +52,12 @@
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-			<button type="button" class="btn btn-primary" onclick="AddNewVersion()">新增</button>
+			<button type="button" class="btn btn-primary" data-csp-onclick="AddNewVersion()">新增</button>
 		  </div>
 		</div>
 	  </div>
 	</div>
-	
+
 	<div class="content_row">
 	<div class="row_text">版次列表</div>
 	<table id="version_list" class="table table-striped">
@@ -94,13 +94,10 @@
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-			<button type="button" class="btn btn-primary" onclick="DeleteVersion()">刪除</button>
+			<button type="button" class="btn btn-primary" data-csp-onclick="DeleteVersion()">刪除</button>
 		  </div>
 		</div>
 	  </div>
 	</div>
 	<!-- 頁面區 -->
-	<script>
-		GetVersionList();
-    </script>
-	
+	<script src="./js/csp-inline/views_2f_fc_5f_manage_5f_tab2_1.js"></script>

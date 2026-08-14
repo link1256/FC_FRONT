@@ -16,32 +16,32 @@
 	</div>
 	<div class="new_ver_flex map_flex">
 		<div>
-			<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+			<label for="search_dist" class="form-label csp-style-43">管理單位</label>
 		</div>
-        <select id="search_dist" class="form-select" onchange="tab1_search_dist_change();" multiple>
-			
+        <select id="search_dist" class="form-select" data-csp-onchange="tab1_search_dist_change();" multiple>
+
 		</select>
 	</div>
 	<div class="new_ver_flex map_flex">
 		<div>
-		   <label for="search_wkng" class="form-label"  style="width: 110px;">事業區</label>
+		   <label for="search_wkng" class="form-label csp-style-43" >事業區</label>
 		</div>
-		<select id="search_wkng" class="form-select" onchange="tab1_search_wkng_change();" multiple>
-			
+		<select id="search_wkng" class="form-select" data-csp-onchange="tab1_search_wkng_change();" multiple>
+
 		</select>
 	</div>
 	<div class="new_ver_flex map_flex">
 		<div>
-			<label for="search_cmpt" class="form-label"  style="width: 110px;">林班</label>
+			<label for="search_cmpt" class="form-label csp-style-43" >林班</label>
 		</div>
 		<select id="search_cmpt" class="form-select">
 			  <option value="-1" selected>不指定</option>
 		</select>
 	</div>
-	
-	<div class="new_ver_flex map_flex" style="display: none;">
+
+	<div class="new_ver_flex map_flex csp-style-12">
 		<div>
-		<label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+		<label for="search_stat" class="form-label csp-style-43" >狀態</label>
 	   </div>
 	   <select id="search_stat" class="form-select"  >
 		  <option value="-1" selected>不指定</option>
@@ -49,16 +49,16 @@
 		  <option value="2">有異動地籍</option>
 		</select>
 	</div>
-	
-	<div class="new_ver new_ver_flex map_flex AllCenter" style="text-align:center;">
-		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="tab1_go_search();">查詢</button>
-		<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="tab1_reset();">重置</button>
+
+	<div class="new_ver new_ver_flex map_flex AllCenter csp-style-3">
+		<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="tab1_go_search();">查詢</button>
+		<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="tab1_reset();">重置</button>
 	</div>
 
 	</div>
 
 
-<div id="m_list" class="content_row_search map_flex" style="height: calc(100vh - 451px);">
+<div id="m_list" class="content_row_search map_flex csp-style-120">
 	<div class="row_text">
 		結果列表
 		<span id="te_tab1_count"></span>
@@ -90,16 +90,16 @@
 	<div class="year_detail">
 		圖資版本:<label id="fi_year"></label>
 	</div>
-	<div class="fi_manage_area" style="justify-content: space-between;">
-		<div class="fi_pro" style="margin: 0px;">
-			<button id="fitab1dropdowntrig3" type="button" class="btn btn-secondary fi_button dropdown-toggle" style="width: 115px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
+	<div class="fi_manage_area csp-style-121">
+		<div class="fi_pro csp-style-122">
+			<button id="fitab1dropdowntrig3" type="button" class="btn btn-secondary fi_button dropdown-toggle csp-style-107" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
 			<div id="dropdowntrig_fi_tabl_ul3" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="fitab1dropdowntrig3">
-				<a class="dropdown-item ttab1" href="#" onclick="fi_tabl_download();">林班</a>
-				<a class="dropdown-item ttab3" href="#" onclick="fi_tab1_downloadfnwg();">事業區</a>
-				<a class="dropdown-item ttab4" href="#" onclick="fi_tab1_downloaddist();">分署</a>
+				<a class="dropdown-item ttab1" href="#" data-csp-onclick="fi_tabl_download();">林班</a>
+				<a class="dropdown-item ttab3" href="#" data-csp-onclick="fi_tab1_downloadfnwg();">事業區</a>
+				<a class="dropdown-item ttab4" href="#" data-csp-onclick="fi_tab1_downloaddist();">分署</a>
 			</div>
 		</div>
-		<div class="fi_pro"  style="margin: 0px;">
+		<div class="fi_pro csp-style-122" >
 			<button type="button" id="fi_edit_bt" class="btn btn-warning fi_button">編輯</button>
 		</div>
 		<div class="fi_edit">
@@ -123,19 +123,19 @@
 
 
 <!-- <地籍> -->
-<div class="fc_detail" style="position: relative;">
+<div class="fc_detail csp-style-91">
 	<div class="row_text">關聯地籍列表<label id="fc_detail_count">（0 筆）</label></div>
-	<button id="fitab1dropdowntrig" type="button" class="btn btn-secondary fi_button dropdown-toggle" style="width: 115px; position: absolute; right: 145px; top: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出CSV</button>
+	<button id="fitab1dropdowntrig" type="button" class="btn btn-secondary fi_button dropdown-toggle csp-style-123" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出CSV</button>
 	<div id="dropdowntrig_fi_tabl_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="fitab1dropdowntrig">
-		<a class="dropdown-item ttab1" href="#" onclick="fi_tabl_downloadAssCsv('fmid');">林班</a>
-		<a class="dropdown-item ttab2" href="#" onclick="fi_tabl_downloadAssCsv('wkng');">事業區</a>
-		<a class="dropdown-item ttab3" href="#" onclick="fi_tabl_downloadAssCsv('dist');">分署</a>
+		<a class="dropdown-item ttab1" href="#" data-csp-onclick="fi_tabl_downloadAssCsv('fmid');">林班</a>
+		<a class="dropdown-item ttab2" href="#" data-csp-onclick="fi_tabl_downloadAssCsv('wkng');">事業區</a>
+		<a class="dropdown-item ttab3" href="#" data-csp-onclick="fi_tabl_downloadAssCsv('dist');">分署</a>
 	</div>
-	<button id="fitab1dropdowntrig2" type="button" class="btn btn-secondary fi_button dropdown-toggle" style="width: 115px; position: absolute; right: 15px; top: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
+	<button id="fitab1dropdowntrig2" type="button" class="btn btn-secondary fi_button dropdown-toggle csp-style-124" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
 	<div id="dropdowntrig_fi_tab2_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="fitab1dropdowntrig2">
-		<a class="dropdown-item ttab1" href="#" onclick="fi_tabl_downloadAssMaps('fmid');">林班</a>
-		<a class="dropdown-item ttab2" href="#" onclick="fi_tabl_downloadAssMaps('wkng');">事業區</a>
-		<a class="dropdown-item ttab3" href="#" onclick="fi_tabl_downloadAssMaps('dist');">分署</a>
+		<a class="dropdown-item ttab1" href="#" data-csp-onclick="fi_tabl_downloadAssMaps('fmid');">林班</a>
+		<a class="dropdown-item ttab2" href="#" data-csp-onclick="fi_tabl_downloadAssMaps('wkng');">事業區</a>
+		<a class="dropdown-item ttab3" href="#" data-csp-onclick="fi_tabl_downloadAssMaps('dist');">分署</a>
 	</div>
 	<div id="fc_detail_list"></div>
 </div>
@@ -150,25 +150,25 @@
 				<h5 id="addnewte_modal" class="modal-title">所有權資訊</h5>
 			</div>
 			<div class="modal-body">
-				<div class="search_type ownerdata_manager" style="margin-bottom: 20px;">	
+				<div class="search_type ownerdata_manager csp-style-115">
 					<ul class="nav nav-tabs">
-						<li class="nav-item8 tab1" style="width: 200px;">
+						<li class="nav-item8 tab1 csp-style-21">
 							<span class="nav-link active">所有權最新資訊</span>
 						</li>
-						<li class="nav-item8 tab2" style="width: 200px;">
+						<li class="nav-item8 tab2 csp-style-21">
 							<span class="nav-link">移轉歷程</span>
 						</li>
 					</ul>
 				</div>
-				<div id="owner_1" class="main_scroll_mini_4" style="max-height: 500px;">
-					
+				<div id="owner_1" class="main_scroll_mini_4 csp-style-116">
+
 				</div>
-				<div id="owner_2" class="main_scroll_mini_4" style="max-height: 500px; display: none;">
-					
+				<div id="owner_2" class="main_scroll_mini_4 csp-style-117">
+
 				</div>
 			</div>
-			<div class="modal-footer" style="justify-content: center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab1_owner_close();">確認</button>
+			<div class="modal-footer csp-style-13">
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="fc_tab1_owner_close();">確認</button>
 			</div>
 		</div>
 	</div>
@@ -225,56 +225,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal-footer" style="justify-content: center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fi_tab2_changedata_close();">確認</button>
+			<div class="modal-footer csp-style-13">
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="fi_tab2_changedata_close();">確認</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-</div>	
+</div>
 <!-- 頁面區 -->
-<script>
-	 fi_tab1_init();
-	 fi_edit("國有林事業區");
-	 $(".fc_detail_data").hide();
-	 
-	 tab6("ownerdata_manager");
-	 
-	 $("#list_window").on("click",function() {
-		if ($(".new_ver_flex").hasClass("itemhide")) {
-			$(".new_ver_flex").removeClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
-			$("#m_list").css("height", "calc(100vh - 450px)");
-		}
-		else {
-			$(".new_ver_flex").addClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
-			$("#m_list").css("height", "calc(100vh - 243px)");
-		}
-	});
-	$("#map_window").on("click",function() {
-		if ($(".map_flex").hasClass("itemhide")) {
-			$(".map_flex").removeClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
-			$(".search_div").width(400);
-			$(".map_cview").height("");
-			$(".fc_detail_data").width("calc(100vw - 420px)");
-			$(".fc_partA").width("calc(60% - 10px)");
-			$(".fc_partB").width("40%");
-			$(".window_hide").hide();
-		}
-		else {
-			$(".map_flex").addClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
-			$(".search_div").width(80);
-			$(".map_cview").height("calc(100vh - 160px)");
-			$(".fc_detail_data").width("calc(100vw - 80px)");
-			$(".fc_partA").width("calc(70% - 10px)");
-			$(".fc_partB").width("30%");
-			$(".window_hide").show();
-		}
-		if (fi_tab1 && fi_tab1.map) fi_tab1.map.updateSize();
-	});
-</script>
-	
+<script src="./js/csp-inline/views_2f_fi_5f_manage_5f_tab2_1.js"></script>

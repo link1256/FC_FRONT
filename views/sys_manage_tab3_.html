@@ -9,14 +9,14 @@
 					<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
 				</div>
 				<div class="rowsearchitem">
-					<button type="button" class="btn btn-success search_submit custom_bt2" onclick="">搜尋</button>
-					<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="">清除條件</button>
+					<button type="button" class="btn btn-success search_submit custom_bt2">搜尋</button>
+					<button type="button" class="btn btn-warning search_submit custom_bt2">清除條件</button>
 				</div>
 			</div>
 		</div>
 		<div id="sys_rowsearch2">
 			<div>
-				<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_custom_insert();">
+				<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" data-csp-onclick="sys_custom_insert();">
 					新增主題
 				</button>
 			</div>
@@ -38,7 +38,7 @@
 		</div>
 	</div>
 	<div id="sys_custom_theme_edit">
-		<input id="sys_custom_theme_editid" type="text" style="display: none;" />
+		<input id="sys_custom_theme_editid" type="text"  class="csp-style-12" />
 		<div class="content_row_head">
 			<div class="sub_tab fc_manage_tab3 AllCenter">
 				<div class="nav-item3 tab_1 active">
@@ -49,8 +49,8 @@
 				<div class="nav-item3 tab_2">
 					<div class="num_icon">2</div>
 					<span>圖表設定</span>
-				</div>		
-				<i class="fas fa-arrow-circle-right"></i>			  
+				</div>
+				<i class="fas fa-arrow-circle-right"></i>
 				<div class="nav-item3 tab_3">
 					<div class="num_icon">3</div>
 					<span>圖表預覽</span>
@@ -70,9 +70,9 @@
 						圖表呈現
 					</div>
 					<div class="col sys_col2">
-						<input id="sys_custom_theme_chart" class="form-check-input" type="radio" name="chart" value="0" onchange="sys_custom_chart_type_onchange();" checked />
+						<input id="sys_custom_theme_chart" class="form-check-input" type="radio" name="chart" value="0" data-csp-onchange="sys_custom_chart_type_onchange();" checked />
 						<label for="sys_custom_theme_chart">圓餅圖</label>
-						<input id="sys_custom_theme_bar" class="form-check-input" type="radio" name="chart" value="1" onchange="sys_custom_chart_type_onchange();" />
+						<input id="sys_custom_theme_bar" class="form-check-input" type="radio" name="chart" value="1" data-csp-onchange="sys_custom_chart_type_onchange();" />
 						<label for="sys_custom_theme_bar">長條圖</label>
 					</div>
 				</div>
@@ -81,21 +81,21 @@
 						查詢項目
 					</div>
 					<div class="col sys_col2">
-						<input id="sys_custom_theme_year" class="form-check-input" type="checkbox" name="items" value="0" onchange="sys_check_year_onchange();" />
+						<input id="sys_custom_theme_year" class="form-check-input" type="checkbox" name="items" value="0" data-csp-onchange="sys_check_year_onchange();" />
 						<label for="sys_custom_theme_year">年度</label>
-						<input id="sys_custom_theme_city" class="form-check-input" type="checkbox" name="items" value="1" onchange="sys_check_city_onchange();" />
+						<input id="sys_custom_theme_city" class="form-check-input" type="checkbox" name="items" value="1" data-csp-onchange="sys_check_city_onchange();" />
 						<label for="sys_custom_theme_city">縣市</label>
-						<input id="sys_custom_theme_town" class="form-check-input" type="checkbox" name="items" value="2" onchange="sys_check_town_onchange();" disabled />
+						<input id="sys_custom_theme_town" class="form-check-input" type="checkbox" name="items" value="2" data-csp-onchange="sys_check_town_onchange();" disabled />
 						<label for="sys_custom_theme_town">鄉鎮</label>
-						<input id="sys_custom_theme_class" class="form-check-input" type="checkbox" name="items" value="3" onchange="sys_check_owner_onchange();" />
+						<input id="sys_custom_theme_class" class="form-check-input" type="checkbox" name="items" value="3" data-csp-onchange="sys_check_owner_onchange();" />
 						<label for="sys_custom_theme_class">所有權類別</label>
-						<input id="sys_custom_theme_dep" class="form-check-input" type="checkbox" name="items" value="4" onchange="sys_check_dep_onchange();" />
+						<input id="sys_custom_theme_dep" class="form-check-input" type="checkbox" name="items" value="4" data-csp-onchange="sys_check_dep_onchange();" />
 						<label for="sys_custom_theme_dep">管理機關</label>
-						<input id="sys_custom_theme_dep2" class="form-check-input" type="checkbox" name="items" value="5" onchange="sys_check_dist_onchange();" />
+						<input id="sys_custom_theme_dep2" class="form-check-input" type="checkbox" name="items" value="5" data-csp-onchange="sys_check_dist_onchange();" />
 						<label for="sys_custom_theme_dep2">管理單位</label>
-						<input id="sys_custom_theme_workshop" class="form-check-input" type="checkbox" name="items" value="6" onchange="sys_check_workshop_onchange();" disabled />
+						<input id="sys_custom_theme_workshop" class="form-check-input" type="checkbox" name="items" value="6" data-csp-onchange="sys_check_workshop_onchange();" disabled />
 						<label for="sys_custom_theme_workshop">工作站</label>
-						<input id="sys_custom_theme_option" class="form-check-input" type="checkbox" name="items" value="7" onchange="sys_check_option_onchange();" />
+						<input id="sys_custom_theme_option" class="form-check-input" type="checkbox" name="items" value="7" data-csp-onchange="sys_check_option_onchange();" />
 						<label for="sys_custom_theme_option">林業管理項目</label>
 					</div>
 					<div class="col sys_col2">
@@ -171,17 +171,14 @@
 			</div>
 			<div class="buttom_button">
 				<div class="AllCenter">
-					<button type="button" id="sys_custom_cancel" class="btn btn-warning search_submit custom_bt2" onclick="sys_custom_cancel();">取消</button>
-					<button type="button" id="sys_custom_prev" class="btn btn-warning search_submit custom_bt2" onclick="sys_custom_prevstep();">上一步</button>
-					<button type="button" id="sys_custom_next" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_nextstep();">下一步</button>
-					<button type="button" id="sys_custom_insert" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_insert_data();">新增</button>
-					<button type="button" id="sys_custom_edit" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_edit_data();">編輯</button>
+					<button type="button" id="sys_custom_cancel" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="sys_custom_cancel();">取消</button>
+					<button type="button" id="sys_custom_prev" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="sys_custom_prevstep();">上一步</button>
+					<button type="button" id="sys_custom_next" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_custom_nextstep();">下一步</button>
+					<button type="button" id="sys_custom_insert" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_custom_insert_data();">新增</button>
+					<button type="button" id="sys_custom_edit" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_custom_edit_data();">編輯</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-	sys_custom_inti();
-	sys_get_custom_table();
-</script>
+<script src="./js/csp-inline/views_2f_sys_5f_manage_5f_tab3_5f__1.js"></script>

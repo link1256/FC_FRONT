@@ -6,7 +6,7 @@
 		</div>
 		<div id="sys_rowsearch2">
 			<div>
-				<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_custom_insert();">
+				<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" data-csp-onclick="sys_custom_insert();">
 					新增主題
 				</button>
 			</div>
@@ -30,69 +30,66 @@
 	</div>
 	<div id="sys_custom_theme_edit">
 		<div class="new_ver_flex">
-			<div style="margin-left: 20px; width: 110px;">
+			<div class="csp-style-140">
 				查詢主題名稱
 			</div>
-			<input class="form-control" id="edit_custom_name" style="width: 300px;" placeholder="請輸入查詢主題名稱" />
+			<input class="form-control csp-style-141" id="edit_custom_name" placeholder="請輸入查詢主題名稱" />
 		</div>
 		<div class="new_ver_flex">
-			<div style="margin-left: 20px; width: 110px;">
+			<div class="csp-style-140">
 				查詢主題說明
 			</div>
-			<input class="form-control" id="edit_custom_note" style="width: 300px;" placeholder="請輸入說明" />
+			<input class="form-control csp-style-141" id="edit_custom_note" placeholder="請輸入說明" />
 		</div>
-		<div class="new_ver_flex" style="border-top: 1px solid #dee2e6; padding-top: 10px;">
-			<div style="margin-left: 20px; width: 110px;">
+		<div class="new_ver_flex csp-style-145">
+			<div class="csp-style-140">
 				主分類依據
 			</div>
-			<select id="edit_custom_main" style="width: 300px;" class="form-select" onchange="sys_custom_main_change(this);">
+			<select id="edit_custom_main" class="form-select csp-style-141" data-csp-onchange="sys_custom_main_change(this);">
 			</select>
-			<div style="margin-left: 20px; width: 110px;">
+			<div class="csp-style-140">
 				篩選
 			</div>
-			<select id="edit_custom_main_filter" style="width: 300px;" class="form-select" multiple="multiple">
+			<select id="edit_custom_main_filter" class="form-select csp-style-141" multiple="multiple">
 			</select>
-			<input class="form-control" id="edit_custom_main_input" style="width: 300px;  display: none;" placeholder="請輸入篩選" />
+			<input class="form-control csp-style-146" id="edit_custom_main_input" placeholder="請輸入篩選" />
 		</div>
 		<div class="new_ver_flex">
-			<div style="margin-left: 20px; width: 110px;">
+			<div class="csp-style-140">
 				次分類依據
 			</div>
-			<select id="edit_custom_sub" style="width: 300px;" class="form-select" onchange="sys_custom_sub_change(this);">
+			<select id="edit_custom_sub" class="form-select csp-style-141" data-csp-onchange="sys_custom_sub_change(this);">
 			</select>
-			<div style="margin-left: 20px; width: 110px;">
+			<div class="csp-style-140">
 				篩選
 			</div>
-			<select id="edit_custom_sub_filter" style="width: 300px;" class="form-select" multiple="multiple">
+			<select id="edit_custom_sub_filter" class="form-select csp-style-141" multiple="multiple">
 			</select>
-			<input class="form-control" id="edit_custom_sub_input" style="width: 300px; display: none;" placeholder="請輸入篩選" />
+			<input class="form-control csp-style-146" id="edit_custom_sub_input" placeholder="請輸入篩選" />
 		</div>
-		<div class="new_ver_flex" style="border-top: 1px solid #dee2e6; padding-top: 10px;">
-			<div style="margin-left: 20px; width: 110px;">
+		<div class="new_ver_flex csp-style-145">
+			<div class="csp-style-140">
 				土地類型
 			</div>
-			<select id="edit_custom_land_class" style="width: 300px;" class="form-select">
+			<select id="edit_custom_land_class" class="form-select csp-style-141">
 				<option value="1">全部</option>
 				<option value="2">僅林地</option>
 			</select>
 		</div>
 		<div class="new_ver_flex">
-			<div style="margin-left: 20px; width: 110px;">
+			<div class="csp-style-140">
 				統計單位
 			</div>
-			<select id="edit_custom_unit" style="width: 300px;" class="form-select">
+			<select id="edit_custom_unit" class="form-select csp-style-141">
 				<option value="1">土地面積(平方公尺)</option>
 				<option value="2">土地筆數</option>
 			</select>
 		</div>
-		<div class="modal-footer" style="justify-content: center; margin-top: 10px;">
-			<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_custom_cancel();">取消</button>
-			<button type="button" id="sys_custom_insert" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_insertDB();">新增</button>
-			<button type="button" id="sys_custom_edit" class="btn btn-success search_submit custom_bt2" onclick="sys_custom_editDB();">編輯</button>
+		<div class="modal-footer csp-style-147">
+			<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="sys_custom_cancel();">取消</button>
+			<button type="button" id="sys_custom_insert" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_custom_insertDB();">新增</button>
+			<button type="button" id="sys_custom_edit" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_custom_editDB();">編輯</button>
 		</div>
 	</div>
 </div>
-<script>
-	sys_custom_inti();
-	sys_get_custom_table();
-</script>
+<script src="./js/csp-inline/views_2f_sys_5f_manage_5f_tab3_1.js"></script>

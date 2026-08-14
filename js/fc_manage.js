@@ -258,7 +258,7 @@ function DeleteVersion() {
 //資料總覽 START
 function tab_click(){
 	$(".fi_tab_content").hide();
-	$(".fi_tab").on("click",function(){
+	$(".fi_tab").off("click.fiAssociateTab").on("click.fiAssociateTab",function(){
 		if($(this).hasClass("active")){
 			$(this).removeClass("active");
 			$(".fi_tab_content").slideUp().removeClass("active");
@@ -271,7 +271,7 @@ function tab_click(){
 		$(this).parent().find(".fi_tab_content").addClass("active").slideDown();
 	});
 	
-	$(".tab_content_table tr").on("click",function(){
+	$(".tab_content_table tr").off("click.fiAssociateRow").on("click.fiAssociateRow",function(){
 		$(".tab_content_table tr").removeClass("active");
 		$(this).addClass("active");
 	});
@@ -338,6 +338,18 @@ function fc_tab1_init() {
 	legend1 += "</div>";
 	
 	target.append(legend1);
+}
+
+function fc_tab1_scheduleMapUpdate() {
+	if (!fc_tab1 || !fc_tab1.map) return;
+	var delays = [0, 16, 50, 100, 250, 500, 1000];
+	for (var i = 0; i < delays.length; i++) {
+		window.setTimeout(function () {
+			if (fc_tab1 && fc_tab1.map) {
+				fc_tab1.map.updateSize();
+			}
+		}, delays[i]);
+	}
 }
 
 function fc_tab1_layer_change_opacity(type) {
@@ -636,6 +648,7 @@ function fc_tab1_searchlistClick(that) {
 				fc_tab1.map.geomvector_source1.clear();
 				fc_tab1.map.geomvector_source2.clear();
 				$(".fc_detail_data").show();
+				fc_tab1_scheduleMapUpdate();
 				
 				var lcstate = d.isForsetLand;
 				$('#fcland_state').empty();
@@ -1154,6 +1167,7 @@ function fc_tab1_searchlistClick(that) {
 				if (selftmap) {
 					fc_tab1.mainfeature = selftmap;
 					fc_tab1.map.getView().fit(selftmap.getGeometry().getExtent(), { maxZoom: 18});
+					fc_tab1_scheduleMapUpdate();
 					if (fc_tab1.pointSearch) {
 						fc_tab1.map.geomvector_source.addFeature(fc_tab1.pointSearch);
 					}
@@ -1677,8 +1691,13 @@ function fc_tab1_downloadASSshp() {
 	});
 }
 
+var fc_tab1NotificationRequestId = 0;
+var fc_tab5NotificationRequestId = 0;
+
 function fc_tab1_getFcNotification() {
 	$('#fi_notification_body').empty();
+	fc_tab5NotificationRequestId++;
+	var requestId = ++fc_tab1NotificationRequestId;
 	
 	var post = {};
 	post.Fcid = fc_tab1_nowSelect;
@@ -1688,13 +1707,21 @@ function fc_tab1_getFcNotification() {
 		data: post,
 		type: "Post",
 		success: function(data) {
+			if (requestId !== fc_tab1NotificationRequestId) return;
+			$('#fi_notification_body').empty();
 			if (data.data) {
 				var d = data.data;
 				var list = d.list;
+				var added = {};
+				var count = 0;
 				
 				for (var i = 0; i < list.length; i++) {
+					var notificationSid = String(list[i].sid);
+					if (added[notificationSid]) continue;
+					added[notificationSid] = true;
+					count++;
 					var tmp = "";
-					tmp += "<tr>";
+					tmp += '<tr data-notification-sid="' + htmlEncode(notificationSid) + '">';
 					tmp += '<td>' + htmlEncode(list[i].createTime) + '</td>';
 					tmp += '<td>' + htmlEncode(list[i].userName) + '</td>';
 					
@@ -1841,6 +1868,8 @@ function fc_tab1_notification_close() {
 
 function fc_tab5_getFcNotification() {
 	$('#fi_notification_body').empty();
+	fc_tab1NotificationRequestId++;
+	var requestId = ++fc_tab5NotificationRequestId;
 	
 	var post = {};
 	post.Fcid = fi_tab5_nowSelect;
@@ -1850,13 +1879,21 @@ function fc_tab5_getFcNotification() {
 		data: post,
 		type: "Post",
 		success: function(data) {
+			if (requestId !== fc_tab5NotificationRequestId) return;
+			$('#fi_notification_body').empty();
 			if (data.data) {
 				var d = data.data;
 				var list = d.list;
+				var added = {};
+				var count = 0;
 				
 				for (var i = 0; i < list.length; i++) {
+					var notificationSid = String(list[i].sid);
+					if (added[notificationSid]) continue;
+					added[notificationSid] = true;
+					count++;
 					var tmp = "";
-					tmp += "<tr>";
+					tmp += '<tr data-notification-sid="' + htmlEncode(notificationSid) + '">';
 					tmp += '<td>' + htmlEncode(list[i].createTime) + '</td>';
 					tmp += '<td>' + htmlEncode(list[i].userName) + '</td>';
 					

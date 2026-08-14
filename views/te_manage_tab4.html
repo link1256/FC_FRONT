@@ -1,9 +1,9 @@
 <!-- 頁面區 -->
 <div class="manage_page">
 	<div class="search_div">
-		<div class="content_row_search" style="height: calc(100vh - 160px)">
+		<div class="content_row_search csp-style-68">
 			<div class="row_text">查詢條件</div>
-			<div class="search_type te_search_tab4">	
+			<div class="search_type te_search_tab4">
 				<ul class="nav nav-tabs">
 					<li class="nav-item6 tab3">
 						<span class="nav-link active">案件資訊</span>
@@ -16,11 +16,11 @@
 					</li>
 				</ul>
 			</div>
-			<div style="display:flex">
+			<div class="csp-style-69">
 				<div id="te_search_tab4_3">
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_state3" class="form-label" style="width: 110px;">狀態</label>
+							<label for="search_state3" class="form-label csp-style-43">狀態</label>
 						</div>
 						<select id="search_state3" class="form-select"  >
 							<option value="-1" selected>不指定</option>
@@ -33,13 +33,13 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_uid3" class="form-label" style="width: 110px;">識別碼</label>
+							<label for="search_uid3" class="form-label csp-style-43">識別碼</label>
 						</div>
 						<input class="form-control " id="search_uid3" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_unit3" class="form-label" style="width: 110px;">單位資訊</label>
+							<label for="search_unit3" class="form-label csp-style-43">單位資訊</label>
 						</div>
 						<select id="search_unit3" class="form-select">
 							<option selected value="-1">請選擇</option>
@@ -57,27 +57,27 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_start3" class="form-label" style="width: 110px;">起始日期</label>
+							<label for="search_start3" class="form-label csp-style-43">起始日期</label>
 						</div>
 						<input id="search_start3" class="form-control" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_end3" class="form-label" style="width: 110px;">結束日期</label>
+							<label for="search_end3" class="form-label csp-style-43">結束日期</label>
 						</div>
 						<input id="search_end3" class="form-control" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_land3" class="form-label" style="width: 110px;">用地機關</label>
+							<label for="search_land3" class="form-label csp-style-43">用地機關</label>
 						</div>
 						<input class="form-control " id="search_land3" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_changetype3" class="form-label" style="width: 110px;">異動類型</label>
+							<label for="search_changetype3" class="form-label csp-style-43">異動類型</label>
 						</div>
-						<select id="search_changetype3" class="form-select" onchange="">
+						<select id="search_changetype3" class="form-select">
 							<option selected value="-1">請選擇</option>
 							<option value="1">森林法第8條撥用</option>
 							<option value="2">增劃編原住民保留地</option>
@@ -87,9 +87,9 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_changetypesub3" class="form-label" style="width: 110px;">異動細目</label>
+							<label for="search_changetypesub3" class="form-label csp-style-43">異動細目</label>
 						</div>
-						<select id="search_changetypesub3" class="form-select" onchange="">
+						<select id="search_changetypesub3" class="form-select">
 							<option selected value="-1">請選擇</option>
 							<option value="1">公共設施</option>
 							<option value="2">國防</option>
@@ -99,15 +99,15 @@
 							<option value="6">國家公園</option>
 						</select>
 					</div>
-					<div class="new_ver" style="text-align:center;">
-						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_search_list_gosearch_3();">查詢</button>
-						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_search_list_reset_3();">重置</button>
+					<div class="new_ver csp-style-3">
+						<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="te_search_list_gosearch_3();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="te_search_list_reset_3();">重置</button>
 					</div>
 				</div>
-				<div id="te_search_tab4_1" style="display: none;">
+				<div id="te_search_tab4_1" class="csp-style-12">
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_year" class="form-label" style="width: 110px;">年度</label>
+							<label for="search_year" class="form-label csp-style-43">年度</label>
 						</div>
 						<select id="search_year" class="form-select">
 							<option selected value="-1">請選擇</option>
@@ -115,23 +115,23 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+							<label for="search_county" class="form-label csp-style-43">縣市</label>
 						</div>
-						<select id="search_county" class="form-select" onchange="te_manage_tab4_get_TownList();">
+						<select id="search_county" class="form-select" data-csp-onchange="te_manage_tab4_get_TownList();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_town" class="form-label" style="width: 110px;">鄉鎮</label>
+							<label for="search_town" class="form-label csp-style-43">鄉鎮</label>
 						</div>
-						<select id="search_town" class="form-select" onchange="te_manage_tab4_get_LandList();">
+						<select id="search_town" class="form-select" data-csp-onchange="te_manage_tab4_get_LandList();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_sec" class="form-label" style="width: 110px;">地段</label>
+							<label for="search_sec" class="form-label csp-style-43">地段</label>
 						</div>
 						<select id="search_sec" class="form-select">
 							<option selected value="-1">請選擇</option>
@@ -139,30 +139,30 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_land_no" class="form-label" style="width: 110px;">地號</label>
+							<label for="search_land_no" class="form-label csp-style-43">地號</label>
 						</div>
 						<div class="search_land_no">
-							<input class="form-control " id="search_number1" /><span style="margin: 4px;">-</span>
+							<input class="form-control " id="search_number1" /><span class="csp-style-4">-</span>
 							<input class="form-control " id="search_number2" />
 						</div>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_land_code" class="form-label" style="width: 110px;">地籍編碼</label>
+							<label for="search_land_code" class="form-label csp-style-43">地籍編碼</label>
 						</div>
 						<input class="form-control " id="search_land_code" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_dep" class="form-label" style="width: 110px;">用地機關</label>
+							<label for="search_dep" class="form-label csp-style-43">用地機關</label>
 						</div>
 						<input class="form-control " id="search_dep" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_changetype" class="form-label" style="width: 110px;">異動類型</label>
+							<label for="search_changetype" class="form-label csp-style-43">異動類型</label>
 						</div>
-						<select id="search_changetype" class="form-select" onchange="">
+						<select id="search_changetype" class="form-select">
 							<option selected value="-1">請選擇</option>
 							<option value="1">森林法第8條撥用</option>
 							<option value="2">增劃編原住民保留地</option>
@@ -172,9 +172,9 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_changetypesub" class="form-label" style="width: 110px;">異動細目</label>
+							<label for="search_changetypesub" class="form-label csp-style-43">異動細目</label>
 						</div>
-						<select id="search_changetypesub" class="form-select" onchange="">
+						<select id="search_changetypesub" class="form-select">
 							<option selected value="-1">請選擇</option>
 							<option value="1">公共設施</option>
 							<option value="2">國防</option>
@@ -184,39 +184,39 @@
 							<option value="6">國家公園</option>
 						</select>
 					</div>
-					<div class="new_ver" style="text-align:center;">
-						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_search_list_gosearch_1();">查詢</button>
-						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_search_list_reset_1();">重置</button>
+					<div class="new_ver csp-style-3">
+						<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="te_search_list_gosearch_1();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="te_search_list_reset_1();">重置</button>
 					</div>
 				</div>
-				<div id="te_search_tab4_2" style="display: none;">
+				<div id="te_search_tab4_2" class="csp-style-12">
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_year2" class="form-label" style="width: 110px;">年度</label>
+							<label for="search_year2" class="form-label csp-style-43">年度</label>
 						</div>
-						<select id="search_year2" class="form-select" onchange="">
+						<select id="search_year2" class="form-select">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+							<label for="search_dist" class="form-label csp-style-43">管理單位</label>
 						</div>
-						<select id="search_dist" class="form-select" onchange="te_manage_tab4_dist_change();">
+						<select id="search_dist" class="form-select" data-csp-onchange="te_manage_tab4_dist_change();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_wkng" class="form-label" style="width: 110px;">事業區</label>
+							<label for="search_wkng" class="form-label csp-style-43">事業區</label>
 						</div>
-						<select id="search_wkng" class="form-select" onchange="te_manage_tab4_wkng_change();">
+						<select id="search_wkng" class="form-select" data-csp-onchange="te_manage_tab4_wkng_change();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_cmpt" class="form-label" style="width: 110px;">林班</label>
+							<label for="search_cmpt" class="form-label csp-style-43">林班</label>
 						</div>
 						<select id="search_cmpt" class="form-select">
 							<option selected value="-1">請選擇</option>
@@ -224,24 +224,24 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_state" class="form-label" style="width: 110px;">狀態</label>
+							<label for="search_state" class="form-label csp-style-43">狀態</label>
 						</div>
-						<select id="search_state" class="form-select" onchange="">
+						<select id="search_state" class="form-select">
 							<option selected value="-1">不指定</option>
 							<option value="1">待異動</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_dep2" class="form-label" style="width: 110px;">用地機關</label>
+							<label for="search_dep2" class="form-label csp-style-43">用地機關</label>
 						</div>
 						<input class="form-control " id="search_dep2" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_changetype2" class="form-label" style="width: 110px;">異動類型</label>
+							<label for="search_changetype2" class="form-label csp-style-43">異動類型</label>
 						</div>
-						<select id="search_changetype2" class="form-select" onchange="">
+						<select id="search_changetype2" class="form-select">
 							<option selected value="-1">請選擇</option>
 							<option value="1">森林法第8條撥用</option>
 							<option value="2">增劃編原住民保留地</option>
@@ -251,9 +251,9 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_changetypesub2" class="form-label" style="width: 110px;">異動細目</label>
+							<label for="search_changetypesub2" class="form-label csp-style-43">異動細目</label>
 						</div>
-						<select id="search_changetypesub2" class="form-select" onchange="">
+						<select id="search_changetypesub2" class="form-select">
 							<option selected value="-1">請選擇</option>
 							<option value="1">公共設施</option>
 							<option value="2">國防</option>
@@ -264,18 +264,18 @@
 							<option value="7">風景特定區</option>
 						</select>
 					</div>
-					<div class="new_ver" style="text-align:center;">
-						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_search_list_gosearch_2();">查詢</button>
-						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_search_list_reset_2();">重置</button>
+					<div class="new_ver csp-style-3">
+						<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="te_search_list_gosearch_2();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="te_search_list_reset_2();">重置</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="query_1" class="detail_data main_scroll" style="display: none;">
-		
+	<div id="query_1" class="detail_data main_scroll csp-style-12">
+
 	</div>
-	<div id="query_2" class="detail_data main_scroll" style="display: none;">
+	<div id="query_2" class="detail_data main_scroll csp-style-12">
 		<!-- <審核資料> -->
 		<div class="data_frame">
 		</div>
@@ -284,19 +284,15 @@
 		<div class="list_frame">
 		</div>
 		<!-- <圖資資料> -->
-		<div class="content_row_data manage_bt_area AllCenter" style="padding:10px;">
+		<div class="content_row_data manage_bt_area AllCenter csp-style-162">
 			<div class="manage_bt">
-				<button type="button" class="btn btn-warning search_submit custom_bt2" id="cancel_apply" onclick="te_searchlist_hide();">返回</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" id="cancel_apply" data-csp-onclick="te_searchlist_hide();">返回</button>
 			</div>
 		</div>
 	</div>
-	<div id="query_3" class="detail_data main_scroll" style="display: none;">
-		
+	<div id="query_3" class="detail_data main_scroll csp-style-12">
+
 	</div>
 </div>
 <!-- 頁面區 -->
-<script>
-	tab4("te_search_tab4");
-	te_manage_tab4_init();
-</script>
-	
+<script src="./js/csp-inline/views_2f_te_5f_manage_5f_tab4_1.js"></script>

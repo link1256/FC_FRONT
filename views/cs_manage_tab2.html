@@ -1,18 +1,18 @@
 <div class="manage_page flex">
-	<div class="cs2_search_bar">	
+	<div class="cs2_search_bar">
 		<div class="flex">
 			<div class="search_div">
-				<div class="content_row_search" style="height: calc(100vh - 158px);">
+				<div class="content_row_search csp-style-80">
 					<div class="row_text">常用查詢組合項目</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_custom_name" class="form-label" style="width: 110px;">主題名稱</label>
+							<label for="search_custom_name" class="form-label csp-style-43">主題名稱</label>
 						</div>
 						<select id="search_custom_name" class="form-select">
 						</select>
 					</div>
-					<div class="new_ver" style="text-align:center;position: relative;top: -25px;">
-						<button type="button" class="btn btn-success search_submit custom_bt2" style="margin-top: 20px;" onclick="cs_manage_search_2();">查詢</button>
+					<div class="new_ver csp-style-76">
+						<button type="button" class="btn btn-success search_submit custom_bt2 csp-style-83" data-csp-onclick="cs_manage_search_2();">查詢</button>
 					</div>
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 	<div class="cs_result">
 		<div class="cs_pivot_zone">
 			<div class="cs_pivot_bt_zone">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="cs_pivot_export();">匯出</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="cs_pivot_export();">匯出</button>
 				<label class="cs_pivot_label"></label>
 			</div>
 			<div id="cs_pivot_table" class="main_scroll_mini">
@@ -29,6 +29,4 @@
 		</div>
 	</div>
 </div>
-<script>
-	cs_manage_init2();
-</script>
+<script src="./js/csp-inline/views_2f_cs_5f_manage_5f_tab2_1.js"></script>

@@ -1,32 +1,32 @@
 <div class="manage_page flex">
-	<div class="cs1_search_bar">	
+	<div class="cs1_search_bar">
 		<div class="flex">
 			<div class="search_div">
-				<div class="content_row_search cs main_scroll_mini_4" style="min-height: 600px;">
+				<div class="content_row_search cs main_scroll_mini_4 csp-style-72">
 					<div class="row_text">屬性篩選</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+							<label for="search_county" class="form-label csp-style-43">縣市</label>
 						</div>
 						<select id="search_county" class="form-select" multiple="multiple">
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_dist" class="form-label" style="width: 110px;">管理分署</label>
+							<label for="search_dist" class="form-label csp-style-43">管理分署</label>
 						</div>
 						<select id="search_dist" class="form-select" multiple="multiple">
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_dep" class="form-label" style="width: 110px;">管理機關</label>
+							<label for="search_dep" class="form-label csp-style-43">管理機關</label>
 						</div>
 						<input class="form-control" id="search_dep" placeholder="管理機關名稱" />
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_class" class="form-label" style="width: 110px;">所有權類別</label>
+							<label for="search_class" class="form-label csp-style-43">所有權類別</label>
 						</div>
 						<select id="search_class" class="form-select" multiple="multiple">
 							<option value="1">國有</option>
@@ -37,7 +37,7 @@
 					<div class="row_text">土地類別</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_from_class" class="form-label" style="width: 110px;">所在類別</label>
+							<label for="search_from_class" class="form-label csp-style-43">所在類別</label>
 						</div>
 						<select id="search_from_class" class="form-select" multiple="multiple">
 							<option value="1">國有林事業區</option>
@@ -48,16 +48,16 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_land_class" class="form-label" style="width: 110px;">土地類型</label>
+							<label for="search_land_class" class="form-label csp-style-43">土地類型</label>
 						</div>
 						<select id="search_land_class" class="form-select">
 							<option value="1">全部</option>
 							<option value="2">僅林地</option>
 						</select>
 					</div>
-					<div class="new_ver" style="text-align:center; position: relative;">
-						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="cs_manage_search_1();">查詢</button>
-						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="cs_manage_clearsearch_1();">重置</button>
+					<div class="new_ver csp-style-73">
+						<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="cs_manage_search_1();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="cs_manage_clearsearch_1();">重置</button>
 					</div>
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 	</div>
 	<div class="cs_result">
 		<div class="new_ver_flex">
-			<div style="width: 110px;">
+			<div class="csp-style-43">
 				主分類依據
 			</div>
 			<select id="detail_main" class="form-select">
@@ -75,7 +75,7 @@
 			</select>
 		</div>
 		<div class="new_ver_flex new_ver_bottom_border">
-			<div style="width: 110px;">
+			<div class="csp-style-43">
 				次分類依據
 			</div>
 			<select id="detail_sub" class="form-select">
@@ -84,18 +84,18 @@
 				<option value="owner">所有權類別</option>
 				<option value="type">所在類型</option>
 			</select>
-			<div style="width: 100px; margin-left: 50px;">
+			<div class="csp-style-74">
 				統計單位
 			</div>
 			<select id="detail_unit" class="form-select">
 				<option value="1">土地面積(平方公尺)</option>
 				<option value="2">土地筆數</option>
 			</select>
-			<button type="button" class="btn btn-success search_submit custom_bt2" onclick="cs_set_pivot();">計算</button>
+			<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="cs_set_pivot();">計算</button>
 		</div>
 		<div class="cs_pivot_zone">
 			<div class="cs_pivot_bt_zone">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="cs_pivot_export();">匯出</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="cs_pivot_export();">匯出</button>
 				<label class="cs_pivot_label"></label>
 			</div>
 			<div id="cs_pivot_table" class="main_scroll_mini">
@@ -103,6 +103,4 @@
 		</div>
 	</div>
 </div>
-<script>
-	cs_manage_init();
-</script>
+<script src="./js/csp-inline/views_2f_cs_5f_manage_5f_tab1_1.js"></script>

@@ -1,6 +1,6 @@
 <!-- 功能頁面區 -->
 <div>
-    <div class="search_type cs_manage">	
+    <div class="search_type cs_manage">
 		<div class="scroller scroller-left float-left"><i class="fa fa-chevron-left"></i></div>
 		<div class="scroller scroller-right float-right"><i class="fa fa-chevron-right"></i></div>
 		<div class="wrapper">
@@ -17,90 +17,9 @@
 
 	<!-- //功能頁面切換	 -->
 	<div class="tab_body main_scroll">
-		
-	</div>	
+
+	</div>
 </div>
-	<!-- 功能頁面區 -->	
-	<script>
-	    tab("cs_manage");
-		$(document).ready(function(){
-		var widthOfList = function(){
-			var itemsWidth = 0;
-			$('.navlist li').each(function(){
-				var itemWidth = $(this).outerWidth();
-				itemsWidth += itemWidth;
-			});
-			return itemsWidth;
-		};
-
-		var widthOfHidden = function(){
-			var ww = 0 - $('.wrapper').outerWidth();
-			var hw = (($('.wrapper').outerWidth()) - widthOfList() - getLeftPosi()) - 40;
-			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
-			
-			if(ww > hw) {
-				return (rp > ww ? rp : ww);
-			}
-			else {
-				return (rp > hw ? rp : hw);
-			}
-		};
-
-		var getLeftPosi = function(){
-			var ww = 0 - $('.wrapper').outerWidth();
-			var lp = $('.navlist').position().left;
-			
-			if(ww > lp) {
-				return ww;
-			}
-			else {
-				return lp;
-			}
-		};
-
-		var reAdjust = function(){
-			// check right pos of last nav item
-			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
-			if (($('.wrapper').outerWidth()) < widthOfList() && (rp<0)) {
-				$('.scroller-right').show().css('display', 'flex');
-			}
-			else {
-				$('.scroller-right').hide();
-			}
-
-			if (getLeftPosi()<0) {
-				$('.scroller-left').show().css('display', 'flex');
-			}
-			else {
-				$('.item').animate({left: "-=" + getLeftPosi() + "px"}, 'slow');
-				$('.scroller-left').hide();
-			}
-		}
-
-		reAdjust();
-
-		$(window).on('resize',function(e){
-			reAdjust();
-		});
-
-		$('.scroller-right').click(function() {
-			$('.scroller-left').fadeIn('slow');
-			$('.scroller-right').fadeOut('slow');
-
-			$('.navlist').animate({left:"+=" + widthOfHidden() + "px"}, 'slow',function(){
-				reAdjust();
-			});
-		});
-
-		$('.scroller-left').click(function() {
-			$('.scroller-right').fadeIn('slow');
-			$('.scroller-left').fadeOut('slow');
-		  
-			$('.navlist').animate({left:"-=" + getLeftPosi() + "px"}, 'slow',function(){
-				reAdjust();
-			});
-		});
-	});
-	        
-</script>
+	<!-- 功能頁面區 -->
+	<script src="./js/csp-inline/views_2f_cs_5f_manage_1.js"></script>
 

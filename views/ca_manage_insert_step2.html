@@ -1,15 +1,15 @@
 <!-- 頁面區 -->
-<div class="manage_page" style="width: 100%; height: calc(100vh - 375px);">
-	<div class="content_row_search" style="width: 100%;">
-		<button type="button" class="btn btn-success search_submit custom_bt2 showlast" onclick="ca_DownLoadLastModal();" style="width: 150px;">下載前次附件</button>
+<div class="manage_page csp-style-33">
+	<div class="content_row_search csp-style-34">
+		<button type="button" class="btn btn-success search_submit custom_bt2 showlast csp-style-35" data-csp-onclick="ca_DownLoadLastModal();">下載前次附件</button>
 		<table class="table_c fc_tab_list2 headernonehover" id="ca_insert_step2_list">
 			<thead>
 				<tr>
-					<th style="width: 200px;">附件類型</th>
-					<th class="showlast2" style="width: 30%;">說明</th>
-					<th class="showlast" style="width: 160px;">上傳本次附件</th>
-					<th style="width: 40%;">已上傳檔案</th>
-					<th style="width: 140px;">範本下載</th>
+					<th class="csp-style-21">附件類型</th>
+					<th class="showlast2 csp-style-36">說明</th>
+					<th class="showlast csp-style-37">上傳本次附件</th>
+					<th class="csp-style-38">已上傳檔案</th>
+					<th class="csp-style-39">範本下載</th>
 				</tr>
 			</thead>
 			<tbody id="ca_insert_step2_tbody">
@@ -17,102 +17,102 @@
 					<td>
 						檢訂報告
 					</td>
-					<td id="t_1_note" class="showlast2" style="height: 75px;">
+					<td id="t_1_note" class="showlast2 csp-style-40">
 					</td>
-					<td style="height: 75px;" class="showlast">
-						<button type="button" class="btn btn-warning" onclick="$('#upload_report').click();">上傳</button>
-						<input id="upload_report" class="form-control" multiple type="file" accept=".doc,.docx,.pdf" onchange="ca_manage_insert_step2_UploadFile('upload_report', 1);" style="display: none;" />
+					<td class="showlast csp-style-40">
+						<button type="button" class="btn btn-warning" data-csp-onclick="$('#upload_report').click();">上傳</button>
+						<input id="upload_report" class="form-control csp-style-12" multiple type="file" accept=".doc,.docx,.pdf" data-csp-onchange="ca_manage_insert_step2_UploadFile('upload_report', 1);" />
 					</td>
 					<td>
 						<div id="upload_report_file_list"></div>
 					</td>
 					<td>
-						<button id="t_1_template" type="button" class="btn btn-success" style="display: none;" onclick="ca_manage_insert_step2_DownloadTemplate('檢訂報告');">下載</button>
+						<button id="t_1_template" type="button" class="btn btn-success csp-style-12" data-csp-onclick="ca_manage_insert_step2_DownloadTemplate('檢訂報告');">下載</button>
 					</td>
 				</tr>
 				<tr id="titem_2">
 					<td>
 						檢訂明細表
 					</td>
-					<td id="t_2_note" class="showlast2" style="height: 75px;">
+					<td id="t_2_note" class="showlast2 csp-style-40">
 					</td>
-					<td style="height: 75px;" class="showlast">
-						<button type="button" class="btn btn-warning" onclick="$('#upload_list').click();">上傳</button>
-						<input id="upload_list" class="form-control" multiple type="file" accept=".xlsx,.xls,.csv" onchange="ca_manage_insert_step2_UploadFile('upload_list', 2);" style="display: none;" />
+					<td class="showlast csp-style-40">
+						<button type="button" class="btn btn-warning" data-csp-onclick="$('#upload_list').click();">上傳</button>
+						<input id="upload_list" class="form-control csp-style-12" multiple type="file" accept=".xlsx,.xls,.csv" data-csp-onchange="ca_manage_insert_step2_UploadFile('upload_list', 2);" />
 					</td>
 					<td>
 						<div id="upload_list_file_list"></div>
 					</td>
 					<td>
-						<button id="t_2_template" type="button" class="btn btn-success" style="display: none;" onclick="ca_manage_insert_step2_DownloadTemplate('檢訂明細表');">下載</button>
+						<button id="t_2_template" type="button" class="btn btn-success csp-style-12" data-csp-onclick="ca_manage_insert_step2_DownloadTemplate('檢訂明細表');">下載</button>
 					</td>
 				</tr>
 				<tr id="titem_3">
 					<td>
 						檢訂成果圖
 					</td>
-					<td id="t_3_note" class="showlast2" style="height: 75px;">
+					<td id="t_3_note" class="showlast2 csp-style-40">
 					</td>
-					<td style="height: 75px;" class="showlast">
-						<button type="button" class="btn btn-warning" onclick="$('#upload_result').click();">上傳</button>
-						<input id="upload_result" class="form-control" multiple type="file" accept=".dwg,.zip" onchange="ca_manage_insert_step2_UploadFile('upload_result', 3);" style="display: none;" />
+					<td class="showlast csp-style-40">
+						<button type="button" class="btn btn-warning" data-csp-onclick="$('#upload_result').click();">上傳</button>
+						<input id="upload_result" class="form-control csp-style-12" multiple type="file" accept=".dwg,.zip" data-csp-onchange="ca_manage_insert_step2_UploadFile('upload_result', 3);" />
 					</td>
 					<td>
 						<div id="upload_result_file_list"></div>
 					</td>
 					<td>
-						<button id="t_3_template" type="button" class="btn btn-success" style="display: none;" onclick="ca_manage_insert_step2_DownloadTemplate('檢訂成果圖');">下載</button>
+						<button id="t_3_template" type="button" class="btn btn-success csp-style-12" data-csp-onclick="ca_manage_insert_step2_DownloadTemplate('檢訂成果圖');">下載</button>
 					</td>
 				</tr>
 				<tr id="titem_4">
 					<td>
 						編入解除區域成果圖
 					</td>
-					<td id="t_4_note" class="showlast2" style="height: 75px;">
+					<td id="t_4_note" class="showlast2 csp-style-40">
 					</td>
-					<td style="height: 75px;" class="showlast">
-						<button type="button" class="btn btn-warning" onclick="$('#upload_unlockresult').click();">上傳</button>
-						<input id="upload_unlockresult" class="form-control" multiple type="file" accept=".dwg,.zip" onchange="ca_manage_insert_step2_UploadFile('upload_unlockresult', 4);" style="display: none;" />
+					<td class="showlast csp-style-40">
+						<button type="button" class="btn btn-warning" data-csp-onclick="$('#upload_unlockresult').click();">上傳</button>
+						<input id="upload_unlockresult" class="form-control csp-style-12" multiple type="file" accept=".dwg,.zip" data-csp-onchange="ca_manage_insert_step2_UploadFile('upload_unlockresult', 4);" />
 					</td>
 					<td>
 						<div id="upload_unlockresult_file_list"></div>
 					</td>
 					<td>
-						<button id="t_4_template" type="button" class="btn btn-success" style="display: none;" onclick="ca_manage_insert_step2_DownloadTemplate('編入解除區域成果圖');">下載</button>
+						<button id="t_4_template" type="button" class="btn btn-success csp-style-12" data-csp-onclick="ca_manage_insert_step2_DownloadTemplate('編入解除區域成果圖');">下載</button>
 					</td>
 				</tr>
 				<tr id="titem_5">
 					<td>
 						相關函文
 					</td>
-					<td id="t_5_note" class="showlast2" style="height: 75px;">
+					<td id="t_5_note" class="showlast2 csp-style-40">
 					</td>
-					<td style="height: 75px;" class="showlast">
-						<button type="button" class="btn btn-warning" onclick="$('#upload_coss').click();">上傳</button>
-						<input id="upload_coss" class="form-control" multiple type="file" accept=".doc,.docx,.pdf" onchange="ca_manage_insert_step2_UploadFile('upload_coss', 5);" style="display: none;" />
+					<td class="showlast csp-style-40">
+						<button type="button" class="btn btn-warning" data-csp-onclick="$('#upload_coss').click();">上傳</button>
+						<input id="upload_coss" class="form-control csp-style-12" multiple type="file" accept=".doc,.docx,.pdf" data-csp-onchange="ca_manage_insert_step2_UploadFile('upload_coss', 5);" />
 					</td>
 					<td>
 						<div id="upload_coss_file_list"></div>
 					</td>
 					<td>
-						<button id="t_5_template" type="button" class="btn btn-success" style="display: none;" onclick="ca_manage_insert_step2_DownloadTemplate('相關函文');">下載</button>
+						<button id="t_5_template" type="button" class="btn btn-success csp-style-12" data-csp-onclick="ca_manage_insert_step2_DownloadTemplate('相關函文');">下載</button>
 					</td>
 				</tr>
 				<tr id="titem_6">
 					<td>
 						其他附件
 					</td>
-					<td id="t_6_note" class="showlast2" style="height: 75px;">
+					<td id="t_6_note" class="showlast2 csp-style-40">
 					</td>
-					<td style="height: 75px;" class="showlast">
-						<button type="button" class="btn btn-warning" onclick="$('#upload_other').click();">上傳</button>
-						<input id="upload_other" class="form-control" multiple type="file" accept=".doc,.docx,.pdf,.xlsx,.xls,.csv" onchange="ca_manage_insert_step2_UploadFile('upload_other', 6);" style="display: none;" />
+					<td class="showlast csp-style-40">
+						<button type="button" class="btn btn-warning" data-csp-onclick="$('#upload_other').click();">上傳</button>
+						<input id="upload_other" class="form-control csp-style-12" multiple type="file" accept=".doc,.docx,.pdf,.xlsx,.xls,.csv" data-csp-onchange="ca_manage_insert_step2_UploadFile('upload_other', 6);" />
 					</td>
 					<td>
 						<div id="upload_other_file_list"></div>
 					</td>
 					<td>
-						<button id="t_6_template" type="button" class="btn btn-success" style="display: none;" onclick="ca_manage_insert_step2_DownloadTemplate('其他附件');">下載</button>
+						<button id="t_6_template" type="button" class="btn btn-success csp-style-12" data-csp-onclick="ca_manage_insert_step2_DownloadTemplate('其他附件');">下載</button>
 					</td>
 				</tr>
 			</tbody>
@@ -120,31 +120,7 @@
 	</div>
 </div>
 <div class="AllCenter">
-	<!--<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ca_insert_turnback();">返回</button>-->
-	<!--<button type="button" class="btn btn-success search_submit custom_bt2" onclick="">送出</button>-->
+	<!--<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="ca_insert_turnback();">返回</button>-->
+	<!--<button type="button" class="btn btn-success search_submit custom_bt2">送出</button>-->
 </div>
-<script>
-	ca_insert_step2_init();
-	function DownLoadLastClose() {
-		$("#DownLoadLast").modal("hide");
-	}
-	function upload_report_Upload() {
-		
-		$("#upload_report").replaceWith($("#upload_report").val('').clone(true));
-	}
-	function upload_list_Upload() {
-		$("#upload_list").replaceWith($("#upload_list").val('').clone(true));
-	}
-	function upload_result_Upload() {
-		$("#upload_result").replaceWith($("#upload_result").val('').clone(true));
-	}
-	function upload_unlockresult_Upload() {
-		$("#upload_unlockresult").replaceWith($("#upload_unlockresult").val('').clone(true));
-	}
-	function upload_coss_Upload() {
-		$("#upload_coss").replaceWith($("#upload_coss").val('').clone(true));
-	}
-	function upload_other_Upload() {
-		$("#upload_other").replaceWith($("#upload_other").val('').clone(true));
-	}
-</script>
+<script src="./js/csp-inline/views_2f_ca_5f_manage_5f_insert_5f_step2_1.js"></script>

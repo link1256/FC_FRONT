@@ -30,16 +30,16 @@
 				</select>
 			</div>
 			<div class="rowsearchitem">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetLogList();">搜尋</button>
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="LogListSearchClear();">清除條件</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="GetLogList();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="LogListSearchClear();">清除條件</button>
 			</div>
 		</div>
 	</div>
 	<div>
-		<button type="button" class="btn btn-success custom_bt2" onclick="download_sys_log('excel');">
+		<button type="button" class="btn btn-success custom_bt2" data-csp-onclick="download_sys_log('excel');">
 			匯出資料(EXCEL)
 		</button>
-		<button type="button" class="btn btn-success custom_bt2" onclick="download_sys_log('ods');">
+		<button type="button" class="btn btn-success custom_bt2" data-csp-onclick="download_sys_log('ods');">
 			匯出資料(ODS)
 		</button>
 	</div>
@@ -65,8 +65,4 @@
 	</div>
 </div>
 
-<script>
-	getGroupList();
-	getFunctionList();
-	GetLogList();
-</script>
+<script src="./js/csp-inline/views_2f_sys_5f_manage_5f_sys_5f_log_1.js"></script>

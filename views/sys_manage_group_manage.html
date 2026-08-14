@@ -1,5 +1,5 @@
 <!-- 使用者管理頁面 -->
-<div style="width: 100%; overflow: hidden;">
+<div class="csp-style-138">
 	<div id="sys_rowsearch" class="search_div">
 		<div class="row_text2">群組管理</div>
 		<div class="rowsearch">
@@ -8,31 +8,31 @@
 				<input id="sys_user_name" class="form-control form-custom-select" type="text" placeholder="輸入關鍵字" />
 			</div>
 			<div class="rowsearchitem">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_group_init();">搜尋</button>
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_group_search_clear();">清除條件</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_group_init();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="sys_group_search_clear();">清除條件</button>
 			</div>
 		</div>
 	</div>
 	<div>
-		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_add_modal_group();">
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" data-csp-onclick="sys_add_modal_group();">
 			新增群組
 		</button>
-		<button type="button" class="btn btn-danger search_submit custom_bt2 user_group_base" onclick="sys_del_modal_group();">
+		<button type="button" class="btn btn-danger search_submit custom_bt2 user_group_base" data-csp-onclick="sys_del_modal_group();">
 			刪除群組
 		</button>
-		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" onclick="sys_edit_group();">
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_base" data-csp-onclick="sys_edit_group();">
 			編輯權限
 		</button>
-		<button type="button" class="btn btn-warning search_submit custom_bt2 user_group_edit" onclick="sys_cancel_edit_group();">取消</button>
-		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_edit" onclick="sys_edit_update_group();">儲存</button>
-		<button type="button" class="btn btn-warning search_submit custom_bt2 user_group_add" onclick="sys_cancel_add_group();">取消</button>
-		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_add" onclick="sys_add_update_group();">儲存</button>
+		<button type="button" class="btn btn-warning search_submit custom_bt2 user_group_edit" data-csp-onclick="sys_cancel_edit_group();">取消</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_edit" data-csp-onclick="sys_edit_update_group();">儲存</button>
+		<button type="button" class="btn btn-warning search_submit custom_bt2 user_group_add" data-csp-onclick="sys_cancel_add_group();">取消</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2 user_group_add" data-csp-onclick="sys_add_update_group();">儲存</button>
 		<div class="sys_group_internel AllCenter">
-			<img src="image/IsUse.svg" style="margin-left: 10px;" />
+			<img src="image/IsUse.svg"  class="csp-style-139" />
 			可使用
-			<img src="image/NoUse.svg" style="margin-left: 10px;" />
+			<img src="image/NoUse.svg"  class="csp-style-139" />
 			無法使用
-			<img src="image/SomeUse.svg" style="margin-left: 10px;" />
+			<img src="image/SomeUse.svg"  class="csp-style-139" />
 			部分使用
 		</div>
 	</div>
@@ -73,15 +73,15 @@
 			</div>
 			<div class="modal-body">
 				<div class="new_ver_flex">
-					<div style="margin-left: 20px; width: 110px;">
+					<div class="csp-style-140">
 						群組名稱
 					</div>
-					<input class="form-control" id="add_group_name" style="width: 300px;" placeholder="群組名稱" />
+					<input class="form-control csp-style-141" id="add_group_name" placeholder="群組名稱" />
 				</div>
 			</div>
-			<div class="modal-footer" style="justify-content: center;">
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_cancel_add_modal_group();">取消</button>
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_add_update_modal_group();">儲存</button>
+			<div class="modal-footer csp-style-13">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="sys_cancel_add_modal_group();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_add_update_modal_group();">儲存</button>
 			</div>
 		</div>
 	</div>
@@ -96,7 +96,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="new_ver_flex">
-					<div style="margin-left: 20px; width: 110px;">
+					<div class="csp-style-140">
 						群組名稱
 					</div>
 					<select id="del_group_search" class="form-select">
@@ -104,14 +104,12 @@
 					</select>
 				</div>
 			</div>
-			<div class="modal-footer" style="justify-content: center;">
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="sys_cancel_del_modal_group();">取消</button>
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="sys_del_update_modal_group();">儲存</button>
+			<div class="modal-footer csp-style-13">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="sys_cancel_del_modal_group();">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="sys_del_update_modal_group();">儲存</button>
 			</div>
 		</div>
 	</div>
 </div>
 <!-- <addgroup MODAL> -->
-<script>
-	sys_group_init();
-</script>
+<script src="./js/csp-inline/views_2f_sys_5f_manage_5f_group_5f_manage_1.js"></script>

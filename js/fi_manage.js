@@ -246,6 +246,18 @@ function fi_tab1_layer_change_opacity(type) {
 }
 
 //保安林頁面初始化
+function fi_scheduleMapUpdate(targettab) {
+	if (!targettab || !targettab.map) return;
+	var delays = [0, 16, 50, 100, 250, 500, 1000];
+	for (var i = 0; i < delays.length; i++) {
+		window.setTimeout(function () {
+			if (targettab && targettab.map) {
+				targettab.map.updateSize();
+			}
+		}, delays[i]);
+	}
+}
+
 var fi_tab2 = {};
 fi_tab2.NowOption = null;
 fi_tab2.SelectSingleClick = null;
@@ -613,9 +625,10 @@ function tab3_searchoptionChange(istemp) {
 function fi_edit(type) {
 	//判斷權限
 	
-	$("#fi_edit_bt").on("click",function(){
+	$("#fi_edit_bt").off("click.fiEdit").on("click.fiEdit",function(){
 		$(".fi_pro").hide();
 		$(".fi_edit").show();
+		$("#fi_cancel_bt, #fi_save_bt").remove();
 		
 		if (type == "保安林") {
 			$(".fi_value_show").hide();
@@ -642,7 +655,7 @@ function fi_edit(type) {
 		//切換編輯狀態
 		$(".detail_rows_value input,textarea").removeAttr("readonly");
 		
-		$("#fi_save_bt").on("click",function() {
+		$("#fi_save_bt").off("click.fiEditSave").on("click.fiEditSave",function() {
 			//更新資料庫的方法
 			if (type) {
 				var post = {};
@@ -730,7 +743,7 @@ function fi_edit(type) {
 			$(".detail_rows_value input,textarea").attr("readonly", "readonly");
 	    });
 		
-	    $("#fi_cancel_bt").on("click", function() {
+	    $("#fi_cancel_bt").off("click.fiEditCancel").on("click.fiEditCancel", function() {
 			$(".fi_pro").show();
 			$(".fi_edit").empty().hide();
 			//更新頁面的方法
@@ -750,7 +763,6 @@ function tab1_search_dist_change(istemp) {
 	var target = $("#search_dist").val();
 	var haswid = [];
 	for (var i = 0; i < list.length; i++) {
-		if (i == 39) debugger;
 		if (haswid.includes(list[i].wid)) continue;
 		if (istemp && target.includes(list[i].distId) && tempselect1.wkng.includes(list[i].wid))
 			$("#search_wkng").append('<option value="' + list[i].wid + '" selected>' + htmlEncode(list[i].wkngName) + '</option>');
@@ -1189,6 +1201,7 @@ function tab1_search_list_click(that) {
 	$("#te_tab1_list tr").removeClass("active"); 
 	$(that).addClass("active");
 	$(".fc_detail_data").show();
+	fi_scheduleMapUpdate(fi_tab1);
 
 	var post = {};
 	post.Type = "1";
@@ -1209,6 +1222,7 @@ function tab2_search_list_click(that) {
 	$("#te_tab2_list tr").removeClass("active");
 	$(that).addClass("active");
 	$(".fc_detail_data").show();
+	fi_scheduleMapUpdate(fi_tab2);
 	
 	var post = {};
 	post.Type = "2";
@@ -1229,6 +1243,7 @@ function tab3_search_list_click(that, typename) {
 	$("#te_tab3_list tr").removeClass("active");
 	$(that).addClass("active");
 	$(".fc_detail_data").show();
+	fi_scheduleMapUpdate(fi_tab3);
 	
 	var post = {};
 	post.Type = "5";
@@ -1345,6 +1360,7 @@ function GetAssociateOptionMaps(targettab, targetlist, targetclick, post) {
 	if (selfmap) {
 		targettab.mainfeature = selfmap;
 		targettab.map.getView().fit(selfmap.getGeometry().getExtent(), { maxZoom: 18});
+		fi_scheduleMapUpdate(targettab);
 	}
 	$.ajax({
 		url: ApiRequestURL + "ProjectManagement/GetAssociateOptionMaps",
@@ -1676,6 +1692,7 @@ function GetAssociateOptionMapsForForest(targettab, targetlist, targetclick, pos
 				if (selfmap) {
 					targettab.mainfeature = selfmap;
 					targettab.map.getView().fit(selfmap.getGeometry().getExtent(), { maxZoom: 18});
+					fi_scheduleMapUpdate(targettab);
 				}
 				if (tempselect1.aselect) {
 					var $objTr = $("#list_item_" + tempselect1.aselect);
@@ -1924,6 +1941,7 @@ function fi_fc_list1_item_click(that) {
 		fi_tab1.SelectSingleClick.getFeatures().clear();
 		fi_tab1.SelectSingleClick.getFeatures().push(feature);
 		fi_tab1.map.getView().fit(feature.getGeometry().getExtent(), { maxZoom: 18});
+		fi_scheduleMapUpdate(fi_tab1);
 	}
 }
 function fi_fc_list2_item_click(that) {
@@ -1945,6 +1963,7 @@ function fi_fc_list2_item_click(that) {
 		fi_tab2.SelectSingleClick.getFeatures().clear();
 		fi_tab2.SelectSingleClick.getFeatures().push(feature);
 		fi_tab2.map.getView().fit(feature.getGeometry().getExtent(), { maxZoom: 18});
+		fi_scheduleMapUpdate(fi_tab2);
 	}
 }
 function fi_fc_list3_item_click(that) {
@@ -1966,6 +1985,7 @@ function fi_fc_list3_item_click(that) {
 		fi_tab3.SelectSingleClick.getFeatures().clear();
 		fi_tab3.SelectSingleClick.getFeatures().push(feature);
 		fi_tab3.map.getView().fit(feature.getGeometry().getExtent(), { maxZoom: 18});
+		fi_scheduleMapUpdate(fi_tab3);
 	}
 }
 // 點擊feature事件
@@ -3266,6 +3286,7 @@ function fi_tab5_list_searchlistClick(that) {
 	if (selftmap) {
 		fi_tab5.mainfeature = selftmap;
 		fi_tab5.map.getView().fit(selftmap.getGeometry().getExtent(), { maxZoom: 18});
+		fi_scheduleMapUpdate(fi_tab5);
 	}
 	
 	$.ajax({
@@ -3278,6 +3299,7 @@ function fi_tab5_list_searchlistClick(that) {
 				var d = data.data;
 				
 				$(".fc_detail_data").show();
+				fi_scheduleMapUpdate(fi_tab5);
 				
 				var lcstate = d.isForsetLand;
 				$('#fcland_state').empty();
@@ -4017,7 +4039,7 @@ function tab5_sample() {
 
 function fi_tab5_ass_click(){
 	$(".fi_tab_content").hide();
-	$(".fi_tab").on("click",function(){
+	$(".fi_tab").off("click.fiAssociateTab").on("click.fiAssociateTab",function(){
 		if($(this).hasClass("active")){
 			$(this).removeClass("active");
 			$(".fi_tab_content").slideUp().removeClass("active");
@@ -4030,7 +4052,7 @@ function fi_tab5_ass_click(){
 		$(this).parent().find(".fi_tab_content").addClass("active").slideDown();
 	});
 	
-	$(".tab_content_table tr").on("click",function(){
+	$(".tab_content_table tr").off("click.fiAssociateRow").on("click.fiAssociateRow",function(){
 		$(".tab_content_table tr").removeClass("active");
 		$(this).addClass("active");
 	});
@@ -4125,6 +4147,7 @@ function tab6_go_search() {
 				{
 					alert("上傳比對成功.");
 					$(".fc_detail_data").show();
+					fi_scheduleMapUpdate(fi_tab6);
 					$("#fc_detail_list").empty();
 					$("#fc_detail_list").load("./views/temp/fc_data_temp.html");
 					$(".btn-wid").hide();
@@ -4248,6 +4271,7 @@ function fi_tab6_getnow(sid) {
 					fi_tab6.map.geomvector_source.addFeature(feature);
 				}
 				fi_tab6.map.getView().fit(fi_tab6.map.geomvector_source.getExtent(), { maxZoom: 18});
+				fi_scheduleMapUpdate(fi_tab6);
 			}
 			setTimeout(function() {
 				WaitingShow(false);
@@ -4270,7 +4294,7 @@ function tab6_reset() {
 
 function fi_tab6_ass_click() {
 	$(".fi_tab_content").hide();
-	$(".fi_tab").on("click",function(){
+	$(".fi_tab").off("click.fiAssociateTab").on("click.fiAssociateTab",function(){
 		if($(this).hasClass("active")){
 			$(this).removeClass("active");
 			$(".fi_tab_content").slideUp().removeClass("active");
@@ -4283,7 +4307,7 @@ function fi_tab6_ass_click() {
 		$(this).parent().find(".fi_tab_content").addClass("active").slideDown();
 	});
 	
-	$(".tab_content_table tr").on("click",function(){
+	$(".tab_content_table tr").off("click.fiAssociateRow").on("click.fiAssociateRow",function(){
 		$(".tab_content_table tr").removeClass("active");
 		$(this).addClass("active");
 	});
@@ -4324,6 +4348,7 @@ function fi_fc_list6_item_click(that) {
 		fi_tab6.SelectSingleClick.getFeatures().clear();
 		fi_tab6.SelectSingleClick.getFeatures().push(feature);
 		fi_tab6.map.getView().fit(feature.getGeometry().getExtent(), { maxZoom: 18});
+		fi_scheduleMapUpdate(fi_tab6);
 	}
 }
 

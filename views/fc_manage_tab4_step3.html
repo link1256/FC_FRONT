@@ -7,116 +7,110 @@
 		<div class="row_flex">
 		<div class="new_ver">
 		   <label for="ver_year" class="form-label">年度</label>
-		   <select id="ver_year1" class="form-select" style="width: 160px;">
+		   <select id="ver_year1" class="form-select csp-style-37">
 			  <option value="110" selected>110</option>
 			</select>
 		</div>
-		
+
 		<div class="new_ver">
 		   <label for="ver_month1" class="form-label">月份</label>
-		   <select id="ver_month1" class="form-select" style="width: 160px;">		 
+		   <select id="ver_month1" class="form-select csp-style-37">
 			  <option value="8" selected>8</option>
 			</select>
 		</div>
-		
+
 		<!-- <div class="new_ver"> -->
-		<!-- <button type="button" class="btn btn-success custom_bt0" onclick="city_result()">確認結果</button> -->
+		<!-- <button type="button" class="btn btn-success custom_bt0" data-csp-onclick="city_result()">確認結果</button> -->
 		<!-- </div> -->
 
 		</div>
-			
+
 		</div>
-		
+
 		<div class="content_row_47">
 		<div class="row_text">比較版次</div>
 		<div class="row_flex">
 		<div class="new_ver">
 		   <label for="ver_year" class="form-label">年度</label>
-		   <select id="ver_year2" class="form-select" style="width: 160px;">
+		   <select id="ver_year2" class="form-select csp-style-37">
 			  <option value="110" selected>110</option>
 			</select>
 		</div>
-		
+
 		<div class="new_ver">
 		   <label for="ver_month2" class="form-label">月份</label>
-		   <select id="ver_month2" class="form-select" style="width: 160px;">
-			  <option value="3" selected>3</option>			  
+		   <select id="ver_month2" class="form-select csp-style-37">
+			  <option value="3" selected>3</option>
 			</select>
 		</div>
 
 		</div>
-			
+
 		</div>
-		
+
 	</div>
 	<div class="row_flex row_justify">
-	
+
 			<div class="content_row_47">
 		<div class="row_text">已執行結果</div>
 		<div class="row_flex">
 		<!-- to do 讀取資料庫該版次匯入紀錄 -->
-		<div class="new_ver" style="width: 100%;">
+		<div class="new_ver csp-style-34">
 		   <label for="" class="form-label">已上傳縣市列表</label>
 		   <table  class="table table-striped " id="city_list">
 	<thead>
 	<tr>
-		<th style="border-radius:10px 0 0 0;">序號</th>
+		<th class="csp-style-101">序號</th>
 		<th>縣市</th>
 		<th>資料筆數</th>
-		<th>執行時間</th>			
-		<th style="border-radius: 0 10px 0 0 ;">執行人員</th>
+		<th>執行時間</th>
+		<th class="csp-style-102">執行人員</th>
 	</tr>
 	</thead>
 	<tbody id="city_result">
-	
+
 	</tbody>
 	</table>
 		</div>
-				
+
 		</div>
-		</div>	
-	
+		</div>
+
 	<div class="content_row_47">
 		<div class="row_text">選擇匯入檔案</div>
 		<div class="row_flex">
 		<!-- to do 讀取特定路徑之檔案列表,路徑參數應為變數 -->
-		<div class="new_ver" style="width: 100%;">
+		<div class="new_ver csp-style-34">
 		   <label for="" class="form-label">已上傳檔案列表</label>
 		   <table  class="table table-striped " id="file_list">
 	<thead>
 	<tr>
-		<th style="border-radius:10px 0 0 0;">序號</th>
+		<th class="csp-style-101">序號</th>
 		<th>檔案名稱</th>
 		<th>檔案大小</th>
-		<th>檔案完整性</th>	
-        <th>最後修改時間</th>		
-		<th style="border-radius: 0 10px 0 0 ;">管理</th>
+		<th>檔案完整性</th>
+        <th>最後修改時間</th>
+		<th class="csp-style-102">管理</th>
 	</tr>
 	</thead>
 	<tbody>
 	</tbody>
 	</table>
 		</div>
-				
+
 		</div>
-		</div>	
-				
 		</div>
-	
+
+		</div>
+
 	</div>
-	
-	
+
+
 	</div>
-	
-	
-		
+
+
+
 	</div>
 	<!-- 上傳預覽子功能頁面區 -->
 	<script src="js/fc_manage.js"></script>
-	<script>
-	   tab();
-       upload_result_owner();
-	   city_result();
-	   GetFileList();
-    </script>
-	
+	<script src="./js/csp-inline/views_2f_fc_5f_manage_5f_tab4_5f_step3_1.js"></script>

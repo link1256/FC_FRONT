@@ -1,0 +1,3 @@
+getGroupList();
+	getFunctionList();
+	GetLogList();

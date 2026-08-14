@@ -683,7 +683,7 @@ function map(target, m, f, l) {
 		mmap.removeInteraction(draw);					
 	});
 	
-	mmap.updateSize();
+	refreshMapSizeWhenReady(mmap, target);
 	
 	//透過回傳物件的方式處理圖層
 	//測量用group
@@ -872,6 +872,35 @@ function map(target, m, f, l) {
 	}
 	
 	return mmap;
+}
+
+function refreshMapSizeWhenReady(mmap, target) {
+	var targetElement = typeof target === "string" ? document.getElementById(target) : target;
+	var attempts = 0;
+	var delays = [0, 16, 50, 100, 250, 500, 1000];
+
+	function refresh() {
+		attempts += 1;
+		if (targetElement) {
+			var rect = targetElement.getBoundingClientRect();
+			if (rect.width > 0 && rect.height > 0) {
+				mmap.updateSize();
+			}
+		}
+		else {
+			mmap.updateSize();
+		}
+		if (attempts < delays.length) {
+			window.setTimeout(refresh, delays[attempts]);
+		}
+	}
+
+	if (window.requestAnimationFrame) {
+		window.requestAnimationFrame(refresh);
+	}
+	else {
+		refresh();
+	}
 }
 
 

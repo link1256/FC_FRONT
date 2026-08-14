@@ -1,22 +1,22 @@
-<div class="content_row_data" id="basic_data" style="position: relative">
+<div class="content_row_data csp-style-91" id="basic_data">
 	<div class="row_text">地籍圖資</div>
 	<div class="buttonzone">
-		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_export_assSHP();">匯出範圍</button>
-		<button type="button" class="btn btn-success search_submit custom_bt2" onclick="te_export_assEXCEL();">匯出清冊</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="te_export_assSHP();">匯出範圍</button>
+		<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="te_export_assEXCEL();">匯出清冊</button>
 	</div>
-	<div class="search_type te_tab_review">	
+	<div class="search_type te_tab_review">
 		<ul class="nav nav-tabs">
-			<li class="nav-item5 tab1" style="width: 250px;">
+			<li class="nav-item5 tab1 csp-style-157">
 				<span id="review_1" class="nav-link active">事業區內地籍清單(0筆)</span>
 			</li>
-			<li class="nav-item5 tab2" style="width: 250px;">
+			<li class="nav-item5 tab2 csp-style-157">
 				<span id="review_2" class="nav-link">非事業區內地籍清單(0筆)</span>
 			</li>
 		</ul>
 	</div>
-	<div class="row_table_zone" style="margin-top: 10px;">
-		<div id="te_inarea_table" style="height:calc(42vh - 155px);" class="main_scroll_mini_4">
-			<table id="zone_inarea" class="table" style="margin-bottom:0px;word-break: keep-all;">
+	<div class="row_table_zone csp-style-158">
+		<div id="te_inarea_table" class="main_scroll_mini_4 csp-style-156">
+			<table id="zone_inarea" class="table csp-style-57">
 				<thead class="thead_fix">
 					<tr>
 						<th>序號</th>
@@ -36,8 +36,8 @@
 				</tbody>
 			</table>
 		</div>
-		<div id="te_notinarea_table" style="height:calc(42vh - 155px);display: none;" class="main_scroll_mini_4">
-			<table class="table" style="margin-bottom:0px;word-break: keep-all;">
+		<div id="te_notinarea_table" class="main_scroll_mini_4 csp-style-159">
+			<table class="table csp-style-57">
 				<thead class="thead_fix">
 					<tr>
 						<th>序號</th>
@@ -55,13 +55,11 @@
 		</div>
 	</div>
 </div>
-<div style="display:flex; justify-content: space-between;">
-	<div class="content_row_data list_height_map" style="width: 100%;">
+<div class="csp-style-131">
+	<div class="content_row_data list_height_map csp-style-34">
 		<div class="row_text">空間位置</div>
 		<!-- //塞入圖資空間資料 -->
-		<div id="mmaplist" style="height: calc(100% - 70px);"></div>
+		<div id="mmaplist" class="csp-style-134"></div>
 	</div>
 </div>
-<script>
-    te_list_data_init();
-</script>
+<script src="./js/csp-inline/views_2f_temp_2f_list_5f_data_5f_temp_1.js"></script>

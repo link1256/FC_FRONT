@@ -29,8 +29,8 @@
 				</select>
 			</div>
 			<div class="rowsearchitem">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="getApiApplyList();">搜尋</button>
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="clearApiApplySearch();">清除條件</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="getApiApplyList();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="clearApiApplySearch();">清除條件</button>
 			</div>
 		</div>
 	</div>
@@ -61,8 +61,8 @@
 			</div>
 			<div class="modal-body">
 				<div class="row_text2">申請人基本資料</div>
-				<input id="review_sid" style="display: none;" type="text" />
-				<table style="width: 100%;">
+				<input id="review_sid" type="text"  class="csp-style-12" />
+				<table class="csp-style-34">
 					<tbody>
 						<tr>
 							<td>申請單編號</td>
@@ -91,7 +91,7 @@
 					</tbody>
 				</table>
 				<div class="row_text2">API服務資料</div>
-				<table style="width: 100%;">
+				<table class="csp-style-34">
 					<tbody>
 						<tr>
 							<td>介接應用程式名稱</td>
@@ -131,13 +131,11 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="modal-footer" style="justify-content: center;">
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="$('#API_Apply').modal('hide');">取消</button>
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ReviewApplyApi();">儲存</button>
+			<div class="modal-footer csp-style-13">
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="$('#API_Apply').modal('hide');">取消</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="ReviewApplyApi();">儲存</button>
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-	sys_api_init();
-</script>
+<script src="./js/csp-inline/views_2f_sys_5f_manage_5f_tab4_1.js"></script>

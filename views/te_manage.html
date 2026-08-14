@@ -1,6 +1,6 @@
 <!-- 功能頁面區 -->
 <div>
-    <div class="search_type te_manage">	
+    <div class="search_type te_manage">
 		<div class="scroller scroller-left float-left"><i class="fa fa-chevron-left"></i></div>
 		<div class="scroller scroller-right float-right"><i class="fa fa-chevron-right"></i></div>
 		<div class="wrapper">
@@ -29,18 +29,18 @@
 			</ul>
 		</div>
 		<div id="dropdowntrig_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig">
-			<a class="dropdown-item ttab1" href="#" onclick="te_ini_drop_page('change_all');">異動總覽</a>
-			<a class="dropdown-item ttab2" href="#" onclick="te_ini_drop_page('change_set');">異動事件登記</a>
-			<a class="dropdown-item ttab3" href="#" onclick="te_ini_drop_page('change_check');">異動事件確認</a>
-			<a class="dropdown-item ttab4" href="#" onclick="te_ini_drop_page('change_statistics');">異動統計</a>
+			<a class="dropdown-item ttab1" href="#" data-csp-onclick="te_ini_drop_page('change_all');">異動總覽</a>
+			<a class="dropdown-item ttab2" href="#" data-csp-onclick="te_ini_drop_page('change_set');">異動事件登記</a>
+			<a class="dropdown-item ttab3" href="#" data-csp-onclick="te_ini_drop_page('change_check');">異動事件確認</a>
+			<a class="dropdown-item ttab4" href="#" data-csp-onclick="te_ini_drop_page('change_statistics');">異動統計</a>
 		</div>
 		<div id="dropdowntrig_ul2" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig2">
-			<a class="dropdown-item ttab5" href="#" onclick="te_ini_drop_page('case_all');">案件總覽</a>
-			<a class="dropdown-item ttab6" href="#" onclick="te_ini_drop_page('case_statistics');">案件統計</a>
+			<a class="dropdown-item ttab5" href="#" data-csp-onclick="te_ini_drop_page('case_all');">案件總覽</a>
+			<a class="dropdown-item ttab6" href="#" data-csp-onclick="te_ini_drop_page('case_statistics');">案件統計</a>
 		</div>
 		<div id="dropdowntrig_ul3" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="dropdowntrig3">
-			<a class="dropdown-item ttab7" href="#" onclick="te_ini_drop_page('forest_update');">林班地籍異動</a>
-			<a class="dropdown-item ttab8" href="#" onclick="te_ini_drop_page('land_check');">地籍存摺比對</a>
+			<a class="dropdown-item ttab7" href="#" data-csp-onclick="te_ini_drop_page('forest_update');">林班地籍異動</a>
+			<a class="dropdown-item ttab8" href="#" data-csp-onclick="te_ini_drop_page('land_check');">地籍存摺比對</a>
 		</div>
 	</div>
 	<div class="tab_body main_scroll">
@@ -70,91 +70,6 @@
 		</div>
 	</div>
 </div>
-	
+
 <!-- 功能頁面區 -->
-<script>
-	 tab("te_manage");
-	 te_ini_drop();
-	 $(document).ready(function(){
-		var widthOfList = function(){
-			var itemsWidth = 0;
-			$('.navlist li').each(function(){
-				var itemWidth = $(this).outerWidth();
-				itemsWidth += itemWidth;
-			});
-			return itemsWidth;
-		};
-
-		var widthOfHidden = function(){
-			var ww = 0 - $('.wrapper').outerWidth();
-			var hw = (($('.wrapper').outerWidth()) - widthOfList() - getLeftPosi()) - 40;
-			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
-			
-			if(ww > hw) {
-				return (rp > ww ? rp : ww);
-			}
-			else {
-				return (rp > hw ? rp : hw);
-			}
-		};
-
-		var getLeftPosi = function(){
-			var ww = 0 - $('.wrapper').outerWidth();
-			var lp = $('.navlist').position().left;
-			
-			if(ww > lp) {
-				return ww;
-			}
-			else {
-				return lp;
-			}
-		};
-
-		var reAdjust = function(){
-			// check right pos of last nav item
-			var rp = $(document).width() - ($('.navlist li').last().offset().left + $('.navlist li').last().outerWidth());
-			if (($('.wrapper').outerWidth()) < widthOfList() && (rp<0)) {
-				$('.scroller-right').show().css('display', 'flex');
-			}
-			else {
-				$('.scroller-right').hide();
-			}
-
-			if (getLeftPosi()<0) {
-				$('.scroller-left').show().css('display', 'flex');
-			}
-			else {
-				$('.item').animate({left: "-=" + getLeftPosi() + "px"}, 'slow');
-				$('.scroller-left').hide();
-			}
-		}
-
-		reAdjust();
-
-		$(window).on('resize',function(e){  
-			reAdjust();
-		});
-
-		$('.scroller-right').click(function() {
-			$('.scroller-left').fadeIn('slow');
-			$('.scroller-right').fadeOut('slow');
-
-			$('.navlist').animate({left:"+=" + widthOfHidden() + "px"}, 'slow',function(){
-				reAdjust();
-			});
-		});
-
-		$('.scroller-left').click(function() {
-			$('.scroller-right').fadeIn('slow');
-			$('.scroller-left').fadeOut('slow');
-		  
-			$('.navlist').animate({left:"-=" + getLeftPosi() + "px"}, 'slow',function(){
-				reAdjust();
-			});
-		});
-	});
-	
-	upload_result_owner();
-	searchlistinit(); //初始化林區管理處選項
-</script>
-	
+<script src="./js/csp-inline/views_2f_te_5f_manage_1.js"></script>

@@ -5,108 +5,108 @@
 		<div id="map_window">
 			<i class="fas fa-caret-square-left"></i>
 		</div>
-		
+
 		<div class="window_hide">
 			查詢及結果
 		</div>
-		
+
 		<div class="row_text map_flex">
 			篩選條件
 			<div id="list_window">
 				<i class="fas fa-caret-square-down"></i>
 			</div>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+				<label for="search_county" class="form-label csp-style-43">縣市</label>
 			</div>
-			<select id="search_county" class="form-select" onchange="fc_tab1_getTownList(this);">
+			<select id="search_county" class="form-select" data-csp-onchange="fc_tab1_getTownList(this);">
 				<option selected value="-1">請選擇</option>
 			</select>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_town" class="form-label" style="width: 110px;">鄉鎮</label>
+				<label for="search_town" class="form-label csp-style-43">鄉鎮</label>
 			</div>
-			<select id="search_town" class="form-select" onchange="fc_tab1_getLandList();">
+			<select id="search_town" class="form-select" data-csp-onchange="fc_tab1_getLandList();">
 				<option selected value="-1">請選擇</option>
 			</select>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_sec" class="form-label"  style="width: 110px;">地段</label>
+				<label for="search_sec" class="form-label csp-style-43" >地段</label>
 			</div>
 			<select id="search_sec">
 				<option selected value="-1">請選擇</option>
 			</select>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_land_no"  style="width: 110px;">地號</label>
+				<label for="search_land_no"  class="csp-style-43">地號</label>
 			</div>
 			<div class="search_land_no">
-				<input class="form-control " id="search_number1" maxlength="4"><span style="margin: 4px;">-</span>
-				<input class="form-control " id="search_number2" maxlength="4">  
+				<input class="form-control " id="search_number1" maxlength="4"><span class="csp-style-4">-</span>
+				<input class="form-control " id="search_number2" maxlength="4">
 			</div>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_multi_land_no"  style="width: 110px;">多筆地號</label>
+				<label for="search_multi_land_no"  class="csp-style-43">多筆地號</label>
 			</div>
 			<div class="search_multi_land_no">
 				<input class="form-control" id="search_multi_land_no" placeholder="地號範例:3,3-1,3-2" />
 			</div>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_zoning"  style="width: 110px;">使用分區</label>
+				<label for="search_zoning"  class="csp-style-43">使用分區</label>
 			</div>
 			<select id="search_zoning" multiple>
 
 			</select>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_manage"  style="width: 110px;">管理單位</label>
+				<label for="search_manage"  class="csp-style-43">管理單位</label>
 			</div>
 			<div class="search_manage">
 				<input class="form-control" id="search_manage" placeholder="管理單位名稱" />
 			</div>
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-			   <label for="search_land_code"  style="width: 110px;">地籍編碼</label>
+			   <label for="search_land_code"  class="csp-style-43">地籍編碼</label>
 			</div>
 			<input class="form-control" id="search_land_code" placeholder="AB123456780000" maxlength="14" size="14" />
 		</div>
-		
+
 		<div class="new_ver_flex map_flex">
 			<div>
-				<label for="search_land_no"  style="width: 110px;">坐標定位</label>
+				<label for="search_land_no"  class="csp-style-43">坐標定位</label>
 			</div>
 			<div class="search_land_no">
-				<input class="form-control " id="search_X" maxlength="6" placeholder="TWD97-X"/><span style="margin: 4px;">-</span>
+				<input class="form-control " id="search_X" maxlength="6" placeholder="TWD97-X"/><span class="csp-style-4">-</span>
 				<input class="form-control " id="search_Y" maxlength="7" placeholder="TWD97-Y"/>
 			</div>
 		</div>
-		
-		<div class="new_ver new_ver_flex map_flex AllCenter" style="text-align:center;">
-			<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab1_queryLandList();">查詢</button>
-			<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="fc_tab1_reset();">重置</button>
+
+		<div class="new_ver new_ver_flex map_flex AllCenter csp-style-3">
+			<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="fc_tab1_queryLandList();">查詢</button>
+			<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="fc_tab1_reset();">重置</button>
 		</div>
 
 	</div>
 
-	<div id="m_list" class="content_row_search map_flex" style="height: calc(100vh - 745px)">
-		<div class="row_text" style="position: relative;">
+	<div id="m_list" class="content_row_search map_flex csp-style-103">
+		<div class="row_text csp-style-91">
 			地籍列表
 			<span id="fc_tab1_count"></span>
 		</div>
@@ -124,7 +124,7 @@
 <div class="fc_detail_data_map">
 <!-- <圖資> -->
 <div class="fc_map_detail">
-<div id="mmap" style="width: 100%; height: calc(100% - 10px); position: relative; top: 8px;"></div>
+<div id="mmap" class="csp-style-78"></div>
 <div id="big_window">
 	<i class="fas fa-caret-square-down"></i>
 </div>
@@ -134,9 +134,9 @@
 
 </div>
 
-<div class="flex" style="height:47%; margin-top: -10px;">
+<div class="flex csp-style-104">
 <!-- <地籍標示部> -->
-<div class="fc_fc_detail" style="margin-right:10px">
+<div class="fc_fc_detail csp-style-22">
 <div class="row_text">標示部</div>
 <div id="fc_main_data" class="main_scroll_mini_4">
 
@@ -156,17 +156,17 @@
 </div>
 
 <div class="fc_partB">
-	<div class="map_flex2" style="width:100%;height: calc(100% - 8px);">
+	<div class="map_flex2 csp-style-105">
 	<!-- <功能區-權限判斷> -->
 	<div class="fi_manage_area">
 	   <div>
-		  <button type="button" id="fi_note_bt" style="width: 120px;" class="btn btn-warning fi_button" onclick="fc_tab1_notification();">資料註記</button>
-	      <button id="fitab1dropdowntrig" type="button" class="btn btn-secondary fi_button dropdown-toggle" style="width: 115px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
+		  <button type="button" id="fi_note_bt" class="btn btn-warning fi_button csp-style-106" data-csp-onclick="fc_tab1_notification();">資料註記</button>
+	      <button id="fitab1dropdowntrig" type="button" class="btn btn-secondary fi_button dropdown-toggle csp-style-107" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">匯出SHP</button>
 		  <div id="dropdowntrig_fi_tabl_ul" class="dropdown-menu dropdown-menu-customwidth" aria-labelledby="fitab1dropdowntrig">
-			<a class="dropdown-item ttab1" href="#" onclick="fc_tab1_downloadshp();">地號</a>
-			<a class="dropdown-item ttab3" href="#" onclick="fc_tab1_downloadASSshp();">地段</a>
+			<a class="dropdown-item ttab1" href="#" data-csp-onclick="fc_tab1_downloadshp();">地號</a>
+			<a class="dropdown-item ttab3" href="#" data-csp-onclick="fc_tab1_downloadASSshp();">地段</a>
 	      </div>
-		 <button type="button" class="btn btn-secondary fi_button1" style="width: 150px;" onclick="fc_tab1_api();">所有權部資訊</button>
+		 <button type="button" class="btn btn-secondary fi_button1 csp-style-35" data-csp-onclick="fc_tab1_api();">所有權部資訊</button>
 	   </div>
 	</div>
 	<!-- <功能區-權限判斷> -->
@@ -181,52 +181,52 @@
 		</div>
 	</div>
 	<!-- <細項> -->
-	<div class="data_detail" style="overflow: auto;">
+	<div class="data_detail csp-style-108">
 	<div class="row_text">
 		關聯項目
 	</div>
 	<div class="layerstate">
 		<div class="custom-switch form-switch">
 			圖層狀態
-			<input class="form-check-input" type="checkbox" onchange="fc_tab1_AssSwitch(this);" checked />
+			<input class="form-check-input" type="checkbox" data-csp-onchange="fc_tab1_AssSwitch(this);" checked />
 		</div>
 	</div>
 	<div id="relation_fi" class="main_scroll_mini">
 		<!-- //塞入圖資基本資料 -->
-		<div class="fi_tab_frame" style="display:none;">
+		<div class="fi_tab_frame csp-style-8">
 		<div class="fi_tab" id="fi_tab_list5">
-			<div>林管處轄區</div>		
+			<div>林管處轄區</div>
 		</div>
 		<div class="fi_tab_content">
 		<table class="table tab_content_table fc_tab1_associate" id="type5_list">
 		</table>
 		</div>
 		</div>
-		<hr style="display:none;">
+		<hr class="csp-style-8">
 		<div class="fi_tab_frame">
 		<div class="fi_tab" id="fi_tab_list1">
-		<div><div class="fi_marker" style="background-color:#2fd321;"></div>國有林事業區</div>
+		<div><div class="fi_marker csp-style-109"></div>國有林事業區</div>
 		<div class="fi_amount" id="type1_amount">共0筆</div>
 		</div>
-		
+
 		<div class="fi_tab_content">
 			<table class="table tab_content_table fc_tab1_associate" id="type1_list">
-			  
+
 			</table>
 		</div>
-		
+
 		</div>
 		<hr>
 		<div class="fi_tab_frame">
 		<div class="fi_tab" id="fi_tab_list2">
-		<div><div class="fi_marker" style="background-color:#ffb700;"></div>保安林</div>
+		<div><div class="fi_marker csp-style-110"></div>保安林</div>
 		<div class="fi_amount" id="type2_amount">共0筆</div>
-		
+
 		</div>
-		
+
 		<div class="fi_tab_content">
 		<table class="table tab_content_table fc_tab1_associate" id="type2_list">
-			
+
 		</table>
 
 		</div>
@@ -234,10 +234,10 @@
 		<hr>
 		<div class="fi_tab_frame">
 		<div class="fi_tab" id="fi_tab_list3">
-		<div><div class="fi_marker" style="background-color:#ff780e;"></div>森林遊樂區</div>
+		<div><div class="fi_marker csp-style-111"></div>森林遊樂區</div>
 		<div class="fi_amount" id="type3_amount">共0筆</div>
 		</div>
-		
+
 		<div class="fi_tab_content">
 		<table class="table  tab_content_table fc_tab1_associate" id="type3_list">
 
@@ -247,10 +247,10 @@
 		<hr>
 		<div class="fi_tab_frame">
 		<div class="fi_tab" id="fi_tab_list4">
-		<div><div class="fi_marker" style="background-color:#ffee00;"></div>環境敏感區</div>
+		<div><div class="fi_marker csp-style-112"></div>環境敏感區</div>
 		<div class="fi_amount" id="type4_amount">共0筆</div>
 		</div>
-		
+
 		<div class="fi_tab_content">
 		<table class="table  tab_content_table fc_tab1_associate" id="type4_list">
 
@@ -260,10 +260,10 @@
 		<hr>
 		<div class="fi_tab_frame">
 		<div class="fi_tab" id="fi_tab_list6">
-		<div><div class="fi_marker" style="background-color:#b0e404;"></div>國土綠網軸帶</div>
+		<div><div class="fi_marker csp-style-113"></div>國土綠網軸帶</div>
 		<div class="fi_amount" id="type6_amount">共0筆</div>
 		</div>
-		
+
 		<div class="fi_tab_content">
 		<table class="table  tab_content_table fc_tab1_associate" id="type6_list">
 
@@ -273,10 +273,10 @@
 		<hr>
 		<div class="fi_tab_frame">
 		<div class="fi_tab" id="fi_tab_list7">
-		<div><div class="fi_marker" style="background-color:#01cadb;"></div>國土綠網關注區</div>
+		<div><div class="fi_marker csp-style-114"></div>國土綠網關注區</div>
 		<div class="fi_amount" id="type7_amount">共0筆</div>
 		</div>
-		
+
 		<div class="fi_tab_content">
 		<table class="table  tab_content_table fc_tab1_associate" id="type7_list">
 
@@ -301,25 +301,25 @@
 				<h5 id="addnewte_modal" class="modal-title">所有權資訊</h5>
 			</div>
 			<div class="modal-body">
-				<div class="search_type ownerdata_manager" style="margin-bottom: 20px;">	
+				<div class="search_type ownerdata_manager csp-style-115">
 					<ul class="nav nav-tabs">
-						<li class="nav-item8 tab1" style="width: 200px;">
+						<li class="nav-item8 tab1 csp-style-21">
 							<span class="nav-link active">所有權最新資訊</span>
 						</li>
-						<li class="nav-item8 tab2" style="width: 200px;">
+						<li class="nav-item8 tab2 csp-style-21">
 							<span class="nav-link">移轉歷程</span>
 						</li>
 					</ul>
 				</div>
-				<div id="owner_1" class="main_scroll_mini_4" style="max-height: 500px;">
-					
+				<div id="owner_1" class="main_scroll_mini_4 csp-style-116">
+
 				</div>
-				<div id="owner_2" class="main_scroll_mini_4" style="max-height: 500px; display: none;">
-					
+				<div id="owner_2" class="main_scroll_mini_4 csp-style-117">
+
 				</div>
 			</div>
-			<div class="modal-footer" style="justify-content: center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab1_owner_close();">確認</button>
+			<div class="modal-footer csp-style-13">
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="fc_tab1_owner_close();">確認</button>
 			</div>
 		</div>
 	</div>
@@ -332,117 +332,30 @@
 				<h5 id="addnewte_modal" class="modal-title">資料註記列表</h5>
 			</div>
 			<div class="modal-body">
-				<button id="not_add_btn" type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab1_notification_add();">新增</button>
-				<div style="height:calc(45vh);" class="main_scroll_mini main_scroll_mini2">
-					<table class="table_c" style="margin-bottom:0px;word-break: keep-all;">
+				<button id="not_add_btn" type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="fc_tab1_notification_add();">新增</button>
+				<div class="main_scroll_mini main_scroll_mini2 csp-style-56">
+					<table class="table_c csp-style-57">
 						<thead class="thead_fix">
 							<tr>
-								<th style="width: 100px;">時間</th>
-								<th style="width: 100px;">使用者</th>
-								<th style="width: 280px;">內容</th>
+								<th class="csp-style-118">時間</th>
+								<th class="csp-style-118">使用者</th>
+								<th class="csp-style-119">內容</th>
 								<th>管理</th>
 							</tr>
 						</thead>
 						<tbody id="fi_notification_body" class="ztbody">
 						</tbody>
-					</table>				
+					</table>
 				</div>
 			</div>
-			<div class="modal-footer" style="justify-content: center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="fc_tab1_notification_close();">確認</button>
+			<div class="modal-footer csp-style-13">
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="fc_tab1_notification_close();">確認</button>
 			</div>
 		</div>
 	</div>
 </div>
 
 
-</div>	
+</div>
 <!-- 頁面區 -->
-<script>
-	fc_tab1_init();
-	$(".fc_detail_data").hide();
-	tab6("ownerdata_manager");
-	$("#list_window").on("click",function() {
-		if ($(".new_ver_flex").hasClass("itemhide")) {
-			$(".new_ver_flex").removeClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
-			$("#m_list").css("height", "calc(100vh - 745px)");
-		}
-		else {
-			$(".new_ver_flex").addClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
-			$("#m_list").css("height", "calc(100vh - 243px)");
-		}
-	});
-	var isshowright = true;
-	$("#map_window").on("click",function() {
-		if ($(".map_flex").hasClass("itemhide")) {
-			$(".map_flex").removeClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
-			$(".search_div").width(400);
-			$(".map_cview").height("");
-			$(".fc_detail_data").width("calc(100vw - 420px)");
-			if (isshowright) {
-				$(".fc_partA").width("calc(60% - 10px)");
-				$(".fc_partB").width("40%");
-			} else {
-				$(".fc_partB").width("0%");
-				$(".fc_partA").width("calc(100% - 30px)");
-			}
-			$(".window_hide").hide();
-		}
-		else {
-			$(".map_flex").addClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
-			$(".search_div").width(80);
-			$(".map_cview").height("calc(100vh - 160px)");
-			$(".fc_detail_data").width("calc(100vw - 80px)");
-			
-			if (isshowright) {
-				$(".fc_partA").width("calc(70% - 10px)");
-				$(".fc_partB").width("30%");
-			} else {
-				$(".fc_partB").width("0%");
-				$(".fc_partA").width("calc(100% - 30px)");
-			}
-			
-			$(".window_hide").show();
-		}
-		if (fc_tab1 && fc_tab1.map) fc_tab1.map.updateSize();
-	});
-	$("#big_window3").on("click",function() {
-		if ($(".map_flex2").hasClass("itemhide")) {
-			$(".map_flex2").removeClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
-			$(".fc_partB").width("40%");
-			$(".fc_partA").width("calc(60% - 10px)");
-			isshowright = true;
-		}
-		else {
-			$(".map_flex2").addClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
-			$(".fc_partB").width("0%");
-			$(".fc_partA").width("calc(100% - 30px)");
-			isshowright = false;
-		}
-		if (fc_tab1 && fc_tab1.map) fc_tab1.map.updateSize();
-	});
-	$("#search_sec").selectpicker({
-		liveSearch: true
-	});
-	// $("#search_sec").selectpicker('toggle');
-	$("#search_zoning").multiselect({
-		buttonClass: 'form-select',
-		buttonTextAlignment: 'left',
-		buttonWidth: '235px',
-		nonSelectedText: '請選擇',
-		nSelectedText: '已選擇',
-		allSelectedText: '全選',
-		includeSelectAllOption: true,
-		templates: {
-			button: '<button type="button" class="multiselect dropdown-toggle" data-bs-toggle="dropdown"><span class="multiselect-selected-text"></span></button>',
-		}
-	});
-	// $("#search_zoning").selectpicker('toggle');
-</script>
-	
+<script src="./js/csp-inline/views_2f_fi_5f_manage_5f_tab1_1.js"></script>

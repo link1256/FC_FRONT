@@ -1,9 +1,9 @@
 <!-- 頁面區 -->
 <div class="manage_page">
 	<div class="search_div">
-		<div class="content_row_search" style="height: calc(100vh - 160px)">
+		<div class="content_row_search csp-style-68">
 			<div class="row_text">查詢條件</div>
-			<div class="search_type ce_search_tab2">	
+			<div class="search_type ce_search_tab2">
 				<ul class="nav nav-tabs">
 					<li class="nav-item7 tab1">
 						<span class="nav-link active">地籍資訊</span>
@@ -13,11 +13,11 @@
 					</li>
 				</ul>
 			</div>
-			<div style="display:flex">
+			<div class="csp-style-69">
 				<div id="ce_search_tab2_1">
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_date" class="form-label" style="width: 110px;">釐整日期</label>
+							<label for="search_date" class="form-label csp-style-43">釐整日期</label>
 						</div>
 						<input id="search_date_start1" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
 						至
@@ -25,23 +25,23 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_county" class="form-label" style="width: 110px;">縣市</label>
+							<label for="search_county" class="form-label csp-style-43">縣市</label>
 						</div>
-						<select id="search_county" class="form-select" onchange="ce_search_tab2_get_TownList();">
+						<select id="search_county" class="form-select" data-csp-onchange="ce_search_tab2_get_TownList();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_town" class="form-label" style="width: 110px;">鄉鎮</label>
+							<label for="search_town" class="form-label csp-style-43">鄉鎮</label>
 						</div>
-						<select id="search_town" class="form-select" onchange="ce_search_tab2_get_LandList();">
+						<select id="search_town" class="form-select" data-csp-onchange="ce_search_tab2_get_LandList();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_sec" class="form-label" style="width: 110px;">地段</label>
+							<label for="search_sec" class="form-label csp-style-43">地段</label>
 						</div>
 						<select id="search_sec" class="form-select">
 							<option selected value="-1">請選擇</option>
@@ -49,28 +49,28 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_land_no" class="form-label" style="width: 110px;">地號</label>
+							<label for="search_land_no" class="form-label csp-style-43">地號</label>
 						</div>
 						<div class="search_land_no">
-							<input class="form-control " id="search_number1" /><span style="margin: 4px;">-</span>
+							<input class="form-control " id="search_number1" /><span class="csp-style-4">-</span>
 							<input class="form-control " id="search_number2" />
 						</div>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_land_code" class="form-label" style="width: 110px;">地籍編碼</label>
+							<label for="search_land_code" class="form-label csp-style-43">地籍編碼</label>
 						</div>
 						<input class="form-control " id="search_land_code" />
 					</div>
-					<div class="new_ver" style="text-align:center;">
-						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ce_search_list_gosearch_1();">查詢</button>
-						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ce_search_list_reset_1()">重置</button>
+					<div class="new_ver csp-style-3">
+						<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="ce_search_list_gosearch_1();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="ce_search_list_reset_1()">重置</button>
 					</div>
 				</div>
-				<div id="ce_search_tab2_2" style="display: none;">
+				<div id="ce_search_tab2_2" class="csp-style-12">
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_date" class="form-label" style="width: 110px;">釐整日期</label>
+							<label for="search_date" class="form-label csp-style-43">釐整日期</label>
 						</div>
 						<input id="search_date_start2" class="form-control form-custom-select" type="text" placeholder="yyyy/mm/dd" autocomplete="off" />
 						至
@@ -78,43 +78,43 @@
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_dist" class="form-label" style="width: 110px;">管理單位</label>
+							<label for="search_dist" class="form-label csp-style-43">管理單位</label>
 						</div>
-						<select id="search_dist" class="form-select" onchange="ce_search_tab2_dist_change();">
+						<select id="search_dist" class="form-select" data-csp-onchange="ce_search_tab2_dist_change();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_wkng" class="form-label" style="width: 110px;">事業區</label>
+							<label for="search_wkng" class="form-label csp-style-43">事業區</label>
 						</div>
-						<select id="search_wkng" class="form-select" onchange="ce_search_tab2_wkng_change();">
+						<select id="search_wkng" class="form-select" data-csp-onchange="ce_search_tab2_wkng_change();">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
 					<div class="new_ver_flex">
 						<div>
-							<label for="search_cmpt" class="form-label" style="width: 110px;">林班</label>
+							<label for="search_cmpt" class="form-label csp-style-43">林班</label>
 						</div>
 						<select id="search_cmpt" class="form-select">
 							<option selected value="-1">請選擇</option>
 						</select>
 					</div>
-					<div class="new_ver" style="text-align:center;">
-						<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ce_search_list_gosearch_2();">查詢</button>
-						<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ce_search_list_reset_2()">重置</button>
+					<div class="new_ver csp-style-3">
+						<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="ce_search_list_gosearch_2();">查詢</button>
+						<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="ce_search_list_reset_2()">重置</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="query_1" class="detail_data main_scroll" style="display: none;">
-		<div class="content_row_data" id="basic_data" style="height: calc(100vh - 160px);">
+	<div id="query_1" class="detail_data main_scroll csp-style-12">
+		<div class="content_row_data csp-style-68" id="basic_data">
 			<div class="row_text">查詢結果</div>
-			<button type="button" class="btn btn-success search_submit custom_bt2" onclick="ce_searchlist_export();">匯出</button>
+			<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="ce_searchlist_export();">匯出</button>
 			<div id="sys_user_page">
-				<div class="main_scroll_mini_4 row_table_zone" style="margin-bottom: 10px;">
-					<table id="search_page" style="min-width: 100%; width: auto;">
+				<div class="main_scroll_mini_4 row_table_zone csp-style-70">
+					<table id="search_page" class="csp-style-71">
 						<thead>
 							<tr>
 								<td>釐整日期</td>
@@ -133,7 +133,7 @@
 							</tr>
 						</thead>
 						<tbody id="ce_search_result">
-							
+
 						</tbody>
 					</table>
 				</div>
@@ -142,8 +142,4 @@
 	</div>
 </div>
 <!-- 頁面區 -->
-<script>
-	tab5("ce_search_tab2");
-	ce_search_tab2_init();
-</script>
-	
+<script src="./js/csp-inline/views_2f_ce_5f_manage_5f_tab2_1.js"></script>

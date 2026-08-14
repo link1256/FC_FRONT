@@ -2,30 +2,30 @@
 	<div class="sidebar">
 	<!-- 搜尋區塊 -->
 	<div class="search">
-    <div class="search_type">	
+    <div class="search_type">
 	<ul class="nav nav-tabs">
 			  <li class="nav-item">
 				<span class="nav-link search_a active">統計查詢</span>
 			  </li>
 			  <li class="nav-item">
 				<span class="nav-link search_b">地籍查詢</span>
-			  </li>		  
+			  </li>
 		</ul>
 	</div>
-	<div class="main_tab search_a active">	
+	<div class="main_tab search_a active">
 		<div class="search_sub1">
 		<ul class="nav nav-tabs">
-			  <li class="nav-item">			    
+			  <li class="nav-item">
 				<span class="nav-link search_a_a active">快速查詢</span>
 			  </li>
 			  <li class="nav-item">
 				<span class="nav-link search_a_b">組合查詢</span>
-			  </li>			 
+			  </li>
 		</ul>
-		</div>	
-		<form id="search_sub1_form" style="text-align: center;">		
-		<div class="search_sub1_content">		
-		<div class="tab-pane search_a_a active">	
+		</div>
+		<form id="search_sub1_form" class="csp-style-2">
+		<div class="search_sub1_content">
+		<div class="tab-pane search_a_a active">
 		<div class="form-row">
 			<label for="search_own">土地權屬</label>
 			<div class="search_select">
@@ -53,7 +53,7 @@
 			  <select class="form-select" id="search_usezone">
 				  <option selected>不指定</option>
 				  <option value="1">農牧用地</option>
-				 
+
 			  </select>
 			</div>
 		  </div>
@@ -80,9 +80,9 @@
 		  </div>
 		</div>
 
-		
+
 		<div class="tab-pane search_a_b">
-		
+
 		<div class="form-row">
 			<label for="search_custom">組合名稱</label>
 			<div class="search_select">
@@ -90,11 +90,11 @@
 				  <option selected>全國林地範圍</option>
 				  <option value="1">東勢處轄管林地範圍</option>
 				  <option value="2">實驗林用地比例</option>
-				  
+
 			  </select>
 			</div>
 		  </div>
-		  <hr style=" margin: 10px;">
+		  <hr class="csp-style-1">
 		  <div class="custom_set">
 		     <div class="custom_set_title">參數內容</div>
 			 <div class="custom_set_content">
@@ -103,17 +103,17 @@
 			  <div>資料欄位3 < 林地</div>
 			 </div>
 		  </div>
-		  	 
-		</div>					
+
+		</div>
 		</div>
 		</form>
-		<div style="text-align:center;">
+		<div class="csp-style-3">
 		<button type="submit" class="btn btn-success search_submit">查詢</button>
 		<button type="reset" class="btn btn-success search_submit">重置</button>
 		</div>
 		<!-- </form> -->
 	</div>
-	
+
 	<div class="main_tab search_b">
 	<div class="search_sub2">
 		<ul class="nav nav-tabs">
@@ -126,11 +126,11 @@
 			  </li>
 			  <li class="nav-item">
 				<span class="nav-link search_b_c">保安林</span>
-			  </li>		  
+			  </li>
 		</ul>
 		</div>
-		<form id="search_sub2_form" style="text-align: center;">
-		<div class="search_sub2_content">		
+		<form id="search_sub2_form" class="csp-style-2">
+		<div class="search_sub2_content">
 		<div class="tab-pane search_b_a active">
 
 		<div class="form-row">
@@ -169,13 +169,13 @@
 		  <div class="form-row">
 			<label for="search_city">地號</label>
 			<div class="search_select">
-			  <input class="form-control " id="search_number1"><span style="margin: 4px;">-</span>
-			  <input class="form-control " id="search_number2">  
+			  <input class="form-control " id="search_number1"><span class="csp-style-4">-</span>
+			  <input class="form-control " id="search_number2">
 			</div>
 		  </div>
 		</div>
 		<div class="tab-pane search_b_b">
-		
+
 		<div class="form-row">
 			<label for="search_city">林管處</label>
 			<div class="search_select">
@@ -227,7 +227,7 @@
 		  </div>
 		</div>
 		<div class="tab-pane search_b_c">
-		
+
 		<div class="form-row">
 			<label for="search_city">林管處</label>
 			<div class="search_select">
@@ -278,10 +278,10 @@
 			</div>
 		  </div>
 		</div>
-		
+
 		</div>
 		</form>
-		<div style="text-align:center;">
+		<div class="csp-style-3">
 		<button type="submit" class="btn btn-success search_submit search_b_bt">查詢</button>
 		<button type="reset" class="btn btn-success search_submit search_b_reset_bt">重置</button>
 		</div>
@@ -289,14 +289,14 @@
 	</div>
 	</div>
 	<!-- 搜尋區塊 -->
-	
+
 	<div class="result_list">
 		<div class="result_title">
 		<span>查詢結果</span>
 		<div class="list_up"><i class="fas fa-angle-up"></i><i class="fas fa-angle-down icon_hide"></i></div>
 		</div>
 		<div class="result_list_content">
-		<div class="demo">		
+		<div class="demo">
 			<div class="result_item">台北市 內湖區 洲子段 0022-0001</div>
 			<div class="result_item">台北市 內湖區 洲子段 0022-0002</div>
 			<div class="result_item">台北市 內湖區 洲子段 0022-0003</div>
@@ -313,22 +313,22 @@
 			共<span id="result_list_sum">0</span>筆
 		</div>
 	</div>
-	
+
 	</div>
 	<div class="navigator"></div>
 	<div class="map_area"></div>
 	<div class="detail_area"></div>
 	</div>
-	
+
 	<!-- 標題列 -->
 	<div class="main_content">
 
 	<!-- 右側主視窗 -->
-	<div class="main_result">	
+	<div class="main_result">
 	<!-- 地圖 -->
 	<div class="main_map">
 	  <div id="mmap"></div>
-	  	  
+
 	</div>
 	<!-- 地圖 -->
 	<!-- 詳細資料 -->
@@ -338,5 +338,5 @@
 	</div>
 	<!-- 詳細資料 -->
 	</div>
-	<!-- 右側主視窗 -->	
+	<!-- 右側主視窗 -->
 	</div>

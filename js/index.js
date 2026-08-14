@@ -774,7 +774,7 @@ function extendLogOutTime() {
 //林業管理項目
 function big_window()
 {
-	$("#big_window").on("click",function() {
+	$("#big_window").off("click.cspLayout").on("click.cspLayout", function() {
 		if ($(".detail_data_map, .fc_detail_data").hasClass ("big_window")) {
 			$(".detail_data_map, .fc_detail_data").removeClass("big_window");
 			$(this).children(). removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
@@ -784,12 +784,19 @@ function big_window()
 			$(this).children(). removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
 		}
 		
-		if (fi_tab1 && fi_tab1.map) fi_tab1.map.updateSize();
-		if (fi_tab2 && fi_tab2.map) fi_tab2.map.updateSize();
-		if (fi_tab3 && fi_tab3.map) fi_tab3.map.updateSize();
+		if (typeof fi_scheduleMapUpdate === "function") {
+			if (typeof fi_tab1 !== "undefined") fi_scheduleMapUpdate(fi_tab1);
+			if (typeof fi_tab2 !== "undefined") fi_scheduleMapUpdate(fi_tab2);
+			if (typeof fi_tab3 !== "undefined") fi_scheduleMapUpdate(fi_tab3);
+		}
+		else {
+			if (typeof fi_tab1 !== "undefined" && fi_tab1 && fi_tab1.map) fi_tab1.map.updateSize();
+			if (typeof fi_tab2 !== "undefined" && fi_tab2 && fi_tab2.map) fi_tab2.map.updateSize();
+			if (typeof fi_tab3 !== "undefined" && fi_tab3 && fi_tab3.map) fi_tab3.map.updateSize();
+		}
 	});
 	
-	$("#big_window2").on("click",function() {
+	$("#big_window2").off("click.cspLayout").on("click.cspLayout", function() {
 		if ($(".detail_data_map, .fi_detail").hasClass ("big_window2")) {
 			$(".detail_data_map, .fi_detail").removeClass("big_window2");
 			$(".map_detail2").removeClass("big_window_map2");
@@ -801,16 +808,23 @@ function big_window()
 			$(this).children(). removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
 		}
 		
-		if (fi_tab1 && fi_tab1.map) fi_tab1.map.updateSize();
-		if (fi_tab2 && fi_tab2.map) fi_tab2.map.updateSize();
-		if (fi_tab3 && fi_tab3.map) fi_tab3.map.updateSize();
+		if (typeof fi_scheduleMapUpdate === "function") {
+			if (typeof fi_tab1 !== "undefined") fi_scheduleMapUpdate(fi_tab1);
+			if (typeof fi_tab2 !== "undefined") fi_scheduleMapUpdate(fi_tab2);
+			if (typeof fi_tab3 !== "undefined") fi_scheduleMapUpdate(fi_tab3);
+		}
+		else {
+			if (typeof fi_tab1 !== "undefined" && fi_tab1 && fi_tab1.map) fi_tab1.map.updateSize();
+			if (typeof fi_tab2 !== "undefined" && fi_tab2 && fi_tab2.map) fi_tab2.map.updateSize();
+			if (typeof fi_tab3 !== "undefined" && fi_tab3 && fi_tab3.map) fi_tab3.map.updateSize();
+		}
 	});
 }
 
 //地籍總攬
 function big_window_fc()
 {
-	$("#big_window").on("click",function() {
+	$("#big_window").off("click.cspLayout").on("click.cspLayout", function() {
 		
 		if ($(".fc_partA,.fc_detail_data_map").hasClass ("big_window")) {
 			$(".fc_partA,.fc_detail_data_map").removeClass("big_window");
@@ -821,7 +835,12 @@ function big_window_fc()
 			$(this).children().removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
 		}
 		
-		if (fc_tab1 && fc_tab1.map) fc_tab1.map.updateSize();
+		if (typeof fc_tab1_scheduleMapUpdate === "function") {
+			fc_tab1_scheduleMapUpdate();
+		}
+		else if (typeof fc_tab1 !== "undefined" && fc_tab1 && fc_tab1.map) {
+			fc_tab1.map.updateSize();
+		}
 	});
 }
 

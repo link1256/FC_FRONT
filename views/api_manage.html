@@ -1,6 +1,6 @@
 <!-- 功能頁面區 -->
-<div class="manage_page main_scroll_mini_4 flex" style="height: 100%;">
-    <div id="api_list_view" class="search_type api_manage">	
+<div class="manage_page main_scroll_mini_4 flex csp-style-14">
+    <div id="api_list_view" class="search_type api_manage">
 		<div class="api_interview">
 			<div class="row_text2">簡介</div>
 			<div>本功能提供使用者利用API進行資料轉換，如果需要進行API服務者請先進行申請作業程序。</div>
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div id="api_apply_view" class="search_type api_manage">
-		<input id="api_apply_targetid" type="text" style="display: none;" autocomplete="off" />
+		<input id="api_apply_targetid" type="text" autocomplete="off"  class="csp-style-12" />
 		<div class="api_interview">
 			<div class="row_text2">API服務申請</div>
 		</div>
@@ -141,12 +141,10 @@
 			</div>
 		</div>
 		<div class="api_interview AllCenter">
-			<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="ApplyApiClear();">取消</button>
-			<button type="button" class="btn btn-success search_submit custom_bt2" onclick="SentApplyApi();">送出</button>
+			<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="ApplyApiClear();">取消</button>
+			<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="SentApplyApi();">送出</button>
 		</div>
 	</div>
-	<!-- 功能頁面區 -->	
+	<!-- 功能頁面區 -->
 </div>
-<script>
-	api_manage_inti();
-</script>
+<script src="./js/csp-inline/views_2f_api_5f_manage_1.js"></script>

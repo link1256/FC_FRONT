@@ -5,40 +5,40 @@
 			<div class="row_text">篩選條件</div>
 			<div class="new_ver_flex">
 			<div>
-			   <label for="ver_year" class="form-label" style="width: 110px;">年度</label>
-			 </div>  
+			   <label for="ver_year" class="form-label csp-style-43">年度</label>
+			 </div>
 			   <select id="ver_year0" class="form-select" >
 				  <option value="-1" selected>不指定</option>
 				</select>
 			</div>
 			<div class="new_ver_flex">
 				<div>
-					<label for="search_id" class="form-label" style="width: 110px;">識別碼</label>
+					<label for="search_id" class="form-label csp-style-43">識別碼</label>
 				</div>
 				<input id="search_id" type="text" class="form-control" />
 			</div>
 			<div class="new_ver_flex">
 				<div>
-					<label for="search_title" class="form-label"  style="width: 110px;">標題關鍵字</label>
+					<label for="search_title" class="form-label csp-style-43" >標題關鍵字</label>
 				</div>
 				<input id="search_title" type="text" class="form-control" />
 			</div>
-			
+
 			<div class="new_ver_flex">
 				<div>
-					<label for="search_stat" class="form-label"  style="width: 110px;">狀態</label>
+					<label for="search_stat" class="form-label csp-style-43" >狀態</label>
 				</div>
 				<select id="search_stat" class="form-select"  >
 					<option value="1" selected>未確認</option>
 					<option value="4">取消異動</option>
 				</select>
 			</div>
-			<div class="new_ver" style="text-align:center;">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="get_te_tab3_manage();">查詢</button>
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="te_manage_reset();">重置</button>
+			<div class="new_ver csp-style-3">
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="get_te_tab3_manage();">查詢</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="te_manage_reset();">重置</button>
 			</div>
 		</div>
-		<div class="content_row_search" style="height: calc(100vh - 520px)">
+		<div class="content_row_search csp-style-161">
 			<div class="row_text">異動列表</div>
 			<div class="result_list main_scroll_mini">
 				<!-- <異動列表資料> -->
@@ -48,11 +48,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail_data main_scroll" style="display: none;">
-		<div class="content_row_data manage_bt_area" style="padding:10px;">
+	<div class="detail_data main_scroll csp-style-12">
+		<div class="content_row_data manage_bt_area csp-style-162">
 			<div class="manage_bt">
-				<button type="button" class="btn btn-warning search_submit custom_bt2" id="reject_apply" onclick="te_tab3_reject_apply();">退回修正</button>
-				<button type="button" class="btn btn-success search_submit custom_bt2" id="detail_apply" onclick="te_tab3_submit_apply();">通過</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" id="reject_apply" data-csp-onclick="te_tab3_reject_apply();">退回修正</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" id="detail_apply" data-csp-onclick="te_tab3_submit_apply();">通過</button>
 			</div>
 		</div>
 		<!-- <審核資料> -->
@@ -66,12 +66,4 @@
 	</div>
 </div>
 <!-- 頁面區 -->
-<script>
-	$(".te_tab_list tr").on("click",function(){
-		$(this).parent().children().removeClass("active");
-		$(this).addClass("active");
-	});
-	te_manage_get_yearlist();
-	// get_te_tab3_manage();
-</script>
-	
+<script src="./js/csp-inline/views_2f_te_5f_manage_5f_tab3_1.js"></script>

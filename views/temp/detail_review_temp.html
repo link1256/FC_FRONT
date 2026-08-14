@@ -1,5 +1,5 @@
 <div class="content_row_data" id="basic_data">
-	<table style="width: 100%;">
+	<table class="csp-style-34">
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-6 sys_col1">
 				確認人員
@@ -12,7 +12,7 @@
 			<div id="review_apply_time" class="col-md-3 col-sm-6 col-6 sys_col2">
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-6 sys_col1">
 				農業部會函
@@ -28,7 +28,7 @@
 				<input id="fdate" type="text" class="form-control form-custom-select" placeholder="yyyy/mm/dd" />
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-6 sys_col1">
 				同意撥用函
@@ -44,7 +44,7 @@
 				<input id="sdate" type="text" class="form-control form-custom-select" placeholder="yyyy/mm/dd" />
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-6 sys_col1">
 				說明備註
@@ -108,25 +108,4 @@
 		</div>
 	</div>
 </div>
-<script>
-	$('#fdate,#sdate').datepicker({
-		changeMonth: true,
-		changeYear: true,
-		dateFormat: 'yy/mm/dd',
-		beforeShow: function (e, t) {
-			if ($(this).attr('maxDate')) {
-				var dateItem = $('#' + $(this).attr('maxDate'));
-				if (dateItem.val() !== "") {
-					$(this).datepicker('option', 'maxDate', dateItem.val());
-				}
-			}
-
-			if ($(this).attr('minDate')) {
-				var dateItem = $('#' + $(this).attr('minDate'));
-				if (dateItem.val() !== "") {
-					$(this).datepicker('option', 'minDate', dateItem.val());
-				}
-			}
-		}
-	});
-</script>
+<script src="./js/csp-inline/views_2f_temp_2f_detail_5f_review_5f_temp_1.js"></script>

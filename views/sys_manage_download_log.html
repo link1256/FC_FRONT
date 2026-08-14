@@ -18,16 +18,16 @@
 				</select>
 			</div>
 			<div class="rowsearchitem">
-				<button type="button" class="btn btn-success search_submit custom_bt2" onclick="GetDownloadLogList();">搜尋</button>
-				<button type="button" class="btn btn-warning search_submit custom_bt2" onclick="DownloadLogListSearchClear();">清除條件</button>
+				<button type="button" class="btn btn-success search_submit custom_bt2" data-csp-onclick="GetDownloadLogList();">搜尋</button>
+				<button type="button" class="btn btn-warning search_submit custom_bt2" data-csp-onclick="DownloadLogListSearchClear();">清除條件</button>
 			</div>
 		</div>
 	</div>
 	<div>
-		<button type="button" class="btn btn-success custom_bt2" onclick="download_download_log('excel');">
+		<button type="button" class="btn btn-success custom_bt2" data-csp-onclick="download_download_log('excel');">
 			匯出紀錄(EXCEL)
 		</button>
-		<button type="button" class="btn btn-success custom_bt2" onclick="download_download_log('ods');">
+		<button type="button" class="btn btn-success custom_bt2" data-csp-onclick="download_download_log('ods');">
 			匯出紀錄(ODS)
 		</button>
 	</div>
@@ -52,7 +52,4 @@
 	</div>
 </div>
 
-<script>
-	getDownloadFunctionList();
-	GetDownloadLogList();
-</script>
+<script src="./js/csp-inline/views_2f_sys_5f_manage_5f_download_5f_log_1.js"></script>
