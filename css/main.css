@@ -753,6 +753,10 @@ thead{
 	display:grid;
 }
 
+.tab_body_content.fi-detail-pending .fc_detail_data{
+	display:none;
+}
+
 .content_row{
 	margin: 10px;
 	background-color:white;

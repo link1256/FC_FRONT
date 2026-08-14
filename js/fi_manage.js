@@ -5,8 +5,11 @@ var tempselect3 = {};
 
 function fi_ini_page(i)
 {
-	$(".tab_body_content").empty();
-	$(".tab_body_content.tab" + i).load("./views/fi_manage_tab" + i + ".html"); 
+	var $target = $(".tab_body_content.tab" + i);
+	$(".tab_body_content").removeClass("fi-detail-pending").empty();
+	$target.addClass("fi-detail-pending").load("./views/fi_manage_tab" + i + ".html", function() {
+		$target.removeClass("fi-detail-pending");
+	});
 }
 
 function optionactive(list) {
