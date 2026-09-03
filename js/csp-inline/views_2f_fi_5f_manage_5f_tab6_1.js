@@ -105,6 +105,22 @@ fi_tab6_init();
 	});
 	
 	// 透過 selector 來選擇元素作為上傳區塊，這裡使用id='drop'的div元素
+	$("#upload_shp_file_list").off("click.fiTab6UploadDelete").on("click.fiTab6UploadDelete", ".upload-shp-delete", function() {
+		UploadDeleteThis(Number($(this).attr("data-file-index")));
+	});
+
+	function renderUploadShpFileList() {
+		var output = document.getElementById("upload_shp_file_list");
+		var HTML = "<table>";
+		for (var i = 0; i < filelist.length; i++) {
+			var fileName = typeof htmlEncode === "function" ? htmlEncode(filelist[i].name) : filelist[i].name;
+			HTML += "<tr><td>" + fileName + "</td><td><button type=\"button\" class=\"btn btn-danger btn-wid upload-shp-delete\" data-file-index=\"" + i + "\">?芷</button></td></tr>";
+		}
+		HTML += "</table>";
+		output.innerHTML = HTML;
+		$("#upload_shp_file_list .upload-shp-delete").text(String.fromCharCode(21034, 38500));
+	}
+
 	var dropbox;
 	dropbox = document.getElementById("upload_shp_drag");
 	// element增加eventListener
@@ -155,6 +171,7 @@ fi_tab6_init();
 
 			HTML += "</table>";
 			output.innerHTML = HTML;
+			renderUploadShpFileList();
 		}
 	}
 	
@@ -184,6 +201,7 @@ fi_tab6_init();
 
 		HTML += "</table>";
 		output.innerHTML = HTML;
+		renderUploadShpFileList();
 		
 		$("#upload_shp").replaceWith($("#upload_shp").val('').clone(true));
 	}
@@ -197,6 +215,7 @@ fi_tab6_init();
 			HTML += "<tr><td>" + filelist[i].name + "</td><td><button class=\"btn btn-danger btn-wid\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
 		}
 		output.innerHTML = HTML;
+		renderUploadShpFileList();
 		
 		var hiddenlist = document.getElementsByClassName("hiddenupload");
 		for (var i = 0; i < hiddenlist.length; i++) {
@@ -213,6 +232,7 @@ fi_tab6_init();
 			HTML += "<tr><td>" + filelist[i].name + "</td><td><button class=\"btn btn-danger btn-wid\" onclick=UploadDeleteThis(" + i + ")>刪除</button></td></tr>";
 		}
 		output.innerHTML = HTML;
+		renderUploadShpFileList();
 		
 		var hiddenlist = document.getElementsByClassName("hiddenupload");
 		for (var i = 0; i < hiddenlist.length; i++) {
