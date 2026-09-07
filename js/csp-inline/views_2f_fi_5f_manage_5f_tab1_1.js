@@ -14,6 +14,9 @@ fc_tab1_init();
 		}
 	});
 	var isshowright = true;
+	$("#big_window3").children()
+		.removeClass("fa-caret-square-left fa-caret-square-right")
+		.addClass($(".map_flex2").hasClass("itemhide") ? "fa-caret-square-right" : "fa-caret-square-left");
 	$("#map_window").off("click.cspLayout").on("click.cspLayout", function() {
 		if ($(".map_flex").hasClass("itemhide")) {
 			$(".map_flex").removeClass("itemhide");
