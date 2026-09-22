@@ -43,7 +43,7 @@ fi_tab5_init();
 			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
 			$(".search_div").width(400);
 			$(".map_cview").height("");
-			$(".fc_detail_data").width("calc(100vw - 420px)");
+			$(".fc_detail_data, .fi-query-hint").width("calc(100vw - 420px)");
 			if (isshowright) {
 				$(".fc_partA").width("calc(60% - 10px)");
 				$(".fc_partB").width("40%");
@@ -58,7 +58,7 @@ fi_tab5_init();
 			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
 			$(".search_div").width(80);
 			$(".map_cview").height("calc(100vh - 160px)");
-			$(".fc_detail_data").width("calc(100vw - 80px)");
+			$(".fc_detail_data, .fi-query-hint").width("calc(100vw - 80px)");
 			if (isshowright) {
 				$(".fc_partA").width("calc(70% - 10px)");
 				$(".fc_partB").width("30%");

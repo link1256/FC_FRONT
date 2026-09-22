@@ -924,6 +924,7 @@ function tab1_reset() {
 	$("#te_tab1_list").empty();
 	$("#te_tab1_count").empty();
 	$(".fc_detail_data").hide();
+	$(".fi-query-hint").show();
 	
 	tempselect1 = {};
 }
@@ -1089,6 +1090,7 @@ function tab2_reset() {
 	$("#te_tab2_list").empty();
 	$("#te_tab2_count").empty();
 	$(".fc_detail_data").hide();
+	$(".fi-query-hint").show();
 	
 	tempselect2 = {};
 }
@@ -1193,6 +1195,7 @@ function tab3_reset() {
 	$("#te_tab3_list").empty();
 	$("#te_tab3_count").empty();
 	$(".fc_detail_data").hide();
+	$(".fi-query-hint").show();
 	
 	tempselect3 = {};
 }
@@ -1203,6 +1206,7 @@ var fi_tab_click_data = null;
 function tab1_search_list_click(that) {
 	$("#te_tab1_list tr").removeClass("active"); 
 	$(that).addClass("active");
+	$(".fi-query-hint").hide();
 	$(".fc_detail_data").show();
 	fi_scheduleMapUpdate(fi_tab1);
 
@@ -1224,6 +1228,7 @@ function tab1_search_list_click(that) {
 function tab2_search_list_click(that) {
 	$("#te_tab2_list tr").removeClass("active");
 	$(that).addClass("active");
+	$(".fi-query-hint").hide();
 	$(".fc_detail_data").show();
 	fi_scheduleMapUpdate(fi_tab2);
 	
@@ -1245,6 +1250,7 @@ function tab2_search_list_click(that) {
 function tab3_search_list_click(that, typename) {
 	$("#te_tab3_list tr").removeClass("active");
 	$(that).addClass("active");
+	$(".fi-query-hint").hide();
 	$(".fc_detail_data").show();
 	fi_scheduleMapUpdate(fi_tab3);
 	
@@ -3301,6 +3307,7 @@ function fi_tab5_list_searchlistClick(that) {
 			if (data.data) {
 				var d = data.data;
 				
+				$(".fi-query-hint").hide();
 				$(".fc_detail_data").show();
 				fi_scheduleMapUpdate(fi_tab5);
 				
@@ -3869,6 +3876,7 @@ function fi_tab5_layer_show_click(that, id) {
 function tab5_reset() {
 	$("#upload_xls").val(''); 
 	$(".fc_detail_data").hide();
+	$(".fi-query-hint").show();
 	$("#fi_tab5_list").empty();
 	$("#fi_tab5_count").empty();
 }
@@ -4149,6 +4157,7 @@ function tab6_go_search() {
 				if (d != "-1")
 				{
 					alert("上傳比對成功.");
+					$(".fi-query-hint").hide();
 					$(".fc_detail_data").show();
 					fi_scheduleMapUpdate(fi_tab6);
 					$("#fc_detail_list").empty();
@@ -4290,6 +4299,7 @@ function tab6_reset() {
 	fi_tab6.map.geomvector_source.clear();
 	fi_tab6.map.geomvector_source1.clear();
 	$(".fc_detail_data").hide();
+	$(".fi-query-hint").show();
 	$("#fc_detail_list").empty();
 	$(".upload_zone").show();
 	$("#upload_percent").attr('disabled', false);

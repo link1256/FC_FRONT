@@ -394,9 +394,21 @@ function fc_tab1_getCountyList() {
 		type: "Post",
 		success: function(data) {
 			if (data.data) {
+				var $county = $("#search_county");
+				var defaultText = $county.find('option[value="-1"]').first().text() || "請選擇";
+				var addedCounty = {};
 				var d = data.data;
+				$county.empty().append($("<option>", {
+					value: "-1",
+					text: defaultText
+				}));
 				for (var i = 0; i < d.length; i++) {
-					$("#search_county").append('<option value="' + d[i].code + '">' + htmlEncode(d[i].name) + '</option>');
+					if (!d[i] || addedCounty[d[i].code]) continue;
+					addedCounty[d[i].code] = true;
+					$county.append($("<option>", {
+						value: d[i].code,
+						text: d[i].name
+					}));
 				}
 			}
 		}
@@ -647,6 +659,7 @@ function fc_tab1_searchlistClick(that) {
 				fc_tab1.map.geomvector_source.clear();
 				fc_tab1.map.geomvector_source1.clear();
 				fc_tab1.map.geomvector_source2.clear();
+				$(".fi-query-hint").hide();
 				$(".fc_detail_data").show();
 				fc_tab1_scheduleMapUpdate();
 				
@@ -1354,6 +1367,7 @@ function fc_tab1_reset() {
 	$("#search_Y").val("");
 	
 	$(".fc_detail_data").hide();
+	$(".fi-query-hint").show();
 	$("#fc_tab1_list").empty();
 	$("#fc_tab1_count").empty();
 }

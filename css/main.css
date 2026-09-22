@@ -753,7 +753,8 @@ thead{
 	display:grid;
 }
 
-.tab_body_content.fi-detail-pending .fc_detail_data{
+.tab_body_content.fi-detail-pending .fc_detail_data,
+.tab_body_content.fi-detail-pending .fi-query-hint{
 	display:none;
 }
 
@@ -1215,6 +1216,16 @@ tr.active{
 	width: calc(100vw - 420px);
     height: calc(100vh - 135px);
     overflow-y: hidden;	
+}
+
+.fi-query-hint{
+	width: calc(100vw - 420px);
+	height: calc(100vh - 135px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #555;
+	font-size: 30px;
 }
 
 .fc_partA{
