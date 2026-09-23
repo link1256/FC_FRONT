@@ -329,6 +329,7 @@ function sys_user_account_edit() {
 
 // 群組管理START
 var sys_group_tree = [];
+var sys_group_edit_group_ids = [];
 function sys_group_init() {
 	var post1 = {};
 	var post2 = {};
@@ -357,6 +358,7 @@ function sys_group_init() {
 		success: function(data) {
 			var d = data.data;
 			grouplist = d;
+			sys_group_edit_group_ids = d.map(function(group) { return group.sid; });
 			
 			$("#del_group_search").empty();
 			$("#del_group_search").append('<option value="-1">請選擇</option>');
@@ -431,7 +433,7 @@ function sys_group_init() {
 	$("#sys_group_body").empty();
 	for (var i = 0; i < accesstree.length; i++) {
 		var tmp = "<tr>";
-		tmp += '<td class="parent_' + i + '" colspan="2" style="font-weight: 900; position: relative;">' + htmlEncode(accesstree[i].name) + '<img class="sys_group_first_vect" src="image/Vector.svg" onclick="sys_group_drop(this);" />' + '</td>';
+		tmp += '<td class="sys_group_parent parent_' + i + '" colspan="2">' + htmlEncode(accesstree[i].name) + '<img class="sys_group_first_vect" src="image/Vector.svg" role="button" tabindex="0" aria-expanded="false" data-group-index="' + i + '" />' + '</td>';
 		
 		for (var j = 0; j < grouplist.length + 1; j++) {
 			if (j == grouplist.length) {
@@ -449,7 +451,7 @@ function sys_group_init() {
 		var nlevel = accesstree[i].nlevel;
 		for (var k = 0; k < nlevel.length; k++) {
 			if (nlevel[k].nlevel.length == 0) {
-				var ntmp = "<tr class='child_" + i + "' style='display: none;'>";
+				var ntmp = "<tr class='child_" + i + " sys_group_child_hidden'>";
 				ntmp += '<td colspan="2">' + nlevel[k].name + '</td>';
 				for (var j = 0; j < grouplist.length + 1; j++) {
 					if (j == grouplist.length) {
@@ -466,7 +468,7 @@ function sys_group_init() {
 			}
 			else {
 				var llevel = nlevel[k].nlevel;
-				var ntmp = "<tr class='child_" + i + "' style='display: none;'>";
+				var ntmp = "<tr class='child_" + i + " sys_group_child_hidden'>";
 				ntmp += '<td rowspan="' + llevel.length + '">' + nlevel[k].name + '</td>';
 				
 				for (var n = 0; n < llevel.length; n++) {
@@ -484,7 +486,7 @@ function sys_group_init() {
 						ntmp += "</tr>";
 						$("#sys_group_body").append(ntmp);
 					} else {
-						var ltmp = '<tr class="child_' + i + '" style="display: none;">';
+						var ltmp = '<tr class="child_' + i + ' sys_group_child_hidden">';
 						ltmp += '<td>' + llevel[n].name + '</td>';
 						for (var j = 0; j < grouplist.length + 1; j++) {
 							if (j == grouplist.length) {
@@ -510,6 +512,18 @@ function sys_group_init() {
 		$("#v_" + groupid + '_' + functionid).attr("src", "image/IsUse.svg");
 		$("#" + groupid + '_' + functionid).prop('checked', true);
 	}
+
+	$("#sys_group_body")
+		.off("click.sysGroupDrop keydown.sysGroupDrop", ".sys_group_first_vect")
+		.on("click.sysGroupDrop", ".sys_group_first_vect", function() {
+			sys_group_drop(this);
+		})
+		.on("keydown.sysGroupDrop", ".sys_group_first_vect", function(event) {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				sys_group_drop(this);
+			}
+		});
 	
 	sys_group_update_show(grouplist);
 }
@@ -535,25 +549,15 @@ function sys_group_update_show(grouplist) {
 	}
 }
 function sys_group_drop(that) {
-	var pid = $(that).parent()[0].className;
-	var ps = pid.split('_');
-	var id = ps[1];
-		
-	if (that.isShow == false) {
-		$(".child_" + id).show();
-		$(that).addClass('transimg');
-		that.isShow = true;
-	}
-	else if (that.isShow == true) {
-		$(".child_" + id).hide();
-		$(that).removeClass('transimg');
-		that.isShow = false;
-	}
-	else {
-		$(".child_" + id).show();
-		$(that).addClass('transimg');
-		that.isShow = true;
-	}
+	var id = $(that).attr("data-group-index");
+	if (id === undefined) return;
+
+	var $children = $(".child_" + id);
+	var shouldExpand = $children.hasClass("sys_group_child_hidden");
+
+	$children.toggleClass("sys_group_child_hidden", !shouldExpand);
+	$(that).toggleClass("transimg", shouldExpand);
+	$(that).attr("aria-expanded", shouldExpand ? "true" : "false");
 }
 function sys_group_search_clear() {
 	$("#sys_user_name").val("");
@@ -726,11 +730,13 @@ function sys_edit_update_group() {
 	$("input[name='access']:checked").each(function(){values.push($(this).val());});
 
 	var post = {};
+	post.GroupIdArray = sys_group_edit_group_ids;
 	post.FunctionArray2 = values;
 	
 	$.ajax({
 		url: ApiRequestURL + "SyetemManagement/UpdateGroup",
 		type: "Post",
+		headers: { "Authorization": "Bearer " + localStorage.bearer },
 		data: post,
 		async: false,
 		success: function(data) {
@@ -741,6 +747,9 @@ function sys_edit_update_group() {
 			}
 			else
 				sys_group_erroetoast("更新失敗.");
+		},
+		error: function() {
+			sys_group_erroetoast("權限儲存失敗，請重新登入後再試。");
 		}
 	});
 }

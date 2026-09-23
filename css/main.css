@@ -1981,11 +1981,20 @@ table tr *{
     background-color: #198754;
     border-color: #198754;
 }
+.sys_group_parent {
+	font-weight: 900;
+	position: relative;
+}
+
 .sys_group_first_vect {
 	right: 10px;
     top: 10px;
     cursor: pointer;
     position: absolute;
+}
+
+.sys_group_child_hidden {
+	display: none;
 }
 
 #sys_user_manage_list {
