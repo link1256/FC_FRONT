@@ -16,7 +16,7 @@ fc_tab1_init();
 	var isshowright = true;
 	$("#big_window3").children()
 		.removeClass("fa-caret-square-left fa-caret-square-right")
-		.addClass($(".map_flex2").hasClass("itemhide") ? "fa-caret-square-right" : "fa-caret-square-left");
+		.addClass($(".map_flex2").hasClass("itemhide") ? "fa-caret-square-left" : "fa-caret-square-right");
 	$("#map_window").off("click.cspLayout").on("click.cspLayout", function() {
 		if ($(".map_flex").hasClass("itemhide")) {
 			$(".map_flex").removeClass("itemhide");
@@ -60,14 +60,14 @@ fc_tab1_init();
 	$("#big_window3").off("click.cspLayout").on("click.cspLayout", function() {
 		if ($(".map_flex2").hasClass("itemhide")) {
 			$(".map_flex2").removeClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
+			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
 			$(".fc_partB").width("40%");
 			$(".fc_partA").width("calc(60% - 10px)");
 			isshowright = true;
 		}
 		else {
 			$(".map_flex2").addClass("itemhide");
-			$(this).children().removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
+			$(this).children().removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
 			$(".fc_partB").width("0%");
 			$(".fc_partA").width("calc(100% - 30px)");
 			isshowright = false;
